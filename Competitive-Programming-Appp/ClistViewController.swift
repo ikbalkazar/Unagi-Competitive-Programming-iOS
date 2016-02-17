@@ -17,10 +17,10 @@ class ClistViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
     
     func updateTable() {
-        print(contests.count)
-        for s in contests {
-            print(s.website)
-        }
+        //print(contests.count)
+        //for s in contests {
+        //    print(s.website)
+        //}
         tableView.reloadData()
     }
     
@@ -38,7 +38,7 @@ class ClistViewController: UIViewController, UITableViewDelegate {
                 do {
                     let jsonRes = try NSJSONSerialization.JSONObjectWithData(content, options: NSJSONReadingOptions.MutableContainers)
                     let objects = jsonRes["objects"]!!
-                    
+                    print(jsonRes)
                     for var i = 0; i < objects.count; i++
                     {
                         var event = "No information on event name"
@@ -58,7 +58,7 @@ class ClistViewController: UIViewController, UITableViewDelegate {
                         if let tmp = objects[i]["duration"] as? String {
                             dur = tmp
                         }
-                        if let tmp = objects[i]["url"] as? String {
+                        if let tmp = objects[i]["href"] as? String {
                             url = tmp
                         }
                         
@@ -76,7 +76,7 @@ class ClistViewController: UIViewController, UITableViewDelegate {
             }
         })
         myQuery.resume()
-        print("here!!")
+        //print("here!!")
     }
     
     override func viewDidLoad() {

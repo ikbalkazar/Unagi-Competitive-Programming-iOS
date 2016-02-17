@@ -15,17 +15,15 @@ class ContestContentViewController: UIViewController {
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var endTimeLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
+    
     @IBAction func dismissViewController(sender: AnyObject) {
-        
         dismissViewControllerAnimated(true, completion: nil)
     }
-    @IBAction func goContestWebsite(sender: AnyObject)
-    {
-        // For now it is blank
-        
-        print("Implement these!!!...")
-        
+    
+    @IBAction func goContestWebsite(sender: AnyObject) {
+        UIApplication.sharedApplication().openURL(NSURL(string: selectedContest.url)!)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
