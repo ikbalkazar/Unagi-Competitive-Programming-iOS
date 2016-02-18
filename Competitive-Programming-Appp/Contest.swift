@@ -35,7 +35,6 @@ class Contest
         self.duration = duration
         self.url = url
         self.website = identifyWebsite()
-        print(url)
     }
     
     func identifyWebsite() -> String

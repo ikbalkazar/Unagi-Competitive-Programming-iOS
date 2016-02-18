@@ -23,7 +23,7 @@ class ContestContentViewController: UIViewController {
     @IBAction func goContestWebsite(sender: AnyObject) {
         UIApplication.sharedApplication().openURL(NSURL(string: selectedContest.url)!)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

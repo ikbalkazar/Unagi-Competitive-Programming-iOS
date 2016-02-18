@@ -38,7 +38,7 @@ class ClistViewController: UIViewController, UITableViewDelegate {
                 do {
                     let jsonRes = try NSJSONSerialization.JSONObjectWithData(content, options: NSJSONReadingOptions.MutableContainers)
                     let objects = jsonRes["objects"]!!
-                    print(jsonRes)
+                    print("Json convertion is successful")
                     for var i = 0; i < objects.count; i++
                     {
                         var event = "No information on event name"
@@ -95,11 +95,11 @@ class ClistViewController: UIViewController, UITableViewDelegate {
         return contests.count
     }
     
-    func colorForContest(contest: String ) -> UIColor {
+    func colorForContest(website: String ) -> UIColor {
         
         // Label contests by their names and return appropriate color
         
-        switch(contest)
+        switch(website)
         {
             case "Codeforces": return UIColor.blueColor()
             case "Codechef"  : return UIColor.brownColor()
@@ -111,11 +111,27 @@ class ClistViewController: UIViewController, UITableViewDelegate {
         }
     }
     
+    func imageForContest(website: String) -> UIImage {
+        switch (website) {
+            case "Codeforces":  return UIImage(named: "codeforcesLogo.png")!
+            case "Codechef":    return UIImage(named: "codechefLogo.jpeg")!
+            case "Topcoder":    return UIImage(named: "topcoderLogo.png")!
+            case "Hackerrank":  return UIImage(named: "hackerrankLogo.png")!
+            case "ACM":         return UIImage(named: "acmicpcLogo.png")!
+            case "IOI":         return UIImage(named: "ioiLogo.png")!
+            default:            return UIImage(named: "codeforcesLogo.png")!//Update it once app's logo is available
+        }
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         cell.textLabel?.text = contests[indexPath.row].event
         cell.textLabel?.textAlignment = .Center
         cell.backgroundColor = colorForContest(contests[indexPath.row].website)
+        let image = imageForContest(contests[indexPath.row].website)
+        print("Image is loaded")
+        cell.imageView?.image = image
+        cell.detailTextLabel?.text = "asdf"
         return cell
     }
     
