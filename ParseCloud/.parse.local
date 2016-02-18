@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "Competitive Programming App": {
+      "applicationId": "8xMwvCqficeHwkS7Ag5PQWdlw1q91ujGcXVRgUnG"
+    },
+    "_default": {
+      "link": "Competitive Programming App"
+    }
+  }
+}
