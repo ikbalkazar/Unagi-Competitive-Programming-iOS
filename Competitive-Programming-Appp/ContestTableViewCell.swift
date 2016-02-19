@@ -35,7 +35,7 @@ class ContestTableViewCell: UITableViewCell {
             event.title = self.contest.event
             
             //Formats the start date-time
-            var dateAsString = "2013-12-0807:00:00"
+            var dateAsString = self.contest.startTime
             dateAsString.removeAtIndex(dateAsString.startIndex.advancedBy(10))
             let dateFormatter = NSDateFormatter()
             print(dateAsString)
@@ -66,7 +66,6 @@ class ContestTableViewCell: UITableViewCell {
             UIApplication.sharedApplication().keyWindow?.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
             
         })))
-        
         
         UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
         
