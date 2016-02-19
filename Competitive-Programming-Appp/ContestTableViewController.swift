@@ -123,7 +123,6 @@ class ContestTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("row count")
         return contests.count
     }
     
