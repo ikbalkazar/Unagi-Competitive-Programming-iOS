@@ -384,7 +384,7 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzz-ve-zMe">
                                 <rect key="frame" x="105" y="341" width="165" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="link"/>
+                                <state key="normal" title="Go Website"/>
                                 <connections>
                                     <action selector="goContestWebsite:" destination="pfq-VS-oPc" eventType="touchUpInside" id="LmM-3P-xGu"/>
                                 </connections>

@@ -13,6 +13,8 @@ class ContestTableViewCell: UITableViewCell {
     var contestWebsite: String = ""
     @IBOutlet var cellImage: UIImageView!
     @IBOutlet weak var contestNameLabel: UILabel!
+    
+    
     @IBAction func addToCalendar(sender: AnyObject) {
     }
     
