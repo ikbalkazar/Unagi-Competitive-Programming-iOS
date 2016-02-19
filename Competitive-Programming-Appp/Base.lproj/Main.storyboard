@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hc2-HE-htB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hc2-HE-htB">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--Initial View Controller-->
@@ -85,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0g9-zY-MVr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1713.5" y="-35.5"/>
+            <point key="canvasLocation" x="-697.5" y="1004.5"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="V1E-e8-hqD">
@@ -181,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Rh-iL-0Wv" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1112.5" y="-35.5"/>
+            <point key="canvasLocation" x="7.5" y="1004.5"/>
         </scene>
         <!--Contest Table View Controller-->
         <scene sceneID="0wU-Nw-tjX">
@@ -293,13 +293,19 @@
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQr-Hs-eUA">
                                             <rect key="frame" x="256" y="51" width="111" height="30"/>
-                                            <state key="normal" title="Add to Calendar"/>
+                                            <state key="normal" title="Add Reminder"/>
                                             <connections>
                                                 <action selector="addToCalendar:" destination="SQi-7r-jcy" eventType="touchUpInside" id="7nL-sM-s0R"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNm-VR-fNd">
                                             <rect key="frame" x="97" y="15" width="270" height="28"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oI4-83-v3F">
+                                            <rect key="frame" x="97" y="51" width="151" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -316,6 +322,7 @@
                                 <connections>
                                     <outlet property="cellImage" destination="9hi-m6-elB" id="Cgz-Iz-Nd0"/>
                                     <outlet property="contestNameLabel" destination="BNm-VR-fNd" id="pXu-aq-TGX"/>
+                                    <outlet property="startDateTimeLabel" destination="oI4-83-v3F" id="5xK-Tz-gRI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

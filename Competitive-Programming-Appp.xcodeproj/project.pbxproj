@@ -50,6 +50,7 @@
 		03216EDC1C75C1C3009C9236 /* ioiLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ioiLogo.png; sourceTree = "<group>"; };
 		03216EE21C75CE45009C9236 /* ContestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestTableViewCell.swift; sourceTree = "<group>"; };
 		03216EE41C75D485009C9236 /* ContestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestTableViewController.swift; sourceTree = "<group>"; };
+		03F2B0DF1C7734A50024D3B2 /* dateplay.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = dateplay.playground; path = ../../dateplay.playground; sourceTree = "<group>"; };
 		23913DD41C6FE1320038BA34 /* Competitive-Programming-Appp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Competitive-Programming-Appp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23913DD71C6FE1320038BA34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23913DDA1C6FE1320038BA34 /* Competitive_Programming_Appp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Competitive_Programming_Appp.xcdatamodel; sourceTree = "<group>"; };
@@ -119,6 +120,7 @@
 		23913DCB1C6FE1320038BA34 = {
 			isa = PBXGroup;
 			children = (
+				03F2B0DF1C7734A50024D3B2 /* dateplay.playground */,
 				23913E041C6FE26B0038BA34 /* libsqlite3.tbd */,
 				23913E021C6FE2660038BA34 /* libz.tbd */,
 				23913E001C6FE25F0038BA34 /* SystemConfiguration.framework */,

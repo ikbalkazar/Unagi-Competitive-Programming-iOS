@@ -47,7 +47,7 @@ class ContestTableViewController: UITableViewController {
                         var event = "No information on event name"
                         var start = "No information on start time"
                         var end   = "No information on end time"
-                        var dur   = "No information on duration"
+                        var dur:Double = -1
                         var url   = "No information on url"
                         if let tmp = objects[i]["event"] as? String {
                             event = tmp
@@ -58,7 +58,7 @@ class ContestTableViewController: UITableViewController {
                         if let tmp = objects[i]["end"] as? String {
                             end = tmp
                         }
-                        if let tmp = objects[i]["duration"] as? String {
+                        if let tmp = objects[i]["duration"] as? Double {
                             dur = tmp
                         }
                         if let tmp = objects[i]["href"] as? String {
@@ -114,43 +114,11 @@ class ContestTableViewController: UITableViewController {
     }
     
     
-    func colorForContest(website: String ) -> UIColor {
-        
-        // Label contests by their names and return appropriate color
-        
-        switch(website) {
-        case "Codeforces": return UIColor.blueColor()
-        case "Codechef"  : return UIColor.magentaColor()
-        case "Topcoder"  : return UIColor.redColor()
-        case "Hackerrank": return UIColor.greenColor()
-        case "ACM" :       return UIColor.yellowColor()
-        case "IOI" :       return UIColor.purpleColor()
-        default:           return UIColor.cyanColor()
-        }
-    }
-    
-    func imageForContest(website: String) -> UIImage {
-        switch (website) {
-        case "Codeforces":  return UIImage(named: "codeforcesLogo.png")!
-        case "Codechef":    return UIImage(named: "codechefLogo.jpeg")!
-        case "Topcoder":    return UIImage(named: "topcoderLogo.png")!
-        case "Hackerrank":  return UIImage(named: "hackerrankLogo.png")!
-        case "ACM":         return UIImage(named: "acmicpcLogo.png")!
-        case "IOI":         return UIImage(named: "ioiLogo.png")!
-        default:            return UIImage(named: "none.jpg")! //Update it once app's logo is available
-        }
-    }
-
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "ContestTableCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ContestTableViewCell
-        
         let contest = contests[indexPath.row]
-        
-        cell.cellImage.image = imageForContest(contest.website)
-        cell.contestNameLabel.text = contest.event
-        cell.contestWebsite = contest.website
-        cell.backgroundColor = colorForContest(contest.website)
+        cell.setContest(contest);
         
         return cell
     }

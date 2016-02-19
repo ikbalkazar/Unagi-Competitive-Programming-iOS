@@ -18,9 +18,9 @@ class ContestContentViewController: UIViewController {
     
     @IBAction func goContestWebsite(sender: AnyObject) {
     }
+    
     @IBAction func dismissViewController(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
-        
         UIApplication.sharedApplication().openURL(NSURL(string: selectedContest.url)!)
     }
 
@@ -30,7 +30,7 @@ class ContestContentViewController: UIViewController {
         contestNameLabel.text = selectedContest.event
         startTimeLabel.text = selectedContest.startTime
         endTimeLabel.text = selectedContest.endTime
-        durationLabel.text = selectedContest.duration
+        durationLabel.text = String(selectedContest.duration)
     }
 
     override func didReceiveMemoryWarning() {

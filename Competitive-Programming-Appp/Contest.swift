@@ -13,7 +13,7 @@ class Contest
     var event: String!
     var startTime: String!
     var endTime: String!
-    var duration: String!
+    var duration: Double!//seconds
     var url: String!
     var website: String!
     
@@ -22,12 +22,12 @@ class Contest
         event = ""
         startTime = ""
         endTime = ""
-        duration = ""
+        duration = 0
         url = ""
         website = ""
     }
     
-    init( event: String , start: String , end: String , duration: String , url: String )
+    init( event: String , start: String , end: String , duration: Double , url: String )
     {
         self.event = event
         self.startTime = start
@@ -69,4 +69,30 @@ class Contest
         
     }
     
+    func getColor() -> UIColor {
+        
+        // Label contests by their names and return appropriate color
+        
+        switch(website) {
+            case "Codeforces": return UIColor.blueColor()
+            case "Codechef"  : return UIColor.magentaColor()
+            case "Topcoder"  : return UIColor.redColor()
+            case "Hackerrank": return UIColor.greenColor()
+            case "ACM" :       return UIColor.yellowColor()
+            case "IOI" :       return UIColor.purpleColor()
+            default:           return UIColor.cyanColor()
+        }
+    }
+    
+    func getImage() -> UIImage {
+        switch (website) {
+            case "Codeforces":  return UIImage(named: "codeforcesLogo.png")!
+            case "Codechef":    return UIImage(named: "codechefLogo.jpeg")!
+            case "Topcoder":    return UIImage(named: "topcoderLogo.png")!
+            case "Hackerrank":  return UIImage(named: "hackerrankLogo.png")!
+            case "ACM":         return UIImage(named: "acmicpcLogo.png")!
+            case "IOI":         return UIImage(named: "ioiLogo.png")!
+            default:            return UIImage(named: "none.jpg")! //Update it once app's logo is available
+        }
+    }
 }
