@@ -17,11 +17,11 @@ class ContestContentViewController: UIViewController {
     @IBOutlet weak var durationLabel: UILabel!
     
     @IBAction func goContestWebsite(sender: AnyObject) {
+        UIApplication.sharedApplication().openURL(NSURL(string: selectedContest.url)!)
     }
     
     @IBAction func dismissViewController(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
-        UIApplication.sharedApplication().openURL(NSURL(string: selectedContest.url)!)
     }
 
     override func viewDidLoad() {

@@ -29,7 +29,13 @@ class ContestTableViewController: UITableViewController {
     }
     
     func loadContests() {
-        let url:NSURL = NSURL(string: "https://clist.by/api/v1/json/contest/?username=ikbalkazar&api_key=b66864909a08b2ddf96b258a146bd15c2db6a469")!
+        
+        let now = NSDate()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateFrom : String = dateFormatter.stringFromDate(now)
+        
+        let url:NSURL = NSURL(string: "https://clist.by/api/v1/json/contest/?start__gte=" + dateFrom + "&username=ikbalkazar&api_key=b66864909a08b2ddf96b258a146bd15c2db6a469&order_by=start")!
         
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
         
@@ -49,6 +55,7 @@ class ContestTableViewController: UITableViewController {
                         var end   = "No information on end time"
                         var dur:Double = -1
                         var url   = "No information on url"
+                        var website = "No information on website"
                         if let tmp = objects[i]["event"] as? String {
                             event = tmp
                         }
@@ -64,10 +71,17 @@ class ContestTableViewController: UITableViewController {
                         if let tmp = objects[i]["href"] as? String {
                             url = tmp
                         }
+                        if let tmp = objects[i]["resource"] {
+                            if let tmp2 = tmp!["name"] as? String {
+                                website = tmp2
+                            }
+                        }
                         
-                        let newContest = Contest(event: event, start: start, end: end, duration: dur, url: url)
-                        
-                        self.contests.append(newContest)
+                        //To get rid of russian named contests
+                        if website != "dl.gsu.by" {
+                            let newContest = Contest(event: event, start: start, end: end, duration: dur, url: url, website: website)
+                            self.contests.append(newContest)
+                        }
                     }
                     
                     print("Loading is done")

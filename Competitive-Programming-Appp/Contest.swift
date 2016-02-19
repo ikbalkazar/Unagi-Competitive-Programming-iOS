@@ -27,71 +27,37 @@ class Contest
         website = ""
     }
     
-    init( event: String , start: String , end: String , duration: Double , url: String )
+    init( event: String , start: String , end: String , duration: Double , url: String, website: String )
     {
         self.event = event
         self.startTime = start
         self.endTime = end
         self.duration = duration
         self.url = url
-        self.website = identifyWebsite()
+        self.website = website
     }
     
-    func identifyWebsite() -> String
-    {
-        if event.rangeOfString("Codeforces") != nil {
-            return "Codeforces"
-        }
-        if event.rangeOfString("Cook-off") != nil {
-            return "Codechef"
-        }
-        if event.rangeOfString("Lunchtime") != nil {
-            return "Codechef"
-        }
-        
-        if event.rangeOfString("Challenge") != nil {
-            return "Codechef"
-        }
-        
-        if event.rangeOfString("Round Match") != nil {
-            return "Topcoder"
-        }
-        
-        if event.rangeOfString("ACM") != nil {
-            return "ACM"
-        }
-        
-        if event.rangeOfString("IOI") != nil {
-            return "IOI"
-        }
-        
-        return "none"
-        
-    }
+    //getcolor and getimage will be improved by adding more logo pictures.
     
     func getColor() -> UIColor {
         
         // Label contests by their names and return appropriate color
         
         switch(website) {
-            case "Codeforces": return UIColor.blueColor()
-            case "Codechef"  : return UIColor.magentaColor()
-            case "Topcoder"  : return UIColor.redColor()
-            case "Hackerrank": return UIColor.greenColor()
-            case "ACM" :       return UIColor.yellowColor()
-            case "IOI" :       return UIColor.purpleColor()
+            case "codeforces.com": return UIColor.blueColor()
+            case "codechef.com"  : return UIColor.magentaColor()
+            case "topcoder.com"  : return UIColor.redColor()
+            case "hackerrank.com": return UIColor.greenColor()
             default:           return UIColor.cyanColor()
         }
     }
     
     func getImage() -> UIImage {
         switch (website) {
-            case "Codeforces":  return UIImage(named: "codeforcesLogo.png")!
-            case "Codechef":    return UIImage(named: "codechefLogo.jpeg")!
-            case "Topcoder":    return UIImage(named: "topcoderLogo.png")!
-            case "Hackerrank":  return UIImage(named: "hackerrankLogo.png")!
-            case "ACM":         return UIImage(named: "acmicpcLogo.png")!
-            case "IOI":         return UIImage(named: "ioiLogo.png")!
+            case "codeforces.com":  return UIImage(named: "codeforcesLogo.png")!
+            case "codechef.com":    return UIImage(named: "codechefLogo.jpeg")!
+            case "topcoder.com":    return UIImage(named: "topcoderLogo.png")!
+            case "hackerrank.com":  return UIImage(named: "hackerrankLogo.png")!
             default:            return UIImage(named: "none.jpg")! //Update it once app's logo is available
         }
     }
