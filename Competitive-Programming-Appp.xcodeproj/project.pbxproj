@@ -17,8 +17,6 @@
 		03216EE51C75D485009C9236 /* ContestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03216EE41C75D485009C9236 /* ContestTableViewController.swift */; };
 		23913DD81C6FE1320038BA34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23913DD71C6FE1320038BA34 /* AppDelegate.swift */; };
 		23913DDB1C6FE1320038BA34 /* Competitive_Programming_Appp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23913DD91C6FE1320038BA34 /* Competitive_Programming_Appp.xcdatamodeld */; };
-		23913DDD1C6FE1320038BA34 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23913DDC1C6FE1320038BA34 /* MasterViewController.swift */; };
-		23913DDF1C6FE1320038BA34 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23913DDE1C6FE1320038BA34 /* DetailViewController.swift */; };
 		23913DE41C6FE1320038BA34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23913DE31C6FE1320038BA34 /* Assets.xcassets */; };
 		23913DE71C6FE1320038BA34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23913DE51C6FE1320038BA34 /* LaunchScreen.storyboard */; };
 		23913DF01C6FE1E90038BA34 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23913DEE1C6FE1E90038BA34 /* Bolts.framework */; };
@@ -54,8 +52,6 @@
 		23913DD41C6FE1320038BA34 /* Competitive-Programming-Appp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Competitive-Programming-Appp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23913DD71C6FE1320038BA34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23913DDA1C6FE1320038BA34 /* Competitive_Programming_Appp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Competitive_Programming_Appp.xcdatamodel; sourceTree = "<group>"; };
-		23913DDC1C6FE1320038BA34 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		23913DDE1C6FE1320038BA34 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		23913DE31C6FE1320038BA34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23913DE61C6FE1320038BA34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23913DE81C6FE1320038BA34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -151,8 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				23913DD71C6FE1320038BA34 /* AppDelegate.swift */,
-				23913DDC1C6FE1320038BA34 /* MasterViewController.swift */,
-				23913DDE1C6FE1320038BA34 /* DetailViewController.swift */,
 				23B43D311C712D98009CB0B4 /* ContestContentViewController.swift */,
 				23913E081C6FE40A0038BA34 /* RegisterViewController.swift */,
 				23913E061C6FE31A0038BA34 /* InitialViewController.swift */,
@@ -255,8 +249,6 @@
 				23913DD81C6FE1320038BA34 /* AppDelegate.swift in Sources */,
 				23913E091C6FE40A0038BA34 /* RegisterViewController.swift in Sources */,
 				23B43D321C712D98009CB0B4 /* ContestContentViewController.swift in Sources */,
-				23913DDD1C6FE1320038BA34 /* MasterViewController.swift in Sources */,
-				23913DDF1C6FE1320038BA34 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
