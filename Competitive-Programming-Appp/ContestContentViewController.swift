@@ -9,25 +9,24 @@
 import UIKit
 
 class ContestContentViewController: UIViewController {
-
-    @IBOutlet weak var contestSiteLabel: UILabel!
+    
+    
     @IBOutlet weak var contestNameLabel: UILabel!
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var endTimeLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     
+    @IBAction func goContestWebsite(sender: AnyObject) {
+    }
     @IBAction func dismissViewController(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    @IBAction func goContestWebsite(sender: AnyObject) {
+        
         UIApplication.sharedApplication().openURL(NSURL(string: selectedContest.url)!)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        contestSiteLabel.text = selectedContest.event
         contestNameLabel.text = selectedContest.event
         startTimeLabel.text = selectedContest.startTime
         endTimeLabel.text = selectedContest.endTime

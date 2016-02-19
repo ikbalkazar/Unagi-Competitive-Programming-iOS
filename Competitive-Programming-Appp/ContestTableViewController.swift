@@ -8,6 +8,8 @@
 
 import UIKit
 
+var selectedContest: Contest!
+
 class ContestTableViewController: UITableViewController {
 
     var contests = [Contest]()
@@ -86,6 +88,7 @@ class ContestTableViewController: UITableViewController {
         super.viewDidLoad()
 
         loadContests()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -115,15 +118,14 @@ class ContestTableViewController: UITableViewController {
         
         // Label contests by their names and return appropriate color
         
-        switch(website)
-        {
+        switch(website) {
         case "Codeforces": return UIColor.blueColor()
-        case "Codechef"  : return UIColor.brownColor()
+        case "Codechef"  : return UIColor.magentaColor()
         case "Topcoder"  : return UIColor.redColor()
         case "Hackerrank": return UIColor.greenColor()
         case "ACM" :       return UIColor.yellowColor()
         case "IOI" :       return UIColor.purpleColor()
-        default:           return UIColor.grayColor()
+        default:           return UIColor.cyanColor()
         }
     }
     
@@ -135,7 +137,7 @@ class ContestTableViewController: UITableViewController {
         case "Hackerrank":  return UIImage(named: "hackerrankLogo.png")!
         case "ACM":         return UIImage(named: "acmicpcLogo.png")!
         case "IOI":         return UIImage(named: "ioiLogo.png")!
-        default:            return UIImage(named: "codeforcesLogo.png")!//Update it once app's logo is available
+        default:            return UIImage(named: "none.jpg")! //Update it once app's logo is available
         }
     }
 
@@ -146,10 +148,19 @@ class ContestTableViewController: UITableViewController {
         let contest = contests[indexPath.row]
         
         cell.cellImage.image = imageForContest(contest.website)
-        cell.button.setTitle(contest.event, forState: UIControlState.Normal)
+        cell.contestNameLabel.text = contest.event
         cell.contestWebsite = contest.website
+        cell.backgroundColor = colorForContest(contest.website)
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        
+        selectedContest = contests[indexPath.row]
+        performSegueWithIdentifier("Contest_Content", sender: self)
+        
+        return indexPath
     }
 
     /*

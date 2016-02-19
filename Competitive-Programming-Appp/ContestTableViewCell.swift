@@ -12,13 +12,7 @@ class ContestTableViewCell: UITableViewCell {
     
     var contestWebsite: String = ""
     @IBOutlet var cellImage: UIImageView!
-    
-    @IBOutlet var button: UIButton!
-    
-    @IBAction func contestButton(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(NSURL(string: contestWebsite)!)
-    }
-    
+    @IBOutlet weak var contestNameLabel: UILabel!
     @IBAction func addToCalendar(sender: AnyObject) {
     }
     

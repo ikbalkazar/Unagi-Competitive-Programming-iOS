@@ -15,7 +15,6 @@
 		03216EDD1C75C1C3009C9236 /* ioiLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03216EDC1C75C1C3009C9236 /* ioiLogo.png */; };
 		03216EE31C75CE45009C9236 /* ContestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03216EE21C75CE45009C9236 /* ContestTableViewCell.swift */; };
 		03216EE51C75D485009C9236 /* ContestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03216EE41C75D485009C9236 /* ContestTableViewController.swift */; };
-		0368F53B1C70B9750005A9C7 /* ClistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0368F53A1C70B9750005A9C7 /* ClistViewController.swift */; };
 		23913DD81C6FE1320038BA34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23913DD71C6FE1320038BA34 /* AppDelegate.swift */; };
 		23913DDB1C6FE1320038BA34 /* Competitive_Programming_Appp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23913DD91C6FE1320038BA34 /* Competitive_Programming_Appp.xcdatamodeld */; };
 		23913DDD1C6FE1320038BA34 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23913DDC1C6FE1320038BA34 /* MasterViewController.swift */; };
@@ -39,6 +38,7 @@
 		23B43D301C711BAC009CB0B4 /* Contest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B43D2F1C711BAC009CB0B4 /* Contest.swift */; };
 		23B43D321C712D98009CB0B4 /* ContestContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B43D311C712D98009CB0B4 /* ContestContentViewController.swift */; };
 		23B43D351C71482B009CB0B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B43D331C71482B009CB0B4 /* Main.storyboard */; };
+		23EE1A7D1C76A626007C817C /* none.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23EE1A7C1C76A626007C817C /* none.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,7 +50,6 @@
 		03216EDC1C75C1C3009C9236 /* ioiLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ioiLogo.png; sourceTree = "<group>"; };
 		03216EE21C75CE45009C9236 /* ContestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestTableViewCell.swift; sourceTree = "<group>"; };
 		03216EE41C75D485009C9236 /* ContestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestTableViewController.swift; sourceTree = "<group>"; };
-		0368F53A1C70B9750005A9C7 /* ClistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClistViewController.swift; sourceTree = "<group>"; };
 		23913DD41C6FE1320038BA34 /* Competitive-Programming-Appp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Competitive-Programming-Appp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23913DD71C6FE1320038BA34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23913DDA1C6FE1320038BA34 /* Competitive_Programming_Appp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Competitive_Programming_Appp.xcdatamodel; sourceTree = "<group>"; };
@@ -76,6 +75,7 @@
 		23B43D2F1C711BAC009CB0B4 /* Contest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contest.swift; sourceTree = "<group>"; };
 		23B43D311C712D98009CB0B4 /* ContestContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestContentViewController.swift; sourceTree = "<group>"; };
 		23B43D341C71482B009CB0B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		23EE1A7C1C76A626007C817C /* none.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = none.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +101,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		238DC5771C7675A9000150B6 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				03216ED21C75BD9F009C9236 /* acmicpcLogo.png */,
+				03216ED31C75BD9F009C9236 /* codechefLogo.jpeg */,
+				03216ED41C75BD9F009C9236 /* codeforcesLogo.png */,
+				03216ED51C75BD9F009C9236 /* topcoderLogo.png */,
+				03216EDA1C75C1B7009C9236 /* hackerrankLogo.png */,
+				03216EDC1C75C1C3009C9236 /* ioiLogo.png */,
+				23EE1A7C1C76A626007C817C /* none.jpg */,
+			);
+			name = Sources;
+			path = "Competitive-Programming-Appp";
+			sourceTree = "<group>";
+		};
 		23913DCB1C6FE1320038BA34 = {
 			isa = PBXGroup;
 			children = (
@@ -116,8 +131,9 @@
 				23913DF21C6FE2300038BA34 /* AudioToolbox.framework */,
 				23913DD61C6FE1320038BA34 /* Competitive-Programming-Appp */,
 				23913DD51C6FE1320038BA34 /* Products */,
-				23913DEE1C6FE1E90038BA34 /* Bolts.framework */,
+				238DC5771C7675A9000150B6 /* Sources */,
 				23913DEF1C6FE1E90038BA34 /* Parse.framework */,
+				23913DEE1C6FE1E90038BA34 /* Bolts.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,12 +148,6 @@
 		23913DD61C6FE1320038BA34 /* Competitive-Programming-Appp */ = {
 			isa = PBXGroup;
 			children = (
-				03216ED21C75BD9F009C9236 /* acmicpcLogo.png */,
-				03216ED31C75BD9F009C9236 /* codechefLogo.jpeg */,
-				03216ED41C75BD9F009C9236 /* codeforcesLogo.png */,
-				03216ED51C75BD9F009C9236 /* topcoderLogo.png */,
-				03216EDA1C75C1B7009C9236 /* hackerrankLogo.png */,
-				03216EDC1C75C1C3009C9236 /* ioiLogo.png */,
 				23913DD71C6FE1320038BA34 /* AppDelegate.swift */,
 				23913DDC1C6FE1320038BA34 /* MasterViewController.swift */,
 				23913DDE1C6FE1320038BA34 /* DetailViewController.swift */,
@@ -147,7 +157,6 @@
 				03216EE21C75CE45009C9236 /* ContestTableViewCell.swift */,
 				03216EE41C75D485009C9236 /* ContestTableViewController.swift */,
 				23B43D331C71482B009CB0B4 /* Main.storyboard */,
-				0368F53A1C70B9750005A9C7 /* ClistViewController.swift */,
 				23B43D2F1C711BAC009CB0B4 /* Contest.swift */,
 				23913DE31C6FE1320038BA34 /* Assets.xcassets */,
 				23913DE51C6FE1320038BA34 /* LaunchScreen.storyboard */,
@@ -217,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03216EDD1C75C1C3009C9236 /* ioiLogo.png in Resources */,
+				23EE1A7D1C76A626007C817C /* none.jpg in Resources */,
 				03216EDB1C75C1B7009C9236 /* hackerrankLogo.png in Resources */,
 				03216ED91C75BD9F009C9236 /* topcoderLogo.png in Resources */,
 				23B43D351C71482B009CB0B4 /* Main.storyboard in Resources */,
@@ -244,7 +254,6 @@
 				23913E091C6FE40A0038BA34 /* RegisterViewController.swift in Sources */,
 				23B43D321C712D98009CB0B4 /* ContestContentViewController.swift in Sources */,
 				23913DDD1C6FE1320038BA34 /* MasterViewController.swift in Sources */,
-				0368F53B1C70B9750005A9C7 /* ClistViewController.swift in Sources */,
 				23913DDF1C6FE1320038BA34 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
