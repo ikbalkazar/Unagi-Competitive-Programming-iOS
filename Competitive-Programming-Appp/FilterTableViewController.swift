@@ -14,7 +14,6 @@ class FilterTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Line 17/ FilterTableViewController")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -41,6 +40,7 @@ class FilterTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("filtertablecell", forIndexPath: indexPath) as! FilterTableViewCell
         cell.label.text = self.sources[indexPath.row]
+        cell.awakeFromNib()
         return cell
     }
     

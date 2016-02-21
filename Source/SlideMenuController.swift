@@ -559,7 +559,6 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     }
     
     public func changeMainViewController(mainViewController: UIViewController,  close: Bool) {
-        print("Line 562/ Slide Menu Controller")
         removeViewController(self.mainViewController)
         self.mainViewController = mainViewController
         setUpViewController(mainContainerView, targetViewController: mainViewController)
@@ -793,7 +792,6 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     
     private func setUpViewController(targetView: UIView, targetViewController: UIViewController?) {
         if let viewController = targetViewController {
-            print("Line 796/ Slide Menu Controller")
             addChildViewController(viewController)
             viewController.view.frame = targetView.bounds
             targetView.addSubview(viewController.view)

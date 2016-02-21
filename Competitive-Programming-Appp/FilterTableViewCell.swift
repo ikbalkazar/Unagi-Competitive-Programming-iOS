@@ -15,34 +15,25 @@ class FilterTableViewCell: UITableViewCell {
     
     @IBOutlet var switchButton: UISwitch!
     
-    func isSource(website: String) -> Bool {
-        if let outcome = NSUserDefaults.standardUserDefaults().objectForKey(website) {
-            print(outcome as! Bool)
-            return outcome as! Bool
-        } else {
-            print("Line 27")
-            //it means first time ever
-            return true
-        }
-    }
-    
-    func setSource(website: String, value: Bool) {
-        NSUserDefaults.standardUserDefaults().setBool(value, forKey: website)
-        NSUserDefaults.standardUserDefaults().synchronize()
-    }
-    
     @IBAction func `switch`(sender: AnyObject) {
-        print("setting")
-        print(switchButton.on)
-        setSource(label.text!, value: switchButton.on)
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(switchButton.on, forKey: label.text! + "filtered")
+        defaults.synchronize()
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("Line 48/ FilterTableViewCell")
-        //setSource(label.text!, value: false)
-        switchButton.setOn(isSource(label.text!), animated: true)
-        // Initialization code
+        if label.text != "label" {
+        
+            let defaults = NSUserDefaults.standardUserDefaults()
+            if defaults.objectForKey(label.text! + "filtered") == nil {
+                // First time encounter
+                // Initialize here since it makes more sense
+                defaults.setObject(true, forKey: label.text! + "filtered" )
+            } else {
+                switchButton.setOn(defaults.objectForKey(label.text! + "filtered") as! Bool , animated: true)
+            }
+        }
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
