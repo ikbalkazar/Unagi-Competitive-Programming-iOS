@@ -12,7 +12,9 @@ class Contest
 {
     var event: String!
     var startTime: String!
+    var localStart: String!
     var endTime: String!
+    var localEnd: String!
     var duration: Double!//seconds
     var url: String!
     var website: String!
@@ -31,10 +33,28 @@ class Contest
     {
         self.event = event
         self.startTime = start
+        self.localStart = getLocalDate(start)
         self.endTime = end
+        self.localEnd = getLocalDate(end)
         self.duration = duration
         self.url = url
         self.website = website
+    }
+    
+    func getLocalDate(strDate : String) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let date = dateFormatter.dateFromString(strDate)!
+        dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        return dateFormatter.stringFromDate(date)
+    }
+    
+    func getHourMinuteDuration() -> String {
+        let intDur = Int(duration)
+        let chours = intDur / 3600
+        let cmins = intDur / 60 % 60
+        return "\(chours) hours \(cmins) minutes"
     }
     
     //getcolor and getimage will be improved by adding more logo pictures.

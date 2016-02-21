@@ -484,7 +484,7 @@
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lVD-wd-zcB">
                                             <rect key="frame" x="256" y="51" width="111" height="30"/>
-                                            <state key="normal" title="Add Reminder"/>
+                                            <state key="normal" title="Add to Calendar"/>
                                             <connections>
                                                 <action selector="addToCalendar:" destination="Go9-BQ-Qcu" eventType="touchUpInside" id="qrh-Eg-43e"/>
                                             </connections>

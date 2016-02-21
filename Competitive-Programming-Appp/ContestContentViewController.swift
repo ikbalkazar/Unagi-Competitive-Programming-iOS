@@ -26,11 +26,10 @@ class ContestContentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         contestNameLabel.text = selectedContest.event
-        startTimeLabel.text = selectedContest.startTime
-        endTimeLabel.text = selectedContest.endTime
-        durationLabel.text = String(selectedContest.duration)
+        startTimeLabel.text = selectedContest.localStart
+        endTimeLabel.text = selectedContest.localEnd
+        durationLabel.text = selectedContest.getHourMinuteDuration()
     }
 
     override func didReceiveMemoryWarning() {

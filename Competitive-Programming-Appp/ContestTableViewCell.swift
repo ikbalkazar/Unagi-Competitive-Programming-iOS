@@ -70,20 +70,24 @@ class ContestTableViewCell: UITableViewCell {
         UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
         
     }
+    
+    func FormatForTable(strDate : String) -> String {
+        print(strDate)
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
+        let date = dateFormatter.dateFromString(strDate)
+        print(date)
+        dateFormatter.dateFormat = "MM/dd HH:mm"
+        return dateFormatter.stringFromDate(date!)
+    }
 
     func setContest(selectedContest: Contest) {
         contest = selectedContest
         cellImage.image = contest.getImage()
         contestNameLabel.text = contest.event
         
-        //Removes the year from the start time, (Reason: no one looks up next year's contests)
-        var str = contest.startTime
-        str.removeRange(Range<String.Index>(start: str.startIndex, end: str.startIndex.advancedBy(5)))
-        str.removeAtIndex(str.startIndex.advancedBy(5))
-        str.insert(" ", atIndex: str.startIndex.advancedBy(5))
-        str.removeRange(Range<String.Index>(start: str.endIndex.advancedBy(-3), end: str.endIndex))
-        
-        startDateTimeLabel.text = str
+        startDateTimeLabel.text = FormatForTable(contest.localStart)
     }
     
     override func awakeFromNib() {

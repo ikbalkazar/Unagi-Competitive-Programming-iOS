@@ -68,6 +68,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03172B1A1C7A00D100AA1184 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = ../../MyPlayground.playground; sourceTree = "<group>"; };
 		03216ED21C75BD9F009C9236 /* acmicpcLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = acmicpcLogo.png; sourceTree = "<group>"; };
 		03216ED31C75BD9F009C9236 /* codechefLogo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = codechefLogo.jpeg; sourceTree = "<group>"; };
 		03216ED41C75BD9F009C9236 /* codeforcesLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = codeforcesLogo.png; sourceTree = "<group>"; };
@@ -157,6 +158,7 @@
 		23913DCB1C6FE1320038BA34 = {
 			isa = PBXGroup;
 			children = (
+				03172B1A1C7A00D100AA1184 /* MyPlayground.playground */,
 				23E0C1601C78257600941FF5 /* Source */,
 				03F2B0DF1C7734A50024D3B2 /* dateplay.playground */,
 				23913E041C6FE26B0038BA34 /* libsqlite3.tbd */,
