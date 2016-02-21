@@ -11,7 +11,7 @@ import UIKit
 var selectedContest: Contest!
 
 class ContestTableViewController: UITableViewController {
-
+    
     var contests = [Contest]()
     weak var delegate: LeftMenuProtocol?
     
@@ -27,6 +27,20 @@ class ContestTableViewController: UITableViewController {
         
         self.presentViewController(alert, animated: true, completion: nil)
     
+    }
+    
+    func isSource(website: String) -> Bool {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let outcome = defaults.stringForKey(website) {
+            if outcome == "true" {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            //it means first time ever
+            return true
+        }
     }
     
     func loadContests() {
@@ -79,7 +93,7 @@ class ContestTableViewController: UITableViewController {
                         }
                         
                         //To get rid of russian named contests
-                        if website != "dl.gsu.by" {
+                        if self.isSource(website) {
                             let newContest = Contest(event: event, start: start, end: end, duration: dur, url: url, website: website)
                             self.contests.append(newContest)
                         }
@@ -102,6 +116,7 @@ class ContestTableViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         loadContests()
         
     }
@@ -147,6 +162,12 @@ class ContestTableViewController: UITableViewController {
     @IBAction func goToHome(sender: AnyObject) {
         delegate?.changeViewController(LeftMenu.Main)
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    @IBAction func goToFilterTable(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+        performSegueWithIdentifier("ShowFilterTable", sender: self)
     }
     
     /*

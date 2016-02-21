@@ -533,6 +533,16 @@
                                 </connections>
                             </button>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="OXx-ql-dWY">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rjo-dZ-t2G">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Filter"/>
+                                <connections>
+                                    <action selector="goToFilterTable:" destination="jKl-Gx-7pM" eventType="touchUpInside" id="uLm-12-p2q"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -540,11 +550,59 @@
                             <nil key="action"/>
                         </segue>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="toHome" id="hLM-Qc-kug"/>
+                        <segue destination="HmV-zB-ZnH" kind="show" identifier="ShowFilterTable" id="lP4-R8-duX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wC2-Uu-JIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-807.5" y="1253.5"/>
+        </scene>
+        <!--Filter Table View Controller-->
+        <scene sceneID="Zw1-MT-JIX">
+            <objects>
+                <tableViewController id="HmV-zB-ZnH" customClass="FilterTableViewController" customModule="Competitive_Programming_Appp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aib-eO-YqU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="filtertablecell" id="M2A-wM-R4p" customClass="FilterTableViewCell" customModule="Competitive_Programming_Appp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M2A-wM-R4p" id="g9Y-pR-sbp">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWO-Qe-0en">
+                                            <rect key="frame" x="8" y="11" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J0L-YW-mw3">
+                                            <rect key="frame" x="311" y="6" width="51" height="31"/>
+                                            <connections>
+                                                <action selector="switch:" destination="M2A-wM-R4p" eventType="valueChanged" id="EpL-8F-9Oz"/>
+                                            </connections>
+                                        </switch>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="lWO-Qe-0en" id="Hob-Jj-xl7"/>
+                                    <outlet property="switchButton" destination="J0L-YW-mw3" id="HDP-y3-bBD"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="HmV-zB-ZnH" id="eQl-P5-71I"/>
+                            <outlet property="delegate" destination="HmV-zB-ZnH" id="YuF-Va-ZB6"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w2H-VB-xrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-807.5" y="2163.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Kk4-fO-ikX">
