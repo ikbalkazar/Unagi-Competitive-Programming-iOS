@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageHeaderView : UIView {
+class ImageHeaderView : UIView, UIImagePickerControllerDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var profileImage : UIImageView!
     @IBOutlet weak var backgroundImage : UIImageView!
@@ -23,4 +23,5 @@ class ImageHeaderView : UIView {
         self.profileImage.setRandomDownloadImage(80, height: 80)
         self.backgroundImage.setRandomDownloadImage(Int(self.frame.size.width), height: 160)
     }
+    
 }

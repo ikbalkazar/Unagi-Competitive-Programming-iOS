@@ -38,7 +38,6 @@ class ContestTableViewCell: UITableViewCell {
             var dateAsString = self.contest.startTime
             dateAsString.removeAtIndex(dateAsString.startIndex.advancedBy(10))
             let dateFormatter = NSDateFormatter()
-            print(dateAsString)
             dateFormatter.dateFormat = "yyyy-MM-ddHH:mm:ss"
             event.startDate = dateFormatter.dateFromString(dateAsString)!
             
@@ -52,7 +51,7 @@ class ContestTableViewCell: UITableViewCell {
                 self.savedEvents.append(event)
                 //self.savedEventId = event.eventIdentifier //save event id to access this particular event later
             } catch {
-                self.displayAlert("Error", message: "Can not add the contest to the calendar")
+                self.displayAlert("Error", message: "Cannot add the contest to the calendar")
             }
         }
     }
@@ -73,11 +72,10 @@ class ContestTableViewCell: UITableViewCell {
     
     func FormatForTable(strDate : String) -> String {
         print(strDate)
-        var dateFormatter = NSDateFormatter()
+        let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
         let date = dateFormatter.dateFromString(strDate)
-        print(date)
         dateFormatter.dateFormat = "MM/dd HH:mm"
         return dateFormatter.stringFromDate(date!)
     }

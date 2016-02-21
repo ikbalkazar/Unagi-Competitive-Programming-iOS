@@ -20,7 +20,7 @@ protocol LeftMenuProtocol : class {
     func changeViewController(menu: LeftMenu)
 }
 
-class LeftViewController : UIViewController, LeftMenuProtocol {
+class LeftViewController : UIViewController, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, LeftMenuProtocol {
     
     @IBOutlet weak var tableView: UITableView!
     var menus = ["Main", "Swift", "Java", "Go", "NonMenu", "Upcoming Contests"]
@@ -35,6 +35,9 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    var profileImageHash: Int!
+    var backgroundImageHash: Int!
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +64,17 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         self.tableView.registerCellClass(BaseTableViewCell.self)
         
         self.imageHeaderView = ImageHeaderView.loadNib()
+        
+        let tap = UITapGestureRecognizer(target: self, action: "openActionSheet:")
+        profileImageHash = tap.hash
+        self.imageHeaderView.profileImage.addGestureRecognizer(tap)
+        self.imageHeaderView.profileImage.userInteractionEnabled = true
+        
+        let tap2 = UITapGestureRecognizer(target: self, action: "openActionSheet:")
+        backgroundImageHash = tap2.hash
+        self.imageHeaderView.backgroundImage.addGestureRecognizer(tap2)
+        self.imageHeaderView.backgroundImage.userInteractionEnabled = true
+        
         self.view.addSubview(self.imageHeaderView)
     }
     
@@ -72,6 +86,51 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         super.viewDidLayoutSubviews()
         self.imageHeaderView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 160)
         self.view.layoutIfNeeded()
+    }
+    
+    func changeProfilePicture(type: UIImagePickerControllerSourceType, forImage imageName: String)
+    {
+        let imagePicker = UIImagePickerController()
+        imagePicker.restorationIdentifier = imageName
+        imagePicker.delegate = self
+        imagePicker.sourceType = type
+        imagePicker.allowsEditing = true
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        if picker.restorationIdentifier == "ProfileImage" {
+            imageHeaderView.profileImage.image = image
+        } else {
+            imageHeaderView.backgroundImage.image = image
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func openActionSheet(sender: UITapGestureRecognizer)
+    {
+        let imageName = ( sender.hash == profileImageHash) ? "ProfileImage" : "BackgroundImage"
+        print(imageName)
+        let optionMenu = UIAlertController(title: nil, message: "Choose Image From", preferredStyle: .ActionSheet)
+        
+        let camera = UIAlertAction(title: "Camera", style: .Default, handler: { (alert) -> Void in
+            
+            self.changeProfilePicture(UIImagePickerControllerSourceType.Camera, forImage: imageName)
+        })
+        let library = UIAlertAction(title: "Photo Library", style: .Default, handler: { (alert) -> Void in
+            
+            self.changeProfilePicture(UIImagePickerControllerSourceType.PhotoLibrary, forImage: imageName)
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (alert) -> Void in
+            
+        }
+        
+        optionMenu.addAction(camera)
+        optionMenu.addAction(library)
+        optionMenu.addAction(cancelAction)
+        self.presentViewController(optionMenu, animated: true, completion: nil)
     }
     
     func changeViewController(menu: LeftMenu) {
@@ -87,7 +146,6 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         case .NonMenu:
             self.slideMenuController()?.changeMainViewController(self.nonMenuViewController, close: true)
         case .Contests:
-            print("Line 89/ Left View Controller")
             self.slideMenuController()?.changeMainViewController(self.contestTableViewController, close: true)
         }
     }
@@ -125,9 +183,7 @@ extension LeftViewController : UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("Line 126/Left View Controller")
         if let menu = LeftMenu(rawValue: indexPath.item) {
-            print("Line 128/Left View Controller")
             self.changeViewController(menu)
         }
     }

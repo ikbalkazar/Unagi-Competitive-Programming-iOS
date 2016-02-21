@@ -13,6 +13,7 @@ var selectedContest: Contest!
 class ContestTableViewController: UITableViewController {
     
     var contests = [Contest]()
+    var refresher: UIRefreshControl!
     weak var delegate: LeftMenuProtocol?
     
     func displayAlert(title: String, message: String) {
@@ -30,21 +31,19 @@ class ContestTableViewController: UITableViewController {
     }
     
     func isSource(website: String) -> Bool {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if let outcome = defaults.stringForKey(website) {
-            if outcome == "true" {
-                return true
-            } else {
-                return false
-            }
+        
+        if let outcome = NSUserDefaults.standardUserDefaults().objectForKey(website + "filtered") {
+            return outcome as! Bool
         } else {
             //it means first time ever
-            return true
+            return false
         }
     }
     
     func loadContests() {
         
+        contests.removeAll()
+        self.refresher.endRefreshing()
         let now = NSDate()
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -58,6 +57,7 @@ class ContestTableViewController: UITableViewController {
         
         let myQuery = urlSession.dataTaskWithURL(url, completionHandler: {
             data, response, error -> Void in
+            
             if let content = data {
                 do {
                     let jsonRes = try NSJSONSerialization.JSONObjectWithData(content, options: NSJSONReadingOptions.MutableContainers)
@@ -93,6 +93,8 @@ class ContestTableViewController: UITableViewController {
                         }
                         
                         //To get rid of russian named contests
+                        //Nice try bro !!!
+                        
                         if self.isSource(website) {
                             let newContest = Contest(event: event, start: start, end: end, duration: dur, url: url, website: website)
                             self.contests.append(newContest)
@@ -116,6 +118,12 @@ class ContestTableViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        refresher = UIRefreshControl()
+        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refresher.addTarget(self, action: "loadContests", forControlEvents: UIControlEvents.ValueChanged)
+        
+        self.tableView.addSubview(refresher)
         
         loadContests()
         
@@ -143,10 +151,14 @@ class ContestTableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellIdentifier = "ContestTableCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ContestTableViewCell
-        let contest = contests[indexPath.row]
-        cell.setContest(contest);
+      
+        let cell = tableView.dequeueReusableCellWithIdentifier("ContestTableCell", forIndexPath: indexPath) as! ContestTableViewCell
+        
+        // Hard to explain but this is required
+        if indexPath.row < contests.count {
+            let contest = contests[indexPath.row]
+            cell.setContest(contest)
+        }
         
         return cell
     }
