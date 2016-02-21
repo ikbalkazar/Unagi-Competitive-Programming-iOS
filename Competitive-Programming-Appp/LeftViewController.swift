@@ -45,6 +45,7 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         self.swiftViewController = UINavigationController(rootViewController: swiftViewController)
         
         let contestTableViewController = storyboard.instantiateViewControllerWithIdentifier("ContestTableViewController") as! ContestTableViewController
+        contestTableViewController.delegate = self
         self.contestTableViewController = UINavigationController(rootViewController: contestTableViewController)
         
         let javaViewController = storyboard.instantiateViewControllerWithIdentifier("JavaViewController") as! JavaViewController
@@ -86,6 +87,7 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         case .NonMenu:
             self.slideMenuController()?.changeMainViewController(self.nonMenuViewController, close: true)
         case .Contests:
+            print("Line 89/ Left View Controller")
             self.slideMenuController()?.changeMainViewController(self.contestTableViewController, close: true)
         }
     }
@@ -123,7 +125,9 @@ extension LeftViewController : UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("Line 126/Left View Controller")
         if let menu = LeftMenu(rawValue: indexPath.item) {
+            print("Line 128/Left View Controller")
             self.changeViewController(menu)
         }
     }

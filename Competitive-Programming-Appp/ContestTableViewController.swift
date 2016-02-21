@@ -13,6 +13,7 @@ var selectedContest: Contest!
 class ContestTableViewController: UITableViewController {
 
     var contests = [Contest]()
+    weak var delegate: LeftMenuProtocol?
     
     func displayAlert(title: String, message: String) {
         
@@ -143,6 +144,10 @@ class ContestTableViewController: UITableViewController {
         return indexPath
     }
 
+    @IBAction func goToHome(sender: AnyObject) {
+        delegate?.changeViewController(LeftMenu.Main)
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
