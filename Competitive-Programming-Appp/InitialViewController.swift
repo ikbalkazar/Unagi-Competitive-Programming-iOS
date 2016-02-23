@@ -9,6 +9,8 @@
 import UIKit
 import Parse
 
+var months = [ "January" , "February" , "March" , "April" , "May" , "June" , "July" , "August" , "September" , "October" , "November" , "December" ]
+
 class InitialViewController: UIViewController {
 
     @IBOutlet weak var username: UITextField!
@@ -17,7 +19,6 @@ class InitialViewController: UIViewController {
     {
         
         PFUser.logInWithUsernameInBackground(username.text!, password: password.text!) { (user, error) -> Void in
-            
             
             if error != nil {
                 RegisterViewController().displayAlert("Error" , message: "Login Failed" )
