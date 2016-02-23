@@ -17,6 +17,8 @@ class ContestContentViewController: UIViewController {
     @IBOutlet weak var durationLabel: UILabel!
     
     @IBAction func goContestWebsite(sender: AnyObject) {
+        
+        // Implement web view later
         UIApplication.sharedApplication().openURL(NSURL(string: selectedContest.url)!)
     }
     

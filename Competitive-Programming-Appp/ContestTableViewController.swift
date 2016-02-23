@@ -51,6 +51,9 @@ class ContestTableViewController: UITableViewController {
         
         let url:NSURL = NSURL(string: "https://clist.by/api/v1/json/contest/?start__gte=" + dateFrom + "&username=ikbalkazar&api_key=b66864909a08b2ddf96b258a146bd15c2db6a469&order_by=start")!
         
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        print("Began ignoring interaction events")
+        
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
         
         let urlSession = NSURLSession(configuration: config)
@@ -103,7 +106,12 @@ class ContestTableViewController: UITableViewController {
                     
                     print("Loading is done")
                     
-                    self.tableView.reloadData()
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.tableView.reloadData()
+                    })
+                    
+                    UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                    print("Ended ignoring interaction events")
                 } catch {
                     self.displayAlert("Error" , message: "Can not convert to JSON")
                 }
