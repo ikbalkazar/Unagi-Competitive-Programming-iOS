@@ -137,6 +137,10 @@ class ContestTableViewController: UITableViewController {
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        loadContests()
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
     }
