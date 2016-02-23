@@ -468,8 +468,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jEb-zD-B4g">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jEb-zD-B4g">
                                             <rect key="frame" x="0.0" y="0.0" width="89" height="89"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="89" id="Izq-W8-gl0"/>
+                                                <constraint firstAttribute="height" constant="89" id="hih-FG-ZRg"/>
+                                            </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoE-mv-12j">
                                             <rect key="frame" x="109" y="8" width="258" height="21"/>
@@ -483,15 +487,23 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lVD-wd-zcB">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lVD-wd-zcB">
                                             <rect key="frame" x="256" y="51" width="111" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="Kb8-a9-fIB"/>
+                                                <constraint firstAttribute="width" constant="111" id="dBJ-zV-PjY"/>
+                                            </constraints>
                                             <state key="normal" title="Add to Calendar"/>
                                             <connections>
                                                 <action selector="addToCalendar:" destination="Go9-BQ-Qcu" eventType="touchUpInside" id="qrh-Eg-43e"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIO-gf-POh">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIO-gf-POh">
                                             <rect key="frame" x="97" y="15" width="270" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="28" id="WAb-S3-CSL"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="bIf-Hj-0jD"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -503,6 +515,17 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="hIO-gf-POh" firstAttribute="top" secondItem="cpm-fz-B7q" secondAttribute="topMargin" constant="7" id="8vX-GS-As1"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="jEb-zD-B4g" secondAttribute="bottom" constant="-7" id="AWA-Gi-iJT"/>
+                                        <constraint firstItem="hIO-gf-POh" firstAttribute="leading" secondItem="jEb-zD-B4g" secondAttribute="trailing" constant="8" id="Am9-Kz-4Ba"/>
+                                        <constraint firstItem="hIO-gf-POh" firstAttribute="top" secondItem="cpm-fz-B7q" secondAttribute="topMargin" constant="7" id="GNa-Vd-SoH"/>
+                                        <constraint firstItem="jEb-zD-B4g" firstAttribute="top" secondItem="cpm-fz-B7q" secondAttribute="topMargin" constant="-8" id="QEW-6s-3T1"/>
+                                        <constraint firstItem="lVD-wd-zcB" firstAttribute="trailing" secondItem="cpm-fz-B7q" secondAttribute="trailingMargin" id="a9C-Ok-C6Y"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="lVD-wd-zcB" secondAttribute="bottom" constant="1" id="aIw-VB-nYZ"/>
+                                        <constraint firstItem="hIO-gf-POh" firstAttribute="trailing" secondItem="cpm-fz-B7q" secondAttribute="trailingMargin" id="pEG-KC-Ifn"/>
+                                        <constraint firstItem="jEb-zD-B4g" firstAttribute="leading" secondItem="cpm-fz-B7q" secondAttribute="leadingMargin" constant="-8" id="yqB-L8-Ctp"/>
+                                    </constraints>
                                     <variation key="default">
                                         <mask key="subviews">
                                             <exclude reference="aoE-mv-12j"/>
