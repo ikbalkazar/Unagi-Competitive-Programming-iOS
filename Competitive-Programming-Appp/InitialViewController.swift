@@ -44,11 +44,13 @@ class InitialViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         
-        return
+        /*
         
         if PFUser.currentUser() != nil {
             self.performSegueWithIdentifier("login1", sender: self)
         }
+        
+        */
         
     }
 

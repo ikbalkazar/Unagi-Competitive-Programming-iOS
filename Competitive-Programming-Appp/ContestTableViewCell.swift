@@ -83,11 +83,8 @@ class ContestTableViewCell: UITableViewCell {
         contest = selectedContest
         cellImage.image = contest.getImage()
         contestNameLabel.text = contest.event
-        contestNameLabel.backgroundColor = UIColor.blueColor()
-        contestNameLabel.textColor = UIColor.whiteColor()
         
         startDateTimeLabel.text = FormatForTable(contest.localStart)
-        startDateTimeLabel.backgroundColor = UIColor.yellowColor()
     }
     
     override func awakeFromNib() {

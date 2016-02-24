@@ -35,6 +35,7 @@
 		23913E091C6FE40A0038BA34 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23913E081C6FE40A0038BA34 /* RegisterViewController.swift */; };
 		23B43D301C711BAC009CB0B4 /* Contest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B43D2F1C711BAC009CB0B4 /* Contest.swift */; };
 		23B43D321C712D98009CB0B4 /* ContestContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B43D311C712D98009CB0B4 /* ContestContentViewController.swift */; };
+		23B661731C7D8C9700860B1C /* X_Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23B661721C7D8C9700860B1C /* X_Logo.jpg */; };
 		23E0C1221C780E0C00941FF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0C1211C780E0C00941FF5 /* AppDelegate.swift */; };
 		23E0C1241C780E5500941FF5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0C1231C780E5500941FF5 /* MainViewController.swift */; };
 		23E0C1261C780E5F00941FF5 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0C1251C780E5F00941FF5 /* LeftViewController.swift */; };
@@ -99,6 +100,7 @@
 		23913E081C6FE40A0038BA34 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		23B43D2F1C711BAC009CB0B4 /* Contest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contest.swift; sourceTree = "<group>"; };
 		23B43D311C712D98009CB0B4 /* ContestContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestContentViewController.swift; sourceTree = "<group>"; };
+		23B661721C7D8C9700860B1C /* X_Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = X_Logo.jpg; sourceTree = "<group>"; };
 		23E0C1211C780E0C00941FF5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23E0C1231C780E5500941FF5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		23E0C1251C780E5F00941FF5 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 		23E0C11F1C780B6500941FF5 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				23B661721C7D8C9700860B1C /* X_Logo.jpg */,
 				03216ED21C75BD9F009C9236 /* acmicpcLogo.png */,
 				03216ED31C75BD9F009C9236 /* codechefLogo.jpeg */,
 				03216ED41C75BD9F009C9236 /* codeforcesLogo.png */,
@@ -329,7 +332,7 @@
 				TargetAttributes = {
 					23913DD31C6FE1320038BA34 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 59FM68U839;
+						DevelopmentTeam = A429DE3P4L;
 					};
 				};
 			};
@@ -372,6 +375,7 @@
 				03216ED81C75BD9F009C9236 /* codeforcesLogo.png in Resources */,
 				03216ED71C75BD9F009C9236 /* codechefLogo.jpeg in Resources */,
 				03216ED61C75BD9F009C9236 /* acmicpcLogo.png in Resources */,
+				23B661731C7D8C9700860B1C /* X_Logo.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,7 +528,7 @@
 				);
 				INFOPLIST_FILE = "Competitive-Programming-Appp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ikbalkazarapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Competitive-Programmin-App.harunandikbal.Comp-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -542,7 +546,7 @@
 				);
 				INFOPLIST_FILE = "Competitive-Programming-Appp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ikbalkazarapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Competitive-Programmin-App.harunandikbal.Comp-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

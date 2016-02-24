@@ -41,9 +41,7 @@ class ContestTableViewController: UITableViewController {
     }
     
     func loadContests() {
-        
         contests.removeAll()
-        self.refresher.endRefreshing()
         let now = NSDate()
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -95,9 +93,6 @@ class ContestTableViewController: UITableViewController {
                             }
                         }
                         
-                        //To get rid of russian named contests
-                        //Nice try bro !!!
-                        
                         if self.isSource(website) {
                             let newContest = Contest(event: event, start: start, end: end, duration: dur, url: url, website: website)
                             self.contests.append(newContest)
@@ -110,14 +105,15 @@ class ContestTableViewController: UITableViewController {
                         self.tableView.reloadData()
                     })
                     
-                    UIApplication.sharedApplication().endIgnoringInteractionEvents()
-                    print("Ended ignoring interaction events")
                 } catch {
                     self.displayAlert("Error" , message: "Can not convert to JSON")
                 }
             } else {
                 self.displayAlert("Error" , message: "No data Found")
             }
+            self.refresher.endRefreshing()
+            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+            print("Ended ignoring interaction events")
         })
         myQuery.resume()
         

@@ -61,24 +61,40 @@ class Contest
     
     func getColor() -> UIColor {
         
-        // Label contests by their names and return appropriate color
+        // Label contests by their names and return corresponding color
         
         switch(website) {
             case "codeforces.com": return UIColor.blueColor()
             case "codechef.com"  : return UIColor.magentaColor()
             case "topcoder.com"  : return UIColor.redColor()
             case "hackerrank.com": return UIColor.greenColor()
-            default:           return UIColor.cyanColor()
+            default:               return UIColor.cyanColor()
         }
     }
     
     func getImage() -> UIImage {
+        
         switch (website) {
             case "codeforces.com":  return UIImage(named: "codeforcesLogo.png")!
             case "codechef.com":    return UIImage(named: "codechefLogo.jpeg")!
             case "topcoder.com":    return UIImage(named: "topcoderLogo.png")!
             case "hackerrank.com":  return UIImage(named: "hackerrankLogo.png")!
-            default:            return UIImage(named: "none.jpg")! //Update it once app's logo is available
+            default:                return UIImage(named: "none.jpg")! //Update it once app's logo is available
         }
+        
     }
+    
+    func getImage(website website: String) -> UIImage {
+        
+        switch (website) {
+            case "codeforces.com":  return UIImage(named: "codeforcesLogo.png")!
+            case "codechef.com":    return UIImage(named: "codechefLogo.jpeg")!
+            case "topcoder.com":    return UIImage(named: "topcoderLogo.png")!
+            case "hackerrank.com":  return UIImage(named: "hackerrankLogo.png")!
+            default:                return UIImage(named: "none.jpg")! //Update it once app's logo is available
+        }
+        
+    }
+    
+    
 }

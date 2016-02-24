@@ -11,7 +11,7 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var mainContens = ["data1", "data2", "data3", "data4", "data5", "data6", "data7", "data8", "data9", "data10", "data11", "data12", "data13", "data14", "data15"]
+    var mainContents = ["codeforces.com" , "topcoder.com" , "codechef.com" , "hackerrank.com"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,12 +42,13 @@ extension MainViewController : UITableViewDelegate {
 
 extension MainViewController : UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.mainContens.count
+        return self.mainContents.count
     }
      
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier(DataTableViewCell.identifier) as! DataTableViewCell
-        let data = DataTableViewCellData(imageUrl: "dummy", text: mainContens[indexPath.row])
+        let text = mainContents[indexPath.row].uppercaseString
+        let data = DataTableViewCellData(imageUrl: "dummy", text: text.substringToIndex(text.startIndex.advancedBy(text.length-4)))
         cell.setData(data)
         return cell
     }
