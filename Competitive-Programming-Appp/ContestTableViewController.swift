@@ -15,6 +15,7 @@ class ContestTableViewController: UITableViewController {
     var contests = [Contest]()
     var refresher: UIRefreshControl!
     weak var delegate: LeftMenuProtocol?
+    var indicator: UIActivityIndicatorView!
     
     func displayAlert(title: String, message: String) {
         
@@ -51,6 +52,7 @@ class ContestTableViewController: UITableViewController {
         
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         print("Began ignoring interaction events")
+        indicator.hidden = false
         
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
         
@@ -114,9 +116,11 @@ class ContestTableViewController: UITableViewController {
             self.refresher.endRefreshing()
             UIApplication.sharedApplication().endIgnoringInteractionEvents()
             print("Ended ignoring interaction events")
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.indicator.hidden = true
+            })
         })
         myQuery.resume()
-        
     }
     
     override func viewDidLoad() {
@@ -128,6 +132,14 @@ class ContestTableViewController: UITableViewController {
         refresher.addTarget(self, action: "loadContests", forControlEvents: UIControlEvents.ValueChanged)
         
         self.tableView.addSubview(refresher)
+        
+        indicator = UIActivityIndicatorView()
+        indicator.hidesWhenStopped = true
+        indicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 40, 40))
+        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        indicator.center = self.view.center
+        self.view.addSubview(indicator)
+        indicator.startAnimating()
         
         loadContests()
         

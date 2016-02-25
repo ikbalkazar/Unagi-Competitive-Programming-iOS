@@ -487,17 +487,6 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lVD-wd-zcB">
-                                            <rect key="frame" x="256" y="51" width="111" height="30"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="Kb8-a9-fIB"/>
-                                                <constraint firstAttribute="width" constant="111" id="dBJ-zV-PjY"/>
-                                            </constraints>
-                                            <state key="normal" title="Add to Calendar"/>
-                                            <connections>
-                                                <action selector="addToCalendar:" destination="Go9-BQ-Qcu" eventType="touchUpInside" id="qrh-Eg-43e"/>
-                                            </connections>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIO-gf-POh">
                                             <rect key="frame" x="97" y="15" width="270" height="28"/>
                                             <constraints>
@@ -509,11 +498,30 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZZ-Hs-icr">
-                                            <rect key="frame" x="97" y="51" width="151" height="30"/>
+                                            <rect key="frame" x="97" y="51" width="226" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="111" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lVD-wd-zcB">
+                                            <rect key="frame" x="331" y="51" width="36" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="36" id="0D6-E4-W0r"/>
+                                                <constraint firstAttribute="height" constant="30" id="Kb8-a9-fIB"/>
+                                                <constraint firstAttribute="height" constant="30" id="WGr-C5-l6y"/>
+                                                <constraint firstAttribute="width" constant="111" id="dBJ-zV-PjY"/>
+                                            </constraints>
+                                            <state key="normal" title="Add to Calendar" image="calendarIcon.png"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Kb8-a9-fIB"/>
+                                                    <exclude reference="dBJ-zV-PjY"/>
+                                                </mask>
+                                            </variation>
+                                            <connections>
+                                                <action selector="addToCalendar:" destination="Go9-BQ-Qcu" eventType="touchUpInside" id="qrh-Eg-43e"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="hIO-gf-POh" firstAttribute="top" secondItem="cpm-fz-B7q" secondAttribute="topMargin" constant="7" id="8vX-GS-As1"/>
@@ -578,7 +586,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wC2-Uu-JIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-807.5" y="1253.5"/>
+            <point key="canvasLocation" x="-818.5" y="1281.5"/>
         </scene>
         <!--Filter Table View Controller-->
         <scene sceneID="Zw1-MT-JIX">
@@ -723,4 +731,7 @@
             <point key="canvasLocation" x="-813.5" y="289.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="calendarIcon.png" width="512" height="512"/>
+    </resources>
 </document>

@@ -15,6 +15,7 @@
 		03216EDD1C75C1C3009C9236 /* ioiLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03216EDC1C75C1C3009C9236 /* ioiLogo.png */; };
 		03216EE31C75CE45009C9236 /* ContestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03216EE21C75CE45009C9236 /* ContestTableViewCell.swift */; };
 		03216EE51C75D485009C9236 /* ContestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03216EE41C75D485009C9236 /* ContestTableViewController.swift */; };
+		037C17D81C7F0644004BDEF8 /* calendarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C17D71C7F0644004BDEF8 /* calendarIcon.png */; };
 		039BDDCE1C7A19D500AFF696 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BDDCD1C7A19D500AFF696 /* FilterTableViewController.swift */; };
 		039BDDD01C7A1D2200AFF696 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BDDCF1C7A1D2200AFF696 /* FilterTableViewCell.swift */; };
 		23913DDB1C6FE1320038BA34 /* Competitive_Programming_Appp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23913DD91C6FE1320038BA34 /* Competitive_Programming_Appp.xcdatamodeld */; };
@@ -79,6 +80,7 @@
 		03216EDC1C75C1C3009C9236 /* ioiLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ioiLogo.png; sourceTree = "<group>"; };
 		03216EE21C75CE45009C9236 /* ContestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestTableViewCell.swift; sourceTree = "<group>"; };
 		03216EE41C75D485009C9236 /* ContestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestTableViewController.swift; sourceTree = "<group>"; };
+		037C17D71C7F0644004BDEF8 /* calendarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendarIcon.png; sourceTree = "<group>"; };
 		039BDDCD1C7A19D500AFF696 /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		039BDDCF1C7A1D2200AFF696 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		23913DD41C6FE1320038BA34 /* Competitive-Programming-Appp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Competitive-Programming-Appp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +211,7 @@
 		23E0C11F1C780B6500941FF5 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				037C17D71C7F0644004BDEF8 /* calendarIcon.png */,
 				23B661721C7D8C9700860B1C /* X_Logo.jpg */,
 				03216ED21C75BD9F009C9236 /* acmicpcLogo.png */,
 				03216ED31C75BD9F009C9236 /* codechefLogo.png */,
@@ -365,6 +368,7 @@
 				23E0C1361C7823A500941FF5 /* SubContentsViewController.storyboard in Resources */,
 				03216EDB1C75C1B7009C9236 /* hackerrankLogo.png in Resources */,
 				03216ED91C75BD9F009C9236 /* topcoderLogo.png in Resources */,
+				037C17D81C7F0644004BDEF8 /* calendarIcon.png in Resources */,
 				23E0C1431C78244C00941FF5 /* DataTableViewCell.xib in Resources */,
 				23E0C1571C7824F300941FF5 /* Images.xcassets in Resources */,
 				23E0C13C1C78241800941FF5 /* ImageHeaderView.xib in Resources */,
