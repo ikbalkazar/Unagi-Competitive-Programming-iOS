@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03216ED61C75BD9F009C9236 /* acmicpcLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03216ED21C75BD9F009C9236 /* acmicpcLogo.png */; };
-		03216ED71C75BD9F009C9236 /* codechefLogo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 03216ED31C75BD9F009C9236 /* codechefLogo.jpeg */; };
+		03216ED71C75BD9F009C9236 /* codechefLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03216ED31C75BD9F009C9236 /* codechefLogo.png */; };
 		03216ED81C75BD9F009C9236 /* codeforcesLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03216ED41C75BD9F009C9236 /* codeforcesLogo.png */; };
 		03216ED91C75BD9F009C9236 /* topcoderLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03216ED51C75BD9F009C9236 /* topcoderLogo.png */; };
 		03216EDB1C75C1B7009C9236 /* hackerrankLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03216EDA1C75C1B7009C9236 /* hackerrankLogo.png */; };
@@ -72,7 +72,7 @@
 
 /* Begin PBXFileReference section */
 		03216ED21C75BD9F009C9236 /* acmicpcLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = acmicpcLogo.png; sourceTree = "<group>"; };
-		03216ED31C75BD9F009C9236 /* codechefLogo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = codechefLogo.jpeg; sourceTree = "<group>"; };
+		03216ED31C75BD9F009C9236 /* codechefLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = codechefLogo.png; sourceTree = "<group>"; };
 		03216ED41C75BD9F009C9236 /* codeforcesLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = codeforcesLogo.png; sourceTree = "<group>"; };
 		03216ED51C75BD9F009C9236 /* topcoderLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topcoderLogo.png; sourceTree = "<group>"; };
 		03216EDA1C75C1B7009C9236 /* hackerrankLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hackerrankLogo.png; sourceTree = "<group>"; };
@@ -211,7 +211,7 @@
 			children = (
 				23B661721C7D8C9700860B1C /* X_Logo.jpg */,
 				03216ED21C75BD9F009C9236 /* acmicpcLogo.png */,
-				03216ED31C75BD9F009C9236 /* codechefLogo.jpeg */,
+				03216ED31C75BD9F009C9236 /* codechefLogo.png */,
 				03216ED41C75BD9F009C9236 /* codeforcesLogo.png */,
 				03216ED51C75BD9F009C9236 /* topcoderLogo.png */,
 				03216EDA1C75C1B7009C9236 /* hackerrankLogo.png */,
@@ -373,7 +373,7 @@
 				23913DE71C6FE1320038BA34 /* LaunchScreen.storyboard in Resources */,
 				23E0C1591C78250E00941FF5 /* LaunchScreen.xib in Resources */,
 				03216ED81C75BD9F009C9236 /* codeforcesLogo.png in Resources */,
-				03216ED71C75BD9F009C9236 /* codechefLogo.jpeg in Resources */,
+				03216ED71C75BD9F009C9236 /* codechefLogo.png in Resources */,
 				03216ED61C75BD9F009C9236 /* acmicpcLogo.png in Resources */,
 				23B661731C7D8C9700860B1C /* X_Logo.jpg in Resources */,
 			);

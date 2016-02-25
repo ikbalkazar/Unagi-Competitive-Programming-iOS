@@ -76,7 +76,7 @@ class Contest
         
         switch (website) {
             case "codeforces.com":  return UIImage(named: "codeforcesLogo.png")!
-            case "codechef.com":    return UIImage(named: "codechefLogo.jpeg")!
+            case "codechef.com":    return UIImage(named: "codechefLogo.png")!
             case "topcoder.com":    return UIImage(named: "topcoderLogo.png")!
             case "hackerrank.com":  return UIImage(named: "hackerrankLogo.png")!
             default:                return UIImage(named: "none.jpg")! //Update it once app's logo is available
