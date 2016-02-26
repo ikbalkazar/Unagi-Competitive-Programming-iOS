@@ -34,7 +34,7 @@ class DataTableViewCell : BaseTableViewCell {
     
     override func setData(data: Any?) {
         if let data = data as? DataTableViewCellData {
-            self.dataImage.image = UIImage(named: data.text.lowercaseString + "Logo.png")
+            self.dataImage.image = UIImage(named: data.text + "_Logo.png")
             self.dataText.text = data.text
         }
     }

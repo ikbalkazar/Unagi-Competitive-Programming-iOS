@@ -12,10 +12,10 @@ var selectedContest: Contest!
 
 class ContestTableViewController: UITableViewController {
     
-    var contests = [Contest]()
+    var allContests = [Contest]()
+    var filteredContests = [Contest]()
     var refresher: UIRefreshControl!
     weak var delegate: LeftMenuProtocol?
-    var indicator: UIActivityIndicatorView!
     
     func displayAlert(title: String, message: String) {
         
@@ -41,18 +41,19 @@ class ContestTableViewController: UITableViewController {
         }
     }
     
-    func loadContests() {
-        contests.removeAll()
+    func downloadContests() {
+        
         let now = NSDate()
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateFrom : String = dateFormatter.stringFromDate(now)
         
+        print(dateFrom)
+        
         let url:NSURL = NSURL(string: "https://clist.by/api/v1/json/contest/?start__gte=" + dateFrom + "&username=ikbalkazar&api_key=b66864909a08b2ddf96b258a146bd15c2db6a469&order_by=start")!
         
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         print("Began ignoring interaction events")
-        indicator.hidden = false
         
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
         
@@ -95,32 +96,40 @@ class ContestTableViewController: UITableViewController {
                             }
                         }
                         
-                        if self.isSource(website) {
-                            let newContest = Contest(event: event, start: start, end: end, duration: dur, url: url, website: website)
-                            self.contests.append(newContest)
-                        }
+                        self.allContests.append(Contest(event: event, start: start, end: end, duration: dur, url: url, website: website))
                     }
-                    
-                    print("Loading is done")
-                    
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.tableView.reloadData()
-                    })
                     
                 } catch {
                     self.displayAlert("Error" , message: "Can not convert to JSON")
                 }
             } else {
-                self.displayAlert("Error" , message: "No data Found")
+                self.displayAlert("Error" , message: "No new data found. Check your internet connection")
             }
             self.refresher.endRefreshing()
             UIApplication.sharedApplication().endIgnoringInteractionEvents()
             print("Ended ignoring interaction events")
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.indicator.hidden = true
-            })
         })
         myQuery.resume()
+    }
+    
+    func downloadAndUpdate() {
+        downloadContests()
+        updateContests()
+    }
+    
+    func updateContests() {
+        print("Update")
+        filteredContests.removeAll()
+        for contest in allContests {
+            
+            if ( NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name + "filtered") as! Bool ) == true {
+                filteredContests.append(contest)
+            }
+            
+        }
+        
+        tableView.reloadData()
+        
     }
     
     override func viewDidLoad() {
@@ -129,28 +138,21 @@ class ContestTableViewController: UITableViewController {
         
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refresher.addTarget(self, action: "loadContests", forControlEvents: UIControlEvents.ValueChanged)
+        refresher.addTarget(self, action: "downloadAndUpdate", forControlEvents: UIControlEvents.ValueChanged)
         
         self.tableView.addSubview(refresher)
-        
-        indicator = UIActivityIndicatorView()
-        indicator.hidesWhenStopped = true
-        indicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 40, 40))
-        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-        indicator.center = self.view.center
-        self.view.addSubview(indicator)
-        indicator.startAnimating()
-        
-        loadContests()
-        
+        downloadContests()
     }
     
     override func viewDidAppear(animated: Bool) {
-        loadContests()
     }
     
     override func viewWillAppear(animated: Bool) {
+        
         super.viewWillAppear(animated)
+        
+        updateContests()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -166,7 +168,7 @@ class ContestTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contests.count
+        return filteredContests.count
     }
     
     
@@ -175,9 +177,9 @@ class ContestTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("ContestTableCell", forIndexPath: indexPath) as! ContestTableViewCell
         
         // Hard to explain but this is required
-        if indexPath.row < contests.count {
-            let contest = contests[indexPath.row]
-            cell.setContest(contest)
+        // Might not be required anymore but still in case
+        if indexPath.row < filteredContests.count {
+            cell.setContest(filteredContests[indexPath.row])
         }
         
         return cell
@@ -185,7 +187,7 @@ class ContestTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         
-        selectedContest = contests[indexPath.row]
+        selectedContest = filteredContests[indexPath.row]
         performSegueWithIdentifier("Contest_Content", sender: self)
         
         return indexPath

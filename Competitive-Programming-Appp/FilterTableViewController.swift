@@ -9,8 +9,6 @@
 import UIKit
 
 class FilterTableViewController: UITableViewController {
-    
-    let sources = ["codeforces.com", "topcoder.com", "codechef.com", "hackerrank.com"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +35,13 @@ class FilterTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sources.count
+        return websites.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("filtertablecell", forIndexPath: indexPath) as! FilterTableViewCell
-        cell.label.text = self.sources[indexPath.row]
+        cell.label.text = websites[indexPath.row].name
         cell.awakeFromNib()
         return cell
     }
