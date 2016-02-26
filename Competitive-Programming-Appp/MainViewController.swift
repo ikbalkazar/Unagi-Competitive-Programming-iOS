@@ -75,8 +75,6 @@ class MainViewController: UIViewController {
                             }
                         })
                         
-                        
-                        
                     }
                     if websites.count == sites.count {
                         NSUserDefaults.standardUserDefaults().setObject(true, forKey: "WebsiteTableDownloaded")
