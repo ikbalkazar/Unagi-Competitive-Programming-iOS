@@ -108,13 +108,11 @@ class ContestTableViewController: UITableViewController {
             self.refresher.endRefreshing()
             UIApplication.sharedApplication().endIgnoringInteractionEvents()
             print("Ended ignoring interaction events")
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.updateContests()
+            })
         })
         myQuery.resume()
-    }
-    
-    func downloadAndUpdate() {
-        downloadContests()
-        updateContests()
     }
     
     func updateContests() {
@@ -127,9 +125,7 @@ class ContestTableViewController: UITableViewController {
             }
             
         }
-        
-        tableView.reloadData()
-        
+        self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
