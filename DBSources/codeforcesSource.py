@@ -20,8 +20,8 @@ for problem in jsonProblems:
            "tags": problem["tags"],
            "url": "codeforces.com/problemset/problem/" + str(problem["contestId"]) + "/" + problem["index"]
           }), {
-           "X-Parse-Application-Id": "8xMwvCqficeHwkS7Ag5PQWdlw1q91ujGcXVRgUnG",
-           "X-Parse-REST-API-Key": "utzFK6Be6yOJBeNF6KoeJIsSONxfnLoZIeyQuopK",
+           "X-Parse-Application-Id": "ID",
+           "X-Parse-REST-API-Key": "KEY",
            "Content-Type": "application/json"
          })
     results = json.loads(connection.getresponse().read()) 
