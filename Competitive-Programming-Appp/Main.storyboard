@@ -588,6 +588,78 @@
             </objects>
             <point key="canvasLocation" x="-818.5" y="1281.5"/>
         </scene>
+        <!--Search View Controller-->
+        <scene sceneID="x4x-uq-JdW">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QtV-Ub-dEN" customClass="SearchViewController" customModule="Competitive_Programming_Appp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ols-FC-p2T"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kgb-qd-5hg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mis-qw-CCT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Problem Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieQ-gf-xX8">
+                                <rect key="frame" x="125" y="108" width="124" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jk-WU-ctg">
+                                <rect key="frame" x="158" y="242" width="59" height="30"/>
+                                <state key="normal" title="search"/>
+                                <connections>
+                                    <action selector="searchButton:" destination="QtV-Ub-dEN" eventType="touchUpInside" id="PDo-Wf-tpS"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="il6-xP-UIq">
+                                <rect key="frame" x="20" y="169" width="335" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="searchField" destination="il6-xP-UIq" id="mZA-9a-8cA"/>
+                        <segue destination="AND-B2-5Qb" kind="show" identifier="toSearchResults" id="2gJ-Ik-Xya"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ITg-Ol-yAi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2039.5" y="2590.5"/>
+        </scene>
+        <!--Search Table View Controller-->
+        <scene sceneID="f20-Lb-hIG">
+            <objects>
+                <tableViewController id="AND-B2-5Qb" customClass="SearchTableViewController" customModule="Competitive_Programming_Appp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="MxB-Tv-1Pr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="drQ-WH-rBg">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="drQ-WH-rBg" id="QZL-WT-ayi">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="AND-B2-5Qb" id="tde-N6-za9"/>
+                            <outlet property="delegate" destination="AND-B2-5Qb" id="I4E-kf-zVV"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IX1-cF-FWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1565.5" y="2590.5"/>
+        </scene>
         <!--Filter Table View Controller-->
         <scene sceneID="Zw1-MT-JIX">
             <objects>
@@ -596,9 +668,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="sfa-1U-XkK">
+                            <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem id="NA1-nS-vRf">
+                                    <nil key="title"/>
+                                    <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1XN-Ke-KCP">
+                                        <rect key="frame" x="113" y="7" width="150" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Include/Exclude All"/>
+                                        <connections>
+                                            <action selector="includeExcludeAll:" destination="HmV-zB-ZnH" eventType="touchUpInside" id="f3Q-TR-06b"/>
+                                        </connections>
+                                    </button>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="filtertablecell" rowHeight="49" id="M2A-wM-R4p" customClass="FilterTableViewCell" customModule="Competitive_Programming_Appp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="375" height="49"/>
+                                <rect key="frame" x="0.0" y="136" width="375" height="49"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M2A-wM-R4p" id="g9Y-pR-sbp">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>

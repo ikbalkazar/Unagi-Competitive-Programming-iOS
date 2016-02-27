@@ -137,19 +137,31 @@ extension MainViewController : UITableViewDelegate {
 
 extension MainViewController : UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return websites.count
+        //websites + overall search cell
+        return websites.count + 1
     }
      
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier(DataTableViewCell.identifier) as! DataTableViewCell
-        let data = DataTableViewCellData(imageUrl: "dummy", text: websites[indexPath.row].name)
-        cell.setData(data)
+        if indexPath.row == 0 {
+            let data = DataTableViewCellData(imageUrl: "dummy", text: "Overall Search")
+            cell.setData(data)
+        } else {
+            let data = DataTableViewCellData(imageUrl: "dummy", text: websites[indexPath.row - 1].name)
+            cell.setData(data)
+        }
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let storyboard = UIStoryboard(name: "SubContentsViewController", bundle: nil)
-        let subContentsVC = storyboard.instantiateViewControllerWithIdentifier("SubContentsViewController") as! SubContentsViewController
-        self.navigationController?.pushViewController(subContentsVC, animated: true)
+        if indexPath.row == 0 {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let searchView = storyboard.instantiateViewControllerWithIdentifier("SearchViewController") as!     SearchViewController
+            self.navigationController?.pushViewController(searchView, animated: true)
+        } else {
+            let storyboard = UIStoryboard(name: "SubContentsViewController", bundle: nil)
+            let subContentsVC = storyboard.instantiateViewControllerWithIdentifier("SubContentsViewController") as! SubContentsViewController
+            self.navigationController?.pushViewController(subContentsVC, animated: true)
+        }
     }
 }

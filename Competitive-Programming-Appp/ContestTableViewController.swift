@@ -32,7 +32,6 @@ class ContestTableViewController: UITableViewController {
     }
     
     func isSource(website: String) -> Bool {
-        
         if let outcome = NSUserDefaults.standardUserDefaults().objectForKey(website + "filtered") {
             return outcome as! Bool
         } else {
@@ -125,25 +124,31 @@ class ContestTableViewController: UITableViewController {
             }
             
         }
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
+        
+        print("View Did Load")
         
         super.viewDidLoad()
         
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refresher.addTarget(self, action: "downloadAndUpdate", forControlEvents: UIControlEvents.ValueChanged)
+        refresher.addTarget(self, action: "downloadContests", forControlEvents: UIControlEvents.ValueChanged)
         
         self.tableView.addSubview(refresher)
+        
         downloadContests()
+    
     }
     
     override func viewDidAppear(animated: Bool) {
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        print("View Will Appear")
         
         super.viewWillAppear(animated)
         
@@ -164,6 +169,7 @@ class ContestTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("Table is loading")
         return filteredContests.count
     }
     

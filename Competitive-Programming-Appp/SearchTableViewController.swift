@@ -1,41 +1,65 @@
 //
-//  FilterTableViewController.swift
+//  SearchTableViewController.swift
 //  Competitive-Programming-Appp
 //
-//  Created by ikbal kazar on 21/02/16.
+//  Created by ikbal kazar on 27/02/16.
 //  Copyright © 2016 harungunaydin. All rights reserved.
 //
 
 import UIKit
-var includeExcludeOrder_:Int = 0
+import Parse
 
-class FilterTableViewController: UITableViewController {
+//Currently downloads the problem data base. Will be changed with parse cloud code.
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+class SearchTableViewController: UITableViewController {
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
+    var requestedProblems = [String]()
     
-    @IBAction func includeExcludeAll(sender: AnyObject) {
-        for website in websites {
-            let defaults = NSUserDefaults.standardUserDefaults()
-            if includeExcludeOrder_ == 0 {
-                defaults.setObject(true, forKey: website.name + "filtered")
+    func downloadProblems(skip: Int) {
+        let query = PFQuery(className: "Problems")
+        query.limit = 1000
+        query.skip = skip
+        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                print("Problems are successfuly recieved")
+                if let objects = objects {
+                    for object in objects {
+                        var matched: Bool
+                        matched = false
+                        let problemName = object["name"] as! String
+                        print("Problem Name: " + problemName)
+                        if problemName.rangeOfString(curSearchText_) != nil {
+                            matched = true
+                        } else {
+                            let tags = object["tags"] as! [String]
+                            for tag in tags {
+                                print("#tag = " + tag)
+                                if tag.rangeOfString(curSearchText_) != nil {
+                                    matched = true
+                                    break
+                                }
+                            }
+                        }
+                        if matched {
+                            self.requestedProblems.append(problemName)
+                        }
+                    }
+                }
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
             } else {
-                defaults.setObject(false, forKey: website.name + "filtered")
+                print("Error: \(error!) \(error!.userInfo)")
             }
         }
-        tableView.reloadData()
-        //include and exclude alternately
-        includeExcludeOrder_ = 1 - includeExcludeOrder_
     }
     
-    override func viewDidAppear(animated: Bool) {
-        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        downloadProblems(0)
+        downloadProblems(1000)
+        downloadProblems(2000)
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,18 +70,19 @@ class FilterTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return websites.count
+        // #warning Incomplete implementation, return the number of rows
+        return requestedProblems.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("filtertablecell", forIndexPath: indexPath) as! FilterTableViewCell
-        cell.label.text = websites[indexPath.row].name
-        cell.awakeFromNib()
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        cell.textLabel?.text = requestedProblems[indexPath.row]
         return cell
     }
     

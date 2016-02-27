@@ -15,6 +15,8 @@
 		03216EDD1C75C1C3009C9236 /* IOI_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03216EDC1C75C1C3009C9236 /* IOI_Logo.png */; };
 		03216EE31C75CE45009C9236 /* ContestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03216EE21C75CE45009C9236 /* ContestTableViewCell.swift */; };
 		03216EE51C75D485009C9236 /* ContestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03216EE41C75D485009C9236 /* ContestTableViewController.swift */; };
+		037A55131C81CF270009939D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A55121C81CF270009939D /* SearchViewController.swift */; };
+		037A55151C81D7320009939D /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A55141C81D7320009939D /* SearchTableViewController.swift */; };
 		037C17D81C7F0644004BDEF8 /* calendarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C17D71C7F0644004BDEF8 /* calendarIcon.png */; };
 		039BDDCE1C7A19D500AFF696 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BDDCD1C7A19D500AFF696 /* FilterTableViewController.swift */; };
 		039BDDD01C7A1D2200AFF696 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BDDCF1C7A1D2200AFF696 /* FilterTableViewCell.swift */; };
@@ -80,6 +82,8 @@
 		03216EDC1C75C1C3009C9236 /* IOI_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IOI_Logo.png; sourceTree = "<group>"; };
 		03216EE21C75CE45009C9236 /* ContestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestTableViewCell.swift; sourceTree = "<group>"; };
 		03216EE41C75D485009C9236 /* ContestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestTableViewController.swift; sourceTree = "<group>"; };
+		037A55121C81CF270009939D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		037A55141C81D7320009939D /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		037C17D71C7F0644004BDEF8 /* calendarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendarIcon.png; sourceTree = "<group>"; };
 		039BDDCD1C7A19D500AFF696 /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		039BDDCF1C7A1D2200AFF696 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
@@ -247,6 +251,8 @@
 				23E0C1291C78233B00941FF5 /* JavaViewController.swift */,
 				23E0C1251C780E5F00941FF5 /* LeftViewController.swift */,
 				23E0C1311C78238F00941FF5 /* Main.storyboard */,
+				037A55141C81D7320009939D /* SearchTableViewController.swift */,
+				037A55121C81CF270009939D /* SearchViewController.swift */,
 				23E0C1231C780E5500941FF5 /* MainViewController.swift */,
 				23E0C12F1C78235400941FF5 /* NonMenuController.swift */,
 				23913E081C6FE40A0038BA34 /* RegisterViewController.swift */,
@@ -410,6 +416,7 @@
 				23E0C1411C78244700941FF5 /* DataTableViewCell.swift in Sources */,
 				23E0C1281C780E6600941FF5 /* RightViewController.swift in Sources */,
 				23E0C1501C78249D00941FF5 /* UIImage.swift in Sources */,
+				037A55131C81CF270009939D /* SearchViewController.swift in Sources */,
 				23E0C1261C780E5F00941FF5 /* LeftViewController.swift in Sources */,
 				039BDDCE1C7A19D500AFF696 /* FilterTableViewController.swift in Sources */,
 				23E0C14F1C78249D00941FF5 /* UIColor.swift in Sources */,
@@ -428,6 +435,7 @@
 				237175FA1C7F92EF004CD2FB /* Website.swift in Sources */,
 				23E0C14D1C78249D00941FF5 /* String.swift in Sources */,
 				039BDDD01C7A1D2200AFF696 /* FilterTableViewCell.swift in Sources */,
+				037A55151C81D7320009939D /* SearchTableViewController.swift in Sources */,
 				23913E091C6FE40A0038BA34 /* RegisterViewController.swift in Sources */,
 				23B43D321C712D98009CB0B4 /* ContestContentViewController.swift in Sources */,
 			);
