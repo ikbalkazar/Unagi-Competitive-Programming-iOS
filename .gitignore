@@ -18,4 +18,5 @@ xcuserdata/
 MANIFEST
 dist/
 build/
-DBSources/
+
+codeforcesSource.py
