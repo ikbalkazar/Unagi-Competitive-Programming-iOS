@@ -19,4 +19,4 @@ MANIFEST
 dist/
 build/
 
-DBSource/codeforcesSource.py
+DBSources/codeforcesSource.py
