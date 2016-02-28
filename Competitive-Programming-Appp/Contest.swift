@@ -65,18 +65,17 @@ class Contest
         
         if let image = UIImage(named: website.name + "_Logo.png") {
             return image
-        } else {
-            return UIImage(named: "none.jpg")!
         }
+        return UIImage(named: "none.jpg")!
+
     }
     
     func getImage(website website: String) -> UIImage {
        
         if let image = UIImage(named: website + "_Logo.png") {
             return image
-        } else {
-            return UIImage(named: "none.png")!
         }
+        return UIImage(named: "none.png")!
     }
     
     

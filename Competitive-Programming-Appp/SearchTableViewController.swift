@@ -21,11 +21,10 @@ class SearchTableViewController: UITableViewController {
         query.skip = skip
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
-                print("Problems are successfuly recieved")
+                print("Problems are successfuly received")
                 if let objects = objects {
                     for object in objects {
-                        var matched: Bool
-                        matched = false
+                        var matched: Bool = false
                         let problemName = object["name"] as! String
                         print("Problem Name: " + problemName)
                         if problemName.rangeOfString(curSearchText_) != nil {
@@ -49,7 +48,7 @@ class SearchTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 })
             } else {
-                print("Error: \(error!) \(error!.userInfo)")
+                print("Error: \(error!) \(error!.userInfo["error"])")
             }
         }
     }

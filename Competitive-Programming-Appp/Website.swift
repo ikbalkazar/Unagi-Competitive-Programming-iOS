@@ -13,20 +13,25 @@ class Website {
     var name: String!
     var objectId: String!
     var url: String!
+    var contestStatus: String!
     
     init() {
         name = ""
         objectId = ""
         url = ""
+        contestStatus = "4"
     }
     
-    init( name: String , id objectId: String, url: String ) {
+    init( name: String , id objectId: String, url: String, contestStatus: String ) {
 
         self.name = name
         self.objectId = objectId
         self.url = url
+        self.contestStatus = contestStatus
         
     }
+    
+    
     
     
 

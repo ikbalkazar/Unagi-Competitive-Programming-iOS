@@ -7,8 +7,7 @@
 //
 
 import UIKit
-var includeExcludeOrder_:Int = 0
-
+var includeExcludeOrder_ = false
 class FilterTableViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -21,17 +20,13 @@ class FilterTableViewController: UITableViewController {
     }
     
     @IBAction func includeExcludeAll(sender: AnyObject) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        includeExcludeOrder_ = !includeExcludeOrder_
         for website in websites {
-            let defaults = NSUserDefaults.standardUserDefaults()
-            if includeExcludeOrder_ == 0 {
-                defaults.setObject(true, forKey: website.name + "filtered")
-            } else {
-                defaults.setObject(false, forKey: website.name + "filtered")
-            }
+            defaults.setObject(includeExcludeOrder_, forKey: website.name + "filtered")
         }
         tableView.reloadData()
         //include and exclude alternately
-        includeExcludeOrder_ = 1 - includeExcludeOrder_
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -42,8 +37,6 @@ class FilterTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1

@@ -42,12 +42,12 @@ class ContestTableViewController: UITableViewController {
     
     func downloadContests() {
         
+        print("Download Started")
+        
         let now = NSDate()
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateFrom : String = dateFormatter.stringFromDate(now)
-        
-        print(dateFrom)
         
         let url:NSURL = NSURL(string: "https://clist.by/api/v1/json/contest/?start__gte=" + dateFrom + "&username=ikbalkazar&api_key=b66864909a08b2ddf96b258a146bd15c2db6a469&order_by=start")!
         
@@ -112,10 +112,13 @@ class ContestTableViewController: UITableViewController {
             })
         })
         myQuery.resume()
+        
+        print("Download Finished")
+        
     }
     
     func updateContests() {
-        print("Update")
+        print("Update started")
         filteredContests.removeAll()
         for contest in allContests {
             
@@ -124,7 +127,10 @@ class ContestTableViewController: UITableViewController {
             }
             
         }
-        tableView.reloadData()
+        print("Update finished")
+        print("Reload started")
+        self.tableView.reloadData()
+        print("Reload finished")
     }
     
     override func viewDidLoad() {
@@ -169,7 +175,6 @@ class ContestTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Table is loading")
         return filteredContests.count
     }
     
@@ -178,8 +183,12 @@ class ContestTableViewController: UITableViewController {
       
         let cell = tableView.dequeueReusableCellWithIdentifier("ContestTableCell", forIndexPath: indexPath) as! ContestTableViewCell
         
+        if indexPath.row == 1 {
+            print("Table is loading")
+        }
+        
         // Hard to explain but this is required
-        // Might not be required anymore but still in case
+        // Update: Might not be required anymore but still in case
         if indexPath.row < filteredContests.count {
             cell.setContest(filteredContests[indexPath.row])
         }
