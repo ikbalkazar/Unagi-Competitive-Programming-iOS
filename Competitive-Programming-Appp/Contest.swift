@@ -38,7 +38,7 @@ class Contest
         self.duration = duration
         self.url = url
         for site in websites {
-            if site.url.containsString(website) == true {
+            if site.url!.containsString(website) == true {
                 self.website = site
                 return
             }
@@ -63,7 +63,7 @@ class Contest
     
     func getImage() -> UIImage {
         
-        if let image = UIImage(named: website.name + "_Logo.png") {
+        if let image = UIImage(named: website.name! + "_Logo.png") {
             return image
         }
         return UIImage(named: "none.jpg")!

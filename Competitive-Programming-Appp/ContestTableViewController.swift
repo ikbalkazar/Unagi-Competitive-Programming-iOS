@@ -122,7 +122,7 @@ class ContestTableViewController: UITableViewController {
         filteredContests.removeAll()
         for contest in allContests {
             
-            if ( NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name + "filtered") as! Bool ) == true {
+            if ( NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name! + "filtered") as! Bool ) == true {
                 filteredContests.append(contest)
             }
             
