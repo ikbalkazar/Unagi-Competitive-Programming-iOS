@@ -30,7 +30,7 @@
         <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Website" syncable="YES"/>
         <relationship name="relationship1" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contest" syncable="YES"/>
     </entity>
-    <entity name="Website" representedClassName=".Website" syncable="YES">
+    <entity name="Website" syncable="YES">
         <attribute name="contestStatus" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>

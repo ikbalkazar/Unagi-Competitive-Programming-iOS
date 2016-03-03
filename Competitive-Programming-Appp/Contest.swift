@@ -43,6 +43,7 @@ class Contest
                 return
             }
         }
+        self.website = Website(id: "none", name: "none", url: "none", contestStatus: "0")
     }
     
     func getLocalDate(strDate : String) -> String {

@@ -22,8 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         request.returnsObjectsAsFaults = false
         do {
             let results = try context.executeFetchRequest(request)
-            for website in results {
-                websites.append(website as! Website)
+            for website in results as! [NSManagedObject] {
+                
+                let objectId = website.valueForKey("objectId") as! String
+                let name = website.valueForKey("name") as! String
+                let url = website.valueForKey("url") as! String
+                let contestStatus = website.valueForKey("contestStatus") as! String
+                websites.append( Website(id: objectId, name: name, url: url, contestStatus: contestStatus) )
+                
             }
             
             print("count => \(websites.count)")
@@ -42,6 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context: NSManagedObjectContext = appDel.managedObjectContext!
+        
+        NSUserDefaults.standardUserDefaults().setObject(true, forKey: "nonefiltered")
         
         let query = PFQuery(className: "Websites")
         query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
@@ -65,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             newSite.setValue(name, forKey: "name")
                             newSite.setValue(id, forKey: "objectId")
                             newSite.setValue(url, forKey: "url")
-                            newSite.setValue("\(contestStatus)", forKey: "contestStatus")
+                            newSite.setValue(contestStatus, forKey: "contestStatus")
                             do {
                                 try context.save()
                             } catch {
