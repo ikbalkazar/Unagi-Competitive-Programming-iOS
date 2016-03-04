@@ -16,8 +16,6 @@ class Problem {
     var tags = [String]()
     var contestId: String!
     var solutionUrl: String!
-    var difficulty: Int16!
-    var rating: Double!
     var websiteId: String!
     
     init() {
@@ -27,12 +25,10 @@ class Problem {
         tags = [String]()
         contestId = ""
         solutionUrl = ""
-        difficulty = -1
-        rating = -1
         websiteId = ""
     }
     
-    init( id: String, name: String, url: String, tags: [String], contestId: String, solutionUrl: String, websiteId: String, difficulty: Int16, rating: Double ){
+    init( id: String, name: String, url: String, tags: [String], contestId: String, solutionUrl: String, websiteId: String ){
         
         self.objectId = id
         self.name = name
@@ -41,8 +37,6 @@ class Problem {
         self.contestId = contestId
         self.solutionUrl = solutionUrl
         self.websiteId = websiteId
-        self.difficulty = difficulty
-        self.rating = rating
         
     }
     

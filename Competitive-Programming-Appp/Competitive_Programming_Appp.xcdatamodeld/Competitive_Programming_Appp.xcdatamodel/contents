@@ -17,11 +17,8 @@
     </entity>
     <entity name="Problem" syncable="YES">
         <attribute name="contestId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="createdAt" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="difficulty" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="rating" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="solutionUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tags" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -30,7 +27,7 @@
         <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Website" syncable="YES"/>
         <relationship name="relationship1" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contest" syncable="YES"/>
     </entity>
-    <entity name="Website" representedClassName=".Website" syncable="YES">
+    <entity name="Website" syncable="YES">
         <attribute name="contestStatus" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
@@ -39,7 +36,7 @@
     <elements>
         <element name="Contest" positionX="333" positionY="333" width="128" height="150"/>
         <element name="Event" positionX="261" positionY="189" width="128" height="60"/>
-        <element name="Problem" positionX="315" positionY="261" width="128" height="240"/>
+        <element name="Problem" positionX="315" positionY="261" width="128" height="195"/>
         <element name="Website" positionX="288" positionY="225" width="128" height="105"/>
     </elements>
 </model>
