@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let request = NSFetchRequest(entityName: "Website")
         request.returnsObjectsAsFaults = false
+        print("here")
         do {
             let results = try context.executeFetchRequest(request)
             for website in results {
@@ -31,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print("There is a problem getting websites from Core Data")
         }
+        
+        print("Got websites from Core Data")
         
     }
     

@@ -27,15 +27,16 @@ class SearchTableViewController: UITableViewController {
                         var matched: Bool = false
                         let problemName = object["name"] as! String
                         print("Problem Name: " + problemName)
-                        if problemName.rangeOfString(curSearchText_) != nil {
+                        if problemName.lowercaseString.rangeOfString(curSearchText_.lowercaseString) != nil {
                             matched = true
                         } else {
-                            let tags = object["tags"] as! [String]
-                            for tag in tags {
-                                print("#tag = " + tag)
-                                if tag.rangeOfString(curSearchText_) != nil {
-                                    matched = true
-                                    break
+                            if let tags = object["tags"] as? [String] {
+                                for tag in tags {
+                                    print("#tag = " + tag)
+                                    if tag.lowercaseString.rangeOfString(curSearchText_.lowercaseString) != nil {
+                                        matched = true
+                                        break
+                                    }
                                 }
                             }
                         }
