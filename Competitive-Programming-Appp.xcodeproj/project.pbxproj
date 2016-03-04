@@ -62,6 +62,7 @@
 		23B43D321C712D98009CB0B4 /* ContestContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B43D311C712D98009CB0B4 /* ContestContentViewController.swift */; };
 		23B589011C82D36D003E4E72 /* Problem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B589001C82D36D003E4E72 /* Problem.swift */; };
 		23B661731C7D8C9700860B1C /* X_Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23B661721C7D8C9700860B1C /* X_Logo.jpg */; };
+		23BAC7331C8959D400BE18BC /* Website.csv in Resources */ = {isa = PBXBuildFile; fileRef = 23BAC7321C8959D400BE18BC /* Website.csv */; };
 		23E0C1221C780E0C00941FF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0C1211C780E0C00941FF5 /* AppDelegate.swift */; };
 		23E0C1241C780E5500941FF5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0C1231C780E5500941FF5 /* MainViewController.swift */; };
 		23E0C1261C780E5F00941FF5 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0C1251C780E5F00941FF5 /* LeftViewController.swift */; };
@@ -152,6 +153,7 @@
 		23B43D311C712D98009CB0B4 /* ContestContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestContentViewController.swift; sourceTree = "<group>"; };
 		23B589001C82D36D003E4E72 /* Problem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Problem.swift; path = ../Problem.swift; sourceTree = "<group>"; };
 		23B661721C7D8C9700860B1C /* X_Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = X_Logo.jpg; sourceTree = "<group>"; };
+		23BAC7321C8959D400BE18BC /* Website.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Website.csv; sourceTree = "<group>"; };
 		23E0C1211C780E0C00941FF5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23E0C1231C780E5500941FF5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		23E0C1251C780E5F00941FF5 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 		23E0C11F1C780B6500941FF5 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				23BAC7321C8959D400BE18BC /* Website.csv */,
 				2336E5131C828ED8007025FB /* Logo */,
 				037C17D71C7F0644004BDEF8 /* calendarIcon.png */,
 				23B661721C7D8C9700860B1C /* X_Logo.jpg */,
@@ -474,6 +477,7 @@
 				2319E8A41C8817010000D943 /* Facebook_Logo.png in Resources */,
 				2336E5211C8295DD007025FB /* Infoarena_Logo.png in Resources */,
 				23E0C1321C78238F00941FF5 /* Main.storyboard in Resources */,
+				23BAC7331C8959D400BE18BC /* Website.csv in Resources */,
 				23E0C15E1C78253B00941FF5 /* Info.plist in Resources */,
 				2336E51F1C82955C007025FB /* Facebook Hackercup_Logo.png in Resources */,
 				2336E5291C829741007025FB /* Project Euler_Logo.png in Resources */,

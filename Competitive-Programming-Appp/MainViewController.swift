@@ -9,18 +9,17 @@ import UIKit
 import Parse
 import CoreData
 
-var websites = [Website]()
-var problems = [Problem]()
-var problemsUpdated = false
 
 class MainViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
+        print("Main View Controller - viewDidLoad")
         super.viewDidLoad()
         self.tableView.registerCellNib(DataTableViewCell.self)
-        print("asdf")
+        print("websites.count => \(websites.count)")
+        print("self.tableView.reloadData()")
         self.tableView.reloadData()
         
     }
@@ -30,6 +29,7 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        print("Main View Controller - viewWillAppear")
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
     }

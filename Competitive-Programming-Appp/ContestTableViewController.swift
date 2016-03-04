@@ -31,15 +31,6 @@ class ContestTableViewController: UITableViewController {
     
     }
     
-    func isSource(website: String) -> Bool {
-        if let outcome = NSUserDefaults.standardUserDefaults().objectForKey(website + "filtered") {
-            return outcome as! Bool
-        } else {
-            //it means first time ever
-            return false
-        }
-    }
-    
     func downloadContests() {
         
         print("Download Started")
@@ -122,15 +113,18 @@ class ContestTableViewController: UITableViewController {
         filteredContests.removeAll()
         for contest in allContests {
             
-            if ( NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name! + "filtered") as! Bool ) == true {
+            if NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name + "filtered") == nil {
+                print(contest.website.name)
+                continue
+            }
+            
+            if ( NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name + "filtered") as! Bool ) == true {
                 filteredContests.append(contest)
             }
             
         }
         print("Update finished")
-        print("Reload started")
         self.tableView.reloadData()
-        print("Reload finished")
     }
     
     override func viewDidLoad() {
