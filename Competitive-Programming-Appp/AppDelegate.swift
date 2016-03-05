@@ -1,6 +1,4 @@
-//
 //  AppDelegate.swift
-//
 
 import UIKit
 import CoreData
@@ -14,16 +12,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    func initializeWebsitesArrayFromCoreData() {
-        
-        print("Get websites from Core Data")
+    func initializeWebsitesArrayUsingWebsiteEntity() {
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDel.managedObjectContext!
         
         let request = NSFetchRequest(entityName: "Website")
         request.returnsObjectsAsFaults = false
-        print("here")
         do {
             let results = try context.executeFetchRequest(request)
             for website in results as! [NSManagedObject] {
@@ -40,8 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("There is a problem getting websites from Core Data")
         }
         
-        print("Got websites from Core Data")
-        
     }
     
     /*
@@ -49,10 +42,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     */
     func preLoadWebsiteEntity() {
         
-        print("preLoadWebsiteEntity")
-        
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context: NSManagedObjectContext = appDel.managedObjectContext!
+        
+        
+        NSUserDefaults.standardUserDefaults().setObject(true, forKey: "nonefiltered")
         
         if let contentsOfUrl = NSBundle.mainBundle().URLForResource("Website", withExtension: "csv") {
             
@@ -80,8 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                 }
                 
-                print("Pre Loading Website entity done")
-                
             } catch {
                 
                 print("Error occured parsing Website.csv")
@@ -94,9 +86,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    func initializeProblemsArrayFromCoreData() {
+    func initializeProblemsArrayUsingProblemEntity() {
         
-        print("Get Problems from Core Data")
+        print("Get Problems from Core Data - Problem Entity")
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDel.managedObjectContext!
@@ -123,6 +115,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print("There is a problem getting Problems from Core Data")
         }
+        
+        print("Problems Array Initialized and the size of it is => \(problems.count)")
         
     }
     
@@ -165,6 +159,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                 }
                 
+                // This might not work!!!
+                // Change this line every time making an update to Problems.csv
+                NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "ProblemsDB_LastUpdateTime")
+                
                 print("Pre Loading Problem Entity done")
                 
             } catch {
@@ -181,26 +179,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /*
-        Does not work as desired right now.
+        For now this function supports no more than 1000 updates on Problem Entity
     */
     
-    func updateProblemDBOnCoreData() {
+    func updateProblemEntityUsingParse() {
         
-        print("Update Problems DataBase on Core Data with new entries in Problem DataBase on Parse")
+        print("Update Problems Entity with new entries in Problem DataBase on Parse")
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context: NSManagedObjectContext = appDel.managedObjectContext!
         
         let query = PFQuery(className: "Problems")
         
-        //Since this is the maximum limit we should do this in a loop until there will be no result coming from "query"
         query.limit = 1000
         
+        var s1 = 0
+        var s2 = 0
         
-        // Keep the update time of the Problem.cvs file which is used for Preloading the Problem entity
-        // Otherwise preloading will be pointless since these lines will download all content from Parse anyway
-        if let lastUpdateTime = NSUserDefaults.standardUserDefaults().objectForKey("ProblemsDB_LastUpdateTime") {
-            query.whereKey("updatedAt", greaterThan: lastUpdateTime)
+        if let lastUpdate = NSUserDefaults.standardUserDefaults().objectForKey("ProblemsDB_LastUpdateTime") {
+            query.whereKey("updatedAt", greaterThan: lastUpdate)
         }
         query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             
@@ -208,53 +205,106 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 if let objects = objects {
                     
+                    print("returned size => \(objects.count)")
+                    
                     for problem in objects {
-                            
-                        let newProblem = NSEntityDescription.insertNewObjectForEntityForName("Problem", inManagedObjectContext: context)
-                            
-                        newProblem.setValue(problem.objectId!, forKey: "objectId")
                         
-                        if let name = problem["name"] as? String {
-                            newProblem.setValue(name, forKey: "name")
-                        }
+                        let request = NSFetchRequest(entityName: "Problem")
+                        request.returnsObjectsAsFaults = false
                         
-                        if let url = problem["url"] as? String {
-                            newProblem.setValue(url, forKey: "url")
-                        }
-                        
-                        if let tags = problem["tags"] as? [String] {
-                            newProblem.setValue(tags, forKey: "tags")
-                        }
-                        
-                        if let contestId = problem["contestId"] as? String {
-                            newProblem.setValue(contestId, forKey: "contestId")
-                        }
-                        
-                        if let solutionUrl = problem["solutionUrl"] as? String {
-                            newProblem.setValue(solutionUrl, forKey: "solutionUrl")
-                        }
-                        
-                        if let websiteId = problem["websiteId"] as? String {
-                            newProblem.setValue(websiteId, forKey: "websiteId")
-                        }
-                        
-                        newProblem.setValue(NSDate(), forKey: "updatedAt")
+                        request.predicate = NSPredicate(format: "objectId == %@", problem.objectId! )
                         
                         do {
-                            try context.save()
+                            let results = try context.executeFetchRequest(request) as! [NSManagedObject]
+                            if results.count > 1 {
+                                print("Whoops!!! We have a big problem here!!! There are objects with same objectIds")
+                                return
+                            } else {
+                                
+                                var name = "" , url = "" , contestId = "" , solutionUrl = "", websiteId = ""
+                                var tags = [String]()
+                                if let tmp = problem["name"] as? String {
+                                    name = tmp
+                                }
+                                if let tmp = problem["url"] as? String {
+                                    url = tmp
+                                }
+                                if let tmp = problem["tags"] as? [String] {
+                                    tags = tmp
+                                }
+                                if let tmp = problem["contestId"] as? String {
+                                    contestId = tmp
+                                }
+                                if let tmp = problem["solutionUrl"] as? String {
+                                    solutionUrl = tmp
+                                }
+                                if let tmp = problem["websiteId"] as? String {
+                                    websiteId = tmp
+                                }
+                                
+                                if results.count == 0 {
+                                    
+                                    if s1%100 == 0 {
+                                        print("new Entry \(s1)")
+                                    }
+                                    s1++
+                                    let newProblem = NSEntityDescription.insertNewObjectForEntityForName("Problem", inManagedObjectContext: context)
+                                    
+                                    newProblem.setValue(problem.objectId!, forKey: "objectId")
+                                    newProblem.setValue(name, forKey: "name")
+                                    newProblem.setValue(url, forKey: "url")
+                                    newProblem.setValue(tags, forKey: "tags")
+                                    newProblem.setValue(contestId, forKey: "contestId")
+                                    newProblem.setValue(solutionUrl, forKey: "solutionUrl")
+                                    newProblem.setValue(websiteId, forKey: "websiteId")
+                                    newProblem.setValue(NSDate(), forKey: "updatedAt")
+                                    
+                                    do {
+                                        try context.save()
+                                    } catch {
+                                        print("Error saving into Core Data - Problems Database")
+                                    }
+                                    
+                                } else {
+                                    
+                                    if s2%100 == 0 {
+                                        print("Updated Entry \(s2)")
+                                    }
+                                    s2++
+                                    results[0].setValue(problem.objectId!, forKey: "objectId")
+                                    results[0].setValue(name, forKey: "name")
+                                    results[0].setValue(url, forKey: "url")
+                                    results[0].setValue(tags, forKey: "tags")
+                                    results[0].setValue(contestId, forKey: "contestId")
+                                    results[0].setValue(solutionUrl, forKey: "solutionUrl")
+                                    results[0].setValue(websiteId, forKey: "websiteId")
+                                    results[0].setValue(NSDate(), forKey: "updatedAt")
+                                    
+                                    do {
+                                        try context.save()
+                                    } catch {
+                                        print("Error saving into Core Data - Problems Database")
+                                    }
+                                    
+                                }
+                                
+                            }
                         } catch {
-                            print("Error saving into Core Data - Problems Database")
+                            print("Could not execute the Fetch Request")
                         }
                         
                     }
                     
                 }
                 
+                
                 NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "ProblemsDB_LastUpdateTime")
                 
             } else {
                 print("Problems Data Base could not updated!!! Check the internet connection")
             }
+            
+            self.initializeProblemsArrayUsingProblemEntity()
             
         }
         
@@ -289,7 +339,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             preLoadWebsiteEntity()
             NSUserDefaults.standardUserDefaults().setObject(true, forKey: "WebsiteEntityPreLoaded")
         }
-        initializeWebsitesArrayFromCoreData()
+        initializeWebsitesArrayUsingWebsiteEntity()
     }
     
     func initializeProblemsArray() {
@@ -298,21 +348,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             preLoadProblemEntity()
             NSUserDefaults.standardUserDefaults().setObject(true, forKey: "ProblemEntityPreLoaded")
         }
-        updateProblemDBOnCoreData()
-        initializeProblemsArrayFromCoreData()
+        
+        updateProblemEntityUsingParse()
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+    
         Parse.setApplicationId("8xMwvCqficeHwkS7Ag5PQWdlw1q91ujGcXVRgUnG",
             clientKey: "yXQByidQA8eNkR0NaALnq2KZUvzMhQ9AvPNylyeO")
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
         initializeWebsitesArray()
-     //   updateProblemDBOnCoreData()
-     //   initializeProblemsArray()
-        
-        print("harungunaydinsize => \(websites.count)")
+        initializeProblemsArray()
         
         self.createMenuView()
         
