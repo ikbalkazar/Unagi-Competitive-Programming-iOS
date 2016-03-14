@@ -113,11 +113,6 @@ class ContestTableViewController: UITableViewController {
         filteredContests.removeAll()
         for contest in allContests {
             
-            if NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name + "filtered") == nil {
-                print(contest.website.name)
-                continue
-            }
-            
             if ( NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name + "filtered") as! Bool ) == true {
                 filteredContests.append(contest)
             }
@@ -125,6 +120,7 @@ class ContestTableViewController: UITableViewController {
         }
         print("Update finished")
         self.tableView.reloadData()
+        
     }
     
     override func viewDidLoad() {
@@ -138,8 +134,6 @@ class ContestTableViewController: UITableViewController {
         refresher.addTarget(self, action: "downloadContests", forControlEvents: UIControlEvents.ValueChanged)
         
         self.tableView.addSubview(refresher)
-        
-        downloadContests()
     
     }
     
@@ -152,7 +146,7 @@ class ContestTableViewController: UITableViewController {
         
         super.viewWillAppear(animated)
         
-        updateContests()
+        allContests.count > 0 ? updateContests() : downloadContests()
         
     }
 
