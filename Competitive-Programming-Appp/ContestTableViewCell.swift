@@ -20,11 +20,11 @@ class ContestTableViewCell: UITableViewCell {
     
     @IBAction func addToCalendar(sender: AnyObject) {
         /*
-            Issue:
-            Causes app to crash when the access request is denied by the user from the settings. 
-            May be it only happens if one changes the access status while app was still working at the background
+        Issue:
+        Causes app to crash when the access request is denied by the user from the settings.
+        May be it only happens if one changes the access status while app was still working at the background
         */
-    
+        
         let store = EKEventStore()
         store.requestAccessToEntityType(.Event) {(granted, error) in
             if !granted {
@@ -78,7 +78,7 @@ class ContestTableViewCell: UITableViewCell {
         dateFormatter.dateFormat = "MM/dd HH:mm"
         return dateFormatter.stringFromDate(date!)
     }
-
+    
     func setContest(selectedContest: Contest) {
         contest = selectedContest
         cellImage.image = contest.getImage()
@@ -90,10 +90,10 @@ class ContestTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
