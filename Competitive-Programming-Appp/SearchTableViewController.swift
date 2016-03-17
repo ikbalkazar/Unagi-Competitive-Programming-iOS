@@ -11,9 +11,11 @@ import Parse
 
 //Currently downloads the problem data base. Will be changed with parse cloud code.
 
+var allProblems = [Problem]()
+
 class SearchTableViewController: UITableViewController {
 
-    var requestedProblems = [String]()
+    var requestedProblems = [Problem]()
     
     func downloadProblems(skip: Int) {
         let query = PFQuery(className: "Problems")
@@ -22,31 +24,26 @@ class SearchTableViewController: UITableViewController {
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 print("Problems are successfuly received")
+                var problems = [Problem]()
                 if let objects = objects {
                     for object in objects {
-                        var matched: Bool = false
-                        let problemName = object["name"] as! String
-                        print("Problem Name: " + problemName)
-                        if problemName.lowercaseString.rangeOfString(curSearchText_.lowercaseString) != nil {
-                            matched = true
-                        } else {
-                            if let tags = object["tags"] as? [String] {
-                                for tag in tags {
-                                    print("#tag = " + tag)
-                                    if tag.lowercaseString.rangeOfString(curSearchText_.lowercaseString) != nil {
-                                        matched = true
-                                        break
-                                    }
-                                }
-                            }
+                        let problem:Problem = Problem()
+                        problem.name = object["name"] as! String
+                        if let tags = object["tags"] as? [String] {
+                            problem.tags = tags
                         }
-                        if matched {
-                            self.requestedProblems.append(problemName)
+                        problem.url = object["url"] as! String
+                        
+                        //Some urls have https prefix some do not, fix this in the data base
+                        if problem.url.rangeOfString("https") == nil {
+                            problem.url = "https://" + problem.url
                         }
+                        
+                        problems.append(problem)
                     }
                 }
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableView.reloadData()
+                    self.updateRequestedProblems(problems, addToAll: true)
                 })
             } else {
                 print("Error: \(error!) \(error!.userInfo["error"])")
@@ -54,12 +51,40 @@ class SearchTableViewController: UITableViewController {
         }
     }
     
+    func updateRequestedProblems(problems: [Problem], addToAll: Bool) {
+        for problem in problems {
+            if addToAll {
+                allProblems.append(problem)
+            }
+            var matched = false
+            if problem.name.lowercaseString.rangeOfString(curSearchText_.lowercaseString) != nil {
+                matched = true
+            }
+            for tag in problem.tags {
+                if tag.lowercaseString.rangeOfString(curSearchText_.lowercaseString) != nil {
+                    matched = true
+                    break
+                }
+            }
+            if matched {
+                requestedProblems.append(problem)
+            }
+        }
+        self.tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        downloadProblems(0)
-        downloadProblems(1000)
-        downloadProblems(2000)
+        
+        if allProblems.count == 0 {
+            //KPROBLEMS must be (#problems at parse) / 10
+            let KPROBLEMS = 10
+            for var i = 0; i < KPROBLEMS; i++ {
+                downloadProblems(i * 1000)
+            }
+        } else {
+            updateRequestedProblems(allProblems, addToAll: false)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,11 +107,16 @@ class SearchTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-        cell.textLabel?.text = requestedProblems[indexPath.row]
+        cell.textLabel?.text = requestedProblems[indexPath.row].name
         return cell
     }
     
-
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        print(requestedProblems[indexPath.row].url)
+        UIApplication.sharedApplication().openURL(NSURL(string: requestedProblems[indexPath.row].url)!)
+        return indexPath
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

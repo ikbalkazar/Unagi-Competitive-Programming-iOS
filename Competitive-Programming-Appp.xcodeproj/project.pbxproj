@@ -432,7 +432,7 @@
 				TargetAttributes = {
 					23913DD31C6FE1320038BA34 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = A429DE3P4L;
+						DevelopmentTeam = 59FM68U839;
 					};
 				};
 			};
@@ -656,7 +656,7 @@
 				);
 				INFOPLIST_FILE = "Competitive-Programming-Appp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Competitive-Programmin-App.harunandikbal.Comp-App";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Competitive-Programmin-App.ikbalandharun.Comp-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -674,7 +674,7 @@
 				);
 				INFOPLIST_FILE = "Competitive-Programming-Appp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Competitive-Programmin-App.harunandikbal.Comp-App";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Competitive-Programmin-App.ikbalandharun.Comp-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

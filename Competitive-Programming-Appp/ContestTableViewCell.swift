@@ -22,7 +22,7 @@ class ContestTableViewCell: UITableViewCell {
         /*
             Issue:
             Causes app to crash when the access request is denied by the user from the settings. 
-            May be it only happens if one change the access status while app was still working at the background
+            May be it only happens if one changes the access status while app was still working at the background
         */
     
         let store = EKEventStore()
