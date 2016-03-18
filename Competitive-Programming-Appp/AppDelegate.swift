@@ -4,8 +4,10 @@ import UIKit
 import CoreData
 import Parse
 
-var websites = [Website]()
+var contests = [Contest]()
 var problems = [Problem]()
+var websites = [Website]()
+var filteredContests = [Contest]()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -309,6 +311,113 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
     }
+    
+    func initializeContestsArrayUsingContestEntity() {
+        
+    }
+    
+    func updateContestEntityUsingClistBy() {
+        
+        print("Download Started in AppDelegate.swift")
+        
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDel.managedObjectContext!
+        
+        //Delete all content first
+        let request = NSFetchRequest(entityName: "Contest")
+        do {
+            
+            if let objects = try context.executeFetchRequest(request) as? [NSManagedObject] {
+                
+                for object in objects {
+                    context.deleteObject(object)
+                }
+                
+                do {
+                    try context.save()
+                } catch {
+                    print("Could not save")
+                }
+                
+            }
+            
+            
+        } catch {
+            
+            print("Could not delete objects in Contest Entity")
+            
+        }
+        
+        
+        let now = NSDate()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateFrom : String = dateFormatter.stringFromDate(now)
+        
+        let url:NSURL = NSURL(string: "https://clist.by/api/v1/json/contest/?start__gte=" + dateFrom + "&username=ikbalkazar&api_key=b66864909a08b2ddf96b258a146bd15c2db6a469&order_by=start")!
+        
+        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+        
+        let urlSession = NSURLSession(configuration: config)
+        
+        let myQuery = urlSession.dataTaskWithURL(url, completionHandler: {
+            data, response, error -> Void in
+            
+            if let content = data {
+                do {
+                    let jsonRes = try NSJSONSerialization.JSONObjectWithData(content, options: NSJSONReadingOptions.MutableContainers)
+                    let objects = jsonRes["objects"]!!
+                    print("Json convertion is successful")
+                    for var i = 0; i < objects.count; i++ {
+                        var event = "No information on event name"
+                        var start = "No information on start time"
+                        var end   = "No information on end time"
+                        var dur:Double = -1
+                        var url   = "No information on url"
+                        var website = "No information on website"
+                        if let tmp = objects[i]["event"] as? String {
+                            event = tmp
+                        }
+                        if let tmp = objects[i]["start"] as? String {
+                            start = tmp
+                        }
+                        if let tmp = objects[i]["end"] as? String {
+                            end = tmp
+                        }
+                        if let tmp = objects[i]["duration"] as? Double {
+                            dur = tmp
+                        }
+                        if let tmp = objects[i]["href"] as? String {
+                            url = tmp
+                        }
+                        if let tmp = objects[i]["resource"] {
+                            if let tmp2 = tmp!["name"] as? String {
+                                website = tmp2
+                            }
+                        }
+                        
+                        // Add new entries to Contest Entity
+                        
+                        
+                        
+                    }
+                    
+                } catch {
+                    print("Can not convert to JSON")
+                }
+            } else {
+                print("No new data found. Check your internet connection")
+            }
+            
+            self.initializeContestsArrayUsingContestEntity()
+            
+        })
+        myQuery.resume()
+        
+        print("Download Finished in AppDelegate.swift")
+        
+    }
+
 
     
     private func createMenuView() {
@@ -333,7 +442,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
     }
     
-    func initializeWebsitesArray() {
+    func handleWebsites() {
         
         if NSUserDefaults.standardUserDefaults().objectForKey("WebsiteEntityPreLoaded") == nil {
             preLoadWebsiteEntity()
@@ -342,7 +451,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initializeWebsitesArrayUsingWebsiteEntity()
     }
     
-    func initializeProblemsArray() {
+    func handleProblems() {
         
         if NSUserDefaults.standardUserDefaults().objectForKey("ProblemEntityPreLoaded") == nil {
             preLoadProblemEntity()
@@ -352,15 +461,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         updateProblemEntityUsingParse()
     }
     
+    func handleContests() {
+        
+        updateContestEntityUsingClistBy()
+        
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
         Parse.setApplicationId("8xMwvCqficeHwkS7Ag5PQWdlw1q91ujGcXVRgUnG",
             clientKey: "yXQByidQA8eNkR0NaALnq2KZUvzMhQ9AvPNylyeO")
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
-        initializeWebsitesArray()
-        initializeProblemsArray()
-        
+        self.handleWebsites()
+        self.handleProblems()
+        self.handleContests()
         self.createMenuView()
         
         return true

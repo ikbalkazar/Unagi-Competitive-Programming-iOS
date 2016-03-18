@@ -12,8 +12,6 @@ var selectedContest: Contest!
 
 class ContestTableViewController: UITableViewController {
     
-    var allContests = [Contest]()
-    var filteredContests = [Contest]()
     var refresher: UIRefreshControl!
     weak var delegate: LeftMenuProtocol?
     
@@ -86,7 +84,7 @@ class ContestTableViewController: UITableViewController {
                             }
                         }
                         
-                        self.allContests.append(Contest(event: event, start: start, end: end, duration: dur, url: url, website: website))
+                        contests.append(Contest(event: event, start: start, end: end, duration: dur, url: url, website: website))
                     }
                     
                 } catch {
@@ -111,7 +109,7 @@ class ContestTableViewController: UITableViewController {
     func updateContests() {
         print("Update started")
         filteredContests.removeAll()
-        for contest in allContests {
+        for contest in contests {
             
             if ( NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name + "filtered") as! Bool ) == true {
                 filteredContests.append(contest)
@@ -146,7 +144,7 @@ class ContestTableViewController: UITableViewController {
         
         super.viewWillAppear(animated)
         
-        allContests.count > 0 ? updateContests() : downloadContests()
+        contests.count > 0 ? updateContests() : downloadContests()
         
     }
 

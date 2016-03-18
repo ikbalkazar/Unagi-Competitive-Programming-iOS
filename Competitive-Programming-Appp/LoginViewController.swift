@@ -11,7 +11,7 @@ import Parse
 
 var months = [ "January" , "February" , "March" , "April" , "May" , "June" , "July" , "August" , "September" , "October" , "November" , "December" ]
 
-class InitialViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
