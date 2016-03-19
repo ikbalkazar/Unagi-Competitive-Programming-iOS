@@ -314,6 +314,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func initializeContestsArrayUsingContestEntity() {
         
+        
+        
+        
     }
     
     func updateContestEntityUsingClistBy() {
@@ -322,32 +325,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context: NSManagedObjectContext = appDel.managedObjectContext!
-        
-        //Delete all content first
-        let request = NSFetchRequest(entityName: "Contest")
-        do {
-            
-            if let objects = try context.executeFetchRequest(request) as? [NSManagedObject] {
-                
-                for object in objects {
-                    context.deleteObject(object)
-                }
-                
-                do {
-                    try context.save()
-                } catch {
-                    print("Could not save")
-                }
-                
-            }
-            
-            
-        } catch {
-            
-            print("Could not delete objects in Contest Entity")
-            
-        }
-        
         
         let now = NSDate()
         let dateFormatter = NSDateFormatter()
@@ -368,13 +345,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let jsonRes = try NSJSONSerialization.JSONObjectWithData(content, options: NSJSONReadingOptions.MutableContainers)
                     let objects = jsonRes["objects"]!!
                     print("Json convertion is successful")
+                    
+                    //Delete all content first
+                    let request = NSFetchRequest(entityName: "Contest")
+                    do {
+                        
+                        if let objects = try context.executeFetchRequest(request) as? [NSManagedObject] {
+                            
+                            for object in objects {
+                                context.deleteObject(object)
+                            }
+                            
+                            do {
+                                try context.save()
+                            } catch {
+                                print("Could not save")
+                            }
+                            
+                        }
+                        
+                    } catch {
+                        print("Could not delete objects in Contest Entity")
+                    }
+                    
                     for var i = 0; i < objects.count; i++ {
-                        var event = "No information on event name"
-                        var start = "No information on start time"
-                        var end   = "No information on end time"
+                        var event: String!
+                        var start: String!
+                        var end: String!
                         var dur:Double = -1
-                        var url   = "No information on url"
-                        var website = "No information on website"
+                        var url: String!
+                        var website: String!
                         if let tmp = objects[i]["event"] as? String {
                             event = tmp
                         }
@@ -395,10 +395,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 website = tmp2
                             }
                         }
+                        let newContest = NSEntityDescription.insertNewObjectForEntityForName("Contest", inManagedObjectContext: context)
                         
-                        // Add new entries to Contest Entity
+                        newContest.setValue(event, forKey: "name")
+                        newContest.setValue(start, forKey: "startTime")
+                        newContest.setValue(end, forKey: "endTime")
+                        newContest.setValue(url, forKey: "url")
+                        newContest.setValue(dur, forKey: "dur")
+                        newContest.setValue(website, forKey: "contestWebsiteId")
                         
+                        do {
+                            try context.save()
+                        } catch {
+                            print("Could not save")
+                        }
                         
+                        self.initializeContestsArrayUsingContestEntity()
                         
                     }
                     
@@ -445,26 +457,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func handleWebsites() {
         
         if NSUserDefaults.standardUserDefaults().objectForKey("WebsiteEntityPreLoaded") == nil {
-            preLoadWebsiteEntity()
+            self.preLoadWebsiteEntity()
             NSUserDefaults.standardUserDefaults().setObject(true, forKey: "WebsiteEntityPreLoaded")
         }
-        initializeWebsitesArrayUsingWebsiteEntity()
+        self.initializeWebsitesArrayUsingWebsiteEntity()
     }
     
     func handleProblems() {
         
         if NSUserDefaults.standardUserDefaults().objectForKey("ProblemEntityPreLoaded") == nil {
-            preLoadProblemEntity()
+            self.preLoadProblemEntity()
             NSUserDefaults.standardUserDefaults().setObject(true, forKey: "ProblemEntityPreLoaded")
         }
         
         updateProblemEntityUsingParse()
-    }
-    
-    func handleContests() {
-        
-        updateContestEntityUsingClistBy()
-        
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -475,7 +481,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.handleWebsites()
         self.handleProblems()
-        self.handleContests()
+        self.updateContestEntityUsingClistBy()
         self.createMenuView()
         
         return true

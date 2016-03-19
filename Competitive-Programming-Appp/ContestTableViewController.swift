@@ -118,7 +118,6 @@ class ContestTableViewController: UITableViewController {
         }
         print("Update finished")
         self.tableView.reloadData()
-        
     }
     
     override func viewDidLoad() {
