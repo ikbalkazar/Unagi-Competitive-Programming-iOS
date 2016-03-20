@@ -111,7 +111,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 problems.append( Problem(id: objectId, name: name, url: url, tags: tags, contestId: contestId, solutionUrl: solutionUrl, websiteId: websiteId) )
                 
-                
             }
             
         } catch {
@@ -161,7 +160,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                 }
                 
-                // This might not work!!!
                 // Change this line every time making an update to Problems.csv
                 NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "ProblemsDB_LastUpdateTime")
                 
@@ -312,16 +310,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    func updateFilteredContestsArray() {
+        
+        for contest in contests {
+            if ( NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name + "filtered") as! Bool ) == true {
+                filteredContests.append(contest)
+            }
+        }
+        
+    }
+    
     func initializeContestsArrayUsingContestEntity() {
         
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDel.managedObjectContext!
+       
+        let request = NSFetchRequest(entityName: "Contest")
         
-        
+        do {
+            if let objects = try context.executeFetchRequest(request) as? [NSManagedObject] {
+                
+                for object in objects {
+                    
+                    let name = object.valueForKey("name") as! String
+                    let start = object.valueForKey("start") as! String
+                    let end = object.valueForKey("end") as! String
+                    let dur = object.valueForKey("duration") as! Double
+                    let url = object.valueForKey("url") as! String
+                    let website = object.valueForKey("websiteName") as! String
+                    
+                    contests.append( Contest(event: name, start: start, end: end, duration: dur, url: url, website: website) )
+                    
+                }
+                
+                self.updateFilteredContestsArray()
+                
+            }
+        } catch {
+            print("Could not execute Fetch Request - Contest Entity")
+        }
         
     }
     
     func updateContestEntityUsingClistBy() {
         
-        print("Download Started in AppDelegate.swift")
+        print("Download Started")
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context: NSManagedObjectContext = appDel.managedObjectContext!
@@ -398,19 +431,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         let newContest = NSEntityDescription.insertNewObjectForEntityForName("Contest", inManagedObjectContext: context)
                         
                         newContest.setValue(event, forKey: "name")
-                        newContest.setValue(start, forKey: "startTime")
-                        newContest.setValue(end, forKey: "endTime")
+                        newContest.setValue(start, forKey: "start")
+                        newContest.setValue(end, forKey: "end")
                         newContest.setValue(url, forKey: "url")
-                        newContest.setValue(dur, forKey: "dur")
-                        newContest.setValue(website, forKey: "contestWebsiteId")
+                        newContest.setValue(dur, forKey: "duration")
+                        newContest.setValue(website, forKey: "websiteName")
                         
                         do {
                             try context.save()
                         } catch {
-                            print("Could not save")
+                            print("Could not save 2")
                         }
-                        
-                        self.initializeContestsArrayUsingContestEntity()
                         
                     }
                     
@@ -422,15 +453,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             self.initializeContestsArrayUsingContestEntity()
+            print("Download Finished")
             
         })
         myQuery.resume()
         
-        print("Download Finished in AppDelegate.swift")
-        
     }
-
-
     
     private func createMenuView() {
         
