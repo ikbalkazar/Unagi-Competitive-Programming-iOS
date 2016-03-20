@@ -45,6 +45,7 @@
 		2336E5351C82AB0D007025FB /* UVa OJ_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2336E5341C82AB0D007025FB /* UVa OJ_Logo.png */; };
 		23426A6E1C9B48D000709C97 /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23426A6D1C9B48D000709C97 /* Website.swift */; };
 		23426A701C9B48DA00709C97 /* Problem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23426A6F1C9B48DA00709C97 /* Problem.swift */; };
+		237AD42E1C9DE0F200B45CC1 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237AD42D1C9DE0F200B45CC1 /* FriendsTableViewController.swift */; };
 		23913DDB1C6FE1320038BA34 /* Competitive_Programming_Appp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23913DD91C6FE1320038BA34 /* Competitive_Programming_Appp.xcdatamodeld */; };
 		23913DE71C6FE1320038BA34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23913DE51C6FE1320038BA34 /* LaunchScreen.storyboard */; };
 		23913DF01C6FE1E90038BA34 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23913DEE1C6FE1E90038BA34 /* Bolts.framework */; };
@@ -137,6 +138,7 @@
 		2336E5341C82AB0D007025FB /* UVa OJ_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UVa OJ_Logo.png"; sourceTree = "<group>"; };
 		23426A6D1C9B48D000709C97 /* Website.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Website.swift; sourceTree = "<group>"; };
 		23426A6F1C9B48DA00709C97 /* Problem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Problem.swift; sourceTree = "<group>"; };
+		237AD42D1C9DE0F200B45CC1 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		23913DD41C6FE1320038BA34 /* Competitive-Programming-Appp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Competitive-Programming-Appp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23913DDA1C6FE1320038BA34 /* Competitive_Programming_Appp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Competitive_Programming_Appp.xcdatamodel; sourceTree = "<group>"; };
 		23913DE61C6FE1320038BA34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				23E0C1291C78233B00941FF5 /* JavaViewController.swift */,
 				23E0C1251C780E5F00941FF5 /* LeftViewController.swift */,
 				23E0C1311C78238F00941FF5 /* Main.storyboard */,
+				237AD42D1C9DE0F200B45CC1 /* FriendsTableViewController.swift */,
 				23E0C1231C780E5500941FF5 /* MainViewController.swift */,
 				23E0C12F1C78235400941FF5 /* NonMenuController.swift */,
 				23913E081C6FE40A0038BA34 /* RegisterViewController.swift */,
@@ -549,6 +552,7 @@
 				23E0C1241C780E5500941FF5 /* MainViewController.swift in Sources */,
 				23E0C14D1C78249D00941FF5 /* String.swift in Sources */,
 				039BDDD01C7A1D2200AFF696 /* FilterTableViewCell.swift in Sources */,
+				237AD42E1C9DE0F200B45CC1 /* FriendsTableViewController.swift in Sources */,
 				23426A701C9B48DA00709C97 /* Problem.swift in Sources */,
 				039D76971C8AB4F600864BD7 /* SuffixArray.swift in Sources */,
 				037A55151C81D7320009939D /* SearchTableViewController.swift in Sources */,
