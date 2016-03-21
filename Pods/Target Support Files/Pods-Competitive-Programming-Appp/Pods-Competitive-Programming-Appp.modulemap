@@ -1,0 +1,6 @@
+framework module Pods_Competitive_Programming_Appp {
+  umbrella header "Pods-Competitive-Programming-Appp-umbrella.h"
+
+  export *
+  module * { export * }
+}

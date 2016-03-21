@@ -11,12 +11,33 @@ import CoreData
 
 
 class MainViewController: UIViewController {
-
-    @IBOutlet weak var tableView: UITableView!
     
+    
+    @IBOutlet weak var topButton: UIButton!
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.registerCellNib(DataTableViewCell.self)
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        //Following 3 lines are temporary
+        
+        userDefaults.setValue( websites[0].name , forKey: "TopWebsite")
+        
+        userDefaults.setValue( websites[1].name , forKey: "LeftWebsite")
+        
+        userDefaults.setValue( websites[2].name , forKey: "RightWebsite")
+        
+        print(userDefaults.objectForKey("TopWebsite") as! String + "_Logo.png")
+        
+        topButton.setBackgroundImage(UIImage(named: userDefaults.objectForKey("TopWebsite") as! String + "_Logo.png"), forState: .Normal)
+        
+        topButton.layer.cornerRadius = 10
+        
+        leftButton.setBackgroundImage(UIImage(named: userDefaults.objectForKey("LeftWebsite") as! String + "_Logo.png"), forState: .Normal)
+        
+        rightButton.setBackgroundImage(UIImage(named: userDefaults.objectForKey("RightWebsite") as! String + "_Logo.png"), forState: .Normal)
         
     }
     
@@ -33,42 +54,4 @@ class MainViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-}
-
-
-extension MainViewController : UITableViewDelegate {
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return DataTableViewCell.height()
-    }
-}
-
-extension MainViewController : UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //websites + overall search cell
-        return websites.count + 1
-    }
-     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier(DataTableViewCell.identifier) as! DataTableViewCell
-        if indexPath.row == 0 {
-            let data = DataTableViewCellData(imageUrl: "dummy", text: "Overall Search")
-            cell.setData(data)
-        } else {
-            let data = DataTableViewCellData(imageUrl: "dummy", text: websites[indexPath.row - 1].name!)
-            cell.setData(data)
-        }
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == 0 {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let searchView = storyboard.instantiateViewControllerWithIdentifier("SearchViewController") as!     SearchViewController
-            self.navigationController?.pushViewController(searchView, animated: true)
-        } else {
-            let storyboard = UIStoryboard(name: "SubContentsViewController", bundle: nil)
-            let subContentsVC = storyboard.instantiateViewControllerWithIdentifier("SubContentsViewController") as! SubContentsViewController
-            self.navigationController?.pushViewController(subContentsVC, animated: true)
-        }
-    }
 }
