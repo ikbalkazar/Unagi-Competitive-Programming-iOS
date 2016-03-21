@@ -1,8 +1,5 @@
 //
 //  LeftViewController.swift
-//  SlideMenuControllerSwift
-//
-//  Created by Yuji Hato on 12/3/14.
 //
 
 import UIKit
@@ -23,7 +20,7 @@ protocol LeftMenuProtocol : class {
 class LeftViewController : UIViewController, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, LeftMenuProtocol {
     
     @IBOutlet weak var tableView: UITableView!
-    var menus = ["Main", "Swift", "Java", "Go", "NonMenu", "Upcoming Contests"]
+    var menus = ["Main", "Swift", "Friends", "Go", "NonMenu", "Upcoming Contests"]
     var mainViewController: UIViewController!
     var swiftViewController: UIViewController!
     var friendsTableViewController: UIViewController!

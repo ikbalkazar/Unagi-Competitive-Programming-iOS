@@ -1,8 +1,10 @@
-//  AppDelegate.swift
+//AppDelegate.swift
+
 
 import UIKit
 import CoreData
 import Parse
+import Async
 
 var contests = [Contest]()
 var problems = [Problem]()
@@ -501,15 +503,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         updateProblemEntityUsingParse()
     }
     
+    func handleFirstTimeProcedures() {
+        
+        if NSUserDefaults.standardUserDefaults().objectForKey("firstTimeCheck") != nil {
+            return
+        }
+        
+        NSUserDefaults.standardUserDefaults().setValue(true, forKey: "firstTimeCheck")
+        
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
         Parse.setApplicationId("8xMwvCqficeHwkS7Ag5PQWdlw1q91ujGcXVRgUnG",
             clientKey: "yXQByidQA8eNkR0NaALnq2KZUvzMhQ9AvPNylyeO")
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-        
+
         self.handleWebsites()
         self.handleProblems()
         self.updateContestEntityUsingClistBy()
+        
+        self.handleFirstTimeProcedures()
+        
         self.createMenuView()
         
         return true

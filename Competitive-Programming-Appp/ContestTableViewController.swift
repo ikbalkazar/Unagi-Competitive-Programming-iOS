@@ -54,12 +54,12 @@ class ContestTableViewController: UITableViewController {
                     print("Json convertion is successful")
                     for var i = 0; i < objects.count; i++
                     {
-                        var event = "No information on event name"
-                        var start = "No information on start time"
-                        var end   = "No information on end time"
-                        var dur:Double = -1
-                        var url   = "No information on url"
-                        var website = "No information on website"
+                        var event: String!
+                        var start: String!
+                        var end: String!
+                        var dur: Double = -1
+                        var url: String!
+                        var website: String!
                         if let tmp = objects[i]["event"] as? String {
                             event = tmp
                         }
