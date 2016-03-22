@@ -1,0 +1,654 @@
+1 Unusual
+2 Unusual
+3 Unusual
+4 Div. 2
+5 Unusual
+6 Div. 2
+7 Unusual
+8 Unusual
+9 Div. 2
+10 Unusual
+11 Unusual
+12 Div. 2
+13 Unusual
+14 Div. 2
+15 Unusual
+16 Div. 2
+17 Unusual
+18 Div. 2
+19 Unusual
+20 Unusual
+21 Unusual
+22 Div. 2
+23 Unusual
+24 Unusual
+25 Div. 2
+26 Unusual
+27 Div. 2
+28 Unusual
+29 Div. 2
+30 Unusual
+31 Div. 2
+32 Div. 2
+33 Unusual
+34 Div. 2
+35 Div. 2
+36 Div. 2
+37 Unusual
+38 Unusual
+39 Unusual
+40 Unusual
+41 Div. 2
+42 Unusual
+43 Div. 2
+44 Unusual
+45 Unusual
+46 Unusual
+47 Div. 2
+48 Unusual
+49 Div. 2
+50 Unusual
+51 Unusual
+52 Unusual
+53 Div. 2
+54 Unusual
+55 Unusual
+56 Div. 2
+57 Unusual
+58 Div. 2
+59 Div. 2
+60 Unusual
+61 Div. 2
+62 Unusual
+63 Div. 2
+64 Unusual
+65 Unusual
+66 Div. 2
+67 Unusual
+68 Unusual
+69 Div. 2
+70 Unusual
+71 Div. 2
+72 Unusual
+73 Unusual
+74 Unusual
+75 Div. 2
+76 Unusual
+77 Div. 1 - Div. 2
+78 Div. 2
+79 Unusual
+80 Div. 1 - Div. 2
+81 Unusual
+82 Unusual
+83 Div. 1
+84 Div. 2
+85 Unusual
+86 Unusual
+87 Div. 1
+88 Div. 2
+89 Div. 1
+90 Div. 1 - Div. 2
+91 Div. 1
+92 Div. 2
+93 Div. 1
+94 Div. 2
+95 Div. 1
+96 Div. 2
+97 Unusual
+98 Div. 1
+99 Div. 2
+100 Unusual
+101 Div. 1
+102 Div. 2
+103 Div. 1
+104 Div. 2
+105 Unusual
+106 Div. 2
+107 Div. 1
+108 Div. 2
+109 Div. 1
+110 Div. 2
+111 Div. 1
+112 Div. 2
+113 Div. 1
+114 Div. 2
+115 Div. 1
+116 Div. 2
+117 Unusual
+118 Div. 2
+119 Unusual
+120 Unusual
+121 Div. 1
+122 Div. 2
+123 Div. 1
+124 Div. 2
+125 Unusual
+126 Div. 1
+127 Div. 2
+128 Div. 1
+129 Div. 2
+130 Unusual
+131 Div. 2
+132 Div. 1
+133 Div. 2
+134 Unusual
+135 Div. 1
+136 Div. 2
+137 Div. 2
+138 Div. 1
+139 Div. 2
+140 Unusual
+141 Div. 2
+142 Div. 1
+143 Div. 2
+144 Div. 2
+145 Div. 1
+146 Div. 2
+147 Unusual
+148 Div. 2
+149 Div. 2
+150 Div. 1
+151 Div. 2
+152 Div. 2
+153 Unusual
+154 Div. 1
+155 Div. 2
+156 Div. 1
+157 Div. 2
+158 Unusual
+159 Unusual
+160 Div. 2
+161 Unusual
+162 Unusual
+163 Unusual
+164 Unusual
+165 Div. 2
+166 Div. 2
+167 Div. 1
+168 Div. 2
+169 Div. 2
+170 Unusual
+171 Unusual
+172 Unusual
+173 Unusual
+174 Div. 2
+175 Unusual
+176 Unusual
+177 Unusual
+178 Unusual
+179 Div. 1 - Div. 2
+180 Div. 2
+181 Div. 2
+182 Div. 2
+183 Unusual
+184 Div. 1 - Div. 2
+185 Div. 1
+186 Div. 2
+187 Div. 1
+188 Unusual
+189 Div. 2
+190 Div. 2
+191 Div. 1
+192 Div. 2
+193 Div. 1
+194 Div. 2
+195 Div. 2
+196 Div. 1
+197 Div. 2
+198 Div. 1
+199 Div. 2
+200 Div. 2
+201 Div. 1
+202 Div. 2
+203 Div. 2
+204 Div. 1
+205 Div. 2
+206 Unusual
+207 Unusual
+208 Div. 2
+209 Unusual
+210 Div. 1 - Div. 2
+211 Unusual
+212 Unusual
+213 Div. 1
+214 Div. 2
+215 Div. 2
+216 Div. 2
+217 Div. 1
+218 Div. 2
+219 Div. 2
+220 Div. 1
+221 Div. 2
+222 Div. 2
+223 Div. 1
+224 Div. 2
+225 Div. 2
+226 Div. 1
+227 Div. 2
+228 Div. 2
+229 Div. 1
+230 Div. 2
+231 Div. 2
+232 Div. 1
+233 Div. 2
+234 Div. 2
+235 Div. 1
+236 Div. 2
+237 Div. 2
+238 Div. 1
+239 Div. 2
+240 Div. 1
+241 Unusual
+242 Div. 2
+243 Div. 1
+244 Div. 2
+245 Unusual
+246 Div. 2
+247 Div. 2
+248 Div. 2
+249 Div. 1
+250 Div. 2
+251 Div. 1
+252 Div. 2
+253 Div. 2
+254 Div. 2
+255 Div. 2
+256 Div. 1
+257 Div. 2
+258 Div. 1
+259 Div. 2
+260 Div. 2
+261 Div. 1
+262 Div. 2
+263 Div. 2
+264 Div. 1
+265 Div. 2
+266 Div. 2
+267 Unusual
+268 Div. 2
+269 Div. 1
+270 Div. 2
+271 Div. 2
+272 Div. 2
+273 Div. 1
+274 Div. 1
+275 Div. 2
+276 Div. 2
+277 Div. 1
+278 Div. 2
+279 Div. 2
+280 Div. 1
+281 Div. 2
+282 Div. 2
+283 Div. 1
+284 Div. 2
+285 Div. 2
+286 Div. 1
+287 Div. 2
+288 Div. 1
+289 Div. 2
+290 Unusual
+291 Unusual
+292 Unusual
+293 Unusual
+294 Div. 2
+295 Div. 1
+296 Div. 2
+297 Div. 1
+298 Div. 2
+299 Div. 2
+300 Div. 2
+301 Div. 1
+302 Div. 2
+303 Div. 1
+304 Div. 2
+305 Div. 2
+306 Unusual
+307 Div. 1 - Div. 2
+308 Unusual
+309 Div. 1
+310 Div. 1 - Div. 2
+311 Div. 1
+312 Div. 2
+313 Div. 2
+314 Div. 1
+315 Div. 2
+316 Unusual
+317 Div. 1
+318 Div. 2
+319 Div. 1
+320 Div. 2
+321 Div. 1
+322 Div. 2
+323 Unusual
+324 Unusual
+325 Unusual
+326 Unusual
+327 Div. 2
+328 Unusual
+329 Div. 1
+330 Div. 2
+331 Unusual
+332 Div. 2
+333 Div. 1
+334 Div. 2
+335 Unusual
+336 Div. 2
+337 Div. 2
+338 Div. 1
+339 Div. 2
+340 Div. 2
+341 Div. 1
+342 Div. 2
+343 Div. 1
+344 Div. 2
+345 Unusual
+346 Div. 1
+347 Div. 2
+348 Div. 1
+349 Div. 2
+350 Div. 2
+351 Div. 1
+352 Div. 2
+353 Div. 2
+354 Div. 1
+355 Div. 2
+356 Div. 1
+357 Div. 2
+358 Div. 2
+359 Div. 2
+360 Div. 1
+361 Div. 2
+362 Div. 2
+363 Div. 2
+364 Div. 1
+365 Div. 2
+366 Div. 2
+367 Div. 1
+368 Div. 2
+369 Div. 2
+370 Div. 2
+371 Div. 2
+372 Div. 1
+373 Div. 2
+374 Div. 2
+375 Div. 1
+376 Div. 2
+377 Div. 1
+378 Div. 2
+379 Unusual
+380 Div. 1
+381 Div. 2
+382 Div. 2
+383 Div. 1
+384 Div. 2
+385 Div. 2
+386 Div. 2
+387 Div. 2
+388 Div. 1
+389 Div. 2
+390 Div. 2
+391 Unusual
+392 Div. 1
+393 Div. 2
+394 Div. 2
+395 Div. 1 - Div. 2
+396 Div. 1
+397 Div. 2
+398 Div. 1
+399 Div. 2
+400 Div. 2
+401 Div. 2
+402 Div. 2
+403 Div. 1
+404 Div. 2
+405 Div. 2
+406 Div. 1
+407 Div. 1
+408 Div. 2
+409 Unusual
+410 Div. 1 - Div. 2
+411 Unusual
+412 Unusual
+413 Unusual
+414 Div. 1
+415 Div. 2
+416 Div. 2
+417 Div. 2
+418 Div. 1
+419 Unusual
+420 Div. 1
+421 Div. 2
+423 Div. 1 - Div. 2
+424 Div. 2
+425 Div. 1
+426 Div. 2
+427 Div. 2
+428 Div. 1 - Div. 2
+429 Div. 1
+430 Div. 2
+431 Div. 2
+432 Div. 2
+433 Div. 2
+434 Div. 1
+435 Div. 2
+436 Unusual
+437 Div. 2
+438 Div. 1
+439 Div. 2
+440 Unusual
+441 Div. 2
+442 Div. 1
+443 Div. 2
+444 Div. 1
+445 Div. 2
+446 Div. 1
+447 Div. 2
+448 Div. 2
+449 Div. 1
+450 Div. 2
+451 Div. 2
+452 Unusual
+453 Div. 1
+454 Div. 2
+455 Div. 1
+456 Div. 2
+457 Unusual
+458 Unusual
+459 Div. 2
+460 Div. 2
+461 Div. 1
+462 Div. 2
+463 Div. 2
+464 Div. 1
+465 Div. 2
+466 Div. 2
+467 Div. 2
+468 Div. 1
+469 Div. 2
+470 Unusual
+471 Div. 2
+472 Unusual
+473 Div. 1 - Div. 2
+474 Div. 2
+475 Unusual
+476 Div. 2
+477 Div. 1
+478 Div. 2
+479 Div. 2
+480 Div. 1
+481 Div. 1 - Div. 2
+482 Div. 1
+483 Div. 2
+484 Div. 1
+485 Div. 2
+486 Div. 2
+487 Div. 1
+488 Div. 2
+489 Div. 2
+490 Div. 2
+491 Unusual
+492 Div. 2
+493 Div. 2
+494 Div. 1
+495 Div. 2
+496 Div. 2
+497 Div. 1
+498 Div. 1
+499 Div. 2
+500 Unusual
+501 Div. 2
+502 Div. 1 - Div. 2
+503 Div. 1 - Div. 2
+504 Div. 1
+505 Div. 2
+506 Div. 1
+507 Div. 2
+508 Div. 2
+509 Div. 2
+510 Div. 2
+511 Div. 1 - Div. 2
+512 Div. 1
+513 Unusual
+514 Div. 2
+515 Div. 2
+516 Div. 1
+517 Div. 1 - Div. 2
+518 Div. 2
+519 Div. 2
+520 Div. 2
+521 Div. 1
+522 Unusual
+523 Unusual
+524 Unusual
+525 Div. 2
+526 Unusual
+527 Div. 2
+528 Div. 1
+529 Div. 1
+530 Unusual
+531 Unusual
+532 Unusual
+533 Div. 1
+534 Div. 2
+535 Div. 2
+536 Div. 1
+537 Unusual
+538 Unusual
+539 Div. 1 - Div. 2
+540 Div. 2
+541 Unusual
+542 Div. 1
+543 Div. 1
+544 Div. 2
+545 Div. 2
+546 Div. 2
+547 Div. 1
+548 Div. 2
+549 Unusual
+550 Div. 2
+551 Div. 2
+552 Div. 2
+553 Div. 1
+554 Div. 2
+555 Div. 1
+556 Div. 2
+557 Div. 2
+558 Div. 2
+559 Div. 1
+560 Div. 2
+561 Div. 1 - Div. 2
+562 Unusual
+563 Div. 1 - Div. 2
+564 Div. 1 - Div. 2
+565 Div. 1 - Div. 2
+566 Unusual
+567 Div. 2
+568 Div. 1
+569 Div. 2
+570 Div. 2
+571 Div. 1
+572 Div. 2
+573 Div. 1
+574 Div. 2
+575 Unusual
+576 Div. 1
+577 Div. 2
+578 Div. 1
+579 Div. 2
+580 Div. 2
+581 Div. 2
+582 Div. 1
+583 Div. 2
+584 Div. 2
+585 Div. 1
+586 Div. 2
+587 Div. 1
+588 Div. 2
+589 Unusual
+590 Div. 1
+591 Div. 2
+592 Div. 2
+593 Div. 2
+594 Div. 1
+595 Div. 2
+596 Div. 2
+597 Unusual
+598 Unusual
+599 Div. 2
+600 Unusual
+601 Div. 1
+602 Div. 2
+603 Div. 1
+604 Div. 2
+605 Div. 1
+606 Div. 2
+607 Div. 1
+608 Div. 2
+609 Unusual
+610 Div. 2
+611 Unusual
+612 Unusual
+613 Div. 1 - Div. 2
+614 Div. 1 - Div. 2
+615 Div. 2
+616 Unusual
+617 Div. 2
+618 Div. 1 - Div. 2
+619 Div. 1 - Div. 2
+620 Unusual
+621 Div. 2
+622 Unusual
+623 Div. 1
+624 Div. 2
+625 Div. 2
+626 Unusual
+627 Unusual
+628 Unusual
+629 Div. 2
+630 Unusual
+631 Div. 2
+632 Unusual
+633 Unusual
+634 Div. 1
+635 Div. 2
+636 Unusual
+637 Unusual
+638 Unusual
+639 Div. 1 - Div. 2
+640 Div. 1 - Div. 2
+641 Div. 1 - Div. 2
+642 Div. 1 - Div. 2
+643 Div. 1 - Div. 2
+644 Unusual
+645 Unusual
+646 Unusual
+647 Div. 1 - Div. 2
+648 Div. 1 - Div. 2
+649 Div. 1 - Div. 2
+650 Div. 1
+651 Div. 2
+652 Div. 1 - Div. 2
+653 Div. 1 - Div. 2
+654 Div. 1 - Div. 2
+655 Unusual

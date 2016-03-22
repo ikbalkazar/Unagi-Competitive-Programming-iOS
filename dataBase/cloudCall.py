@@ -1,29 +1,23 @@
 import json,httplib,urllib,urllib2
 
-req = urllib2.Request("http://codeforces.com/api/problemset.problems")
-response = urllib2.urlopen(req)
-page = response.read()
-content = json.loads(page);
+divmap = {}
+for i in xrange(654):
+  data = map(str, raw_input().split(' '))
+  divmap[int(data[0])] = ''.join(data[1:])
 
-problemStats = content["result"]["problemStatistics"]
+connection = httplib.HTTPSConnection('api.parse.com', 443)
 
-for i in xrange(3):
-  connection = httplib.HTTPSConnection('api.parse.com', 443)
+connection.connect()
 
-  connection.connect()
+connection.request('POST', '/1/functions/CFContestSet', json.dumps({
+    "tpMap": divmap
+  }), {
+     "X-Parse-Application-Id": "8xMwvCqficeHwkS7Ag5PQWdlw1q91ujGcXVRgUnG",
+     "X-Parse-REST-API-Key": "utzFK6Be6yOJBeNF6KoeJIsSONxfnLoZIeyQuopK",
+     "Content-Type": "application/json"
+   })
 
-  connection.request('POST', '/1/functions/CodeforcesSolverCount', json.dumps({
-      "problemStats": problemStats,
-      "limit": 1000,
-      "skip": i * 1000
-    }), {
-       "X-Parse-Application-Id": "8xMwvCqficeHwkS7Ag5PQWdlw1q91ujGcXVRgUnG",
-       "X-Parse-REST-API-Key": "utzFK6Be6yOJBeNF6KoeJIsSONxfnLoZIeyQuopK",
-       "Content-Type": "application/json"
-     })
+result = json.loads(connection.getresponse().read())
 
-  result = json.loads(connection.getresponse().read())
-
-  print result
-
+print result
     

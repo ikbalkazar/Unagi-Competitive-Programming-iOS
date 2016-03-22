@@ -16,6 +16,11 @@ class MainViewController: UIViewController {
     @IBOutlet weak var topButton: UIButton!
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
+    
+    @IBAction func topButtonPressed(sender: AnyObject) {
+        performSegueWithIdentifier("ShowTabView", sender: self);
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
