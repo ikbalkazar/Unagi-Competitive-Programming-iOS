@@ -5,18 +5,52 @@ Parse.Cloud.define("hello", function(request, response) {
   response.success("Hello world asdasd!");
 });
 
-Parse.Cloud.define("CodeforcesUrlFix", function(request, response) {
+
+Parse.Cloud.define("CFContestSet", function(request, response) {
+  
+});
+
+Parse.Cloud.define("CodeforcesSolverCount", function(request, response) {
+  problemStats = request.params.problemStats;
+  var statMap = {};
+  for (var i = 0; i < problemStats.length; i++) {
+    var cur = problemStats[i];
+    statMap[cur.contestId.toString() + cur.index] = cur.solvedCount;
+  }
   var query = new Parse.Query("Problems");
   query.equalTo("websiteId", "Codeforces");
-  query.startsWith("url", "code");
+  query.doesNotExist("solvedBy");
   query.limit(parseInt(request.params.limit, 10));
   query.skip(parseInt(request.params.skip, 10));
   query.find().then(function(results) {
-    var savePromises = results.map(function(result) {
+    var promises = results.map(function(result) {
       var url = result.get("url");
-      return result.save({url: "https://www." + url});
+      var parts = url.split('/');
+      var contestId = parts[parts.length - 2];
+      var index = parts[parts.length - 1];
+      var solvedCount = statMap[contestId + index];
+      return result.save({solvedBy: solvedCount});
     });
-    return Parse.Promise.when(savePromises);
+    return Parse.Promise.when(promises);
+  }).then(function() {
+    response.success();
+  }, function(err) {
+    response.error(err);
+  })
+});
+
+Parse.Cloud.define("CodeforcesUrlFix", function(request, response) {
+  var query = new Parse.Query("Problems");
+  query.equalTo("websiteId", "Codeforces");
+  query.startsWith("url", "https://codeforces");
+  query.limit(parseInt(request.params.limit, 10));
+  query.skip(parseInt(request.params.skip, 10));
+  query.find().then(function(results) {
+    var promises = results.map(function(result) {
+      var url = result.get("url");
+      return result.save({url: "https://www." + url.substring(8)});
+    });
+    return Parse.Promise.when(promises);
   }).then(function() {
     response.success();
   }, function(err) {
