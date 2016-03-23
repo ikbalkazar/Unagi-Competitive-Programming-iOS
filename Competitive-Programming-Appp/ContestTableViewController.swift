@@ -31,7 +31,7 @@ class ContestTableViewController: UITableViewController {
     
     func downloadContests() {
         
-        print("Download Started")
+        print("downloadContests()")
         
         let now = NSDate()
         let dateFormatter = NSDateFormatter()
@@ -51,7 +51,6 @@ class ContestTableViewController: UITableViewController {
                 do {
                     let jsonRes = try NSJSONSerialization.JSONObjectWithData(content, options: NSJSONReadingOptions.MutableContainers)
                     let objects = jsonRes["objects"]!!
-                    print("Json convertion is successful")
                     for var i = 0; i < objects.count; i++
                     {
                         var event: String!
@@ -90,33 +89,31 @@ class ContestTableViewController: UITableViewController {
             } else {
                 self.displayAlert("Error" , message: "No new data found. Check your internet connection")
             }
-            // We could call the same function in the AppDelegate.swift but this line causes problem
-            self.refresher.endRefreshing()
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                if self.refresher.refreshing {
+                    self.refresher.endRefreshing()
+                }
+            })
             self.updateContests()
         })
+        
         myQuery.resume()
-        
-        print("Download Finished")
-        
     }
     
     func updateContests() {
-        print("Update started")
+        
         filteredContests.removeAll()
         for contest in contests {
             
-            if ( NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name + "filtered") as! Bool ) == true {
+            if NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name + "filtered") as! Bool {
                 filteredContests.append(contest)
             }
-            
         }
-        print("Update finished")
         self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
-        
-        print("View Did Load")
         
         super.viewDidLoad()
         
@@ -129,11 +126,10 @@ class ContestTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     override func viewWillAppear(animated: Bool) {
-        
-        print("View Will Appear")
         
         super.viewWillAppear(animated)
         
@@ -146,10 +142,7 @@ class ContestTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -161,10 +154,6 @@ class ContestTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
       
         let cell = tableView.dequeueReusableCellWithIdentifier("ContestTableCell", forIndexPath: indexPath) as! ContestTableViewCell
-        
-        if indexPath.row == 1 {
-            print("Table is loading")
-        }
         
         // Hard to explain but this is required
         // Update: Might not be required anymore but still in case

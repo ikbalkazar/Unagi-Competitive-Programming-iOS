@@ -71,7 +71,6 @@
 		23E0C1241C780E5500941FF5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0C1231C780E5500941FF5 /* MainViewController.swift */; };
 		23E0C1261C780E5F00941FF5 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0C1251C780E5F00941FF5 /* LeftViewController.swift */; };
 		23E0C1281C780E6600941FF5 /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0C1271C780E6600941FF5 /* RightViewController.swift */; };
-		23E0C12A1C78233B00941FF5 /* JavaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0C1291C78233B00941FF5 /* JavaViewController.swift */; };
 		23E0C12C1C78234400941FF5 /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0C12B1C78234400941FF5 /* SwiftViewController.swift */; };
 		23E0C12E1C78234C00941FF5 /* GoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0C12D1C78234C00941FF5 /* GoViewController.swift */; };
 		23E0C1301C78235400941FF5 /* NonMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0C12F1C78235400941FF5 /* NonMenuController.swift */; };
@@ -167,7 +166,6 @@
 		23E0C1231C780E5500941FF5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		23E0C1251C780E5F00941FF5 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		23E0C1271C780E6600941FF5 /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
-		23E0C1291C78233B00941FF5 /* JavaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JavaViewController.swift; sourceTree = "<group>"; };
 		23E0C12B1C78234400941FF5 /* SwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
 		23E0C12D1C78234C00941FF5 /* GoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoViewController.swift; sourceTree = "<group>"; };
 		23E0C12F1C78235400941FF5 /* NonMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonMenuController.swift; sourceTree = "<group>"; };
@@ -351,7 +349,6 @@
 				237AD42D1C9DE0F200B45CC1 /* FriendsTableViewController.swift */,
 				23E0C12D1C78234C00941FF5 /* GoViewController.swift */,
 				23913E061C6FE31A0038BA34 /* LoginViewController.swift */,
-				23E0C1291C78233B00941FF5 /* JavaViewController.swift */,
 				23E0C1251C780E5F00941FF5 /* LeftViewController.swift */,
 				23AEC4881CA0ECDE00B664AF /* ProblemViewController.swift */,
 				23E0C1311C78238F00941FF5 /* Main.storyboard */,
@@ -619,7 +616,6 @@
 				03216EE31C75CE45009C9236 /* ContestTableViewCell.swift in Sources */,
 				23E0C1521C78249D00941FF5 /* UITableViewExtension.swift in Sources */,
 				23913DDB1C6FE1320038BA34 /* Competitive_Programming_Appp.xcdatamodeld in Sources */,
-				23E0C12A1C78233B00941FF5 /* JavaViewController.swift in Sources */,
 				23E0C1241C780E5500941FF5 /* MainViewController.swift in Sources */,
 				23E0C14D1C78249D00941FF5 /* String.swift in Sources */,
 				039BDDD01C7A1D2200AFF696 /* FilterTableViewCell.swift in Sources */,
