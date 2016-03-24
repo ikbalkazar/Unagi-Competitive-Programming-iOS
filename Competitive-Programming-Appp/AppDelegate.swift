@@ -32,12 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let url = website.valueForKey("url") as! String
                 let contestStatus = website.valueForKey("contestStatus") as! String
                 websites.append( Website(id: objectId, name: name, url: url, contestStatus: contestStatus) )
-                    
             }
             
         } catch {
             print("There is a problem getting websites from Core Data")
         }
+        
+        print("Websites Array Size = \(websites.count)")
         
     }
     
@@ -45,6 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Preloads websites from Website.csv and stores it in Core Data - Website Entity
     */
     func preLoadWebsiteEntity() {
+        
+        print("PreLoad Website Entity")
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context: NSManagedObjectContext = appDel.managedObjectContext!
@@ -119,7 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("There is a problem getting Problems from Core Data")
         }
         
-        print("Problems Array Initialized and the size of it is => \(problems.count)")
+        print("Problems Array Size => \(problems.count)")
         
     }
     
@@ -207,8 +210,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 if let objects = objects {
                     
-                    print("returned size => \(objects.count)")
-                    
                     for problem in objects {
                         
                         let request = NSFetchRequest(entityName: "Problem")
@@ -261,12 +262,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                     newProblem.setValue(websiteId, forKey: "websiteId")
                                     newProblem.setValue(NSDate(), forKey: "updatedAt")
                                     
-                                    do {
-                                        try context.save()
-                                    } catch {
-                                        print("Error saving into Core Data - Problems Database")
-                                    }
-                                    
                                 } else {
                                     
                                     if s2%100 == 0 {
@@ -282,12 +277,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                     results[0].setValue(websiteId, forKey: "websiteId")
                                     results[0].setValue(NSDate(), forKey: "updatedAt")
                                     
-                                    do {
-                                        try context.save()
-                                    } catch {
-                                        print("Error saving into Core Data - Problems Database")
-                                    }
-                                    
+                                }
+                                
+                                do {
+                                    try context.save()
+                                } catch {
+                                    print("Error saving into Core Data - Problems Database")
                                 }
                                 
                             }
@@ -313,6 +308,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func updateFilteredContestsArray() {
+        
+        filteredContests.removeAll()
         
         for contest in contests {
             if ( NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name + "filtered") as! Bool ) == true {
@@ -352,11 +349,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Could not execute Fetch Request - Contest Entity")
         }
         
+        print("Contests Array size => \(contests.count)")
+        
     }
     
     func updateContestEntityUsingClistBy() {
         
-        print("Download Started")
+        print("Contest Download Started")
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context: NSManagedObjectContext = appDel.managedObjectContext!
@@ -455,7 +454,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             self.initializeContestsArrayUsingContestEntity()
-            print("Download Finished")
+            print("Contest download Finished")
             
         })
         myQuery.resume()
@@ -484,32 +483,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
     }
     
-    func handleWebsites() {
-        
-        if NSUserDefaults.standardUserDefaults().objectForKey("WebsiteEntityPreLoaded") == nil {
-            self.preLoadWebsiteEntity()
-            NSUserDefaults.standardUserDefaults().setObject(true, forKey: "WebsiteEntityPreLoaded")
-        }
-        self.initializeWebsitesArrayUsingWebsiteEntity()
-    }
-    
-    func handleProblems() {
-        
-        if NSUserDefaults.standardUserDefaults().objectForKey("ProblemEntityPreLoaded") == nil {
-            self.preLoadProblemEntity()
-            NSUserDefaults.standardUserDefaults().setObject(true, forKey: "ProblemEntityPreLoaded")
-        }
-        
-        updateProblemEntityUsingParse()
-    }
-    
     func handleFirstTimeProcedures() {
         
-        if NSUserDefaults.standardUserDefaults().objectForKey("firstTimeCheck") != nil {
-            return
-        }
-        
         NSUserDefaults.standardUserDefaults().setValue(true, forKey: "firstTimeCheck")
+        self.preLoadWebsiteEntity()
+        self.preLoadProblemEntity()
         
     }
     
@@ -518,12 +496,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("8xMwvCqficeHwkS7Ag5PQWdlw1q91ujGcXVRgUnG",
             clientKey: "yXQByidQA8eNkR0NaALnq2KZUvzMhQ9AvPNylyeO")
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-
-        self.handleWebsites()
-        self.handleProblems()
-        self.updateContestEntityUsingClistBy()
         
-        self.handleFirstTimeProcedures()
+        if NSUserDefaults.standardUserDefaults().objectForKey("firstTimeCheck") == nil {
+            self.handleFirstTimeProcedures()
+        }
+        
+        self.initializeWebsitesArrayUsingWebsiteEntity()
+        self.updateContestEntityUsingClistBy()
+        self.updateProblemEntityUsingParse()
         
         self.createMenuView()
         
