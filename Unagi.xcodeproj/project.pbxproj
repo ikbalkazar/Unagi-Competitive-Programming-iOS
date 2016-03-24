@@ -141,7 +141,7 @@
 		23426A6D1C9B48D000709C97 /* Website.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Website.swift; sourceTree = "<group>"; };
 		23426A6F1C9B48DA00709C97 /* Problem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Problem.swift; sourceTree = "<group>"; };
 		237AD42D1C9DE0F200B45CC1 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
-		23913DD41C6FE1320038BA34 /* Competitive-Programming-Appp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Competitive-Programming-Appp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23913DD41C6FE1320038BA34 /* Unagi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unagi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23913DDA1C6FE1320038BA34 /* Competitive_Programming_Appp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Competitive_Programming_Appp.xcdatamodel; sourceTree = "<group>"; };
 		23913DE61C6FE1320038BA34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23913DEE1C6FE1E90038BA34 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -305,7 +305,7 @@
 		23913DD51C6FE1320038BA34 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				23913DD41C6FE1320038BA34 /* Competitive-Programming-Appp.app */,
+				23913DD41C6FE1320038BA34 /* Unagi.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -433,9 +433,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		23913DD31C6FE1320038BA34 /* Competitive-Programming-Appp */ = {
+		23913DD31C6FE1320038BA34 /* Unagi */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 23913DEB1C6FE1320038BA34 /* Build configuration list for PBXNativeTarget "Competitive-Programming-Appp" */;
+			buildConfigurationList = 23913DEB1C6FE1320038BA34 /* Build configuration list for PBXNativeTarget "Unagi" */;
 			buildPhases = (
 				6874D4FE74E05B0B08490AA8 /* Check Pods Manifest.lock */,
 				23913DD01C6FE1320038BA34 /* Sources */,
@@ -448,9 +448,9 @@
 			);
 			dependencies = (
 			);
-			name = "Competitive-Programming-Appp";
+			name = Unagi;
 			productName = "Competitive-Programming-Appp";
-			productReference = 23913DD41C6FE1320038BA34 /* Competitive-Programming-Appp.app */;
+			productReference = 23913DD41C6FE1320038BA34 /* Unagi.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -469,7 +469,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 23913DCF1C6FE1320038BA34 /* Build configuration list for PBXProject "Competitive-Programming-Appp" */;
+			buildConfigurationList = 23913DCF1C6FE1320038BA34 /* Build configuration list for PBXProject "Unagi" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -482,7 +482,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				23913DD31C6FE1320038BA34 /* Competitive-Programming-Appp */,
+				23913DD31C6FE1320038BA34 /* Unagi */,
 			);
 		};
 /* End PBXProject section */
@@ -741,7 +741,7 @@
 				INFOPLIST_FILE = "Competitive-Programming-Appp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Competitive-Programmin-App.ikbalandharun.Comp-App";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Unagi;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -760,7 +760,7 @@
 				INFOPLIST_FILE = "Competitive-Programming-Appp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Competitive-Programmin-App.ikbalandharun.Comp-App";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Unagi;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -768,7 +768,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		23913DCF1C6FE1320038BA34 /* Build configuration list for PBXProject "Competitive-Programming-Appp" */ = {
+		23913DCF1C6FE1320038BA34 /* Build configuration list for PBXProject "Unagi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				23913DE91C6FE1320038BA34 /* Debug */,
@@ -777,7 +777,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		23913DEB1C6FE1320038BA34 /* Build configuration list for PBXNativeTarget "Competitive-Programming-Appp" */ = {
+		23913DEB1C6FE1320038BA34 /* Build configuration list for PBXNativeTarget "Unagi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				23913DEC1C6FE1320038BA34 /* Debug */,

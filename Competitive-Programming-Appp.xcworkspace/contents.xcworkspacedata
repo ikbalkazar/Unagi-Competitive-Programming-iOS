@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Competitive-Programming-Appp.xcodeproj">
+      location = "group:/Users/ikbalkazar/Desktop/github/Ver3/Competitive-Programming-App/Unagi.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

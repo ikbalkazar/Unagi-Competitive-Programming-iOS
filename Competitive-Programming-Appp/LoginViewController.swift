@@ -9,8 +9,6 @@
 import UIKit
 import Parse
 
-var months = [ "January" , "February" , "March" , "April" , "May" , "June" , "July" , "August" , "September" , "October" , "November" , "December" ]
-
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var username: UITextField!
@@ -24,6 +22,7 @@ class LoginViewController: UIViewController {
                 RegisterViewController().displayAlert("Error" , message: "Login Failed" )
             } else {
                 
+                //which segue is login1??
                 self.performSegueWithIdentifier("login1", sender: self)
                 
             }

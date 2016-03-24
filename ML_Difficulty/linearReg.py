@@ -1,8 +1,18 @@
 from sklearn import linear_model
-from sklearn import datasets
+import random
 
-db = datasets.load_diabetes()
+X = [[random.randrange(10), random.randrange(10), random.randrange(10)] for i in xrange(5)]
 
-print db.target
-print len(db.data)
-print len(db.data[0])
+#print X
+
+y = []
+for r in X:
+  y.append(r[0] * r[1] * r[2])
+
+#print y
+
+clf = linear_model.Ridge(alpha = 0.001)
+
+print clf.fit(X, y)
+
+print clf.predict([[4, 2, 5]])
