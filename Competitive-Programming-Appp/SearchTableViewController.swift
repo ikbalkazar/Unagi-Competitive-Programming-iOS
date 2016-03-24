@@ -113,15 +113,17 @@ class SearchTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         //UIApplication.sharedApplication().openURL(NSURL(string: requestedProblems[indexPath.row].url)!)
-        performSegueWithIdentifier("SearchTable_TabBar", sender: self)
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            performSegueWithIdentifier("SearchTable_TabBar", sender: cell)
+        }
         return indexPath
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let selectedIndex = self.tableView.indexPathForCell(sender as! UITableViewCell)
         if segue.identifier == "SearchTable_TabBar" {
             if let dest = segue.destinationViewController as? ProblemTabBarController {
-                let path = tableView.indexPathForSelectedRow!
-                dest.viaSegue_problem = requestedProblems[path.row]
+                dest.viaSegue_problem = requestedProblems[selectedIndex!.row]
             }
         }
     }

@@ -45,6 +45,8 @@ class LeftViewController : UIViewController, UIGestureRecognizerDelegate, UIImag
         self.swiftViewController = UINavigationController(rootViewController: swiftViewController)
         
         let contestTableViewController = storyboard.instantiateViewControllerWithIdentifier("ContestTableViewController") as! ContestTableViewController
+        contestTableViewController.delegate = self
+        
         self.contestTableViewController = UINavigationController(rootViewController: contestTableViewController)
         
         let friendsTableViewController = storyboard.instantiateViewControllerWithIdentifier("FriendsTableViewController") as! FriendsTableViewController
@@ -55,10 +57,6 @@ class LeftViewController : UIViewController, UIGestureRecognizerDelegate, UIImag
         
         let nonMenuController = storyboard.instantiateViewControllerWithIdentifier("NonMenuController") as! NonMenuController
         nonMenuController.delegate = self
-        
-        let UpcomingContestsContoller = storyboard.instantiateViewControllerWithIdentifier("ContestTableViewController") as! ContestTableViewController
-        UpcomingContestsContoller.delegate = self
-        
         
         self.nonMenuViewController = UINavigationController(rootViewController: nonMenuController)
         

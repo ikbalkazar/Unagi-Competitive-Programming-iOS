@@ -117,7 +117,7 @@ class ContestTableViewController: UITableViewController {
                         newContest.setValue(url, forKey: "url")
                         newContest.setValue(dur, forKey: "duration")
                         newContest.setValue(website, forKey: "websiteName")
-                        
+                    
                         do {
                             try context.save()
                         } catch {

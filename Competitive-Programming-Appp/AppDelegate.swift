@@ -363,11 +363,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         }
                         
                     }
-                    if newContest.website == nil {
-                        newContest.website = Website(id: "none", name: "none", url: "none", contestStatus: "0")
+                    if newContest.website != nil {
+                        //newContest.website = Website(id: "none", name: "none", url: "none", contestStatus: "0")
+                        contests.append(newContest)
                     }
                     
-                    contests.append(newContest)
                 }
                 
                 self.updateFilteredContestsArray()
@@ -431,7 +431,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         print("Could not delete objects in Contest Entity")
                     }
                     
-                    for i in 0 ..< objects.count {
+                    for i in 0 ..< objects!.count {
                         
                         var event: String!
                         var start: String!
@@ -440,22 +440,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         var url: String!
                         var website: String!
                         
-                        if let tmp = objects[i]?["event"] as? String {
+                        if let tmp = objects![i]?["event"] as? String {
                             event = tmp
                         }
-                        if let tmp = objects[i]?["start"] as? String {
+                        if let tmp = objects![i]?["start"] as? String {
                             start = tmp
                         }
-                        if let tmp = objects[i]?["end"] as? String {
+                        if let tmp = objects![i]?["end"] as? String {
                             end = tmp
                         }
-                        if let tmp = objects[i]?["duration"] as? Double {
+                        if let tmp = objects![i]?["duration"] as? Double {
                             dur = tmp
                         }
-                        if let tmp = objects[i]?["href"] as? String {
+                        if let tmp = objects![i]?["href"] as? String {
                             url = tmp
                         }
-                        if let tmp = objects[i]?["resource"] {
+                        if let tmp = objects![i]?["resource"] {
                             if let tmp2 = tmp?["name"] as? String {
                                 website = tmp2
                             }
