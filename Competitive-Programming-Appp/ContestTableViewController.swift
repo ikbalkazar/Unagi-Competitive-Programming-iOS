@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 var selectedContest: Contest!
 
@@ -31,7 +32,10 @@ class ContestTableViewController: UITableViewController {
     
     func downloadContests() {
         
-        print("downloadContests()")
+        print("Contest Download Started")
+        
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDel.managedObjectContext!
         
         let now = NSDate()
         let dateFormatter = NSDateFormatter()
@@ -51,21 +55,46 @@ class ContestTableViewController: UITableViewController {
                 do {
                     let jsonRes = try NSJSONSerialization.JSONObjectWithData(content, options: NSJSONReadingOptions.MutableContainers)
                     let objects = jsonRes["objects"]!!
-                    for var i = 0; i < objects.count; i++
-                    {
+                    print("Json convertion is successful")
+                    
+                    //Delete all content first
+                    let request = NSFetchRequest(entityName: "Contest")
+                    do {
+                        
+                        if let objects = try context.executeFetchRequest(request) as? [NSManagedObject] {
+                            
+                            for object in objects {
+                                context.deleteObject(object)
+                            }
+                            
+                            do {
+                                try context.save()
+                            } catch {
+                                print("Could not save")
+                            }
+                            
+                        }
+                        
+                    } catch {
+                        print("Could not delete objects in Contest Entity")
+                    }
+                    
+                    for i in 0 ..< objects.count {
+                        
                         var event: String!
                         var start: String!
                         var end: String!
-                        var dur: Double = -1
+                        var dur:Double = -1
                         var url: String!
                         var website: String!
-                        if let tmp = objects[i]["event"] as? String {
+                        
+                        if let tmp = objects[i]?["event"] as? String {
                             event = tmp
                         }
-                        if let tmp = objects[i]["start"] as? String {
+                        if let tmp = objects[i]?["start"] as? String {
                             start = tmp
                         }
-                        if let tmp = objects[i]["end"] as? String {
+                        if let tmp = objects[i]?["end"] as? String {
                             end = tmp
                         }
                         if let tmp = objects[i]["duration"] as? Double {
@@ -74,30 +103,39 @@ class ContestTableViewController: UITableViewController {
                         if let tmp = objects[i]["href"] as? String {
                             url = tmp
                         }
-                        if let tmp = objects[i]["resource"] {
-                            if let tmp2 = tmp!["name"] as? String {
+                        if let tmp = objects[i]?["resource"] {
+                            if let tmp2 = tmp?["name"] as? String {
                                 website = tmp2
                             }
                         }
                         
-                        contests.append(Contest(event: event, start: start, end: end, duration: dur, url: url, website: website))
+                        let newContest = NSEntityDescription.insertNewObjectForEntityForName("Contest", inManagedObjectContext: context)
+                        
+                        newContest.setValue(event, forKey: "name")
+                        newContest.setValue(start, forKey: "start")
+                        newContest.setValue(end, forKey: "end")
+                        newContest.setValue(url, forKey: "url")
+                        newContest.setValue(dur, forKey: "duration")
+                        newContest.setValue(website, forKey: "websiteName")
+                        
+                        do {
+                            try context.save()
+                        } catch {
+                            print("Could not save 2")
+                        }
+                        
                     }
                     
                 } catch {
-                    self.displayAlert("Error" , message: "Can not convert to JSON")
+                    print("Can not convert to JSON")
                 }
             } else {
-                self.displayAlert("Error" , message: "No new data found. Check your internet connection")
+                print("No new data found. Check your internet connection")
             }
             
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                if self.refresher.refreshing {
-                    self.refresher.endRefreshing()
-                }
-            })
-            self.updateContests()
+            print("Contest download Finished")
+            
         })
-        
         myQuery.resume()
     }
     

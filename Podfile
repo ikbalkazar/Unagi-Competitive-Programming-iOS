@@ -3,8 +3,3 @@
 # Uncomment this line if you're using Swift
 use_frameworks!
 pod "AsyncSwift"
-
-target 'Competitive-Programming-Appp' do
-
-end
-
