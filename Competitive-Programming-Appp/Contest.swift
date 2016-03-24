@@ -28,7 +28,7 @@ class Contest
         url = ""
     }
     
-    init( event: String , start: String , end: String , duration: Double , url: String, website: String )
+    init( event: String , start: String , end: String , duration: Double , url: String, website: Website )
     {
         self.event = event
         self.startTime = start
@@ -37,13 +37,7 @@ class Contest
         self.localEnd = getLocalDate(end)
         self.duration = duration
         self.url = url
-        for site in websites {
-            if site.url!.containsString(website) == true {
-                self.website = site
-                return
-            }
-        }
-        self.website = Website(id: "none", name: "none", url: "none", contestStatus: "0")
+        self.website = website
     }
     
     func getLocalDate(strDate : String) -> String {

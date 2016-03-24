@@ -250,7 +250,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                     if s1%100 == 0 {
                                         print("new Entry \(s1)")
                                     }
-                                    s1++
+                                    s1 += 1
                                     let newProblem = NSEntityDescription.insertNewObjectForEntityForName("Problem", inManagedObjectContext: context)
                                     
                                     newProblem.setValue(problem.objectId!, forKey: "objectId")
@@ -267,7 +267,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                     if s2%100 == 0 {
                                         print("Updated Entry \(s2)")
                                     }
-                                    s2++
+                                    s2 += 1
                                     results[0].setValue(problem.objectId!, forKey: "objectId")
                                     results[0].setValue(name, forKey: "name")
                                     results[0].setValue(url, forKey: "url")
@@ -312,7 +312,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         filteredContests.removeAll()
         
         for contest in contests {
-            if ( NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name + "filtered") as! Bool ) == true {
+            
+            if contest.website.name == nil {
+                print("FUCKED UP")
+            }
+            
+            if NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name + "filtered") as! Bool {
                 filteredContests.append(contest)
             }
         }
@@ -331,15 +336,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 for object in objects {
                     
-                    let name = object.valueForKey("name") as! String
-                    let start = object.valueForKey("start") as! String
-                    let end = object.valueForKey("end") as! String
-                    let dur = object.valueForKey("duration") as! Double
-                    let url = object.valueForKey("url") as! String
-                    let website = object.valueForKey("websiteName") as! String
+                    let newContest = Contest()
                     
-                    contests.append( Contest(event: name, start: start, end: end, duration: dur, url: url, website: website) )
+                    if let name = object.valueForKey("name") as? String {
+                        newContest.event = name
+                    }
+                    if let start = object.valueForKey("start") as? String {
+                        newContest.startTime = start
+                    }
+                    if let end = object.valueForKey("end") as? String {
+                        newContest.endTime = end
+                    }
+                    if let dur = object.valueForKey("duration") as? Double {
+                        newContest.duration = dur
+                    }
+                    if let url = object.valueForKey("url") as? String {
+                        newContest.url = url
+                    }
+                    if let website = object.valueForKey("websiteName") as? String {
+                        
+                        for site in websites {
+                            if site.name.containsString(website) {
+                                newContest.website = site
+                                break
+                            }
+                        }
+                        
+                    }
+                    if newContest.website == nil {
+                        newContest.website = Website(id: "none", name: "none", url: "none", contestStatus: "0")
+                    }
                     
+                    contests.append(newContest)
                 }
                 
                 self.updateFilteredContestsArray()
@@ -377,7 +405,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let content = data {
                 do {
                     let jsonRes = try NSJSONSerialization.JSONObjectWithData(content, options: NSJSONReadingOptions.MutableContainers)
-                    let objects = jsonRes["objects"]!!
+                    let objects = jsonRes["objects"]!
+                    
                     print("Json convertion is successful")
                     
                     //Delete all content first
@@ -402,33 +431,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         print("Could not delete objects in Contest Entity")
                     }
                     
-                    for var i = 0; i < objects.count; i++ {
+                    for i in 0 ..< objects.count {
+                        
                         var event: String!
                         var start: String!
                         var end: String!
                         var dur:Double = -1
                         var url: String!
                         var website: String!
-                        if let tmp = objects[i]["event"] as? String {
+                        
+                        if let tmp = objects[i]?["event"] as? String {
                             event = tmp
                         }
-                        if let tmp = objects[i]["start"] as? String {
+                        if let tmp = objects[i]?["start"] as? String {
                             start = tmp
                         }
-                        if let tmp = objects[i]["end"] as? String {
+                        if let tmp = objects[i]?["end"] as? String {
                             end = tmp
                         }
-                        if let tmp = objects[i]["duration"] as? Double {
+                        if let tmp = objects[i]?["duration"] as? Double {
                             dur = tmp
                         }
-                        if let tmp = objects[i]["href"] as? String {
+                        if let tmp = objects[i]?["href"] as? String {
                             url = tmp
                         }
-                        if let tmp = objects[i]["resource"] {
-                            if let tmp2 = tmp!["name"] as? String {
+                        if let tmp = objects[i]?["resource"] {
+                            if let tmp2 = tmp?["name"] as? String {
                                 website = tmp2
                             }
                         }
+                        
                         let newContest = NSEntityDescription.insertNewObjectForEntityForName("Contest", inManagedObjectContext: context)
                         
                         newContest.setValue(event, forKey: "name")
