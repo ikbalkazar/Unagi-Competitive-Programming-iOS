@@ -55,6 +55,11 @@ class LeftViewController : UIViewController, UIGestureRecognizerDelegate, UIImag
         
         let nonMenuController = storyboard.instantiateViewControllerWithIdentifier("NonMenuController") as! NonMenuController
         nonMenuController.delegate = self
+        
+        let UpcomingContestsContoller = storyboard.instantiateViewControllerWithIdentifier("ContestTableViewController") as! ContestTableViewController
+        UpcomingContestsContoller.delegate = self
+        
+        
         self.nonMenuViewController = UINavigationController(rootViewController: nonMenuController)
         
         self.tableView.registerCellClass(BaseTableViewCell.self)
@@ -130,6 +135,7 @@ class LeftViewController : UIViewController, UIGestureRecognizerDelegate, UIImag
     }
     
     func changeViewController(menu: LeftMenu) {
+        print("Changing the view!!")
         switch menu {
         case .Main:
             self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)

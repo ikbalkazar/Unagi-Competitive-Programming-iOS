@@ -173,7 +173,8 @@ class ContestTableViewController: UITableViewController {
     }
 
     @IBAction func goToHome(sender: AnyObject) {
-        delegate?.changeViewController(LeftMenu.Main)
+        print("Going Home")
+        self.delegate!.changeViewController(LeftMenu.Main)
         dismissViewControllerAnimated(true, completion: nil)
     }
     

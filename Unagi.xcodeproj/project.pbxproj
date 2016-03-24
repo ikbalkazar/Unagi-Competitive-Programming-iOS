@@ -18,6 +18,8 @@
 		037A55131C81CF270009939D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A55121C81CF270009939D /* SearchViewController.swift */; };
 		037A55151C81D7320009939D /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A55141C81D7320009939D /* SearchTableViewController.swift */; };
 		037C17D81C7F0644004BDEF8 /* calendarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C17D71C7F0644004BDEF8 /* calendarIcon.png */; };
+		038138941CA46B5500C50F79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038138931CA46B5500C50F79 /* Main.storyboard */; };
+		0381389A1CA480E300C50F79 /* ProblemTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038138991CA480E300C50F79 /* ProblemTabBarController.swift */; };
 		039BDDCE1C7A19D500AFF696 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BDDCD1C7A19D500AFF696 /* FilterTableViewController.swift */; };
 		039BDDD01C7A1D2200AFF696 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BDDCF1C7A1D2200AFF696 /* FilterTableViewCell.swift */; };
 		039D76971C8AB4F600864BD7 /* SuffixArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039D76961C8AB4F600864BD7 /* SuffixArray.swift */; };
@@ -74,7 +76,6 @@
 		23E0C12C1C78234400941FF5 /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0C12B1C78234400941FF5 /* SwiftViewController.swift */; };
 		23E0C12E1C78234C00941FF5 /* GoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0C12D1C78234C00941FF5 /* GoViewController.swift */; };
 		23E0C1301C78235400941FF5 /* NonMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0C12F1C78235400941FF5 /* NonMenuController.swift */; };
-		23E0C1321C78238F00941FF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E0C1311C78238F00941FF5 /* Main.storyboard */; };
 		23E0C1341C7823A100941FF5 /* SubContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0C1331C7823A100941FF5 /* SubContentsViewController.swift */; };
 		23E0C1361C7823A500941FF5 /* SubContentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E0C1351C7823A500941FF5 /* SubContentsViewController.storyboard */; };
 		23E0C1381C7823AC00941FF5 /* ExSlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E0C1371C7823AC00941FF5 /* ExSlideMenuController.swift */; };
@@ -112,6 +113,8 @@
 		037A55121C81CF270009939D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		037A55141C81D7320009939D /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		037C17D71C7F0644004BDEF8 /* calendarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendarIcon.png; sourceTree = "<group>"; };
+		038138931CA46B5500C50F79 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		038138991CA480E300C50F79 /* ProblemTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemTabBarController.swift; sourceTree = "<group>"; };
 		039BDDCD1C7A19D500AFF696 /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		039BDDCF1C7A1D2200AFF696 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		039D76961C8AB4F600864BD7 /* SuffixArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuffixArray.swift; sourceTree = "<group>"; };
@@ -169,7 +172,6 @@
 		23E0C12B1C78234400941FF5 /* SwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
 		23E0C12D1C78234C00941FF5 /* GoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoViewController.swift; sourceTree = "<group>"; };
 		23E0C12F1C78235400941FF5 /* NonMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonMenuController.swift; sourceTree = "<group>"; };
-		23E0C1311C78238F00941FF5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		23E0C1331C7823A100941FF5 /* SubContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubContentsViewController.swift; sourceTree = "<group>"; };
 		23E0C1351C7823A500941FF5 /* SubContentsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SubContentsViewController.storyboard; sourceTree = "<group>"; };
 		23E0C1371C7823AC00941FF5 /* ExSlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSlideMenuController.swift; sourceTree = "<group>"; };
@@ -340,6 +342,9 @@
 		23E0C1201C780DAE00941FF5 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				038138991CA480E300C50F79 /* ProblemTabBarController.swift */,
+				037A55141C81D7320009939D /* SearchTableViewController.swift */,
+				038138931CA46B5500C50F79 /* Main.storyboard */,
 				23B43D311C712D98009CB0B4 /* ContestContentViewController.swift */,
 				03216EE21C75CE45009C9236 /* ContestTableViewCell.swift */,
 				03216EE41C75D485009C9236 /* ContestTableViewController.swift */,
@@ -351,12 +356,10 @@
 				23913E061C6FE31A0038BA34 /* LoginViewController.swift */,
 				23E0C1251C780E5F00941FF5 /* LeftViewController.swift */,
 				23AEC4881CA0ECDE00B664AF /* ProblemViewController.swift */,
-				23E0C1311C78238F00941FF5 /* Main.storyboard */,
 				23E0C1231C780E5500941FF5 /* MainViewController.swift */,
 				23E0C12F1C78235400941FF5 /* NonMenuController.swift */,
 				23913E081C6FE40A0038BA34 /* RegisterViewController.swift */,
 				23E0C1271C780E6600941FF5 /* RightViewController.swift */,
-				037A55141C81D7320009939D /* SearchTableViewController.swift */,
 				037A55121C81CF270009939D /* SearchViewController.swift */,
 				23E0C1351C7823A500941FF5 /* SubContentsViewController.storyboard */,
 				23E0C1331C7823A100941FF5 /* SubContentsViewController.swift */,
@@ -500,6 +503,7 @@
 				03216EDB1C75C1B7009C9236 /* HackerRank_Logo.png in Resources */,
 				03216ED91C75BD9F009C9236 /* Topcoder_Logo.png in Resources */,
 				2336E5311C82AA36007025FB /* Google Hashcode_Logo.png in Resources */,
+				038138941CA46B5500C50F79 /* Main.storyboard in Resources */,
 				2336E5191C829310007025FB /* Google Codejam_Logo.png in Resources */,
 				2336E51D1C8293F0007025FB /* Timus OJ_Logo.png in Resources */,
 				037C17D81C7F0644004BDEF8 /* calendarIcon.png in Resources */,
@@ -512,7 +516,6 @@
 				2336E52B1C82976C007025FB /* DMOJ_Logo.png in Resources */,
 				2319E8A41C8817010000D943 /* Facebook_Logo.png in Resources */,
 				2336E5211C8295DD007025FB /* Infoarena_Logo.png in Resources */,
-				23E0C1321C78238F00941FF5 /* Main.storyboard in Resources */,
 				23BAC7331C8959D400BE18BC /* Website.csv in Resources */,
 				23E0C15E1C78253B00941FF5 /* Info.plist in Resources */,
 				2336E51F1C82955C007025FB /* Facebook Hackercup_Logo.png in Resources */,
@@ -588,6 +591,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03F774611C8B7FEC00DB653E /* HashQuery.swift in Sources */,
+				0381389A1CA480E300C50F79 /* ProblemTabBarController.swift in Sources */,
 				23E0C12C1C78234400941FF5 /* SwiftViewController.swift in Sources */,
 				23E0C1341C7823A100941FF5 /* SubContentsViewController.swift in Sources */,
 				23B43D301C711BAC009CB0B4 /* Contest.swift in Sources */,

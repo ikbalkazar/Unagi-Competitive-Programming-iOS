@@ -8,7 +8,7 @@
         <!--Sub Contents View Controller-->
         <scene sceneID="TTa-d3-aNE">
             <objects>
-                <viewController storyboardIdentifier="SubContentsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vxl-gz-eiI" customClass="SubContentsViewController" customModule="Competitive_Programming_Appp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SubContentsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vxl-gz-eiI" customClass="SubContentsViewController" customModule="Unagi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Sf-aL-9sl"/>
                         <viewControllerLayoutGuide type="bottom" id="H0R-6Q-ShB"/>
