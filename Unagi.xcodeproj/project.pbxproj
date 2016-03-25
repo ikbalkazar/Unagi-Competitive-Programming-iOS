@@ -64,6 +64,7 @@
 		23913E051C6FE26B0038BA34 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 23913E041C6FE26B0038BA34 /* libsqlite3.tbd */; };
 		23913E071C6FE31A0038BA34 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23913E061C6FE31A0038BA34 /* LoginViewController.swift */; };
 		23913E091C6FE40A0038BA34 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23913E081C6FE40A0038BA34 /* RegisterViewController.swift */; };
+		2399C90A1CA585790037D75B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2399C9091CA585790037D75B /* User.swift */; };
 		23AEC4891CA0ECDE00B664AF /* ProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AEC4881CA0ECDE00B664AF /* ProblemViewController.swift */; };
 		23B43D301C711BAC009CB0B4 /* Contest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B43D2F1C711BAC009CB0B4 /* Contest.swift */; };
 		23B43D321C712D98009CB0B4 /* ContestContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B43D311C712D98009CB0B4 /* ContestContentViewController.swift */; };
@@ -160,6 +161,7 @@
 		23913E041C6FE26B0038BA34 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		23913E061C6FE31A0038BA34 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		23913E081C6FE40A0038BA34 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		2399C9091CA585790037D75B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		23AEC4881CA0ECDE00B664AF /* ProblemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemViewController.swift; sourceTree = "<group>"; };
 		23B43D2F1C711BAC009CB0B4 /* Contest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contest.swift; sourceTree = "<group>"; };
 		23B43D311C712D98009CB0B4 /* ContestContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestContentViewController.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 		237175F81C7F8BA0004CD2FB /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2399C9091CA585790037D75B /* User.swift */,
 				23B43D2F1C711BAC009CB0B4 /* Contest.swift */,
 				23426A6D1C9B48D000709C97 /* Website.swift */,
 				039D76961C8AB4F600864BD7 /* SuffixArray.swift */,
@@ -342,9 +345,6 @@
 		23E0C1201C780DAE00941FF5 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				038138991CA480E300C50F79 /* ProblemTabBarController.swift */,
-				037A55141C81D7320009939D /* SearchTableViewController.swift */,
-				038138931CA46B5500C50F79 /* Main.storyboard */,
 				23B43D311C712D98009CB0B4 /* ContestContentViewController.swift */,
 				03216EE21C75CE45009C9236 /* ContestTableViewCell.swift */,
 				03216EE41C75D485009C9236 /* ContestTableViewController.swift */,
@@ -353,13 +353,16 @@
 				039BDDCD1C7A19D500AFF696 /* FilterTableViewController.swift */,
 				237AD42D1C9DE0F200B45CC1 /* FriendsTableViewController.swift */,
 				23E0C12D1C78234C00941FF5 /* GoViewController.swift */,
-				23913E061C6FE31A0038BA34 /* LoginViewController.swift */,
 				23E0C1251C780E5F00941FF5 /* LeftViewController.swift */,
-				23AEC4881CA0ECDE00B664AF /* ProblemViewController.swift */,
+				23913E061C6FE31A0038BA34 /* LoginViewController.swift */,
+				038138931CA46B5500C50F79 /* Main.storyboard */,
 				23E0C1231C780E5500941FF5 /* MainViewController.swift */,
 				23E0C12F1C78235400941FF5 /* NonMenuController.swift */,
+				038138991CA480E300C50F79 /* ProblemTabBarController.swift */,
+				23AEC4881CA0ECDE00B664AF /* ProblemViewController.swift */,
 				23913E081C6FE40A0038BA34 /* RegisterViewController.swift */,
 				23E0C1271C780E6600941FF5 /* RightViewController.swift */,
+				037A55141C81D7320009939D /* SearchTableViewController.swift */,
 				037A55121C81CF270009939D /* SearchViewController.swift */,
 				23E0C1351C7823A500941FF5 /* SubContentsViewController.storyboard */,
 				23E0C1331C7823A100941FF5 /* SubContentsViewController.swift */,
@@ -618,6 +621,7 @@
 				23E0C1221C780E0C00941FF5 /* AppDelegate.swift in Sources */,
 				23E0C14E1C78249D00941FF5 /* UIApplication.swift in Sources */,
 				03216EE31C75CE45009C9236 /* ContestTableViewCell.swift in Sources */,
+				2399C90A1CA585790037D75B /* User.swift in Sources */,
 				23E0C1521C78249D00941FF5 /* UITableViewExtension.swift in Sources */,
 				23913DDB1C6FE1320038BA34 /* Competitive_Programming_Appp.xcdatamodeld in Sources */,
 				23E0C1241C780E5500941FF5 /* MainViewController.swift in Sources */,

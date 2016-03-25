@@ -64,12 +64,12 @@ class LeftViewController : UIViewController, UIGestureRecognizerDelegate, UIImag
         
         self.imageHeaderView = ImageHeaderView.loadNib()
         
-        let tap = UITapGestureRecognizer(target: self, action: "openActionSheet:")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.openActionSheet(_:)))
         profileImageHash = tap.hash
         self.imageHeaderView.profileImage.addGestureRecognizer(tap)
         self.imageHeaderView.profileImage.userInteractionEnabled = true
         
-        let tap2 = UITapGestureRecognizer(target: self, action: "openActionSheet:")
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(self.openActionSheet(_:)))
         backgroundImageHash = tap2.hash
         self.imageHeaderView.backgroundImage.addGestureRecognizer(tap2)
         self.imageHeaderView.backgroundImage.userInteractionEnabled = true

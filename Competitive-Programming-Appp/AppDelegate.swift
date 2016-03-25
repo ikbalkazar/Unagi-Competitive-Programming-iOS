@@ -10,6 +10,9 @@ var contests = [Contest]()
 var problems = [Problem]()
 var websites = [Website]()
 var filteredContests = [Contest]()
+var followingList = [User]()
+var followerList = [User]()
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -363,10 +366,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         }
                         
                     }
-                    if newContest.website != nil {
-                        //newContest.website = Website(id: "none", name: "none", url: "none", contestStatus: "0")
-                        contests.append(newContest)
+                    if newContest.website == nil {
+                        newContest.website = Website(id: "none", name: "none", url: "none", contestStatus: "0")
                     }
+                    
+                    contests.append(newContest)
                     
                 }
                 
@@ -415,6 +419,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         
                         if let objects = try context.executeFetchRequest(request) as? [NSManagedObject] {
                             
+                            print("objects = \(objects.count)")
+                            
                             for object in objects {
                                 context.deleteObject(object)
                             }
@@ -427,48 +433,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
                         }
                         
+                        print("deleted")
+                        
                     } catch {
                         print("Could not delete objects in Contest Entity")
                     }
                     
                     for i in 0 ..< objects!.count {
                         
-                        var event: String!
-                        var start: String!
-                        var end: String!
-                        var dur:Double = -1
-                        var url: String!
-                        var website: String!
+                        print(i)
                         
-                        if let tmp = objects![i]?["event"] as? String {
+                        /*
+                        var event = ""
+                        var start = ""
+                        var end = ""
+                        var dur:Double = -1
+                        var url = ""
+                        var website = ""
+                        
+                        if let tmp = objects[i]?["event"] as? String {
                             event = tmp
                         }
-                        if let tmp = objects![i]?["start"] as? String {
+                        if let tmp = objects[i]?["start"] as? String {
                             start = tmp
                         }
-                        if let tmp = objects![i]?["end"] as? String {
+                        if let tmp = objects[i]?["end"] as? String {
                             end = tmp
                         }
-                        if let tmp = objects![i]?["duration"] as? Double {
+                        if let tmp = objects[i]?["duration"] as? Double {
                             dur = tmp
                         }
-                        if let tmp = objects![i]?["href"] as? String {
+                        if let tmp = objects[i]?["href"] as? String {
                             url = tmp
                         }
-                        if let tmp = objects![i]?["resource"] {
+                        if let tmp = objects[i]?["resource"] {
                             if let tmp2 = tmp?["name"] as? String {
                                 website = tmp2
                             }
                         }
+ 
+                        */
                         
                         let newContest = NSEntityDescription.insertNewObjectForEntityForName("Contest", inManagedObjectContext: context)
                         
-                        newContest.setValue(event, forKey: "name")
-                        newContest.setValue(start, forKey: "start")
-                        newContest.setValue(end, forKey: "end")
-                        newContest.setValue(url, forKey: "url")
-                        newContest.setValue(dur, forKey: "duration")
-                        newContest.setValue(website, forKey: "websiteName")
+                    //    newContest.setValue("asdf", forKey: "name")
+                    //    newContest.setValue("asdf", forKey: "start")
+                        
+                    //    newContest.setValue("asdf", forKey: "end")
+                    //    newContest.setValue("asdf", forKey: "url")
+                    //    newContest.setValue(-1, forKey: "duration")
+                    //    newContest.setValue("asdf", forKey: "websiteName")
                         
                         do {
                             try context.save()
@@ -490,6 +504,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         })
         myQuery.resume()
+        
+    }
+    
+    func updateFollowingEntityUsingParse() {
+        
+    }
+    
+    func updateFollowerEntityUsingParse() {
+        
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDel.managedObjectContext!
+        
+        let query = PFQuery(className: "FollowingList")
+   //     query.whereKey("following", equalTo: PFUser.currentUser()!.objectId!)
+        query.whereKey("updatedAt", greaterThan: NSDate())
+        
+        query.findObjectsInBackgroundWithBlock { (objects, error) in
+            
+            if error == nil {
+                
+                if let objects = objects {
+                    
+                    for user in objects {
+                        
+                        let newObject = NSEntityDescription.insertNewObjectForEntityForName("Follower", inManagedObjectContext: context)
+                        
+                        let objectId = user.objectId
+                        let userId = user["userId"] as! String
+                        let 
+                        
+                    }
+                    
+                }
+                
+            } else {
+                
+                print("Could not Update Follower Entity Using Parse")
+                
+            }
+            
+            
+        }
         
     }
     
@@ -534,8 +590,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         self.initializeWebsitesArrayUsingWebsiteEntity()
-        self.updateContestEntityUsingClistBy()
+      //  self.updateContestEntityUsingClistBy()
         self.updateProblemEntityUsingParse()
+        self.updateFollowingEntityUsingParse()
+        self.updateFollowerEntityUsingParse()
         
         self.createMenuView()
         
