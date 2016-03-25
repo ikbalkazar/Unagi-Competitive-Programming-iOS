@@ -19,10 +19,10 @@
 		034D91911CA5BAE300C9E9DE /* similar-29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 034D918E1CA5BAE300C9E9DE /* similar-29@3x.png */; };
 		034D91921CA5BAE300C9E9DE /* note-29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 034D918F1CA5BAE300C9E9DE /* note-29@3x.png */; };
 		034D91931CA5BAE300C9E9DE /* read-29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 034D91901CA5BAE300C9E9DE /* read-29@3x.png */; };
+		034D91951CA5E86500C9E9DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 034D91941CA5E86500C9E9DE /* Main.storyboard */; };
 		037A55131C81CF270009939D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A55121C81CF270009939D /* SearchViewController.swift */; };
 		037A55151C81D7320009939D /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A55141C81D7320009939D /* SearchTableViewController.swift */; };
 		037C17D81C7F0644004BDEF8 /* calendarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 037C17D71C7F0644004BDEF8 /* calendarIcon.png */; };
-		038138941CA46B5500C50F79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038138931CA46B5500C50F79 /* Main.storyboard */; };
 		0381389A1CA480E300C50F79 /* ProblemTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038138991CA480E300C50F79 /* ProblemTabBarController.swift */; };
 		039128091CA594D1008F5E69 /* NoteTakingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039128081CA594D1008F5E69 /* NoteTakingVC.swift */; };
 		039BDDCE1C7A19D500AFF696 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BDDCD1C7A19D500AFF696 /* FilterTableViewController.swift */; };
@@ -121,10 +121,10 @@
 		034D918E1CA5BAE300C9E9DE /* similar-29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "similar-29@3x.png"; sourceTree = "<group>"; };
 		034D918F1CA5BAE300C9E9DE /* note-29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "note-29@3x.png"; sourceTree = "<group>"; };
 		034D91901CA5BAE300C9E9DE /* read-29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "read-29@3x.png"; sourceTree = "<group>"; };
+		034D91941CA5E86500C9E9DE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		037A55121C81CF270009939D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		037A55141C81D7320009939D /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		037C17D71C7F0644004BDEF8 /* calendarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendarIcon.png; sourceTree = "<group>"; };
-		038138931CA46B5500C50F79 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		038138991CA480E300C50F79 /* ProblemTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemTabBarController.swift; sourceTree = "<group>"; };
 		039128081CA594D1008F5E69 /* NoteTakingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteTakingVC.swift; sourceTree = "<group>"; };
 		039BDDCD1C7A19D500AFF696 /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
@@ -361,10 +361,8 @@
 		23E0C1201C780DAE00941FF5 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				038138991CA480E300C50F79 /* ProblemTabBarController.swift */,
 				03CF59921CA5129A0005D42F /* ProblemStatementVC.swift */,
-				037A55141C81D7320009939D /* SearchTableViewController.swift */,
-				038138931CA46B5500C50F79 /* Main.storyboard */,
+				034D91941CA5E86500C9E9DE /* Main.storyboard */,
 				039128081CA594D1008F5E69 /* NoteTakingVC.swift */,
 				23B43D311C712D98009CB0B4 /* ContestContentViewController.swift */,
 				03216EE21C75CE45009C9236 /* ContestTableViewCell.swift */,
@@ -526,7 +524,6 @@
 				03216EDB1C75C1B7009C9236 /* HackerRank_Logo.png in Resources */,
 				03216ED91C75BD9F009C9236 /* Topcoder_Logo.png in Resources */,
 				2336E5311C82AA36007025FB /* Google Hashcode_Logo.png in Resources */,
-				038138941CA46B5500C50F79 /* Main.storyboard in Resources */,
 				2336E5191C829310007025FB /* Google Codejam_Logo.png in Resources */,
 				2336E51D1C8293F0007025FB /* Timus OJ_Logo.png in Resources */,
 				034D91921CA5BAE300C9E9DE /* note-29@3x.png in Resources */,
@@ -543,6 +540,7 @@
 				034D91911CA5BAE300C9E9DE /* similar-29@3x.png in Resources */,
 				23BAC7331C8959D400BE18BC /* Website.csv in Resources */,
 				23E0C15E1C78253B00941FF5 /* Info.plist in Resources */,
+				034D91951CA5E86500C9E9DE /* Main.storyboard in Resources */,
 				2336E51F1C82955C007025FB /* Facebook Hackercup_Logo.png in Resources */,
 				2336E5291C829741007025FB /* Project Euler_Logo.png in Resources */,
 				034D91931CA5BAE300C9E9DE /* read-29@3x.png in Resources */,

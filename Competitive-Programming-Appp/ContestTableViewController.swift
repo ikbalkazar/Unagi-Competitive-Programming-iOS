@@ -157,7 +157,7 @@ class ContestTableViewController: UITableViewController {
         
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refresher.addTarget(self, action: #selector(self.downloadContests), forControlEvents: UIControlEvents.ValueChanged)
+        refresher.addTarget(self, action: "downloadContests", forControlEvents: UIControlEvents.ValueChanged)
         
         self.tableView.addSubview(refresher)
     
