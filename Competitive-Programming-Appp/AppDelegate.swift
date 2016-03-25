@@ -504,7 +504,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
         
-        UINavigationBar.appearance().tintColor = UIColor(hex: "689F38")
+        UINavigationBar.appearance().tintColor = UIColor(hex: "078ac9") // used to be 689F38
         
         leftViewController.mainViewController = nvc
         

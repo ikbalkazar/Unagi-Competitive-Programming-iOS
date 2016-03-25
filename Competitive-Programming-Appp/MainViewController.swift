@@ -9,7 +9,6 @@ import UIKit
 import Parse
 import CoreData
 
-
 class MainViewController: UIViewController {
     
     @IBOutlet weak var topButton: UIButton!
