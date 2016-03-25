@@ -20,11 +20,11 @@ class ContestTableViewController: UITableViewController {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         
-        alert.addAction((UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             
             self.dismissViewControllerAnimated(true, completion: nil)
             
-        })))
+        }))
         
         self.presentViewController(alert, animated: true, completion: nil)
     
@@ -157,7 +157,7 @@ class ContestTableViewController: UITableViewController {
         
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refresher.addTarget(self, action: "downloadContests", forControlEvents: UIControlEvents.ValueChanged)
+        refresher.addTarget(self, action: #selector(self.downloadContests), forControlEvents: UIControlEvents.ValueChanged)
         
         self.tableView.addSubview(refresher)
     
