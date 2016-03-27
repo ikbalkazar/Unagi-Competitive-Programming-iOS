@@ -64,7 +64,7 @@ class LeftViewController : UIViewController, UIGestureRecognizerDelegate, UIImag
         
         self.imageHeaderView = ImageHeaderView.loadNib()
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.openActionSheet(_:)))
+       /* let tap = UITapGestureRecognizer(target: self, action: #selector(self.openActionSheet(_:)))
         profileImageHash = tap.hash
         self.imageHeaderView.profileImage.addGestureRecognizer(tap)
         self.imageHeaderView.profileImage.userInteractionEnabled = true
@@ -73,8 +73,9 @@ class LeftViewController : UIViewController, UIGestureRecognizerDelegate, UIImag
         backgroundImageHash = tap2.hash
         self.imageHeaderView.backgroundImage.addGestureRecognizer(tap2)
         self.imageHeaderView.backgroundImage.userInteractionEnabled = true
-        
+
         self.view.addSubview(self.imageHeaderView)
+        */
     }
     
     override func viewDidAppear(animated: Bool) {

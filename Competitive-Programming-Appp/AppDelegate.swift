@@ -532,9 +532,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         
                         let objectId = user.objectId
                         let userId = user["userId"] as! String
-                        let 
-                        
-                    }
+                                            }
                     
                 }
                 

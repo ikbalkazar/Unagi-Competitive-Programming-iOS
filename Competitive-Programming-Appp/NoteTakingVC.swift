@@ -15,8 +15,15 @@ class NoteTakingVC: UIViewController, UITextViewDelegate {
     var problemObjectIdentifier: String?
     
     override func viewDidLoad() {
-        //creates a "done" button on the navigation bar
-        //loads the last saved content
+        loadNotes()
+    }
+    
+    func doneButton() {
+        textView!.resignFirstResponder()
+        saveNotes()
+    }
+    
+    func loadNotes() {
         let defaults = NSUserDefaults.standardUserDefaults()
         print(problemObjectIdentifier)
         if let savedStr = defaults.objectForKey(problemObjectIdentifier! + "notes") {
@@ -24,15 +31,15 @@ class NoteTakingVC: UIViewController, UITextViewDelegate {
         }
     }
     
-    func doneButton(sender: AnyObject) {
-        textView!.resignFirstResponder()   
+    func saveNotes() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(textView.text, forKey: problemObjectIdentifier! + "notes")
+        defaults.synchronize()
     }
     
     func textViewDidEndEditing(textView: UITextView) {
         //saves the content permanently
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(textView.text, forKey: problemObjectIdentifier! + "notes")
-        defaults.synchronize()
+        saveNotes()
     }
     
     func setProblem(problem: Problem) {
