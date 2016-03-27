@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var rightButton: UIButton!
     
     @IBAction func topButtonPressed(sender: AnyObject) {
+        
     }
 
     @IBAction func tempButtonPressed(sender: AnyObject) {

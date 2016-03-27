@@ -566,19 +566,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         slideMenuController.automaticallyAdjustsScrollViewInsets = true
         self.window?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
         self.window?.rootViewController = slideMenuController
-        self.window?.makeKeyAndVisible()
+        //self.window?.makeKeyAndVisible()
     }
     
     func handleFirstTimeProcedures() {
-        
+        //is there a need for calling 'defaults.syncronize()' here????
         NSUserDefaults.standardUserDefaults().setValue(true, forKey: "firstTimeCheck")
         self.preLoadWebsiteEntity()
         self.preLoadProblemEntity()
-        
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    
+        
         Parse.setApplicationId("8xMwvCqficeHwkS7Ag5PQWdlw1q91ujGcXVRgUnG",
             clientKey: "yXQByidQA8eNkR0NaALnq2KZUvzMhQ9AvPNylyeO")
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
@@ -592,7 +591,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.updateProblemEntityUsingParse()
         self.updateFollowingEntityUsingParse()
         self.updateFollowerEntityUsingParse()
-        
         self.createMenuView()
         
         return true

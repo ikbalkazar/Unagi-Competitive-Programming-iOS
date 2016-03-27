@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03159E571CA83809002CFD66 /* CFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03159E561CA83809002CFD66 /* CFViewController.swift */; };
 		03216ED61C75BD9F009C9236 /* ACM ICPC_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03216ED21C75BD9F009C9236 /* ACM ICPC_Logo.png */; };
 		03216ED71C75BD9F009C9236 /* Codechef_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03216ED31C75BD9F009C9236 /* Codechef_Logo.png */; };
 		03216ED81C75BD9F009C9236 /* Codeforces_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03216ED41C75BD9F009C9236 /* Codeforces_Logo.png */; };
@@ -109,6 +110,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03159E561CA83809002CFD66 /* CFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFViewController.swift; sourceTree = "<group>"; };
 		03216ED21C75BD9F009C9236 /* ACM ICPC_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ACM ICPC_Logo.png"; sourceTree = "<group>"; };
 		03216ED31C75BD9F009C9236 /* Codechef_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Codechef_Logo.png; sourceTree = "<group>"; };
 		03216ED41C75BD9F009C9236 /* Codeforces_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Codeforces_Logo.png; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 				03CF59921CA5129A0005D42F /* ProblemStatementVC.swift */,
 				038138991CA480E300C50F79 /* ProblemTabBarController.swift */,
 				034D91941CA5E86500C9E9DE /* Main.storyboard */,
+				03159E561CA83809002CFD66 /* CFViewController.swift */,
 				039128081CA594D1008F5E69 /* NoteTakingVC.swift */,
 				23B43D311C712D98009CB0B4 /* ContestContentViewController.swift */,
 				03216EE21C75CE45009C9236 /* ContestTableViewCell.swift */,
@@ -618,6 +621,7 @@
 				03F774611C8B7FEC00DB653E /* HashQuery.swift in Sources */,
 				0381389A1CA480E300C50F79 /* ProblemTabBarController.swift in Sources */,
 				23E0C12C1C78234400941FF5 /* SwiftViewController.swift in Sources */,
+				03159E571CA83809002CFD66 /* CFViewController.swift in Sources */,
 				23E0C1341C7823A100941FF5 /* SubContentsViewController.swift in Sources */,
 				23B43D301C711BAC009CB0B4 /* Contest.swift in Sources */,
 				23AEC4891CA0ECDE00B664AF /* ProblemViewController.swift in Sources */,
