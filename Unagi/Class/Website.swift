@@ -30,7 +30,6 @@ class Website {
         self.name = name
         self.url = url
         self.contestStatus = contestStatus
-        
     }
 }
 

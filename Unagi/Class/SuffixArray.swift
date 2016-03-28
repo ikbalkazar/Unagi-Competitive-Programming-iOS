@@ -13,7 +13,7 @@ class SuffixArray {
     func buildSuffixArray(problems: [Problem]) {
         var start = [Int](count: problems.count, repeatedValue: 0)
         var end = [Int](count: problems.count, repeatedValue: 0)
-        for var i = 0; i < problems.count; i++ {
+        for i in 0 ..< problems.count {
             start[i] = s.length
             s += problems[i].name
             for tag in problems[i].tags {
@@ -24,22 +24,5 @@ class SuffixArray {
         let n = s.length
         var rank = [Int](count: s.length, repeatedValue: 0)
         
-    }
-}
-
-extension String {
-    
-    subscript (i: Int) -> Character {
-        return self[self.startIndex.advancedBy(i)]
-    }
-    
-    subscript (i: Int) -> String {
-        return String(self[i] as Character)
-    }
-    
-    subscript (r: Range<Int>) -> String {
-        let start = startIndex.advancedBy(r.startIndex)
-        let end = start.advancedBy(r.endIndex - r.startIndex)
-        return self[Range(start: start, end: end)]
     }
 }

@@ -37,7 +37,7 @@ class ProblemTabBarController: UITabBarController {
         if item.title == "Note" {
             /*let rightButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_menu_black_24dp"), style: UIBarButtonItemStyle.Plain, target: self, action: "someFunc")
             slideMenuController()?.navigationItem.rightBarButtonItem = rightButton*/
-            addRightBarButtonWithTitle("Save", action: "callDoneButton")
+            addRightBarButtonWithTitle("Save", action: #selector(self.callDoneButton))
         } else {
             removeNavigationBarItem()
         }

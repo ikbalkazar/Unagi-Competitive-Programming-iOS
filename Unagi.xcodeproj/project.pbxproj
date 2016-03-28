@@ -26,7 +26,7 @@
 		23D105D61CA9AE990073A669 /* SuffixArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105741CA9AE990073A669 /* SuffixArray.swift */; };
 		23D105D71CA9AE990073A669 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105751CA9AE990073A669 /* Utilities.swift */; };
 		23D105D81CA9AE990073A669 /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105761CA9AE990073A669 /* Website.swift */; };
-		23D105DB1CA9AE990073A669 /* Unagi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23D1057C1CA9AE990073A669 /* Unagi.xcdatamodeld */; };
+		23D105DB1CA9AE990073A669 /* MainDatabases.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23D1057C1CA9AE990073A669 /* MainDatabases.xcdatamodeld */; };
 		23D105DC1CA9AE990073A669 /* DataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D1057E1CA9AE990073A669 /* DataTableViewCell.xib */; };
 		23D105DD1CA9AE990073A669 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105801CA9AE990073A669 /* String.swift */; };
 		23D105DE1CA9AE990073A669 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105811CA9AE990073A669 /* UIApplication.swift */; };
@@ -129,7 +129,7 @@
 		23D105741CA9AE990073A669 /* SuffixArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuffixArray.swift; sourceTree = "<group>"; };
 		23D105751CA9AE990073A669 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		23D105761CA9AE990073A669 /* Website.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Website.swift; sourceTree = "<group>"; };
-		23D1057D1CA9AE990073A669 /* Competitive_Programming_Appp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Competitive_Programming_Appp.xcdatamodel; sourceTree = "<group>"; };
+		23D1057D1CA9AE990073A669 /* MainDatabases.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MainDatabases.xcdatamodel; sourceTree = "<group>"; };
 		23D1057E1CA9AE990073A669 /* DataTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataTableViewCell.xib; sourceTree = "<group>"; };
 		23D105801CA9AE990073A669 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		23D105811CA9AE990073A669 /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
@@ -280,7 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				23D1056F1CA9AE990073A669 /* AppDelegate.swift */,
-				23D1057C1CA9AE990073A669 /* Unagi.xcdatamodeld */,
+				23D1057C1CA9AE990073A669 /* MainDatabases.xcdatamodeld */,
 				23D105701CA9AE990073A669 /* Class */,
 				23D1057E1CA9AE990073A669 /* DataTableViewCell.xib */,
 				23D1057F1CA9AE990073A669 /* Extension */,
@@ -607,7 +607,7 @@
 				23D105D41CA9AE990073A669 /* HashQuery.swift in Sources */,
 				23D106161CA9AE990073A669 /* ExSlideMenuController.swift in Sources */,
 				23D106261CA9AE990073A669 /* SearchViewController.swift in Sources */,
-				23D105DB1CA9AE990073A669 /* Unagi.xcdatamodeld in Sources */,
+				23D105DB1CA9AE990073A669 /* MainDatabases.xcdatamodeld in Sources */,
 				23D106211CA9AE990073A669 /* ProblemTabBarController.swift in Sources */,
 				23D106201CA9AE990073A669 /* ProblemStatementVC.swift in Sources */,
 				23D106281CA9AE990073A669 /* SubContentsViewController.swift in Sources */,
@@ -784,14 +784,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		23D1057C1CA9AE990073A669 /* Unagi.xcdatamodeld */ = {
+		23D1057C1CA9AE990073A669 /* MainDatabases.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				23D1057D1CA9AE990073A669 /* Competitive_Programming_Appp.xcdatamodel */,
+				23D1057D1CA9AE990073A669 /* MainDatabases.xcdatamodel */,
 			);
-			currentVersion = 23D1057D1CA9AE990073A669 /* Competitive_Programming_Appp.xcdatamodel */;
-			name = Unagi.xcdatamodeld;
-			path = "Data Models/Unagi.xcdatamodeld";
+			currentVersion = 23D1057D1CA9AE990073A669 /* MainDatabases.xcdatamodel */;
+			name = MainDatabases.xcdatamodeld;
+			path = "Data Models/MainDatabases.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

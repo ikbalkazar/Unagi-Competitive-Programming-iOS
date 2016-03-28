@@ -12,7 +12,6 @@ import UIKit
 
 let noneWebsite = Website(id: "none", name: "none", url: "none", contestStatus: "0")
 
-
 func saveToEntity(entityName: String, object: AnyObject) -> Bool {
     
     let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -42,12 +41,10 @@ func saveToEntity(entityName: String, object: AnyObject) -> Bool {
         }
     }
     
-    do {
-        try context.save()
-        return true
-    } catch {
-        return false
-    }
+    do { try context.save() }
+    catch { return false }
+    
+    return true
     
 }
 
