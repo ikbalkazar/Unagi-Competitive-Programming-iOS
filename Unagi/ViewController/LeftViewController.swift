@@ -44,6 +44,11 @@ class LeftViewController : UIViewController, UIGestureRecognizerDelegate, UIImag
         
         let contestTableViewController = storyboard.instantiateViewControllerWithIdentifier("ContestTableViewController") as! ContestTableViewController
         contestTableViewController.delegate = self
+<<<<<<< HEAD:Unagi/ViewController/LeftViewController.swift
+=======
+        
+        self.contestTableViewController = UINavigationController(rootViewController: contestTableViewController)
+>>>>>>> master:Competitive-Programming-Appp/LeftViewController.swift
         
         self.contestTableViewController = UINavigationController(rootViewController: contestTableViewController)
         

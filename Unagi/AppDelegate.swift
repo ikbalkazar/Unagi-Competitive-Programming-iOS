@@ -402,10 +402,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         print(i)
                         
 <<<<<<< HEAD:Unagi/AppDelegate.swift
+<<<<<<< HEAD:Unagi/AppDelegate.swift
                         var name = "" , start = "" , end = "" , url = ""
                         var duration: Double = -1
                         var website = noneWebsite
 =======
+=======
+>>>>>>> master:Competitive-Programming-Appp/AppDelegate.swift
                         /*
                         var event = ""
                         var start = ""
@@ -413,6 +416,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         var dur:Double = -1
                         var url = ""
                         var website = ""
+<<<<<<< HEAD:Unagi/AppDelegate.swift
+>>>>>>> master:Competitive-Programming-Appp/AppDelegate.swift
+=======
 >>>>>>> master:Competitive-Programming-Appp/AppDelegate.swift
                         
                         if let tmp = objects[i]?["event"] as? String {
@@ -448,9 +454,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         let newContest = Contest(id: "\(i)", name: name, start: start, end: end, duration: duration, url: url, website: website)
                         
 <<<<<<< HEAD:Unagi/AppDelegate.swift
+<<<<<<< HEAD:Unagi/AppDelegate.swift
 =======
                     //    newContest.setValue("asdf", forKey: "name")
                     //    newContest.setValue("asdf", forKey: "start")
+=======
+                    //    newContest.setValue("asdf", forKey: "name")
+                    //    newContest.setValue("asdf", forKey: "start")
+                        
+                    //    newContest.setValue("asdf", forKey: "end")
+                    //    newContest.setValue("asdf", forKey: "url")
+                    //    newContest.setValue(-1, forKey: "duration")
+                    //    newContest.setValue("asdf", forKey: "websiteName")
+>>>>>>> master:Competitive-Programming-Appp/AppDelegate.swift
                         
                     //    newContest.setValue("asdf", forKey: "end")
                     //    newContest.setValue("asdf", forKey: "url")
@@ -550,7 +566,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 <<<<<<< HEAD:Unagi/AppDelegate.swift
+<<<<<<< HEAD:Unagi/AppDelegate.swift
 
+=======
+        
+>>>>>>> master:Competitive-Programming-Appp/AppDelegate.swift
 =======
         
 >>>>>>> master:Competitive-Programming-Appp/AppDelegate.swift

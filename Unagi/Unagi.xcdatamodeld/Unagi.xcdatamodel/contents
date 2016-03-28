@@ -44,10 +44,13 @@
     </entity>
     <elements>
 <<<<<<< HEAD:Unagi/Unagi.xcdatamodeld/Unagi.xcdatamodel/contents
+<<<<<<< HEAD:Unagi/Unagi.xcdatamodeld/Unagi.xcdatamodel/contents
         <element name="Contest" positionX="333" positionY="333" width="128" height="180"/>
         <element name="Event" positionX="261" positionY="189" width="128" height="60"/>
         <element name="Problem" positionX="315" positionY="261" width="128" height="150"/>
 =======
+=======
+>>>>>>> master:Competitive-Programming-Appp/Competitive_Programming_Appp.xcdatamodeld/Competitive_Programming_Appp.xcdatamodel/contents
         <element name="Contest" positionX="333" positionY="333" width="128" height="135"/>
         <element name="Problem" positionX="315" positionY="261" width="128" height="195"/>
 >>>>>>> master:Competitive-Programming-Appp/Competitive_Programming_Appp.xcdatamodeld/Competitive_Programming_Appp.xcdatamodel/contents

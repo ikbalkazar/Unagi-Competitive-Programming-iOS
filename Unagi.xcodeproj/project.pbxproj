@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		23070D841CA9018B00E83A4C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23070D831CA9018B00E83A4C /* Default-568h@2x.png */; };
 		23070DDF1CA9024A00E83A4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23070D861CA9024A00E83A4C /* AppDelegate.swift */; };
 		23070DE01CA9024A00E83A4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23070D871CA9024A00E83A4C /* LaunchScreen.storyboard */; };
@@ -88,6 +89,8 @@
 		23070E2B1CA9024A00E83A4C /* SubContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23070DDD1CA9024A00E83A4C /* SubContentsViewController.swift */; };
 		23070E2C1CA9024A00E83A4C /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23070DDE1CA9024A00E83A4C /* SwiftViewController.swift */; };
 =======
+=======
+>>>>>>> master
 		03159E571CA83809002CFD66 /* CFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03159E561CA83809002CFD66 /* CFViewController.swift */; };
 		03216ED61C75BD9F009C9236 /* ACM ICPC_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03216ED21C75BD9F009C9236 /* ACM ICPC_Logo.png */; };
 		03216ED71C75BD9F009C9236 /* Codechef_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03216ED31C75BD9F009C9236 /* Codechef_Logo.png */; };
@@ -196,6 +199,7 @@
 
 /* Begin PBXFileReference section */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		23070D831CA9018B00E83A4C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		23070D861CA9024A00E83A4C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23070D881CA9024A00E83A4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -277,6 +281,8 @@
 		23070DDD1CA9024A00E83A4C /* SubContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubContentsViewController.swift; sourceTree = "<group>"; };
 		23070DDE1CA9024A00E83A4C /* SwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
 =======
+=======
+>>>>>>> master
 		03159E561CA83809002CFD66 /* CFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFViewController.swift; sourceTree = "<group>"; };
 		03216ED21C75BD9F009C9236 /* ACM ICPC_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ACM ICPC_Logo.png"; sourceTree = "<group>"; };
 		03216ED31C75BD9F009C9236 /* Codechef_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Codechef_Logo.png; sourceTree = "<group>"; };
@@ -434,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 <<<<<<< HEAD
+<<<<<<< HEAD
 				23070D8A1CA9024A00E83A4C /* Contest.swift */,
 				23070D8B1CA9024A00E83A4C /* Functions.swift */,
 				23070D8C1CA9024A00E83A4C /* HashQuery.swift */,
@@ -443,6 +450,8 @@
 			);
 			path = Class;
 =======
+=======
+>>>>>>> master
 				2399C9091CA585790037D75B /* User.swift */,
 				23B43D2F1C711BAC009CB0B4 /* Contest.swift */,
 				23426A6D1C9B48D000709C97 /* Website.swift */,
@@ -485,6 +494,7 @@
 			isa = PBXGroup;
 			children = (
 <<<<<<< HEAD
+<<<<<<< HEAD
 				23070DA41CA9024A00E83A4C /* ACM ICPC_Logo.png */,
 				23070DA51CA9024A00E83A4C /* Al Zimmermann's_Logo.png */,
 				23070DA61CA9024A00E83A4C /* calendarIcon.png */,
@@ -516,6 +526,8 @@
 			);
 			path = Logos;
 =======
+=======
+>>>>>>> master
 				034D918E1CA5BAE300C9E9DE /* similar-29@3x.png */,
 				034D918F1CA5BAE300C9E9DE /* note-29@3x.png */,
 				034D91901CA5BAE300C9E9DE /* read-29@3x.png */,
@@ -549,6 +561,7 @@
 			isa = PBXGroup;
 			children = (
 <<<<<<< HEAD
+<<<<<<< HEAD
 				23070DC91CA9024A00E83A4C /* BaseTableViewCell.swift */,
 				23070DCA1CA9024A00E83A4C /* ContestContentViewController.swift */,
 				23070DCB1CA9024A00E83A4C /* ContestTableViewCell.swift */,
@@ -574,6 +587,8 @@
 			);
 			path = ViewController;
 =======
+=======
+>>>>>>> master
 				03CF59921CA5129A0005D42F /* ProblemStatementVC.swift */,
 				038138991CA480E300C50F79 /* ProblemTabBarController.swift */,
 				034D91941CA5E86500C9E9DE /* Main.storyboard */,
@@ -799,6 +814,9 @@
 				03216ED61C75BD9F009C9236 /* ACM ICPC_Logo.png in Resources */,
 				23B661731C7D8C9700860B1C /* X_Logo.jpg in Resources */,
 				034D918D1CA5B8E100C9E9DE /* learderboard-29@3x.png in Resources */,
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 			);
 			runOnlyForDeploymentPostprocessing = 0;
