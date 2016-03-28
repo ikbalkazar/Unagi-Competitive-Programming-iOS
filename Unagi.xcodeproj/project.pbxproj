@@ -26,8 +26,6 @@
 		23D105D61CA9AE990073A669 /* SuffixArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105741CA9AE990073A669 /* SuffixArray.swift */; };
 		23D105D71CA9AE990073A669 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105751CA9AE990073A669 /* Utilities.swift */; };
 		23D105D81CA9AE990073A669 /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105761CA9AE990073A669 /* Website.swift */; };
-		23D105D91CA9AE990073A669 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23D105781CA9AE990073A669 /* Model.xcdatamodeld */; };
-		23D105DA1CA9AE990073A669 /* SlideMenuControllerSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23D1057A1CA9AE990073A669 /* SlideMenuControllerSwift.xcdatamodeld */; };
 		23D105DB1CA9AE990073A669 /* Unagi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23D1057C1CA9AE990073A669 /* Unagi.xcdatamodeld */; };
 		23D105DC1CA9AE990073A669 /* DataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D1057E1CA9AE990073A669 /* DataTableViewCell.xib */; };
 		23D105DD1CA9AE990073A669 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105801CA9AE990073A669 /* String.swift */; };
@@ -131,8 +129,6 @@
 		23D105741CA9AE990073A669 /* SuffixArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuffixArray.swift; sourceTree = "<group>"; };
 		23D105751CA9AE990073A669 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		23D105761CA9AE990073A669 /* Website.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Website.swift; sourceTree = "<group>"; };
-		23D105791CA9AE990073A669 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		23D1057B1CA9AE990073A669 /* SlideMenuControllerSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SlideMenuControllerSwift.xcdatamodel; sourceTree = "<group>"; };
 		23D1057D1CA9AE990073A669 /* Competitive_Programming_Appp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Competitive_Programming_Appp.xcdatamodel; sourceTree = "<group>"; };
 		23D1057E1CA9AE990073A669 /* DataTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataTableViewCell.xib; sourceTree = "<group>"; };
 		23D105801CA9AE990073A669 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -284,8 +280,8 @@
 			isa = PBXGroup;
 			children = (
 				23D1056F1CA9AE990073A669 /* AppDelegate.swift */,
+				23D1057C1CA9AE990073A669 /* Unagi.xcdatamodeld */,
 				23D105701CA9AE990073A669 /* Class */,
-				23D105771CA9AE990073A669 /* Data Models */,
 				23D1057E1CA9AE990073A669 /* DataTableViewCell.xib */,
 				23D1057F1CA9AE990073A669 /* Extension */,
 				23D105881CA9AE990073A669 /* Info.plist */,
@@ -311,16 +307,6 @@
 				23D105761CA9AE990073A669 /* Website.swift */,
 			);
 			path = Class;
-			sourceTree = "<group>";
-		};
-		23D105771CA9AE990073A669 /* Data Models */ = {
-			isa = PBXGroup;
-			children = (
-				23D105781CA9AE990073A669 /* Model.xcdatamodeld */,
-				23D1057A1CA9AE990073A669 /* SlideMenuControllerSwift.xcdatamodeld */,
-				23D1057C1CA9AE990073A669 /* Unagi.xcdatamodeld */,
-			);
-			path = "Data Models";
 			sourceTree = "<group>";
 		};
 		23D1057F1CA9AE990073A669 /* Extension */ = {
@@ -607,7 +593,6 @@
 				23D106241CA9AE990073A669 /* RightViewController.swift in Sources */,
 				23D105DE1CA9AE990073A669 /* UIApplication.swift in Sources */,
 				23D105DF1CA9AE990073A669 /* UIColor.swift in Sources */,
-				23D105DA1CA9AE990073A669 /* SlideMenuControllerSwift.xcdatamodeld in Sources */,
 				23D1060E1CA9AE990073A669 /* ImageHeaderView.swift in Sources */,
 				23D106221CA9AE990073A669 /* ProblemViewController.swift in Sources */,
 				23D106271CA9AE990073A669 /* SlideMenuController.swift in Sources */,
@@ -638,7 +623,6 @@
 				23D105DD1CA9AE990073A669 /* String.swift in Sources */,
 				23D1061C1CA9AE990073A669 /* LoginViewController.swift in Sources */,
 				23D105D61CA9AE990073A669 /* SuffixArray.swift in Sources */,
-				23D105D91CA9AE990073A669 /* Model.xcdatamodeld in Sources */,
 				23D106251CA9AE990073A669 /* SearchTableViewController.swift in Sources */,
 				23D105D51CA9AE990073A669 /* Problem.swift in Sources */,
 				23D1061E1CA9AE990073A669 /* NonMenuController.swift in Sources */,
@@ -800,33 +784,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		23D105781CA9AE990073A669 /* Model.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				23D105791CA9AE990073A669 /* Model.xcdatamodel */,
-			);
-			currentVersion = 23D105791CA9AE990073A669 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		23D1057A1CA9AE990073A669 /* SlideMenuControllerSwift.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				23D1057B1CA9AE990073A669 /* SlideMenuControllerSwift.xcdatamodel */,
-			);
-			currentVersion = 23D1057B1CA9AE990073A669 /* SlideMenuControllerSwift.xcdatamodel */;
-			path = SlideMenuControllerSwift.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		23D1057C1CA9AE990073A669 /* Unagi.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				23D1057D1CA9AE990073A669 /* Competitive_Programming_Appp.xcdatamodel */,
 			);
 			currentVersion = 23D1057D1CA9AE990073A669 /* Competitive_Programming_Appp.xcdatamodel */;
-			path = Unagi.xcdatamodeld;
+			name = Unagi.xcdatamodeld;
+			path = "Data Models/Unagi.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

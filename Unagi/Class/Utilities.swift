@@ -50,3 +50,35 @@ func saveToEntity(entityName: String, object: AnyObject) -> Bool {
     }
     
 }
+
+func clearEntity(entityName: String) -> Bool {
+    
+    let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let context: NSManagedObjectContext = appDel.managedObjectContext!
+    
+    let request = NSFetchRequest(entityName: entityName)
+    do {
+        
+        if let objects = try context.executeFetchRequest(request) as? [NSManagedObject] {
+            
+            for object in objects {
+                context.deleteObject(object)
+            }
+            
+            do {
+                try context.save()
+            } catch {
+                return false
+            }
+            
+        } else {
+            return false
+        }
+        
+    } catch {
+        return false
+    }
+    
+    return true
+    
+}
