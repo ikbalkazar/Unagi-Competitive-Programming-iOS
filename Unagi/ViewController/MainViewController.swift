@@ -33,8 +33,6 @@ class MainViewController: UIViewController {
         
         userDefaults.setValue( websites[2].name , forKey: "RightWebsite")
         
-        print(userDefaults.objectForKey("TopWebsite") as! String + "_Logo.png")
-        
         topButton.setBackgroundImage(UIImage(named: userDefaults.objectForKey("TopWebsite") as! String + "_Logo.png"), forState: .Normal)
         
         topButton.layer.cornerRadius = 10

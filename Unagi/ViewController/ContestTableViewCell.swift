@@ -32,10 +32,10 @@ class ContestTableViewCell: UITableViewCell {
                 return
             }
             let event = EKEvent(eventStore: store)
-            event.title = self.contest.event
+            event.title = self.contest.name
             
             //Formats the start date-time
-            var dateAsString = self.contest.startTime
+            var dateAsString = self.contest.start
             dateAsString.removeAtIndex(dateAsString.startIndex.advancedBy(10))
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-ddHH:mm:ss"
@@ -82,7 +82,7 @@ class ContestTableViewCell: UITableViewCell {
     func setContest(selectedContest: Contest) {
         contest = selectedContest
         cellImage.image = contest.getImage()
-        contestNameLabel.text = contest.event
+        contestNameLabel.text = contest.name
         
         startDateTimeLabel.text = FormatForTable(contest.localStart)
     }

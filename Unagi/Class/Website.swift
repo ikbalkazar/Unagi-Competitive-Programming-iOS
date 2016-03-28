@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import CoreData
 
 class Website {
     
@@ -20,7 +21,7 @@ class Website {
         self.name = ""
         self.objectId = ""
         self.url = ""
-        self.contestStatus = ""
+        self.contestStatus = "4"
     }
     
     init(id: String , name: String , url: String , contestStatus: String ) {
@@ -29,7 +30,6 @@ class Website {
         self.name = name
         self.url = url
         self.contestStatus = contestStatus
-        
         
     }
     

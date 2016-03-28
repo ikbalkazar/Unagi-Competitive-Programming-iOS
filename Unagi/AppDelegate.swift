@@ -19,13 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func initializeWebsitesArrayUsingWebsiteEntity() {
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDel.managedObjectContext!
+        let context: NSManagedObjectContext = appDel.managedObjectContext!
         
         let request = NSFetchRequest(entityName: "Website")
         request.returnsObjectsAsFaults = false
         do {
-            let results = try context.executeFetchRequest(request)
-            for website in results as! [NSManagedObject] {
+            let results = try context.executeFetchRequest(request) as! [NSManagedObject]
+            for website in results {
                     
                 let objectId = website.valueForKey("objectId") as! String
                 let name = website.valueForKey("name") as! String
@@ -39,7 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         print("Websites Array Size = \(websites.count)")
-        
     }
     
     /*
@@ -48,10 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func preLoadWebsiteEntity() {
         
         print("PreLoad Website Entity")
-        
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context: NSManagedObjectContext = appDel.managedObjectContext!
-        
         
         NSUserDefaults.standardUserDefaults().setObject(true, forKey: "nonefiltered")
         
@@ -62,29 +57,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let items = content.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
                 
                 for item in items {
-                    
                     let objects = item.componentsSeparatedByString(",")
-                    
-                    let newSite = NSEntityDescription.insertNewObjectForEntityForName("Website", inManagedObjectContext: context)
-                    newSite.setValue(objects[0], forKey: "objectId")
-                    newSite.setValue(objects[1], forKey: "name")
-                    newSite.setValue(objects[2], forKey: "url")
-                    newSite.setValue(objects[3], forKey: "contestStatus")
-                    
-                    do {
-                        try context.save()
+                    let newWebsite = Website(id: objects[0], name: objects[1], url: objects[2], contestStatus: objects[3])
+                    if saveToEntity("Website", object: newWebsite) {
                         NSUserDefaults.standardUserDefaults().setObject(true, forKey: objects[1] + "filtered")
                     }
-                    catch {
-                        print("Error saving to the Core Data - Website")
-                    }
-                    
                 }
-                
             } catch {
-                
                 print("Error occured parsing Website.csv")
-                
             }
             
         } else {
@@ -98,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Get Problems from Core Data - Problem Entity")
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDel.managedObjectContext!
+        let context: NSManagedObjectContext = appDel.managedObjectContext!
         
         let request = NSFetchRequest(entityName: "Problem")
         request.returnsObjectsAsFaults = false
@@ -137,9 +117,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("preLoadProblemEntity")
         
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context: NSManagedObjectContext = appDel.managedObjectContext!
-        
         if let contentsOfUrl = NSBundle.mainBundle().URLForResource("Problem", withExtension: "csv") {
             
             do {
@@ -152,16 +129,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     let objects = item.componentsSeparatedByString(separator)
                     
-                    let newSite = NSEntityDescription.insertNewObjectForEntityForName("Problem", inManagedObjectContext: context)
-                    newSite.setValue(objects[0], forKey: "objectId")
-                    newSite.setValue(objects[1], forKey: "name")
-                    newSite.setValue(objects[2], forKey: "url")
-                    newSite.setValue(objects[3], forKey: "tags")
+                    let newProblem = Problem()
                     
-                    do { try context.save() }
-                    catch {
-                        print("Error saving to the Core Data - Website")
-                    }
+                    saveToEntity("Problem", object: newProblem)
                     
                 }
                 
@@ -251,16 +221,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                         print("new Entry \(s1)")
                                     }
                                     s1 += 1
-                                    let newProblem = NSEntityDescription.insertNewObjectForEntityForName("Problem", inManagedObjectContext: context)
                                     
-                                    newProblem.setValue(problem.objectId!, forKey: "objectId")
-                                    newProblem.setValue(name, forKey: "name")
-                                    newProblem.setValue(url, forKey: "url")
-                                    newProblem.setValue(tags, forKey: "tags")
-                                    newProblem.setValue(contestId, forKey: "contestId")
-                                    newProblem.setValue(solutionUrl, forKey: "solutionUrl")
-                                    newProblem.setValue(websiteId, forKey: "websiteId")
-                                    newProblem.setValue(NSDate(), forKey: "updatedAt")
+                                    let newProblem = Problem(id: problem.objectId!, name: name, url: url, tags: tags, contestId: contestId, solutionUrl: solutionUrl, websiteId: websiteId)
+                                    
+                                    saveToEntity("Problem", object: newProblem)
+                                    
                                     
                                 } else {
                                     
@@ -275,15 +240,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                     results[0].setValue(contestId, forKey: "contestId")
                                     results[0].setValue(solutionUrl, forKey: "solutionUrl")
                                     results[0].setValue(websiteId, forKey: "websiteId")
-                                    results[0].setValue(NSDate(), forKey: "updatedAt")
+                                    
+                                    do {
+                                        try context.save()
+                                    } catch {
+                                        print("Error saving into Core Data - Problems Database")
+                                    }
                                     
                                 }
                                 
-                                do {
-                                    try context.save()
-                                } catch {
-                                    print("Error saving into Core Data - Problems Database")
-                                }
+                                
                                 
                             }
                         } catch {
@@ -339,13 +305,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let newContest = Contest()
                     
                     if let name = object.valueForKey("name") as? String {
-                        newContest.event = name
+                        newContest.name = name
                     }
                     if let start = object.valueForKey("start") as? String {
-                        newContest.startTime = start
+                        newContest.start = start
                     }
                     if let end = object.valueForKey("end") as? String {
-                        newContest.endTime = end
+                        newContest.end = end
                     }
                     if let dur = object.valueForKey("duration") as? Double {
                         newContest.duration = dur
@@ -353,17 +319,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if let url = object.valueForKey("url") as? String {
                         newContest.url = url
                     }
-                    if let website = object.valueForKey("websiteName") as? String {
-                        
-                        for site in websites {
-                            if site.name.containsString(website) {
-                                newContest.website = site
-                                break
-                            }
-                        }
-                        
-                    }
-                    if newContest.website == nil {
+                    if let website = object.valueForKey("website") as? Website {
+                        newContest.website = website
+                    } else {
                         newContest.website = Website(id: "none", name: "none", url: "none", contestStatus: "0")
                     }
                     
@@ -433,15 +391,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     for i in 0 ..< objects.count {
                         
-                        var event: String!
-                        var start: String!
-                        var end: String!
-                        var dur:Double = -1
-                        var url: String!
-                        var website: String!
+                        var name = "" , start = "" , end = "" , url = ""
+                        var duration: Double = -1
+                        var website = noneWebsite
                         
                         if let tmp = objects[i]?["event"] as? String {
-                            event = tmp
+                            name = tmp
                         }
                         if let tmp = objects[i]?["start"] as? String {
                             start = tmp
@@ -450,30 +405,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             end = tmp
                         }
                         if let tmp = objects[i]?["duration"] as? Double {
-                            dur = tmp
+                            duration = tmp
                         }
                         if let tmp = objects[i]?["href"] as? String {
                             url = tmp
                         }
+                        
                         if let tmp = objects[i]?["resource"] {
                             if let tmp2 = tmp?["name"] as? String {
-                                website = tmp2
+                               
+                                for site in websites {
+                                    if site.name.containsString(tmp2) {
+                                        website = site
+                                        break
+                                    }
+                                }
                             }
                         }
                         
-                        let newContest = NSEntityDescription.insertNewObjectForEntityForName("Contest", inManagedObjectContext: context)
+                        let newContest = Contest(id: "\(i)", name: name, start: start, end: end, duration: duration, url: url, website: website)
                         
-                        newContest.setValue(event, forKey: "name")
-                        newContest.setValue(start, forKey: "start")
-                        newContest.setValue(end, forKey: "end")
-                        newContest.setValue(url, forKey: "url")
-                        newContest.setValue(dur, forKey: "duration")
-                        newContest.setValue(website, forKey: "websiteName")
                         
-                        do {
-                            try context.save()
-                        } catch {
-                            print("Could not save 2")
+                        if saveToEntity("Contest", object: newContest) == false {
+                            print("Failed to save into Contest Entity")
                         }
                         
                     }
@@ -520,11 +474,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSUserDefaults.standardUserDefaults().setValue(true, forKey: "firstTimeCheck")
         self.preLoadWebsiteEntity()
         self.preLoadProblemEntity()
-        
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    
+
         Parse.setApplicationId("8xMwvCqficeHwkS7Ag5PQWdlw1q91ujGcXVRgUnG",
             clientKey: "yXQByidQA8eNkR0NaALnq2KZUvzMhQ9AvPNylyeO")
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
@@ -534,7 +487,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         self.initializeWebsitesArrayUsingWebsiteEntity()
-        self.updateContestEntityUsingClistBy()
+      //  self.updateContestEntityUsingClistBy()
         self.updateProblemEntityUsingParse()
         
         self.createMenuView()

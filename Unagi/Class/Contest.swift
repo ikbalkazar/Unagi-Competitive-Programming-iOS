@@ -10,30 +10,36 @@ import UIKit
 
 class Contest
 {
-    var event: String!
-    var startTime: String!
+    var objectId: String!
+    var name: String!
+    var start: String!
     var localStart: String!
-    var endTime: String!
+    var end: String!
     var localEnd: String!
-    var duration: Double!//seconds
+    var duration: Double! // in seconds
     var url: String!
     var website: Website!
     
     init()
     {
-        event = ""
-        startTime = ""
-        endTime = ""
+        objectId = ""
+        name = ""
+        start = ""
+        localStart = ""
+        end = ""
+        localEnd = ""
         duration = 0
         url = ""
+        website = nil
     }
     
-    init( event: String , start: String , end: String , duration: Double , url: String, website: Website )
+    init( id: String , name: String , start: String , end: String , duration: Double , url: String, website: Website )
     {
-        self.event = event
-        self.startTime = start
+        self.objectId = id
+        self.name = name
+        self.start = start
         self.localStart = getLocalDate(start)
-        self.endTime = end
+        self.end = end
         self.localEnd = getLocalDate(end)
         self.duration = duration
         self.url = url

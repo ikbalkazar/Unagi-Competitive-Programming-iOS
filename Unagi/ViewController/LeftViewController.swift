@@ -7,7 +7,6 @@ import UIKit
 enum LeftMenu: Int {
     case Main = 0
     case Swift
-    case Friends
     case Go
     case NonMenu
     case Contests
@@ -20,10 +19,9 @@ protocol LeftMenuProtocol : class {
 class LeftViewController : UIViewController, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, LeftMenuProtocol {
     
     @IBOutlet weak var tableView: UITableView!
-    var menus = ["Main", "Swift", "Friends", "Go", "NonMenu", "Upcoming Contests"]
+    var menus = ["Main", "Swift", "Go", "NonMenu", "Upcoming Contests"]
     var mainViewController: UIViewController!
     var swiftViewController: UIViewController!
-    var friendsTableViewController: UIViewController!
     var goViewController: UIViewController!
     var nonMenuViewController: UIViewController!
     var contestTableViewController: UIViewController!
@@ -46,9 +44,6 @@ class LeftViewController : UIViewController, UIGestureRecognizerDelegate, UIImag
         
         let contestTableViewController = storyboard.instantiateViewControllerWithIdentifier("ContestTableViewController") as! ContestTableViewController
         self.contestTableViewController = UINavigationController(rootViewController: contestTableViewController)
-        
-        let friendsTableViewController = storyboard.instantiateViewControllerWithIdentifier("FriendsTableViewController") as! FriendsTableViewController
-        self.friendsTableViewController = UINavigationController(rootViewController: friendsTableViewController)
         
         let goViewController = storyboard.instantiateViewControllerWithIdentifier("GoViewController") as! GoViewController
         self.goViewController = UINavigationController(rootViewController: goViewController)
@@ -135,8 +130,6 @@ class LeftViewController : UIViewController, UIGestureRecognizerDelegate, UIImag
             self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)
         case .Swift:
             self.slideMenuController()?.changeMainViewController(self.swiftViewController, close: true)
-        case .Friends:
-            self.slideMenuController()?.changeMainViewController(self.friendsTableViewController, close: true)
         case .Go:
             self.slideMenuController()?.changeMainViewController(self.goViewController, close: true)
         case .NonMenu:
@@ -151,7 +144,7 @@ extension LeftViewController : UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if let menu = LeftMenu(rawValue: indexPath.item) {
             switch menu {
-            case .Main, .Swift, .Friends, .Go, .NonMenu, .Contests:
+            case .Main, .Swift, .Go, .NonMenu, .Contests:
                 return BaseTableViewCell.height()
             }
         }
@@ -169,7 +162,7 @@ extension LeftViewController : UITableViewDataSource {
         
         if let menu = LeftMenu(rawValue: indexPath.item) {
             switch menu {
-            case .Main, .Swift, .Friends, .Go, .NonMenu, .Contests:
+            case .Main, .Swift, .Go, .NonMenu, .Contests:
                 let cell = BaseTableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: BaseTableViewCell.identifier)
                 cell.setData(menus[indexPath.row])
                 return cell

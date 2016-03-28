@@ -31,7 +31,7 @@ class ContestContentViewController: UIViewController {
         let backgroundImage = UIImageView(frame: UIScreen.mainScreen().bounds)
         backgroundImage.image = UIImage(named: "X_Logo.jpg")
         self.view.insertSubview(backgroundImage, atIndex: 0)
-        contestNameLabel.text = selectedContest.event
+        contestNameLabel.text = selectedContest.name
         startTimeLabel.text = selectedContest.localStart
         endTimeLabel.text = selectedContest.localEnd
         durationLabel.text = selectedContest.getHourMinuteDuration()
