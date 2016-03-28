@@ -1,0 +1,17 @@
+Problem Entity
+--------------
+objectId - Imperative
+name - Imperative
+url - Imperative
+tags - Optional
+solutionUrl - Optional
+website - Optional
+--------------
+
+Website Entity
+--------------
+objectId - Imperative
+name - Imperative
+url - Imperative
+contestStatus - Imperative
+--------------

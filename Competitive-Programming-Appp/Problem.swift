@@ -14,29 +14,26 @@ class Problem {
     var name: String!
     var url: String!
     var tags = [String]()
-    var contestId: String!
     var solutionUrl: String!
-    var websiteId: String!
+    var website: Website!
     
     init() {
         objectId = ""
         name = ""
         url = ""
         tags = [String]()
-        contestId = ""
         solutionUrl = ""
-        websiteId = ""
+        website = noneWebsite
     }
     
-    init( id: String, name: String, url: String, tags: [String], contestId: String, solutionUrl: String, websiteId: String ){
+    init( objectId: String, name: String, url: String, tags: [String], solutionUrl: String, website: Website ){
         
-        self.objectId = id
+        self.objectId = objectId
         self.name = name
         self.url = url
         self.tags = tags
-        self.contestId = contestId
         self.solutionUrl = solutionUrl
-        self.websiteId = websiteId
+        self.website = website
         
     }
     

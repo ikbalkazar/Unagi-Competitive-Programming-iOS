@@ -10,34 +10,42 @@ import UIKit
 
 class Contest
 {
-    var event: String!
-    var startTime: String!
-    var localStart: String!
-    var endTime: String!
-    var localEnd: String!
-    var duration: Double!//seconds
+    var objectId: String!
+    var name: String!
+    var start: String!
+    var end: String!
+    var duration: Double! // in seconds
     var url: String!
     var website: Website!
     
     init()
     {
-        event = ""
-        startTime = ""
-        endTime = ""
+        objectId = ""
+        name = ""
+        start = ""
+        end = ""
         duration = 0
         url = ""
+        website = noneWebsite
     }
     
-    init( event: String , start: String , end: String , duration: Double , url: String, website: Website )
+    init( id: String , name: String , start: String , end: String , duration: Double , url: String, website: Website )
     {
-        self.event = event
-        self.startTime = start
-        self.localStart = getLocalDate(start)
-        self.endTime = end
-        self.localEnd = getLocalDate(end)
+        self.objectId = id
+        self.name = name
+        self.start = start
+        self.end = end
         self.duration = duration
         self.url = url
         self.website = website
+    }
+    
+    func localStart() -> String {
+        return self.getLocalDate(start)
+    }
+    
+    func localEnd() -> String {
+        return self.getLocalDate(end)
     }
     
     func getLocalDate(strDate : String) -> String {
@@ -61,12 +69,12 @@ class Contest
         if let image = UIImage(named: website.name! + "_Logo.png") {
             return image
         }
-        return UIImage(named: "none.jpg")!
-
+        return UIImage(named: "none.png")!
+        
     }
     
     func getImage(website website: String) -> UIImage {
-       
+        
         if let image = UIImage(named: website + "_Logo.png") {
             return image
         }
