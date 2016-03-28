@@ -9,7 +9,6 @@ import UIKit
 import Parse
 import CoreData
 
-
 class MainViewController: UIViewController {
     
     @IBOutlet weak var topButton: UIButton!
@@ -17,9 +16,13 @@ class MainViewController: UIViewController {
     @IBOutlet weak var rightButton: UIButton!
     
     @IBAction func topButtonPressed(sender: AnyObject) {
-        performSegueWithIdentifier("ShowTabView", sender: self);
+        
     }
 
+    @IBAction func tempButtonPressed(sender: AnyObject) {
+        performSegueWithIdentifier("Main_SearchView", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

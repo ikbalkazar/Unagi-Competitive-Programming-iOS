@@ -112,9 +112,20 @@ class SearchTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        print(requestedProblems[indexPath.row].url)
-        UIApplication.sharedApplication().openURL(NSURL(string: requestedProblems[indexPath.row].url)!)
+        //UIApplication.sharedApplication().openURL(NSURL(string: requestedProblems[indexPath.row].url)!)
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            performSegueWithIdentifier("SearchTable_TabBar", sender: cell)
+        }
         return indexPath
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let selectedIndex = self.tableView.indexPathForCell(sender as! UITableViewCell)
+        if segue.identifier == "SearchTable_TabBar" {
+            if let dest = segue.destinationViewController as? ProblemTabBarController {
+                dest.viaSegue_problem = requestedProblems[selectedIndex!.row]
+            }
+        }
     }
     
     /*
@@ -152,14 +163,7 @@ class SearchTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

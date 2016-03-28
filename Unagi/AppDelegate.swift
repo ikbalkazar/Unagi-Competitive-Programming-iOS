@@ -10,6 +10,9 @@ var contests = [Contest]()
 var problems = [Problem]()
 var websites = [Website]()
 var filteredContests = [Contest]()
+var followingList = [User]()
+var followerList = [User]()
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -326,6 +329,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                     
                     contests.append(newContest)
+                    
                 }
                 
                 self.updateFilteredContestsArray()
@@ -373,6 +377,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         
                         if let objects = try context.executeFetchRequest(request) as? [NSManagedObject] {
                             
+                            print("objects = \(objects.count)")
+                            
                             for object in objects {
                                 context.deleteObject(object)
                             }
@@ -385,15 +391,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
                         }
                         
+                        print("deleted")
+                        
                     } catch {
                         print("Could not delete objects in Contest Entity")
                     }
                     
-                    for i in 0 ..< objects.count {
+                    for i in 0 ..< objects!.count {
                         
+                        print(i)
+                        
+<<<<<<< HEAD:Unagi/AppDelegate.swift
                         var name = "" , start = "" , end = "" , url = ""
                         var duration: Double = -1
                         var website = noneWebsite
+=======
+                        /*
+                        var event = ""
+                        var start = ""
+                        var end = ""
+                        var dur:Double = -1
+                        var url = ""
+                        var website = ""
+>>>>>>> master:Competitive-Programming-Appp/AppDelegate.swift
                         
                         if let tmp = objects[i]?["event"] as? String {
                             name = tmp
@@ -422,9 +442,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 }
                             }
                         }
+ 
+                        */
                         
                         let newContest = Contest(id: "\(i)", name: name, start: start, end: end, duration: duration, url: url, website: website)
                         
+<<<<<<< HEAD:Unagi/AppDelegate.swift
+=======
+                    //    newContest.setValue("asdf", forKey: "name")
+                    //    newContest.setValue("asdf", forKey: "start")
+                        
+                    //    newContest.setValue("asdf", forKey: "end")
+                    //    newContest.setValue("asdf", forKey: "url")
+                    //    newContest.setValue(-1, forKey: "duration")
+                    //    newContest.setValue("asdf", forKey: "websiteName")
+>>>>>>> master:Competitive-Programming-Appp/AppDelegate.swift
                         
                         if saveToEntity("Contest", object: newContest) == false {
                             print("Failed to save into Contest Entity")
@@ -447,6 +479,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    func updateFollowingEntityUsingParse() {
+        
+    }
+    
+    func updateFollowerEntityUsingParse() {
+        
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDel.managedObjectContext!
+        
+        let query = PFQuery(className: "FollowingList")
+   //     query.whereKey("following", equalTo: PFUser.currentUser()!.objectId!)
+        query.whereKey("updatedAt", greaterThan: NSDate())
+        
+        query.findObjectsInBackgroundWithBlock { (objects, error) in
+            
+            if error == nil {
+                
+                if let objects = objects {
+                    
+                    for user in objects {
+                        
+                        let newObject = NSEntityDescription.insertNewObjectForEntityForName("Follower", inManagedObjectContext: context)
+                        
+                        let objectId = user.objectId
+                        let userId = user["userId"] as! String
+                                            }
+                    
+                }
+                
+            } else {
+                
+                print("Could not Update Follower Entity Using Parse")
+                
+            }
+            
+            
+        }
+        
+    }
+    
     private func createMenuView() {
         
         // create viewController code...
@@ -458,7 +530,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
         
-        UINavigationBar.appearance().tintColor = UIColor(hex: "689F38")
+        UINavigationBar.appearance().tintColor = UIColor(hex: "078ac9") // used to be 689F38
         
         leftViewController.mainViewController = nvc
         
@@ -466,18 +538,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         slideMenuController.automaticallyAdjustsScrollViewInsets = true
         self.window?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
         self.window?.rootViewController = slideMenuController
-        self.window?.makeKeyAndVisible()
+        //self.window?.makeKeyAndVisible()
     }
     
     func handleFirstTimeProcedures() {
-        
+        //is there a need for calling 'defaults.syncronize()' here????
         NSUserDefaults.standardUserDefaults().setValue(true, forKey: "firstTimeCheck")
         self.preLoadWebsiteEntity()
         self.preLoadProblemEntity()
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+<<<<<<< HEAD:Unagi/AppDelegate.swift
 
+=======
+        
+>>>>>>> master:Competitive-Programming-Appp/AppDelegate.swift
         Parse.setApplicationId("8xMwvCqficeHwkS7Ag5PQWdlw1q91ujGcXVRgUnG",
             clientKey: "yXQByidQA8eNkR0NaALnq2KZUvzMhQ9AvPNylyeO")
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
@@ -489,7 +565,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.initializeWebsitesArrayUsingWebsiteEntity()
       //  self.updateContestEntityUsingClistBy()
         self.updateProblemEntityUsingParse()
-        
+        self.updateFollowingEntityUsingParse()
+        self.updateFollowerEntityUsingParse()
         self.createMenuView()
         
         return true

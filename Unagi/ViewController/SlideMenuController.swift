@@ -926,6 +926,11 @@ extension UIViewController {
         navigationItem.rightBarButtonItem = rightButton;
     }
     
+    public func addRightBarButtonWithTitle(title: String, action: Selector) {
+        let rightButton: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Plain, target: self, action: action)
+        navigationItem.rightBarButtonItem = rightButton;
+    }
+    
     public func toggleLeft() {
         slideMenuController()?.toggleLeft()
     }

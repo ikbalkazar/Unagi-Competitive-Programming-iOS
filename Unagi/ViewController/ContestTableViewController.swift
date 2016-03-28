@@ -20,11 +20,11 @@ class ContestTableViewController: UITableViewController {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         
-        alert.addAction((UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
             
             self.dismissViewControllerAnimated(true, completion: nil)
             
-        })))
+        }))
         
         self.presentViewController(alert, animated: true, completion: nil)
     
@@ -117,7 +117,7 @@ class ContestTableViewController: UITableViewController {
                         newContest.setValue(url, forKey: "url")
                         newContest.setValue(dur, forKey: "duration")
                         newContest.setValue(website, forKey: "websiteName")
-                        
+                    
                         do {
                             try context.save()
                         } catch {
@@ -211,7 +211,8 @@ class ContestTableViewController: UITableViewController {
     }
 
     @IBAction func goToHome(sender: AnyObject) {
-        delegate?.changeViewController(LeftMenu.Main)
+        print("Going Home")
+        self.delegate!.changeViewController(LeftMenu.Main)
         dismissViewControllerAnimated(true, completion: nil)
     }
     

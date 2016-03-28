@@ -43,6 +43,8 @@ class LeftViewController : UIViewController, UIGestureRecognizerDelegate, UIImag
         self.swiftViewController = UINavigationController(rootViewController: swiftViewController)
         
         let contestTableViewController = storyboard.instantiateViewControllerWithIdentifier("ContestTableViewController") as! ContestTableViewController
+        contestTableViewController.delegate = self
+        
         self.contestTableViewController = UINavigationController(rootViewController: contestTableViewController)
         
         let goViewController = storyboard.instantiateViewControllerWithIdentifier("GoViewController") as! GoViewController
@@ -50,23 +52,25 @@ class LeftViewController : UIViewController, UIGestureRecognizerDelegate, UIImag
         
         let nonMenuController = storyboard.instantiateViewControllerWithIdentifier("NonMenuController") as! NonMenuController
         nonMenuController.delegate = self
+        
         self.nonMenuViewController = UINavigationController(rootViewController: nonMenuController)
         
         self.tableView.registerCellClass(BaseTableViewCell.self)
         
         self.imageHeaderView = ImageHeaderView.loadNib()
         
-        let tap = UITapGestureRecognizer(target: self, action: "openActionSheet:")
+       /* let tap = UITapGestureRecognizer(target: self, action: #selector(self.openActionSheet(_:)))
         profileImageHash = tap.hash
         self.imageHeaderView.profileImage.addGestureRecognizer(tap)
         self.imageHeaderView.profileImage.userInteractionEnabled = true
         
-        let tap2 = UITapGestureRecognizer(target: self, action: "openActionSheet:")
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(self.openActionSheet(_:)))
         backgroundImageHash = tap2.hash
         self.imageHeaderView.backgroundImage.addGestureRecognizer(tap2)
         self.imageHeaderView.backgroundImage.userInteractionEnabled = true
-        
+
         self.view.addSubview(self.imageHeaderView)
+        */
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -125,6 +129,7 @@ class LeftViewController : UIViewController, UIGestureRecognizerDelegate, UIImag
     }
     
     func changeViewController(menu: LeftMenu) {
+        print("Changing the view!!")
         switch menu {
         case .Main:
             self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)
