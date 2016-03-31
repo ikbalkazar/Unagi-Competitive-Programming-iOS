@@ -36,11 +36,10 @@ class SearchTableViewController: UITableViewController {
                             problem.tags = tags
                         }
                         problem.url = object["url"] as! String
+                        let websiteName = object["websiteId"] as! String
                         
-                        //Some urls have https prefix some do not, fix this in the data base
-                        if problem.url.rangeOfString("https") == nil {
-                            problem.url = "https://" + problem.url
-                        }
+                        //Problems will be downloaded by Appdelegete. This function is temporary.
+                        problem.website = Website(id: "temp_id", name: websiteName, url: "temp_url", contestStatus: "temp_status")
                         
                         problems.append(problem)
                     }
@@ -83,6 +82,28 @@ class SearchTableViewController: UITableViewController {
         return false
     }
     
+    //getRelevance function is currently temporary. Should be improved in the future.
+    //calculates the relevance of the problem according to search parameters
+    func getRelevance(problem: Problem) -> Int {
+        var result = 0
+        if nameMatch(problem) {
+            result += 8
+        }
+        if curTags.count > 0 {
+            for tag in problem.tags {
+                if match(tag, pattern: curSearchText!) {
+                    result += 4
+                }
+                for desiredTag in curTags {
+                    if match(tag, pattern: desiredTag) {
+                        result += 2
+                    }
+                }
+            }
+        }
+        return result
+    }
+    
     func updateRequestedProblems(problems: [Problem], addToAll: Bool) {
         for problem in problems {
             if addToAll {
@@ -92,6 +113,11 @@ class SearchTableViewController: UITableViewController {
                 requestedProblems.append(problem)
             }
         }
+        requestedProblems.sortInPlace { (problemA, problemB) -> Bool in
+            let relevanceA = getRelevance(problemA)
+            let relevanceB = getRelevance(problemB)
+            return relevanceA > relevanceB
+        }
         self.tableView.reloadData()
     }
     
@@ -99,9 +125,9 @@ class SearchTableViewController: UITableViewController {
         super.viewDidLoad()
         
         if allProblems.count == 0 {
-            //KPROBLEMS must be (#problems at parse) / 10
+            //KPROBLEMS must be atleast (#problems at parse) / 10
             let KPROBLEMS = 10
-            for var i = 0; i < KPROBLEMS; i++ {
+            for i in 0 ..< KPROBLEMS {
                 downloadProblems(i * 1000)
             }
         } else {
@@ -128,8 +154,8 @@ class SearchTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-        cell.textLabel?.text = requestedProblems[indexPath.row].name
+        let cell = tableView.dequeueReusableCellWithIdentifier("searchResultsCell", forIndexPath: indexPath) as! SearchTableViewCell
+        cell.setProblem(requestedProblems[indexPath.row])
         return cell
     }
     

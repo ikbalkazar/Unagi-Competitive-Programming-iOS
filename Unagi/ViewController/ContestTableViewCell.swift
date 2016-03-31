@@ -19,12 +19,6 @@ class ContestTableViewCell: UITableViewCell {
     @IBOutlet var startDateTimeLabel: UILabel!
     
     @IBAction func addToCalendar(sender: AnyObject) {
-        /*
-        Issue:
-        Causes app to crash when the access request is denied by the user from the settings.
-        May be it only happens if one changes the access status while app was still working at the background
-        */
-        
         let store = EKEventStore()
         store.requestAccessToEntityType(.Event) {(granted, error) in
             if !granted {

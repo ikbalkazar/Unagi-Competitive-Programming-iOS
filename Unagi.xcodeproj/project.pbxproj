@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03F8A5FF1CAD8A4C009C6106 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8A5FE1CAD8A4C009C6106 /* SearchTableViewCell.swift */; };
 		23913DF01C6FE1E90038BA34 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23913DEE1C6FE1E90038BA34 /* Bolts.framework */; };
 		23913DF11C6FE1E90038BA34 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23913DEF1C6FE1E90038BA34 /* Parse.framework */; };
 		23913DF31C6FE2300038BA34 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23913DF21C6FE2300038BA34 /* AudioToolbox.framework */; };
@@ -109,6 +110,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03F8A5FE1CAD8A4C009C6106 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		23913DD41C6FE1320038BA34 /* Unagi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unagi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23913DEE1C6FE1E90038BA34 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		23913DEF1C6FE1E90038BA34 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -387,6 +389,9 @@
 		23D105B61CA9AE990073A669 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				03F8A5FE1CAD8A4C009C6106 /* SearchTableViewCell.swift */,
+				23D105CD1CA9AE990073A669 /* SearchViewController.swift */,
+				23D105CC1CA9AE990073A669 /* SearchTableViewController.swift */,
 				23D105B71CA9AE990073A669 /* BaseTableViewCell.swift */,
 				23D105B81CA9AE990073A669 /* CFViewController.swift */,
 				23D105B91CA9AE990073A669 /* ContestContentViewController.swift */,
@@ -408,8 +413,6 @@
 				23D105C91CA9AE990073A669 /* ProblemViewController.swift */,
 				23D105CA1CA9AE990073A669 /* RegisterViewController.swift */,
 				23D105CB1CA9AE990073A669 /* RightViewController.swift */,
-				23D105CC1CA9AE990073A669 /* SearchTableViewController.swift */,
-				23D105CD1CA9AE990073A669 /* SearchViewController.swift */,
 				23D105CE1CA9AE990073A669 /* SlideMenuController.swift */,
 				23D105CF1CA9AE990073A669 /* SlideMenuControllerSwift.h */,
 				23D105D01CA9AE990073A669 /* SubContentsViewController.swift */,
@@ -627,6 +630,7 @@
 				23D105D51CA9AE990073A669 /* Problem.swift in Sources */,
 				23D1061E1CA9AE990073A669 /* NonMenuController.swift in Sources */,
 				23D105E31CA9AE990073A669 /* UIView.swift in Sources */,
+				03F8A5FF1CAD8A4C009C6106 /* SearchTableViewCell.swift in Sources */,
 				23D105D31CA9AE990073A669 /* Contest.swift in Sources */,
 				23D1061A1CA9AE990073A669 /* GoViewController.swift in Sources */,
 				23D106181CA9AE990073A669 /* FilterTableViewController.swift in Sources */,
