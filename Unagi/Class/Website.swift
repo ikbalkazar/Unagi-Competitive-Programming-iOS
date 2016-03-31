@@ -10,14 +10,15 @@ import UIKit
 import Foundation
 import CoreData
 
-class Website {
+class Website: NSObject {
     
     var objectId: String!
     var name: String!
     var url: String!
     var contestStatus: String!
     
-    init() {
+    override init() {
+        super.init()
         self.name = ""
         self.objectId = ""
         self.url = ""
