@@ -15,6 +15,9 @@ var allProblems = [Problem]()
 
 class SearchTableViewController: UITableViewController {
 
+    var curSearchText : String?
+    var curTags = [String]()
+    
     var requestedProblems = [Problem]()
     
     func downloadProblems(skip: Int) {
@@ -51,22 +54,41 @@ class SearchTableViewController: UITableViewController {
         }
     }
     
+    //Returns true if pattern occurs at least once in the text (Case insensitive)
+    func match(text: String, pattern: String) -> Bool {
+        return text.lowercaseString.rangeOfString(pattern.lowercaseString) != nil
+    }
+    
+    func nameMatch(problem: Problem) -> Bool {
+        if curSearchText! == "" {
+            return true
+        }
+        return match(problem.name, pattern: curSearchText!)
+    }
+    
+    func tagMatch(problem: Problem) -> Bool {
+        if curTags.count == 0 {
+            return true
+        }
+        for tag in problem.tags {
+            if match(tag, pattern: curSearchText!) {
+                return true
+            }
+            for desiredTag in curTags {
+                if match(tag, pattern: desiredTag) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
     func updateRequestedProblems(problems: [Problem], addToAll: Bool) {
         for problem in problems {
             if addToAll {
                 allProblems.append(problem)
             }
-            var matched = false
-            if problem.name.lowercaseString.rangeOfString(curSearchText_.lowercaseString) != nil {
-                matched = true
-            }
-            for tag in problem.tags {
-                if tag.lowercaseString.rangeOfString(curSearchText_.lowercaseString) != nil {
-                    matched = true
-                    break
-                }
-            }
-            if matched {
+            if tagMatch(problem) && nameMatch(problem) {
                 requestedProblems.append(problem)
             }
         }
