@@ -11,7 +11,7 @@ import EventKit
 
 class ContestTableViewCell: UITableViewCell {
     
-    var contest: Contest = Contest()
+    var contest: Contest!
     var savedEvents = [EKEvent]()
     
     @IBOutlet var cellImage: UIImageView!
@@ -36,7 +36,7 @@ class ContestTableViewCell: UITableViewCell {
             event.startDate = dateFormatter.dateFromString(dateAsString)!
             
             //End date = start date + duration
-            event.endDate = event.startDate.dateByAddingTimeInterval(self.contest.duration)
+            event.endDate = event.startDate.dateByAddingTimeInterval(self.contest.duration as Double)
             
             event.calendar = store.defaultCalendarForNewEvents
             do {
@@ -73,13 +73,16 @@ class ContestTableViewCell: UITableViewCell {
         return dateFormatter.stringFromDate(date!)
     }
     
-    func setContest(selectedContest: Contest) {
+    
+ 
+    func setContestAttributes(selectedContest: Contest) {
         contest = selectedContest
         cellImage.image = contest.getImage()
         contestNameLabel.text = contest.name
-        
         startDateTimeLabel.text = FormatForTable(contest.localStart())
     }
+ 
+ 
     
     override func awakeFromNib() {
         super.awakeFromNib()

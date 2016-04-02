@@ -1,52 +1,28 @@
 //
 //  Contest.swift
-//  Competitive-Programming-Appp
+//  Unagi
 //
-//  Created by Harun Gunaydin on 2/14/16.
+//  Created by Harun Gunaydin on 4/1/16.
 //  Copyright © 2016 harungunaydin. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import CoreData
+import UIKit
 
-class Contest
-{
-    var objectId: String!
-    var name: String!
-    var start: String!
-    var end: String!
-    var duration: Double! // in seconds
-    var url: String!
-    var website: Website!
+
+class Contest: NSManagedObject {
     
-    init()
-    {
-        objectId = ""
-        name = ""
-        start = ""
-        end = ""
-        duration = 0
-        url = ""
-        website = noneWebsite
-    }
-    
-    init( id: String , name: String , start: String , end: String , duration: Double , url: String, website: Website )
-    {
-        self.objectId = id
-        self.name = name
-        self.start = start
-        self.end = end
-        self.duration = duration
-        self.url = url
-        self.website = website
+    override init( entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext? ) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
     
     func localStart() -> String {
-        return self.getLocalDate(start)
+        return self.getLocalDate(start!)
     }
     
     func localEnd() -> String {
-        return self.getLocalDate(end)
+        return self.getLocalDate(end!)
     }
     
     func getLocalDate(strDate : String) -> String {
@@ -59,7 +35,7 @@ class Contest
     }
     
     func getHourMinuteDuration() -> String {
-        let intDur = Int(duration)
+        let intDur = Int(duration!)
         let chours = intDur / 3600
         let cmins = intDur / 60 % 60
         return "\(chours) hours \(cmins) minutes"
@@ -67,7 +43,7 @@ class Contest
     
     func getImage() -> UIImage {
         
-        if let image = UIImage(named: website.name! + "_Logo.png") {
+        if let image = UIImage(named: website!.name! + "_Logo.png") {
             return image
         }
         return UIImage(named: "none.png")!
@@ -81,22 +57,26 @@ class Contest
         }
         return UIImage(named: "none.png")!
     }
-    
+
 }
 
 func updateFilteredContestsArray() {
     
     filteredContests.removeAll()
     
+    print("size = \(contests.count)")
+    
     for contest in contests {
         
-        if contest.website == nil {
+         if contest.website == nil {
             print("There is a problem here in Contest.swift")
-        }
-        
-        if NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name + "filtered") as! Bool {
+            print("name => \(contest.name) url => \(contest.url)")
+         }
+         
+    //     if NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name + "filtered") as! Bool {
             filteredContests.append(contest)
-        }
+    //     }
+        
     }
     
 }
@@ -109,20 +89,10 @@ func initializeContestsArrayUsingContestEntity() {
     let request = NSFetchRequest(entityName: "Contest")
     
     do {
-        if let objects = try context.executeFetchRequest(request) as? [NSManagedObject] {
+        if let objects = try context.executeFetchRequest(request) as? [Contest] {
             
-            for object in objects {
-                
-                let newContest = Contest()
-                newContest.name = object.valueForKey("name") as! String
-                newContest.start = object.valueForKey("start") as! String
-                newContest.end = object.valueForKey("end") as! String
-                newContest.duration = object.valueForKey("duration") as? Double
-                newContest.url = object.valueForKey("url") as? String
-                newContest.website = object.valueForKey("website") as! Website
-                
-                contests.append(newContest)
-                
+            for contest in objects {
+                contests.append(contest)
             }
             
             updateFilteredContestsArray()
@@ -138,13 +108,17 @@ func initializeContestsArrayUsingContestEntity() {
 
 func updateContestEntityUsingClistBy() {
     
+    let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let context: NSManagedObjectContext = appDel.managedObjectContext!
+    let entity = NSEntityDescription.entityForName("Contest", inManagedObjectContext: context)!
+    
     let now = NSDate()
     let dateFormatter = NSDateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd"
     let dateFrom : String = dateFormatter.stringFromDate(now)
     
     let url:NSURL = NSURL(string: "https://clist.by/api/v1/json/contest/?start__gte=" + dateFrom + "&username=ikbalkazar&api_key=b66864909a08b2ddf96b258a146bd15c2db6a469&order_by=start")!
-
+    
     let urlSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     
     let myQuery = urlSession.dataTaskWithURL(url, completionHandler: {
@@ -157,34 +131,48 @@ func updateContestEntityUsingClistBy() {
                 
                 print("Json convertion is successful")
                 
-                if clearEntity("Problem") == false {
-                    print("Could not delete objects in Contest Entity. Will not procede further")
+                let request = NSFetchRequest(entityName: "Contest")
+                do {
+                    
+                    if let objects = try context.executeFetchRequest(request) as? [Contest] {
+                        
+                        for object in objects {
+                            context.deleteObject(object)
+                        }
+                        
+                        do {
+                            try context.save()
+                        } catch {
+                            print("exit 1")
+                        }
+                        
+                    } else {
+                        print("exit 2")
+                    }
+                    
+                } catch {
+                    print("exit 3")
                 }
+
                 
                 for i in 0 ..< objects.count {
                     
-                    let newContest = Contest()
+                    let newContest = Contest(entity: entity, insertIntoManagedObjectContext: context)
                     
                     newContest.name = objects[i]["event"] as? String
+                    newContest.start = objects[i]["start"] as? String
+                    newContest.end = objects[i]["end"] as? String
+                    newContest.duration = objects[i]["duration"] as? Double
+                    newContest.url = objects[i]["href"] as? String
                     
-                    if let tmp = objects[i]["start"] as? String {
-                        newContest.start = tmp
-                    }
-                    if let tmp = objects[i]["end"] as? String {
-                        newContest.end = tmp
-                    }
-                    if let tmp = objects[i]["duration"] as? Double {
-                        newContest.duration = tmp
-                    }
-                    if let tmp = objects[i]["href"] as? String {
-                        newContest.url = tmp
-                    }
+                    newContest.objectId = "\(i)"
+                    
+                    newContest.website = websites.last!
                     
                     if let tmp = objects[i]["resource"] {
                         if let tmp2 = tmp?["name"] as? String {
-                            
                             for site in websites {
-                                if site.name.containsString(tmp2) {
+                                if site.url.containsString(tmp2) {
                                     newContest.website = site
                                     break
                                 }
@@ -192,9 +180,14 @@ func updateContestEntityUsingClistBy() {
                         }
                     }
                     
-                    newContest.objectId = "\(i)"
                     
-                    print( saveToEntity("Contest", object: newContest) )
+                    do {
+                        try context.save()
+                    } catch {
+                        print("Could not save into Core Data - Contest Entity")
+                    }
+                    
+                    
                     
                 }
                 
@@ -211,3 +204,5 @@ func updateContestEntityUsingClistBy() {
     myQuery.resume()
     
 }
+
+

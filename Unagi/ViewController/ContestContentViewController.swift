@@ -19,7 +19,7 @@ class ContestContentViewController: UIViewController {
     @IBAction func goContestWebsite(sender: AnyObject) {
         
         // Implement web view later
-        UIApplication.sharedApplication().openURL(NSURL(string: selectedContest.url)!)
+        UIApplication.sharedApplication().openURL(NSURL(string: selectedContest.url!)!)
     }
     
     @IBAction func dismissViewController(sender: AnyObject) {

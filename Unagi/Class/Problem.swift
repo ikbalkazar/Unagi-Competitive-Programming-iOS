@@ -1,43 +1,20 @@
 //
 //  Problem.swift
-//  Competitive-Programming-Appp
+//  Unagi
 //
-//  Created by Harun Gunaydin on 2/28/16.
+//  Created by Harun Gunaydin on 4/1/16.
 //  Copyright © 2016 harungunaydin. All rights reserved.
 //
 
 import Foundation
-import UIKit
 import CoreData
 import Parse
 
-class Problem {
+
+class Problem: NSManagedObject {
     
-    var objectId: String!
-    var name: String!
-    var url: String!
-    var tags = [String]()
-    var solutionUrl: String!
-    var website: Website!
-    
-    init() {
-        objectId = ""
-        name = ""
-        url = ""
-        tags = [String]()
-        solutionUrl = ""
-        website = noneWebsite
-    }
-    
-    init( objectId: String, name: String, url: String, tags: [String], solutionUrl: String, website: Website ){
-        
-        self.objectId = objectId
-        self.name = name
-        self.url = url
-        self.tags = tags
-        self.solutionUrl = solutionUrl
-        self.website = website
-        
+    override init( entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext? ) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
     
 }
@@ -52,20 +29,10 @@ func initializeProblemsArrayUsingProblemEntity() {
     let request = NSFetchRequest(entityName: "Problem")
     request.returnsObjectsAsFaults = false
     do {
-        let results = try context.executeFetchRequest(request) as! [NSManagedObject]
+        let results = try context.executeFetchRequest(request) as! [Problem]
+        
         for problem in results {
-            
-            let newProblem = Problem()
-            
-            newProblem.objectId = problem.valueForKey("objectId") as? String
-            newProblem.name = problem.valueForKey("name") as? String
-            newProblem.url = problem.valueForKey("url") as? String
-            newProblem.tags = problem.valueForKey("tags") as! [String]
-            newProblem.solutionUrl = problem.valueForKey("solutionUrl") as? String
-            newProblem.website = problem.valueForKey("website") as? Website
-            
-            problems.append(newProblem)
-            
+            problems.append(problem)
         }
         
     } catch {
@@ -85,11 +52,13 @@ func initializeProblemsArrayUsingProblemEntity() {
 
 func preLoadProblemEntity() {
     
+    /*
     print("preLoadProblemEntity")
     
     if let contentsOfUrl = NSBundle.mainBundle().URLForResource("Problem", withExtension: "csv") {
         
         do {
+            
             let content = try String(contentsOfURL: contentsOfUrl, encoding: NSUTF8StringEncoding)
             let items = content.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
             
@@ -99,16 +68,14 @@ func preLoadProblemEntity() {
                 
                 let objects = item.componentsSeparatedByString(separator)
                 
-                let newProblem = Problem()
-                
-                saveToEntity("Problem", object: newProblem)
-                
             }
             
             // Change this line every time making an update to Problems.csv
             NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "ProblemsDB_LastUpdateTime")
             
             print("Pre Loading Problem Entity done")
+ 
+ 
             
         } catch {
             
@@ -119,7 +86,7 @@ func preLoadProblemEntity() {
     } else {
         print("Problem.csv does not exist")
     }
-    
+    */
 }
 
 /*
@@ -132,6 +99,8 @@ func updateProblemEntityUsingParse() {
     
     let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let context: NSManagedObjectContext = appDel.managedObjectContext!
+    let entity = NSEntityDescription.entityForName("Problem", inManagedObjectContext: context)!
+    
     
     let query = PFQuery(className: "Problems")
     
@@ -159,26 +128,39 @@ func updateProblemEntityUsingParse() {
                         
                         if results.count < 2 {
                             
-                            let newProblem = Problem()
+                            let newProblem = Problem(entity: entity, insertIntoManagedObjectContext: context)
                             
                             newProblem.objectId = problem.objectId!
                             newProblem.name = problem["name"] as! String
                             newProblem.url = problem["url"] as! String
                             newProblem.tags = problem["tags"] as! [String]
                             newProblem.solutionUrl = problem["solutionUrl"] as? String
-                            newProblem.website = problem["website"] as? Website
+                            let websiteName = problem["websiteId"] as! String
+                            for website in websites {
+                                if website.name == websiteName {
+                                    newProblem.website = website
+                                    break
+                                }
+                            }
                             
                             if results.count == 1 {
                                 context.deleteObject(results[0])
                                 do {
                                     try context.save()
                                 } catch {
-                                    print("Error saving into Core Data - Deleting Problems Database")
+                                    print("Error saving into Core Data - Deleting an object from Problems Database")
                                 }
                             }
                             
-                            saveToEntity("Problem", object: newProblem)
+                            do {
+                               try context.save()
+                            } catch {
+                                print("olmadi be!!!")
+                            }
                             
+                            
+                        } else {
+                            print("More than 1 results")
                         }
                     } catch {
                         print("Could not execute the Fetch Request")
@@ -187,7 +169,6 @@ func updateProblemEntityUsingParse() {
                 }
                 
             }
-            
             
             NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "ProblemsDB_LastUpdateTime")
             
@@ -200,4 +181,3 @@ func updateProblemEntityUsingParse() {
     }
     
 }
-

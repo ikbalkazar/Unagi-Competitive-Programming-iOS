@@ -70,7 +70,7 @@ class ContestTableViewController: UITableViewController {
       
         let cell = tableView.dequeueReusableCellWithIdentifier("ContestTableCell", forIndexPath: indexPath) as! ContestTableViewCell
         
-        cell.setContest(filteredContests[indexPath.row])
+        cell.setContestAttributes(filteredContests[indexPath.row])
         
         return cell
     }

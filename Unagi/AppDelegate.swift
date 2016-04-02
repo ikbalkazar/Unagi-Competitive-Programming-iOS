@@ -56,9 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         initializeWebsitesArrayUsingWebsiteEntity()
-     //   self.updateContestEntityUsingClistBy()
-        updateProblemEntityUsingParse()
+        updateContestEntityUsingClistBy()
+    //    updateProblemEntityUsingParse()
         self.createMenuView()
+        
         
         return true
     }
