@@ -128,21 +128,6 @@ func updateProblemEntityUsingParse() {
                         
                         if results.count < 2 {
                             
-                            let newProblem = Problem(entity: entity, insertIntoManagedObjectContext: context)
-                            
-                            newProblem.objectId = problem.objectId!
-                            newProblem.name = problem["name"] as! String
-                            newProblem.url = problem["url"] as! String
-                            newProblem.tags = problem["tags"] as! [String]
-                            newProblem.solutionUrl = problem["solutionUrl"] as? String
-                            let websiteName = problem["websiteId"] as! String
-                            for website in websites {
-                                if website.name == websiteName {
-                                    newProblem.website = website
-                                    break
-                                }
-                            }
-                            
                             if results.count == 1 {
                                 context.deleteObject(results[0])
                                 do {
@@ -152,6 +137,23 @@ func updateProblemEntityUsingParse() {
                                 }
                             }
                             
+                            let newProblem = Problem(entity: entity, insertIntoManagedObjectContext: context)
+                            
+                            newProblem.objectId = problem.objectId!
+                            newProblem.name = problem["name"] as! String
+                            newProblem.url = problem["url"] as! String
+                            newProblem.tags = problem["tags"] as! [String]
+                            newProblem.solutionUrl = problem["solutionUrl"] as? String
+                            let websiteName = problem["websiteId"] as! String
+                            newProblem.website = websites.last!
+                            for website in websites {
+                                if website.name == websiteName {
+                                    newProblem.website = website
+                                    break
+                                }
+                            }
+                            
+                            
                             do {
                                try context.save()
                             } catch {
@@ -160,7 +162,7 @@ func updateProblemEntityUsingParse() {
                             
                             
                         } else {
-                            print("More than 1 results")
+                            print("More than 1 result")
                         }
                     } catch {
                         print("Could not execute the Fetch Request")

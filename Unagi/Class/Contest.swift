@@ -64,18 +64,11 @@ func updateFilteredContestsArray() {
     
     filteredContests.removeAll()
     
-    print("size = \(contests.count)")
-    
     for contest in contests {
-        
-         if contest.website == nil {
-            print("There is a problem here in Contest.swift")
-            print("name => \(contest.name) url => \(contest.url)")
-         }
          
-    //     if NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name + "filtered") as! Bool {
+         if NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name + "filtered") as! Bool {
             filteredContests.append(contest)
-    //     }
+         }
         
     }
     

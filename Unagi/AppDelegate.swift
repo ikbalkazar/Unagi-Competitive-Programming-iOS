@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         initializeWebsitesArrayUsingWebsiteEntity()
         updateContestEntityUsingClistBy()
-    //    updateProblemEntityUsingParse()
+        updateProblemEntityUsingParse()
         self.createMenuView()
         
         

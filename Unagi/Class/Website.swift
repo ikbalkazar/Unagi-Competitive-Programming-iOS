@@ -59,13 +59,14 @@ func preLoadWebsiteEntity() {
                 let objects = item.componentsSeparatedByString(",")
                 let newWebsite = Website(entity: entity, insertIntoManagedObjectContext: context)
                 
-                newWebsite.setValue(objects[0], forKey: "objectId")
-                newWebsite.setValue(objects[1], forKey: "name")
-                newWebsite.setValue(objects[2], forKey: "url")
-                newWebsite.setValue(objects[3], forKey: "contestStatus")
+                newWebsite.objectId = objects[0]
+                newWebsite.name = objects[1]
+                newWebsite.url = objects[2]
+                newWebsite.contestStatus = objects[3]
                 
                 do {
                     try context.save()
+                    NSUserDefaults.standardUserDefaults().setValue(true, forKey: newWebsite.name + "filtered")
                 } catch {
                     print("could not save")
                 }
