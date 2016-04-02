@@ -20,39 +20,6 @@ class SearchTableViewController: UITableViewController {
     
     var requestedProblems = [Problem]()
     
-    func downloadProblems(skip: Int) {
-        let query = PFQuery(className: "Problems")
-        query.limit = 1000
-        query.skip = skip
-        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
-            if error == nil {
-                print("Problems are successfuly received")
-                var problems = [Problem]()
-                if let objects = objects {
-                    for object in objects {
-                        let problem:Problem = Problem()
-                        problem.name = object["name"] as! String
-                        if let tags = object["tags"] as? [String] {
-                            problem.tags = tags
-                        }
-                        problem.url = object["url"] as! String
-                        let websiteName = object["websiteId"] as! String
-                        
-                        //Problems will be downloaded by Appdelegete. This function is temporary.
-                        problem.website = Website(id: "temp_id", name: websiteName, url: "temp_url", contestStatus: "temp_status")
-                        
-                        problems.append(problem)
-                    }
-                }
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.updateRequestedProblems(problems, addToAll: true)
-                })
-            } else {
-                print("Error: \(error!) \(error!.userInfo["error"])")
-            }
-        }
-    }
-    
     //Returns true if pattern occurs at least once in the text (Case insensitive)
     func match(text: String, pattern: String) -> Bool {
         return text.lowercaseString.rangeOfString(pattern.lowercaseString) != nil
@@ -69,7 +36,8 @@ class SearchTableViewController: UITableViewController {
         if curTags.count == 0 {
             return true
         }
-        for tag in problem.tags {
+        let tags = problem.tags as! [String]
+        for tag in tags {
             if match(tag, pattern: curSearchText!) {
                 return true
             }
@@ -90,7 +58,8 @@ class SearchTableViewController: UITableViewController {
             result += 8
         }
         if curTags.count > 0 {
-            for tag in problem.tags {
+            let tags = problem.tags as! [String]
+            for tag in tags {
                 if match(tag, pattern: curSearchText!) {
                     result += 4
                 }
@@ -123,16 +92,7 @@ class SearchTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if allProblems.count == 0 {
-            //KPROBLEMS must be atleast (#problems at parse) / 10
-            let KPROBLEMS = 10
-            for i in 0 ..< KPROBLEMS {
-                downloadProblems(i * 1000)
-            }
-        } else {
-            updateRequestedProblems(allProblems, addToAll: false)
-        }
+        updateRequestedProblems(allProblems, addToAll: false)
     }
 
     override func didReceiveMemoryWarning() {

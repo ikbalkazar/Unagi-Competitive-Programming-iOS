@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		03F8A5FF1CAD8A4C009C6106 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8A5FE1CAD8A4C009C6106 /* SearchTableViewCell.swift */; };
+		2301022F1CAF26B4005642F2 /* Website+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230102291CAF26B4005642F2 /* Website+CoreDataProperties.swift */; };
+		230102301CAF26B4005642F2 /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301022A1CAF26B4005642F2 /* Website.swift */; };
+		230102311CAF26B4005642F2 /* Problem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301022B1CAF26B4005642F2 /* Problem+CoreDataProperties.swift */; };
+		230102321CAF26B4005642F2 /* Problem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301022C1CAF26B4005642F2 /* Problem.swift */; };
+		230102331CAF26B4005642F2 /* Contest+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301022D1CAF26B4005642F2 /* Contest+CoreDataProperties.swift */; };
+		230102341CAF26B4005642F2 /* Contest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301022E1CAF26B4005642F2 /* Contest.swift */; };
+		230102361CAF270D005642F2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230102351CAF270D005642F2 /* Utilities.swift */; };
 		23913DF01C6FE1E90038BA34 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23913DEE1C6FE1E90038BA34 /* Bolts.framework */; };
 		23913DF11C6FE1E90038BA34 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23913DEF1C6FE1E90038BA34 /* Parse.framework */; };
 		23913DF31C6FE2300038BA34 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23913DF21C6FE2300038BA34 /* AudioToolbox.framework */; };
@@ -21,12 +28,6 @@
 		23913E031C6FE2660038BA34 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 23913E021C6FE2660038BA34 /* libz.tbd */; };
 		23913E051C6FE26B0038BA34 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 23913E041C6FE26B0038BA34 /* libsqlite3.tbd */; };
 		23D105D21CA9AE990073A669 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1056F1CA9AE990073A669 /* AppDelegate.swift */; };
-		23D105D31CA9AE990073A669 /* Contest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105711CA9AE990073A669 /* Contest.swift */; };
-		23D105D41CA9AE990073A669 /* HashQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105721CA9AE990073A669 /* HashQuery.swift */; };
-		23D105D51CA9AE990073A669 /* Problem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105731CA9AE990073A669 /* Problem.swift */; };
-		23D105D61CA9AE990073A669 /* SuffixArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105741CA9AE990073A669 /* SuffixArray.swift */; };
-		23D105D71CA9AE990073A669 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105751CA9AE990073A669 /* Utilities.swift */; };
-		23D105D81CA9AE990073A669 /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105761CA9AE990073A669 /* Website.swift */; };
 		23D105DB1CA9AE990073A669 /* MainDatabases.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23D1057C1CA9AE990073A669 /* MainDatabases.xcdatamodeld */; };
 		23D105DC1CA9AE990073A669 /* DataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D1057E1CA9AE990073A669 /* DataTableViewCell.xib */; };
 		23D105DD1CA9AE990073A669 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105801CA9AE990073A669 /* String.swift */; };
@@ -111,6 +112,13 @@
 
 /* Begin PBXFileReference section */
 		03F8A5FE1CAD8A4C009C6106 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		230102291CAF26B4005642F2 /* Website+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Website+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2301022A1CAF26B4005642F2 /* Website.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Website.swift; sourceTree = "<group>"; };
+		2301022B1CAF26B4005642F2 /* Problem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Problem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2301022C1CAF26B4005642F2 /* Problem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Problem.swift; sourceTree = "<group>"; };
+		2301022D1CAF26B4005642F2 /* Contest+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contest+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2301022E1CAF26B4005642F2 /* Contest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contest.swift; sourceTree = "<group>"; };
+		230102351CAF270D005642F2 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		23913DD41C6FE1320038BA34 /* Unagi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unagi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23913DEE1C6FE1E90038BA34 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		23913DEF1C6FE1E90038BA34 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -125,12 +133,6 @@
 		23913E021C6FE2660038BA34 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		23913E041C6FE26B0038BA34 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		23D1056F1CA9AE990073A669 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		23D105711CA9AE990073A669 /* Contest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contest.swift; sourceTree = "<group>"; };
-		23D105721CA9AE990073A669 /* HashQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashQuery.swift; sourceTree = "<group>"; };
-		23D105731CA9AE990073A669 /* Problem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Problem.swift; sourceTree = "<group>"; };
-		23D105741CA9AE990073A669 /* SuffixArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuffixArray.swift; sourceTree = "<group>"; };
-		23D105751CA9AE990073A669 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		23D105761CA9AE990073A669 /* Website.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Website.swift; sourceTree = "<group>"; };
 		23D1057D1CA9AE990073A669 /* MainDatabases.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MainDatabases.xcdatamodel; sourceTree = "<group>"; };
 		23D1057E1CA9AE990073A669 /* DataTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataTableViewCell.xib; sourceTree = "<group>"; };
 		23D105801CA9AE990073A669 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -301,12 +303,13 @@
 		23D105701CA9AE990073A669 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				23D105711CA9AE990073A669 /* Contest.swift */,
-				23D105721CA9AE990073A669 /* HashQuery.swift */,
-				23D105731CA9AE990073A669 /* Problem.swift */,
-				23D105741CA9AE990073A669 /* SuffixArray.swift */,
-				23D105751CA9AE990073A669 /* Utilities.swift */,
-				23D105761CA9AE990073A669 /* Website.swift */,
+				230102291CAF26B4005642F2 /* Website+CoreDataProperties.swift */,
+				2301022A1CAF26B4005642F2 /* Website.swift */,
+				2301022B1CAF26B4005642F2 /* Problem+CoreDataProperties.swift */,
+				2301022C1CAF26B4005642F2 /* Problem.swift */,
+				230102351CAF270D005642F2 /* Utilities.swift */,
+				2301022D1CAF26B4005642F2 /* Contest+CoreDataProperties.swift */,
+				2301022E1CAF26B4005642F2 /* Contest.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -389,9 +392,6 @@
 		23D105B61CA9AE990073A669 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				03F8A5FE1CAD8A4C009C6106 /* SearchTableViewCell.swift */,
-				23D105CD1CA9AE990073A669 /* SearchViewController.swift */,
-				23D105CC1CA9AE990073A669 /* SearchTableViewController.swift */,
 				23D105B71CA9AE990073A669 /* BaseTableViewCell.swift */,
 				23D105B81CA9AE990073A669 /* CFViewController.swift */,
 				23D105B91CA9AE990073A669 /* ContestContentViewController.swift */,
@@ -413,6 +413,9 @@
 				23D105C91CA9AE990073A669 /* ProblemViewController.swift */,
 				23D105CA1CA9AE990073A669 /* RegisterViewController.swift */,
 				23D105CB1CA9AE990073A669 /* RightViewController.swift */,
+				03F8A5FE1CAD8A4C009C6106 /* SearchTableViewCell.swift */,
+				23D105CC1CA9AE990073A669 /* SearchTableViewController.swift */,
+				23D105CD1CA9AE990073A669 /* SearchViewController.swift */,
 				23D105CE1CA9AE990073A669 /* SlideMenuController.swift */,
 				23D105CF1CA9AE990073A669 /* SlideMenuControllerSwift.h */,
 				23D105D01CA9AE990073A669 /* SubContentsViewController.swift */,
@@ -597,17 +600,20 @@
 				23D105DE1CA9AE990073A669 /* UIApplication.swift in Sources */,
 				23D105DF1CA9AE990073A669 /* UIColor.swift in Sources */,
 				23D1060E1CA9AE990073A669 /* ImageHeaderView.swift in Sources */,
+				230102311CAF26B4005642F2 /* Problem+CoreDataProperties.swift in Sources */,
 				23D106221CA9AE990073A669 /* ProblemViewController.swift in Sources */,
 				23D106271CA9AE990073A669 /* SlideMenuController.swift in Sources */,
 				23D106101CA9AE990073A669 /* BaseTableViewCell.swift in Sources */,
 				23D106291CA9AE990073A669 /* SwiftViewController.swift in Sources */,
 				23D106171CA9AE990073A669 /* FilterTableViewCell.swift in Sources */,
+				230102341CAF26B4005642F2 /* Contest.swift in Sources */,
+				230102361CAF270D005642F2 /* Utilities.swift in Sources */,
 				23D1061F1CA9AE990073A669 /* NoteTakingVC.swift in Sources */,
 				23D106121CA9AE990073A669 /* ContestContentViewController.swift in Sources */,
 				23D1061D1CA9AE990073A669 /* MainViewController.swift in Sources */,
+				230102321CAF26B4005642F2 /* Problem.swift in Sources */,
 				23D105E41CA9AE990073A669 /* UIViewController.swift in Sources */,
 				23D106231CA9AE990073A669 /* RegisterViewController.swift in Sources */,
-				23D105D41CA9AE990073A669 /* HashQuery.swift in Sources */,
 				23D106161CA9AE990073A669 /* ExSlideMenuController.swift in Sources */,
 				23D106261CA9AE990073A669 /* SearchViewController.swift in Sources */,
 				23D105DB1CA9AE990073A669 /* MainDatabases.xcdatamodeld in Sources */,
@@ -616,23 +622,21 @@
 				23D106281CA9AE990073A669 /* SubContentsViewController.swift in Sources */,
 				23D105D21CA9AE990073A669 /* AppDelegate.swift in Sources */,
 				23D106111CA9AE990073A669 /* CFViewController.swift in Sources */,
+				230102301CAF26B4005642F2 /* Website.swift in Sources */,
 				23D105E01CA9AE990073A669 /* UIImage.swift in Sources */,
 				23D106191CA9AE990073A669 /* FriendsTableViewController.swift in Sources */,
-				23D105D71CA9AE990073A669 /* Utilities.swift in Sources */,
 				23D105E21CA9AE990073A669 /* UITableViewExtension.swift in Sources */,
 				23D105E11CA9AE990073A669 /* UIImageView.swift in Sources */,
-				23D105D81CA9AE990073A669 /* Website.swift in Sources */,
 				23D106131CA9AE990073A669 /* ContestTableViewCell.swift in Sources */,
 				23D105DD1CA9AE990073A669 /* String.swift in Sources */,
+				2301022F1CAF26B4005642F2 /* Website+CoreDataProperties.swift in Sources */,
 				23D1061C1CA9AE990073A669 /* LoginViewController.swift in Sources */,
-				23D105D61CA9AE990073A669 /* SuffixArray.swift in Sources */,
 				23D106251CA9AE990073A669 /* SearchTableViewController.swift in Sources */,
-				23D105D51CA9AE990073A669 /* Problem.swift in Sources */,
 				23D1061E1CA9AE990073A669 /* NonMenuController.swift in Sources */,
 				23D105E31CA9AE990073A669 /* UIView.swift in Sources */,
 				03F8A5FF1CAD8A4C009C6106 /* SearchTableViewCell.swift in Sources */,
-				23D105D31CA9AE990073A669 /* Contest.swift in Sources */,
 				23D1061A1CA9AE990073A669 /* GoViewController.swift in Sources */,
+				230102331CAF26B4005642F2 /* Contest+CoreDataProperties.swift in Sources */,
 				23D106181CA9AE990073A669 /* FilterTableViewController.swift in Sources */,
 				23D1061B1CA9AE990073A669 /* LeftViewController.swift in Sources */,
 				23D106141CA9AE990073A669 /* ContestTableViewController.swift in Sources */,

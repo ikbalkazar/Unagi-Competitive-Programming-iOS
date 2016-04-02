@@ -24,12 +24,16 @@ class SearchTableViewCell: UITableViewCell {
         problemName.text = problem.name
         tagsLabel.text = ""
         var isFirst = true
-        for tag in problem.tags {
-            if !isFirst {
-                tagsLabel.text! += ", "
+        if let tags = problem.tags as? [String] {
+            
+            for tag in tags {
+                if !isFirst {
+                    tagsLabel.text! += ", "
+                }
+                isFirst = false
+                tagsLabel.text! += tag
             }
-            isFirst = false
-            tagsLabel.text! += tag
+            
         }
     }
 }

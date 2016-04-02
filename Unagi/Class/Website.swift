@@ -1,36 +1,19 @@
 //
 //  Website.swift
-//  Competitive-Programming-Appp
+//  Unagi
 //
-//  Created by Harun Gunaydin on 3/3/16.
+//  Created by Harun Gunaydin on 4/1/16.
 //  Copyright © 2016 harungunaydin. All rights reserved.
 //
 
-import UIKit
 import Foundation
 import CoreData
+import UIKit
 
-class Website: NSObject {
-    
-    var objectId: String!
-    var name: String!
-    var url: String!
-    var contestStatus: String!
-    
-    override init() {
-        super.init()
-        self.name = ""
-        self.objectId = ""
-        self.url = ""
-        self.contestStatus = ""
-    }
-    
-    init(id: String , name: String , url: String , contestStatus: String ) {
-        
-        self.objectId = id
-        self.name = name
-        self.url = url
-        self.contestStatus = contestStatus
+class Website: NSManagedObject {
+   
+    override init( entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext? ) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
 }
 
@@ -43,9 +26,9 @@ func initializeWebsitesArrayUsingWebsiteEntity() {
     let request = NSFetchRequest(entityName: "Website")
     request.returnsObjectsAsFaults = false
     do {
-        let results = try context.executeFetchRequest(request) as! [NSManagedObject]
+        let results = try context.executeFetchRequest(request) as! [Website]
         for website in results {
-            websites.append( Website(id: website.valueForKey("objectId") as! String, name: website.valueForKey("name") as! String, url: website.valueForKey("url") as! String, contestStatus: website.valueForKey("contestStatus") as! String) )
+            websites.append( website )
         }
         
     } catch {
@@ -60,6 +43,10 @@ func initializeWebsitesArrayUsingWebsiteEntity() {
  */
 func preLoadWebsiteEntity() {
     
+    let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let context: NSManagedObjectContext = appDel.managedObjectContext!
+    let entity = NSEntityDescription.entityForName("Website", inManagedObjectContext: context)!
+    
     NSUserDefaults.standardUserDefaults().setObject(true, forKey: "nonefiltered")
     
     if let contentsOfUrl = NSBundle.mainBundle().URLForResource("Website", withExtension: "csv") {
@@ -70,10 +57,20 @@ func preLoadWebsiteEntity() {
             
             for item in items {
                 let objects = item.componentsSeparatedByString(",")
-                let newWebsite = Website(id: objects[0], name: objects[1], url: objects[2], contestStatus: objects[3])
-                if saveToEntity("Website", object: newWebsite) {
-                    NSUserDefaults.standardUserDefaults().setObject(true, forKey: objects[1] + "filtered")
+                let newWebsite = Website(entity: entity, insertIntoManagedObjectContext: context)
+                
+                newWebsite.setValue(objects[0], forKey: "objectId")
+                newWebsite.setValue(objects[1], forKey: "name")
+                newWebsite.setValue(objects[2], forKey: "url")
+                newWebsite.setValue(objects[3], forKey: "contestStatus")
+                
+                do {
+                    try context.save()
+                } catch {
+                    print("could not save")
                 }
+                
+                
             }
             
             print("Website Entity Preloaded successfully")
@@ -87,3 +84,4 @@ func preLoadWebsiteEntity() {
     }
     
 }
+
