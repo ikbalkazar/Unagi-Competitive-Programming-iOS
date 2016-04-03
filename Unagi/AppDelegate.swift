@@ -52,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
         if NSUserDefaults.standardUserDefaults().objectForKey("firstTimeCheck") == nil {
+            print("First Time Check!!")
             self.handleFirstTimeProcedures()
         }
         

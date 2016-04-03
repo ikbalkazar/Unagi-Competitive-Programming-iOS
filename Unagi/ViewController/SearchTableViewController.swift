@@ -11,8 +11,6 @@ import Parse
 
 //Currently downloads the problem data base. Will be changed with parse cloud code.
 
-var allProblems = [Problem]()
-
 class SearchTableViewController: UITableViewController {
 
     var curSearchText : String?
@@ -73,11 +71,8 @@ class SearchTableViewController: UITableViewController {
         return result
     }
     
-    func updateRequestedProblems(problems: [Problem], addToAll: Bool) {
+    func updateRequestedProblems(problems: [Problem]) {
         for problem in problems {
-            if addToAll {
-                allProblems.append(problem)
-            }
             if tagMatch(problem) && nameMatch(problem) {
                 requestedProblems.append(problem)
             }
@@ -92,7 +87,7 @@ class SearchTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateRequestedProblems(allProblems, addToAll: false)
+        updateRequestedProblems(problems)
     }
 
     override func didReceiveMemoryWarning() {
@@ -103,12 +98,10 @@ class SearchTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return requestedProblems.count
     }
 
@@ -120,7 +113,6 @@ class SearchTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        //UIApplication.sharedApplication().openURL(NSURL(string: requestedProblems[indexPath.row].url)!)
         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
             performSegueWithIdentifier("SearchTable_TabBar", sender: cell)
         }

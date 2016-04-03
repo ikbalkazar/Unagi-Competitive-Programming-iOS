@@ -93,10 +93,7 @@ func preLoadProblemEntity() {
  For now this function supports no more than 1000 updates on Problem Entity
  */
 
-func updateProblemEntityUsingParse() {
-    
-    print("Update Problems Entity with new entries in Problem DataBase on Parse")
-    
+func getNewProblemsUsingParse(limit: Int, skip: Int) {
     let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let context: NSManagedObjectContext = appDel.managedObjectContext!
     let entity = NSEntityDescription.entityForName("Problem", inManagedObjectContext: context)!
@@ -104,7 +101,8 @@ func updateProblemEntityUsingParse() {
     
     let query = PFQuery(className: "Problems")
     
-    query.limit = 1000
+    query.limit = limit
+    query.skip = skip
     
     if let lastUpdate = NSUserDefaults.standardUserDefaults().objectForKey("ProblemsDB_LastUpdateTime") {
         query.whereKey("updatedAt", greaterThan: lastUpdate)
@@ -142,7 +140,9 @@ func updateProblemEntityUsingParse() {
                             newProblem.objectId = problem.objectId!
                             newProblem.name = problem["name"] as! String
                             newProblem.url = problem["url"] as! String
-                            newProblem.tags = problem["tags"] as! [String]
+                            if let tags = problem["tags"] {
+                                newProblem.tags = tags as! [String]
+                            }
                             newProblem.solutionUrl = problem["solutionUrl"] as? String
                             let websiteName = problem["websiteId"] as! String
                             newProblem.website = websites.last!
@@ -153,9 +153,8 @@ func updateProblemEntityUsingParse() {
                                 }
                             }
                             
-                            
                             do {
-                               try context.save()
+                                try context.save()
                             } catch {
                                 print("olmadi be!!!")
                             }
@@ -177,9 +176,18 @@ func updateProblemEntityUsingParse() {
         } else {
             print("Problems Data Base could not updated!!! Check the internet connection")
         }
-        
-        initializeProblemsArrayUsingProblemEntity()
-        
     }
+}
+
+func updateProblemEntityUsingParse() {
     
+    print("Update Problems Entity with new entries in Problem DataBase on Parse")
+    for i in 0 ..< 10 {
+        dispatch_async(dispatch_get_main_queue()) {
+            getNewProblemsUsingParse(1000, skip: i * 1000)
+        }
+    }
+    dispatch_async(dispatch_get_main_queue()) { 
+        initializeProblemsArrayUsingProblemEntity()
+    }
 }
