@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UITableViewDelegate {
+class SearchViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate {
 
     @IBOutlet var searchField: UITextField!
     
@@ -33,6 +33,12 @@ class SearchViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet var tagField: UITextField!
     var tags = [String]()
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        print("Here!! line 38")
+        self.view.endEditing(true)
+        return false
+    }
     
     @IBAction func addTagButton(sender: AnyObject) {
         if let tag = tagField.text {
@@ -73,6 +79,8 @@ class SearchViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchField.delegate = self
+        tagField.delegate = self
         for imageView in logos {
             print(websitesToShow[imageView.tag])
             imageView.image = UIImage(named: websitesToShow[imageView.tag] + "_Logo.png")

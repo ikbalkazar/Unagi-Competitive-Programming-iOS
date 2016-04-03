@@ -34,14 +34,15 @@ class SearchTableViewController: UITableViewController {
         if curTags.count == 0 {
             return true
         }
-        let tags = problem.tags as! [String]
-        for tag in tags {
-            if match(tag, pattern: curSearchText!) {
-                return true
-            }
-            for desiredTag in curTags {
-                if match(tag, pattern: desiredTag) {
+        if let tags = problem.tags as? [String] {
+            for tag in tags {
+                if match(tag, pattern: curSearchText!) {
                     return true
+                }
+                for desiredTag in curTags {
+                    if match(tag, pattern: desiredTag) {
+                        return true
+                    }
                 }
             }
         }
