@@ -74,7 +74,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITextFieldDe
         }
     }
 
-    
     @IBOutlet var chosenTagsTable: UITableView!
     
     override func viewDidLoad() {

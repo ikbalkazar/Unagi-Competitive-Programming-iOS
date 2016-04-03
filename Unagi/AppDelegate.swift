@@ -17,28 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    private func createMenuView() {
-        
-        // create viewController code...
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
-        let leftViewController = storyboard.instantiateViewControllerWithIdentifier("LeftViewController") as! LeftViewController
-        let rightViewController = storyboard.instantiateViewControllerWithIdentifier("RightViewController") as! RightViewController
-        
-        let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
-        
-        UINavigationBar.appearance().tintColor = UIColor(hex: "078ac9") // used to be 689F38
-        
-        leftViewController.mainViewController = nvc
-        
-        let slideMenuController = ExSlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController, rightMenuViewController: rightViewController)
-        slideMenuController.automaticallyAdjustsScrollViewInsets = true
-        self.window?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
-        self.window?.rootViewController = slideMenuController
-        //self.window?.makeKeyAndVisible()
-    }
-    
     func handleFirstTimeProcedures() {
         //is there a need for calling 'defaults.syncronize()' here????
         NSUserDefaults.standardUserDefaults().setValue(true, forKey: "firstTimeCheck")
@@ -59,8 +37,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initializeWebsitesArrayUsingWebsiteEntity()
         updateContestEntityUsingClistBy()
         updateProblemEntityUsingParse()
-        self.createMenuView()
         
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let initialViewController = storyboard.instantiateViewControllerWithIdentifier("Login") as! LoginViewController
+        
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
         
         return true
     }

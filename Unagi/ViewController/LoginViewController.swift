@@ -9,27 +9,48 @@
 import UIKit
 import Parse
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UIApplicationDelegate {
+    var window: UIWindow?
 
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
-    @IBAction func login(sender: AnyObject)
-    {
-        
+    
+    @IBAction func login(sender: AnyObject) {
+        print("I am here")
         PFUser.logInWithUsernameInBackground(username.text!, password: password.text!) { (user, error) -> Void in
-            
             if error != nil {
-                RegisterViewController().displayAlert("Error" , message: "Login Failed" )
+                print("Error logging in")
             } else {
-                
-                //which segue is login1??
-                self.performSegueWithIdentifier("login1", sender: self)
-                
+                self.createMenuView()
             }
             
         }
-        
     }
+    
+    private func createMenuView() {
+        // create viewController code...
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
+        let leftViewController = storyboard.instantiateViewControllerWithIdentifier("LeftViewController") as! LeftViewController
+        let rightViewController = storyboard.instantiateViewControllerWithIdentifier("RightViewController") as! RightViewController
+        
+        let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
+        
+        UINavigationBar.appearance().tintColor = UIColor(hex: "078ac9") // used to be 689F38
+        
+        leftViewController.mainViewController = nvc
+        
+        let slideMenuController = ExSlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController, rightMenuViewController: rightViewController)
+        slideMenuController.automaticallyAdjustsScrollViewInsets = true
+        
+        let curwindow = UIApplication.sharedApplication().keyWindow
+        curwindow?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
+        curwindow?.rootViewController = slideMenuController
+        curwindow?.makeKeyAndVisible()
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

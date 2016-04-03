@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LRF-ih-inQ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -315,10 +315,10 @@
             </objects>
             <point key="canvasLocation" x="206" y="3384"/>
         </scene>
-        <!--Initial View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="Ymn-a8-A4U">
             <objects>
-                <viewController id="LRF-ih-inQ" customClass="InitialViewController" customModule="Unagi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="LRF-ih-inQ" customClass="LoginViewController" customModule="Unagi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SoC-fF-ZRi"/>
                         <viewControllerLayoutGuide type="bottom" id="Y7L-ET-5h2"/>
@@ -393,11 +393,12 @@
                     <connections>
                         <outlet property="password" destination="pOV-Sh-gbq" id="1Bk-dl-2Zm"/>
                         <outlet property="username" destination="5NA-Ff-P4y" id="bhh-uT-JVo"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="Login_MainView" id="Knd-gU-PzE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZJM-W8-PDh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2915.5" y="-727.5"/>
+            <point key="canvasLocation" x="-2003.5" y="-187.5"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="eNW-pn-faT">
@@ -493,7 +494,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UD7-ZZ-Obm" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2034.5" y="-727.5"/>
+            <point key="canvasLocation" x="-1026.5" y="-187.5"/>
         </scene>
         <!--Contests-->
         <scene sceneID="EAA-U2-7Sa">
@@ -619,7 +620,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wC2-Uu-JIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2534.5" y="185.5"/>
+            <point key="canvasLocation" x="-3370.5" y="565.5"/>
         </scene>
         <!--SearchViewController-->
         <scene sceneID="x4x-uq-JdW">
@@ -764,13 +765,13 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bf-WM-sbQ">
                                             <rect key="frame" x="66" y="35" width="201" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zke-Vv-mYa">
                                             <rect key="frame" x="66" y="6" width="201" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -879,7 +880,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S4N-3m-d6y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2121.5" y="4910.5"/>
+            <point key="canvasLocation" x="-2121.5" y="4950.5"/>
         </scene>
         <!--Similar-->
         <scene sceneID="a5j-Hz-ecB">
@@ -909,7 +910,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RSA-k9-5xr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2763.5" y="4910.5"/>
+            <point key="canvasLocation" x="-2763.5" y="4950.5"/>
         </scene>
         <!--Read-->
         <scene sceneID="jeA-fy-AZQ">
@@ -1057,7 +1058,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w2H-VB-xrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2534.5" y="1010.5"/>
+            <point key="canvasLocation" x="-3354.5" y="1398.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Kk4-fO-ikX">
@@ -1074,7 +1075,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zt1-Cb-h5r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3198.5" y="185.5"/>
+            <point key="canvasLocation" x="-4022.5" y="549.5"/>
         </scene>
         <!--Contest Content View Controller-->
         <scene sceneID="zkF-zB-rtE">
@@ -1145,7 +1146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCa-pm-a7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1861.5" y="185.5"/>
+            <point key="canvasLocation" x="-2685.5" y="613.5"/>
         </scene>
     </scenes>
     <resources>
