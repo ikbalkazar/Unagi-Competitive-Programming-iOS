@@ -12,6 +12,11 @@ import UIKit
 
 class Website: NSManagedObject {
    
+    @NSManaged var objectId: String!
+    @NSManaged var url: String!
+    @NSManaged var name: String!
+    @NSManaged var contestStatus: String!
+    
     override init( entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext? ) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }

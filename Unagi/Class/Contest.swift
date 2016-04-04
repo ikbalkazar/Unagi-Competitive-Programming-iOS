@@ -13,6 +13,14 @@ import UIKit
 
 class Contest: NSManagedObject {
     
+    @NSManaged var objectId: String!
+    @NSManaged var name: String!
+    @NSManaged var start: String!
+    @NSManaged var end: String!
+    @NSManaged var duration: NSNumber!
+    @NSManaged var url: String!
+    @NSManaged var website: Website!
+    
     override init( entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext? ) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }

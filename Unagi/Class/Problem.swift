@@ -9,9 +9,17 @@
 import Foundation
 import CoreData
 import Parse
+import Async
 
 
 class Problem: NSManagedObject {
+    
+    @NSManaged var name: String!
+    @NSManaged var objectId: String!
+    @NSManaged var url: String!
+    @NSManaged var tags: NSObject?
+    @NSManaged var solutionUrl: String?
+    @NSManaged var website: Website!
     
     override init( entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext? ) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
@@ -29,12 +37,7 @@ func initializeProblemsArrayUsingProblemEntity() {
     let request = NSFetchRequest(entityName: "Problem")
     request.returnsObjectsAsFaults = false
     do {
-        let results = try context.executeFetchRequest(request) as! [Problem]
-        
-        for problem in results {
-            problems.append(problem)
-        }
-        
+        problems = try context.executeFetchRequest(request) as! [Problem]
     } catch {
         print("There is a problem getting Problems from Core Data")
     }
@@ -92,12 +95,11 @@ func preLoadProblemEntity() {
 /*
  For now this function supports no more than 1000 updates on Problem Entity
  */
-
+var s: Int = 0
 func getNewProblemsUsingParse(limit: Int, skip: Int) {
     let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let context: NSManagedObjectContext = appDel.managedObjectContext!
     let entity = NSEntityDescription.entityForName("Problem", inManagedObjectContext: context)!
-    
     
     let query = PFQuery(className: "Problems")
     
@@ -114,6 +116,8 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
             
             if let objects = objects {
                 
+                print("size = \(objects.count)")
+                
                 for problem in objects {
                     
                     let request = NSFetchRequest(entityName: "Problem")
@@ -122,7 +126,7 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
                     request.predicate = NSPredicate(format: "objectId == %@", problem.objectId! )
                     
                     do {
-                        let results = try context.executeFetchRequest(request) as! [NSManagedObject]
+                        let results = try context.executeFetchRequest(request) as! [Problem]
                         
                         if results.count < 2 {
                             
@@ -152,13 +156,16 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
                                     break
                                 }
                             }
-                            
-                            do {
-                                try context.save()
-                            } catch {
-                                print("olmadi be!!!")
+                        
+                            dispatch_async(dispatch_get_main_queue()) {
+                                
+                                do {
+                                    try context.save()
+                                } catch {
+                                    print("olmadi be!!!")
+                                }
+                                
                             }
-                            
                             
                         } else {
                             print("More than 1 result")
@@ -170,8 +177,13 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
                 }
                 
             }
-            
-            NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "ProblemsDB_LastUpdateTime")
+            s += 1
+            print("s = \(s)")
+            if s == 10 {
+                print( "seconds => \(NSDate().timeIntervalSinceDate(date))")
+                initializeProblemsArrayUsingProblemEntity()
+                NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "ProblemsDB_LastUpdateTime")
+            }
             
         } else {
             print("Problems Data Base could not updated!!! Check the internet connection")
@@ -179,15 +191,16 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
     }
 }
 
+var date: NSDate!
+
 func updateProblemEntityUsingParse() {
+    
+    date = NSDate()
     
     print("Update Problems Entity with new entries in Problem DataBase on Parse")
     for i in 0 ..< 10 {
         dispatch_async(dispatch_get_main_queue()) {
             getNewProblemsUsingParse(1000, skip: i * 1000)
         }
-    }
-    dispatch_async(dispatch_get_main_queue()) { 
-        initializeProblemsArrayUsingProblemEntity()
     }
 }
