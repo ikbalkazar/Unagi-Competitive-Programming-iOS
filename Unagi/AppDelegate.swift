@@ -35,8 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         initializeWebsitesArrayUsingWebsiteEntity()
+        updateProblemEntityUsingParse()
+        
         updateContestEntityUsingClistBy()
-     //   updateProblemEntityUsingParse()
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
