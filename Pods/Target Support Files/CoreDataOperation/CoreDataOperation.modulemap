@@ -1,0 +1,6 @@
+framework module CoreDataOperation {
+  umbrella header "CoreDataOperation-umbrella.h"
+
+  export *
+  module * { export * }
+}

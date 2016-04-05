@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03F8A5FF1CAD8A4C009C6106 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8A5FE1CAD8A4C009C6106 /* SearchTableViewCell.swift */; };
+		13CFD65A8121574D8406E409 /* Pods_Unagi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581311DE5C953566B9A34025 /* Pods_Unagi.framework */; };
 		230102301CAF26B4005642F2 /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301022A1CAF26B4005642F2 /* Website.swift */; };
 		230102321CAF26B4005642F2 /* Problem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301022C1CAF26B4005642F2 /* Problem.swift */; };
 		230102341CAF26B4005642F2 /* Contest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301022E1CAF26B4005642F2 /* Contest.swift */; };
@@ -104,7 +105,6 @@
 		23D106271CA9AE990073A669 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105CE1CA9AE990073A669 /* SlideMenuController.swift */; };
 		23D106281CA9AE990073A669 /* SubContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105D01CA9AE990073A669 /* SubContentsViewController.swift */; };
 		23D106291CA9AE990073A669 /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105D11CA9AE990073A669 /* SwiftViewController.swift */; };
-		A11FF15F037840137FEA20AB /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78FF813205CD7420EFA632B /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -207,9 +207,10 @@
 		23D105CF1CA9AE990073A669 /* SlideMenuControllerSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideMenuControllerSwift.h; sourceTree = "<group>"; };
 		23D105D01CA9AE990073A669 /* SubContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubContentsViewController.swift; sourceTree = "<group>"; };
 		23D105D11CA9AE990073A669 /* SwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
-		C413E3F9A54F4AB95D3B95D5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		2CFE21CAEFE3A4D8A4F2C88A /* Pods-Unagi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unagi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unagi/Pods-Unagi.release.xcconfig"; sourceTree = "<group>"; };
+		4B8B66C63AE6190325CE1C70 /* Pods-Unagi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unagi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unagi/Pods-Unagi.debug.xcconfig"; sourceTree = "<group>"; };
+		581311DE5C953566B9A34025 /* Pods_Unagi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unagi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78FF813205CD7420EFA632B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E28B0303D47BAE529FD1BDE5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,7 +230,7 @@
 				23913DF31C6FE2300038BA34 /* AudioToolbox.framework in Frameworks */,
 				23913DF11C6FE1E90038BA34 /* Parse.framework in Frameworks */,
 				23913DF01C6FE1E90038BA34 /* Bolts.framework in Frameworks */,
-				A11FF15F037840137FEA20AB /* Pods.framework in Frameworks */,
+				13CFD65A8121574D8406E409 /* Pods_Unagi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +251,7 @@
 				23913DEF1C6FE1E90038BA34 /* Parse.framework */,
 				23913DEE1C6FE1E90038BA34 /* Bolts.framework */,
 				C78FF813205CD7420EFA632B /* Pods.framework */,
+				581311DE5C953566B9A34025 /* Pods_Unagi.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -260,9 +262,9 @@
 				23426A6C1C9B48AD00709C97 /* Frameworks */,
 				23913E041C6FE26B0038BA34 /* libsqlite3.tbd */,
 				23913E021C6FE2660038BA34 /* libz.tbd */,
-				F1F486FCB90EFE86A00DEFDE /* Pods */,
 				23913DD51C6FE1320038BA34 /* Products */,
 				23D1056E1CA9AE990073A669 /* Unagi */,
+				7E98707C4521DC24F2F2066E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -415,11 +417,11 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		F1F486FCB90EFE86A00DEFDE /* Pods */ = {
+		7E98707C4521DC24F2F2066E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C413E3F9A54F4AB95D3B95D5 /* Pods.debug.xcconfig */,
-				E28B0303D47BAE529FD1BDE5 /* Pods.release.xcconfig */,
+				4B8B66C63AE6190325CE1C70 /* Pods-Unagi.debug.xcconfig */,
+				2CFE21CAEFE3A4D8A4F2C88A /* Pods-Unagi.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -431,12 +433,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23913DEB1C6FE1320038BA34 /* Build configuration list for PBXNativeTarget "Unagi" */;
 			buildPhases = (
-				6874D4FE74E05B0B08490AA8 /* Check Pods Manifest.lock */,
+				4E93DD48B77705B497EF86B2 /* 📦 Check Pods Manifest.lock */,
 				23913DD01C6FE1320038BA34 /* Sources */,
 				23913DD11C6FE1320038BA34 /* Frameworks */,
 				23913DD21C6FE1320038BA34 /* Resources */,
-				0D776CCD1BC373E68694EF0D /* Embed Pods Frameworks */,
-				F7BB0930F6470C437C777D61 /* Copy Pods Resources */,
+				DB0B3EB42656981AA566CA49 /* 📦 Embed Pods Frameworks */,
+				EA2C2D991356795A1393C5AC /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -535,29 +537,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0D776CCD1BC373E68694EF0D /* Embed Pods Frameworks */ = {
+		4E93DD48B77705B497EF86B2 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6874D4FE74E05B0B08490AA8 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -565,19 +552,34 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		F7BB0930F6470C437C777D61 /* Copy Pods Resources */ = {
+		DB0B3EB42656981AA566CA49 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Unagi/Pods-Unagi-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA2C2D991356795A1393C5AC /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Unagi/Pods-Unagi-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -718,7 +720,7 @@
 		};
 		23913DEC1C6FE1320038BA34 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C413E3F9A54F4AB95D3B95D5 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 4B8B66C63AE6190325CE1C70 /* Pods-Unagi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -738,7 +740,7 @@
 		};
 		23913DED1C6FE1320038BA34 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E28B0303D47BAE529FD1BDE5 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 2CFE21CAEFE3A4D8A4F2C88A /* Pods-Unagi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
