@@ -86,10 +86,8 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/CoreDataOperation/CoreDataOperation.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FillableLoaders/FillableLoaders.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/LiquidFloatingActionButton/LiquidFloatingActionButton.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/CoreDataOperation/CoreDataOperation.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FillableLoaders/FillableLoaders.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/LiquidFloatingActionButton/LiquidFloatingActionButton.framework"
 fi

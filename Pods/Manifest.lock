@@ -1,18 +1,15 @@
 PODS:
   - CoreDataOperation (1.3.0)
   - FillableLoaders (1.2.4)
-  - LiquidFloatingActionButton (0.1.2)
 
 DEPENDENCIES:
   - CoreDataOperation (~> 1.3.0)
   - FillableLoaders (~> 1.2.4)
-  - LiquidFloatingActionButton (~> 0.1.2)
 
 SPEC CHECKSUMS:
   CoreDataOperation: ca72fd5cf614538f9a56e6bf7971c0321d8b02ae
   FillableLoaders: 833331f85c24a5b7640cc3e5ae24f278853c10d0
-  LiquidFloatingActionButton: 12ed6f642365142f85c73eaebef8c40b6590511e
 
-PODFILE CHECKSUM: 4ca390e1ef29009641c5fbf7130498f9637b6f63
+PODFILE CHECKSUM: 989f693f897a7e62f8beb4c105f2571a8a79111b
 
 COCOAPODS: 1.0.0.beta.6

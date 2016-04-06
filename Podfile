@@ -6,7 +6,6 @@ use_frameworks!
 target 'Unagi' do
 
 pod 'FillableLoaders', '~>1.2.4'
-pod 'LiquidFloatingActionButton', '~>0.1.2'
 pod 'CoreDataOperation', '~>1.3.0'
 
 end
