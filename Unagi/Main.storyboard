@@ -774,6 +774,12 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXx-hH-f7R">
+                                            <rect key="frame" x="337" y="21" width="22" height="22"/>
+                                            <connections>
+                                                <action selector="addButton:" destination="drQ-WH-rBg" eventType="touchUpInside" id="nKE-mw-tQN"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>

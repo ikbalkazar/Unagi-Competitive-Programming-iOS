@@ -17,6 +17,8 @@ class SearchTableViewController: UITableViewController {
     var curTags = [String]()
     
     var requestedProblems = [Problem]()
+    var solvedMap: [String: Bool] = [:]
+    var solvedIds = [String]()
     
     //Returns true if pattern occurs at least once in the text (Case insensitive)
     func match(text: String, pattern: String) -> Bool {
@@ -86,9 +88,43 @@ class SearchTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    //can be moved to AppDelegate with the Map
+    func getSolvedList() {
+        user?.fetchInBackgroundWithBlock({ (user, error) in
+            let solvedIds = user?.objectForKey("solved") as? [String]
+            if solvedIds != nil {
+                self.solvedIds = solvedIds!
+                for problemId in solvedIds! {
+                    print("Initializing to solved \(problemId)")
+                    self.solvedMap[problemId] = true
+                }
+            }
+            self.tableView.reloadData()
+        })
+    }
+    
+    private func querySolved(id: String) -> Bool{
+        if let value = solvedMap[id] {
+            if value == true {
+                print("Turns out solved... \(id)")
+            }
+            return value
+        } else {
+            return false
+        }
+    }
+    
+    func setSolved(id: String) {
+        print("Setting solved \(id)")
+        solvedMap[id] = true
+        solvedIds.append(id)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateRequestedProblems(problems)
+        solvedMap = [:]
+        getSolvedList()
     }
 
     override func didReceiveMemoryWarning() {
@@ -105,11 +141,25 @@ class SearchTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return requestedProblems.count
     }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell,
+                            forRowAtIndexPath indexPath: NSIndexPath) {
 
+        let problem = requestedProblems[indexPath.row]
+        let didSolved = querySolved(problem.objectId)
+        if didSolved {
+            cell.contentView.backgroundColor = UIColor.greenColor()
+        }
+        
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("searchResultsCell", forIndexPath: indexPath) as! SearchTableViewCell
-        cell.setProblem(requestedProblems[indexPath.row])
+        
+        let problem = requestedProblems[indexPath.row]
+        cell.setProblemForCell(problem)
+        
         return cell
     }
     
@@ -137,17 +187,20 @@ class SearchTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
     }
-    */
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let solvedAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Solved") { (action: UITableViewRowAction, indexPath: NSIndexPath) in
+            
+            print(self.requestedProblems[indexPath.row].objectId)
+            self.setSolved(self.requestedProblems[indexPath.row].objectId)
+            self.tableView.reloadData()
+        }
+        return [solvedAction]
+    }
 
     /*
     // Override to support rearranging the table view.

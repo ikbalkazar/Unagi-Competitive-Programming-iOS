@@ -9,6 +9,8 @@
 import UIKit
 import Parse
 
+var user = PFUser?()
+
 class LoginViewController: UIViewController, UIApplicationDelegate {
     var window: UIWindow?
 
@@ -17,13 +19,13 @@ class LoginViewController: UIViewController, UIApplicationDelegate {
     
     @IBAction func login(sender: AnyObject) {
         print("I am here")
-        PFUser.logInWithUsernameInBackground(username.text!, password: password.text!) { (user, error) -> Void in
+        PFUser.logInWithUsernameInBackground(username.text!, password: password.text!) { (puser, error) -> Void in
             if error != nil {
                 print("Error logging in")
             } else {
                 self.createMenuView()
+                user = puser
             }
-            
         }
     }
     
