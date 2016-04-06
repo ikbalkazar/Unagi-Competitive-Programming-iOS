@@ -18,7 +18,6 @@ class SearchTableViewController: UITableViewController {
     
     var requestedProblems = [Problem]()
     var solvedMap: [String: Bool] = [:]
-    var solvedIds = [String]()
     
     //Returns true if pattern occurs at least once in the text (Case insensitive)
     func match(text: String, pattern: String) -> Bool {
@@ -93,7 +92,6 @@ class SearchTableViewController: UITableViewController {
         user?.fetchInBackgroundWithBlock({ (user, error) in
             let solvedIds = user?.objectForKey("solved") as? [String]
             if solvedIds != nil {
-                self.solvedIds = solvedIds!
                 for problemId in solvedIds! {
                     print("Initializing to solved \(problemId)")
                     self.solvedMap[problemId] = true
@@ -117,7 +115,19 @@ class SearchTableViewController: UITableViewController {
     func setSolved(id: String) {
         print("Setting solved \(id)")
         solvedMap[id] = true
-        solvedIds.append(id)
+        user?.fetchInBackgroundWithBlock({ (user, error) in
+            var solvedIds = user?.objectForKey("solved") as? [String]
+            if solvedIds == nil {
+                solvedIds = [String]()
+            }
+            solvedIds!.append(id)
+            user?.setObject(solvedIds!, forKey: "solved")
+            do {
+                try user?.save()
+            } catch {
+                print("Error saving")
+            }
+        })
     }
     
     override func viewDidLoad() {
@@ -142,22 +152,15 @@ class SearchTableViewController: UITableViewController {
         return requestedProblems.count
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell,
-                            forRowAtIndexPath indexPath: NSIndexPath) {
-
-        let problem = requestedProblems[indexPath.row]
-        let didSolved = querySolved(problem.objectId)
-        if didSolved {
-            cell.contentView.backgroundColor = UIColor.greenColor()
-        }
-        
-    }
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("searchResultsCell", forIndexPath: indexPath) as! SearchTableViewCell
-        
         let problem = requestedProblems[indexPath.row]
+        var identifier = "searchResultsCell"
+        if querySolved(problem.objectId) {
+            identifier += "Solved"
+        }
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! SearchTableViewCell
         cell.setProblemForCell(problem)
         
         return cell

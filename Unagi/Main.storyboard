@@ -788,6 +788,43 @@
                                     <outlet property="tagsLabel" destination="6bf-WM-sbQ" id="xZa-Iz-tBE"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultsCellSolved" rowHeight="65" id="tL2-ow-hGT" customClass="SearchTableViewCell" customModule="Unagi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="93" width="375" height="65"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tL2-ow-hGT" id="Wo2-dT-neV">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FTP-gv-Tn0">
+                                            <rect key="frame" x="8" y="6" width="50" height="51"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIA-UD-4vs">
+                                            <rect key="frame" x="66" y="35" width="201" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLT-19-Def">
+                                            <rect key="frame" x="66" y="6" width="201" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFu-jV-Tt0">
+                                            <rect key="frame" x="337" y="21" width="22" height="22"/>
+                                            <connections>
+                                                <action selector="addButton:" destination="tL2-ow-hGT" eventType="touchUpInside" id="ZxY-dC-zCu"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.8332140306844551" green="1" blue="0.43621377546257889" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="problemLogo" destination="FTP-gv-Tn0" id="aT8-va-bxf"/>
+                                    <outlet property="problemName" destination="SLT-19-Def" id="rhK-yH-P6v"/>
+                                    <outlet property="tagsLabel" destination="VIA-UD-4vs" id="t4V-85-eWi"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="AND-B2-5Qb" id="tde-N6-za9"/>

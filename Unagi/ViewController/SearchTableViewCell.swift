@@ -12,7 +12,6 @@ import Parse
 class SearchTableViewCell: UITableViewCell {
     
     var problem: Problem?
-    var didSolved: Bool?
     @IBOutlet var problemLogo: UIImageView!
     @IBOutlet var problemName: UILabel!
     
@@ -20,12 +19,6 @@ class SearchTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        didSolved = false
-        backgroundColor = UIColor.whiteColor()
     }
     
     //adds the problem to user's to do list
