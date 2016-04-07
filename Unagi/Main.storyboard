@@ -692,14 +692,23 @@
                                     <action selector="addTagButton:" destination="QtV-Ub-dEN" eventType="touchUpInside" id="CBF-ob-ya9"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kd9-0h-gtm">
+                            <switch opaque="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kd9-0h-gtm">
                                 <rect key="frame" x="58" y="253" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchTouched:" destination="QtV-Ub-dEN" eventType="valueChanged" id="6hC-B9-p2A"/>
+                                </connections>
                             </switch>
-                            <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="USW-9s-mA4">
+                            <switch opaque="NO" tag="11" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="USW-9s-mA4">
                                 <rect key="frame" x="163" y="253" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchTouched:" destination="QtV-Ub-dEN" eventType="valueChanged" id="pJU-Wg-26d"/>
+                                </connections>
                             </switch>
-                            <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iZ0-5h-iX5">
+                            <switch opaque="NO" tag="12" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iZ0-5h-iX5">
                                 <rect key="frame" x="267" y="253" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchTouched:" destination="QtV-Ub-dEN" eventType="valueChanged" id="nrl-LM-wIq"/>
+                                </connections>
                             </switch>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hxl-kQ-ysh">
                                 <rect key="frame" x="51" y="182" width="63" height="63"/>
@@ -736,6 +745,9 @@
                         <outletCollection property="logos" destination="k2d-YN-cmz" collectionClass="NSMutableArray" id="SyJ-fY-NCe"/>
                         <outletCollection property="logos" destination="Hxl-kQ-ysh" collectionClass="NSMutableArray" id="syw-aO-CQA"/>
                         <outletCollection property="logos" destination="oJL-3n-aSR" collectionClass="NSMutableArray" id="4FW-xU-n4m"/>
+                        <outletCollection property="switches" destination="Kd9-0h-gtm" collectionClass="NSMutableArray" id="mIn-99-0ne"/>
+                        <outletCollection property="switches" destination="USW-9s-mA4" collectionClass="NSMutableArray" id="BAR-8f-Qh7"/>
+                        <outletCollection property="switches" destination="iZ0-5h-iX5" collectionClass="NSMutableArray" id="n5z-1u-SBM"/>
                         <segue destination="AND-B2-5Qb" kind="show" identifier="toSearchResults" id="2gJ-Ik-Xya"/>
                     </connections>
                 </viewController>
@@ -1101,7 +1113,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w2H-VB-xrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3354.5" y="1398.5"/>
+            <point key="canvasLocation" x="-3370.5" y="1402.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Kk4-fO-ikX">
@@ -1118,7 +1130,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zt1-Cb-h5r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4022.5" y="549.5"/>
+            <point key="canvasLocation" x="-4022.5" y="565.5"/>
         </scene>
         <!--Contest Content View Controller-->
         <scene sceneID="zkF-zB-rtE">
@@ -1189,7 +1201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCa-pm-a7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2685.5" y="613.5"/>
+            <point key="canvasLocation" x="-2683.5" y="565.5"/>
         </scene>
     </scenes>
     <resources>

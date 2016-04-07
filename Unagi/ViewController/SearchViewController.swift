@@ -25,11 +25,15 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITextFieldDe
             let destVC = segue.destinationViewController as! SearchTableViewController
             destVC.curSearchText = searchField.text
             destVC.curTags = tags
+            for i in 0 ..< websitesToShow.count {
+                destVC.isAllowedWebsite[websitesToShow[i]] = websiteStatus[i]
+            }
         }
     }
     
     @IBOutlet var logos: [UIImageView]!
     let websitesToShow = ["Codeforces", "Codechef", "Topcoder"]
+    var websiteStatus = [true, true, true]
     
     @IBOutlet var tagField: UITextField!
     var tags = [String]()
@@ -75,6 +79,15 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITextFieldDe
     }
 
     @IBOutlet var chosenTagsTable: UITableView!
+    
+    @IBOutlet var switches: [UISwitch]!
+    
+    //switch are tagged with 10, 11, 12 respectively from left to right
+    @IBAction func switchTouched(sender: AnyObject) {
+        let senderSwitch = sender as! UISwitch
+        let id = senderSwitch.tag % 10
+        websiteStatus[id] = !websiteStatus[id]
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

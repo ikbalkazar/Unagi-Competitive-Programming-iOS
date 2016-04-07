@@ -15,6 +15,7 @@ class SearchTableViewController: UITableViewController {
 
     var curSearchText : String?
     var curTags = [String]()
+    var isAllowedWebsite: [String: Bool] = [:]
     
     var requestedProblems = [Problem]()
     var solvedMap: [String: Bool] = [:]
@@ -75,7 +76,8 @@ class SearchTableViewController: UITableViewController {
     
     func updateRequestedProblems(problems: [Problem]) {
         for problem in problems {
-            if tagMatch(problem) && nameMatch(problem) {
+            let websiteName = problem.website.name
+            if tagMatch(problem) && nameMatch(problem) && isAllowedWebsite[websiteName] == true {
                 requestedProblems.append(problem)
             }
         }
