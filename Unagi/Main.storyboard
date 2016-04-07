@@ -789,7 +789,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXx-hH-f7R">
                                             <rect key="frame" x="337" y="21" width="22" height="22"/>
                                             <connections>
-                                                <action selector="addButton:" destination="drQ-WH-rBg" eventType="touchUpInside" id="nKE-mw-tQN"/>
+                                                <action selector="addButton:" destination="drQ-WH-rBg" eventType="touchUpInside" id="x8t-fC-EqR"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -825,7 +825,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFu-jV-Tt0">
                                             <rect key="frame" x="337" y="21" width="22" height="22"/>
                                             <connections>
-                                                <action selector="addButton:" destination="tL2-ow-hGT" eventType="touchUpInside" id="ZxY-dC-zCu"/>
+                                                <action selector="addButton:" destination="tL2-ow-hGT" eventType="touchUpInside" id="Bds-W9-LwD"/>
                                             </connections>
                                         </button>
                                     </subviews>

@@ -11,6 +11,7 @@ import Parse
 
 class SearchTableViewCell: UITableViewCell {
     
+    var delegate: UITableViewController?
     var problem: Problem?
     @IBOutlet var problemLogo: UIImageView!
     @IBOutlet var problemName: UILabel!
@@ -20,6 +21,18 @@ class SearchTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    func displayAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: title, style: .Default, handler: { (action) -> Void in
+            self.delegate?.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        
+        delegate?.presentViewController(alert, animated: true, completion: nil)
+    }
+
     
     //adds the problem to user's to do list
     @IBAction func addButton(sender: AnyObject) {
@@ -37,6 +50,7 @@ class SearchTableViewCell: UITableViewCell {
                     user?.setValue(todo, forKey: "toDo")
                     do {
                         try user?.save()
+                        self.displayAlert("Successful", message: "Problem added to to-do list")
                     } catch {
                         print("Error when saving")
                     }
@@ -63,6 +77,5 @@ class SearchTableViewCell: UITableViewCell {
                 tagsLabel.text! += tag
             }
         }
-        
     }
 }

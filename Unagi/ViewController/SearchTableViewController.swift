@@ -50,8 +50,8 @@ class SearchTableViewController: UITableViewController {
         }
         return false
     }
-    
-    //getRelevance function is currently temporary. Should be improved in the future.
+
+    //getRelevance function should be improved.
     //calculates the relevance of the problem according to search parameters
     func getRelevance(problem: Problem) -> Int {
         var result = 0
@@ -89,7 +89,9 @@ class SearchTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    //can be moved to AppDelegate with the Map
+    // should be moved to AppDelegate with the Map.
+    // reason: might take too much time to download every time. Core data relation might be needed
+    // for users with thousands of solved problems.
     func getSolvedList() {
         user?.fetchInBackgroundWithBlock({ (user, error) in
             let solvedIds = user?.objectForKey("solved") as? [String]
@@ -132,6 +134,37 @@ class SearchTableViewController: UITableViewController {
         })
     }
     
+    func setNotSolved(id: String) {
+        solvedMap[id] = false
+        user?.fetchInBackgroundWithBlock({ (user, error) in
+            var solvedIds = user?.objectForKey("solved") as? [String]
+            if solvedIds == nil {
+                solvedIds = [String]()
+            }
+            //finds an element equal to id and removes it
+            for i in 0 ..< solvedIds!.count {
+                if solvedIds![i] == id {
+                    solvedIds?.removeAtIndex((solvedIds?.startIndex.advancedBy(i))!)
+                    break
+                }
+            }
+            user?.setObject(solvedIds!, forKey: "solved")
+            do {
+                try user?.save()
+            } catch {
+                print("Error saving")
+            }
+        })
+    }
+    
+    func changeSolvedStatus(id: String) {
+        if querySolved(id) {
+            setNotSolved(id)
+        } else {
+            setSolved(id)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateRequestedProblems(problems)
@@ -155,7 +188,7 @@ class SearchTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+
         let problem = requestedProblems[indexPath.row]
         var identifier = "searchResultsCell"
         if querySolved(problem.objectId) {
@@ -164,6 +197,7 @@ class SearchTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! SearchTableViewCell
         cell.setProblemForCell(problem)
+        cell.delegate = self
         
         return cell
     }
@@ -183,46 +217,26 @@ class SearchTableViewController: UITableViewController {
             }
         }
     }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
-    
-    // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let solvedAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Solved") { (action: UITableViewRowAction, indexPath: NSIndexPath) in
+        
+        let problemId = self.requestedProblems[indexPath.row].objectId
+        
+        var actionTitle = ""
+        if querySolved(problemId) {
+            actionTitle = "Not Solved"
+        } else {
+            actionTitle = "Solved"
+        }
+        
+        let solvedAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: actionTitle) { (action: UITableViewRowAction, indexPath: NSIndexPath) in
             
-            print(self.requestedProblems[indexPath.row].objectId)
-            self.setSolved(self.requestedProblems[indexPath.row].objectId)
+            self.changeSolvedStatus(self.requestedProblems[indexPath.row].objectId)
             self.tableView.reloadData()
         }
         return [solvedAction]
     }
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
-    // MARK: - Navigation
-
 }

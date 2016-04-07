@@ -36,6 +36,7 @@ func initializeProblemsArrayUsingProblemEntity() {
     
     let request = NSFetchRequest(entityName: "Problem")
     request.returnsObjectsAsFaults = false
+    request.fetchBatchSize = 20
     do {
         problems = try context.executeFetchRequest(request) as! [Problem]
     } catch {
@@ -96,6 +97,8 @@ func preLoadProblemEntity() {
  For now this function supports no more than 1000 updates on Problem Entity
  */
 var s: Int = 0
+var totalTime = 0.0
+    
 func getNewProblemsUsingParse(limit: Int, skip: Int) {
     let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let context: NSManagedObjectContext = appDel.managedObjectContext!
@@ -120,22 +123,28 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
                 
                 for problem in objects {
                     
+                    let startTime = NSDate()
                     let request = NSFetchRequest(entityName: "Problem")
                     request.returnsObjectsAsFaults = false
+                    request.fetchBatchSize = 5
                     
                     request.predicate = NSPredicate(format: "objectId == %@", problem.objectId! )
                     
                     do {
                         let results = try context.executeFetchRequest(request) as! [Problem]
                         
+                        totalTime += -startTime.timeIntervalSinceNow
+                        
                         if results.count < 2 {
                             
                             if results.count == 1 {
                                 context.deleteObject(results[0])
-                                do {
-                                    try context.save()
-                                } catch {
-                                    print("Error saving into Core Data - Deleting an object from Problems Database")
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    do {
+                                        try context.save()
+                                    } catch {
+                                        print("Error saving into Core Data - Deleting an object from Problems Database")
+                                    }
                                 }
                             }
                             
@@ -199,8 +208,9 @@ func updateProblemEntityUsingParse() {
     
     print("Update Problems Entity with new entries in Problem DataBase on Parse")
     for i in 0 ..< 10 {
-        dispatch_async(dispatch_get_main_queue()) {
+        dispatch_async(dispatch_get_main_queue(), { 
             getNewProblemsUsingParse(1000, skip: i * 1000)
-        }
+        })
     }
+    print("Total time = \(totalTime)")
 }

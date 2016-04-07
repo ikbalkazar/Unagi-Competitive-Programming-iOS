@@ -34,8 +34,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.handleFirstTimeProcedures()
         }
         
-        initializeWebsitesArrayUsingWebsiteEntity()
-        updateProblemEntityUsingParse()
+        dispatch_async(dispatch_get_main_queue()) { 
+            initializeWebsitesArrayUsingWebsiteEntity()
+        }
+        dispatch_async(dispatch_get_main_queue()) {
+            updateProblemEntityUsingParse()
+        }
         
         updateContestEntityUsingClistBy()
         
