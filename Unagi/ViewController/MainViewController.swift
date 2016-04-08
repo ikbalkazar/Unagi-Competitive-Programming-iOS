@@ -9,41 +9,59 @@ import UIKit
 import Parse
 import CoreData
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITableViewDelegate {
     
-    @IBOutlet weak var topButton: UIButton!
-    @IBOutlet weak var leftButton: UIButton!
-    @IBOutlet weak var rightButton: UIButton!
+    var solvedProblems = [Problem]()
+    var todoProblems = [Problem]()
     
-    @IBAction func topButtonPressed(sender: AnyObject) {
-        
-    }
-
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var problemSolvedLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var worldRankLabel: UILabel!
+    @IBOutlet weak var nationalRankLabel: UILabel!
+    
+    @IBOutlet weak var todoTable: UITableView!
+    @IBOutlet weak var solvedTable: UITableView!
+    
     @IBAction func tempButtonPressed(sender: AnyObject) {
         performSegueWithIdentifier("Main_SearchView", sender: self)
     }
     
+    private func downloadUserData() {
+        var problemMap: [String: Problem] = [:]
+        for problem in problems {
+            problemMap[problem.objectId] = problem
+        }
+        user?.fetchInBackgroundWithBlock({ (user, error) in
+            let solvedIds = user?.objectForKey("solved") as? [String]
+            if let solvedIds = solvedIds {
+                for id in solvedIds {
+                    self.solvedProblems.append(problemMap[id]!)
+                }
+            }
+            
+            let todoIds = user?.objectForKey("toDo") as? [String]
+            if let todoIds = todoIds {
+                for id in todoIds {
+                    self.todoProblems.append(problemMap[id]!)
+                }
+            }
+            
+            self.solvedProblems = self.solvedProblems.reverse()
+            self.todoProblems = self.todoProblems.reverse()
+            
+            self.todoTable.reloadData()
+            self.solvedTable.reloadData()
+         
+            self.problemSolvedLabel.text = String(self.solvedProblems.count)
+            
+            problemMap.removeAll()
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        
-        //Following 3 lines are temporary
-        
-        userDefaults.setValue( websites[0].name , forKey: "TopWebsite")
-        
-        userDefaults.setValue( websites[1].name , forKey: "LeftWebsite")
-        
-        userDefaults.setValue( websites[2].name , forKey: "RightWebsite")
-        
-        topButton.setBackgroundImage(UIImage(named: userDefaults.objectForKey("TopWebsite") as! String + "_Logo.png"), forState: .Normal)
-        
-        topButton.layer.cornerRadius = 10
-        
-        leftButton.setBackgroundImage(UIImage(named: userDefaults.objectForKey("LeftWebsite") as! String + "_Logo.png"), forState: .Normal)
-        
-        rightButton.setBackgroundImage(UIImage(named: userDefaults.objectForKey("RightWebsite") as! String + "_Logo.png"), forState: .Normal)
-        
+        downloadUserData()
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -59,4 +77,21 @@ class MainViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView.isEqual(todoTable) {
+            return todoProblems.count
+        } else {
+            return solvedProblems.count
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath)
+        if tableView.isEqual(todoTable) {
+            cell.textLabel?.text = todoProblems[indexPath.row].name
+        } else {
+            cell.textLabel?.text = solvedProblems[indexPath.row].name
+        }
+        return cell
+    }
 }

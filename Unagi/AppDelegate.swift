@@ -40,8 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dispatch_async(dispatch_get_main_queue()) {
             updateProblemEntityUsingParse()
         }
-        
-        updateContestEntityUsingClistBy()
+        dispatch_async(dispatch_get_main_queue()) {
+            updateContestEntityUsingClistBy()
+        }
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
