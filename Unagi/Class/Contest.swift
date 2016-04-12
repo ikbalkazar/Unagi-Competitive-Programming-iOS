@@ -141,11 +141,13 @@ func updateContestEntityUsingClistBy() {
                             context.deleteObject(object)
                         }
                         
-                        do {
-                            try context.save()
-                        } catch {
-                            print("exit 1")
-                        }
+                        dispatch_async(dispatch_get_main_queue(), {
+                            do {
+                                try context.save()
+                            } catch {
+                                print("exit 1")
+                            }
+                        })
                         
                     } else {
                         print("exit 2")
@@ -182,11 +184,13 @@ func updateContestEntityUsingClistBy() {
                     }
                     
                     
-                    do {
-                        try context.save()
-                    } catch {
-                        print("Could not save into Core Data - Contest Entity")
-                    }
+                    dispatch_async(dispatch_get_main_queue(), {
+                        do {
+                            try context.save()
+                        } catch {
+                            print("olmadi be!!!")
+                        }
+                    })
                     
                     
                     

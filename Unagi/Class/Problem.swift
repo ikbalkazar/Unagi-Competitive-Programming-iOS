@@ -139,13 +139,13 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
                             
                             if results.count == 1 {
                                 context.deleteObject(results[0])
-                                dispatch_async(dispatch_get_main_queue()) {
+                                dispatch_async(dispatch_get_main_queue(), {
                                     do {
                                         try context.save()
                                     } catch {
-                                        print("Error saving into Core Data - Deleting an object from Problems Database")
+                                        print("olmadi be!!!")
                                     }
-                                }
+                                })
                             }
                             
                             let newProblem = Problem(entity: entity, insertIntoManagedObjectContext: context)
@@ -165,16 +165,14 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
                                     break
                                 }
                             }
-                        
-                            dispatch_async(dispatch_get_main_queue()) {
-                                
+                            
+                            dispatch_async(dispatch_get_main_queue(), {
                                 do {
                                     try context.save()
                                 } catch {
                                     print("olmadi be!!!")
                                 }
-                                
-                            }
+                            })
                             
                         } else {
                             print("More than 1 result")
