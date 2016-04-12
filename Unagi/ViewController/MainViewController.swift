@@ -9,7 +9,7 @@ import UIKit
 import Parse
 import CoreData
 
-class MainViewController: UIViewController, UITableViewDelegate {
+class MainViewController: UIViewController, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var solvedProblems = [Problem]()
     var todoProblems = [Problem]()
@@ -19,12 +19,36 @@ class MainViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var worldRankLabel: UILabel!
     @IBOutlet weak var nationalRankLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
     
     @IBOutlet weak var todoTable: UITableView!
     @IBOutlet weak var solvedTable: UITableView!
     
     @IBAction func tempButtonPressed(sender: AnyObject) {
         performSegueWithIdentifier("Main_SearchView", sender: self)
+    }
+    
+    @IBAction func imageSelectButton(sender: AnyObject) {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        self.presentViewController(pickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let imageChosen = info[UIImagePickerControllerOriginalImage] as? UIImage
+        profileImage.image = imageChosen
+        user?.fetchInBackgroundWithBlock({ (user, error) in
+            let imageData = UIImageJPEGRepresentation(imageChosen!, 0.1)
+            let imageFile = PFFile(data: imageData!)
+            user?.setObject(imageFile!, forKey: "profileImage")
+            do {
+                try user?.save()
+            } catch {
+                print("Error saving the profile image")
+            }
+        })
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     private func downloadUserData() {
@@ -47,6 +71,16 @@ class MainViewController: UIViewController, UITableViewDelegate {
                 }
             }
             
+            if let userImage = user?.valueForKey("profileImage") as? PFFile {
+                userImage.getDataInBackgroundWithBlock({ (data, error) in
+                    if error == nil {
+                        self.profileImage.image = UIImage(data: data!)
+                    } else {
+                        print("Error getting image data")
+                    }
+                })
+            }
+            
             self.solvedProblems = self.solvedProblems.reverse()
             self.todoProblems = self.todoProblems.reverse()
             
@@ -54,6 +88,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
             self.solvedTable.reloadData()
          
             self.problemSolvedLabel.text = String(self.solvedProblems.count)
+            self.usernameLabel.text = user?.objectForKey("username") as? String
             
             problemMap.removeAll()
         })

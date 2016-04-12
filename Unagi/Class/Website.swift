@@ -69,13 +69,14 @@ func preLoadWebsiteEntity() {
                 newWebsite.url = objects[2]
                 newWebsite.contestStatus = objects[3]
                 
-                do {
-                    try context.save()
-                    NSUserDefaults.standardUserDefaults().setValue(true, forKey: newWebsite.name + "filtered")
-                } catch {
-                    print("could not save")
-                }
-                
+                dispatch_async(dispatch_get_main_queue(), { 
+                    do {
+                        try context.save()
+                        NSUserDefaults.standardUserDefaults().setValue(true, forKey: newWebsite.name + "filtered")
+                    } catch {
+                        print("could not save")
+                    }
+                })
                 
             }
             
