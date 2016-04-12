@@ -191,7 +191,6 @@ func updateContestEntityUsingClistBy() {
                         }
                     })
                     
-                    
                 }
                 
             } catch {

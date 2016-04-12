@@ -143,7 +143,7 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
                                     do {
                                         try context.save()
                                     } catch {
-                                        print("Error saving into Core Data - Deleting an object from Problems Database")
+                                        print("olmadi be!!!")
                                     }
                                 })
                             }
@@ -165,7 +165,6 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
                                     break
                                 }
                             }
-                            
                             
                             dispatch_async(dispatch_get_main_queue(), {
                                 do {
