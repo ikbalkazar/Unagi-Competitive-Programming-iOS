@@ -34,15 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.handleFirstTimeProcedures()
         }
         
-        dispatch_async(dispatch_get_main_queue()) { 
-            initializeWebsitesArrayUsingWebsiteEntity()
-        }
-        dispatch_async(dispatch_get_main_queue()) {
-            updateProblemEntityUsingParse()
-        }
-        dispatch_async(dispatch_get_main_queue()) {
-            updateContestEntityUsingClistBy()
-        }
+        initializeWebsitesArrayUsingWebsiteEntity()
+        updateProblemEntityUsingParse()
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
