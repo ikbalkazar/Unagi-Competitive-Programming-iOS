@@ -732,7 +732,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Unagi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Unagi.ikbalandharun.Unagi-App";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Unagi.ikbalasdandharun.Unagi-App";
 				PRODUCT_NAME = Unagi;
 				PROVISIONING_PROFILE = "";
 			};
@@ -752,7 +752,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Unagi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Unagi.ikbalandharun.Unagi-App";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Unagi.ikbalasdandharun.Unagi-App";
 				PRODUCT_NAME = Unagi;
 				PROVISIONING_PROFILE = "";
 			};
