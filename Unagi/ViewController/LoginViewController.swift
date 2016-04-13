@@ -9,8 +9,6 @@
 import UIKit
 import Parse
 
-var user = PFUser?()
-
 class LoginViewController: UIViewController, UIApplicationDelegate {
     var window: UIWindow?
 
@@ -18,13 +16,12 @@ class LoginViewController: UIViewController, UIApplicationDelegate {
     @IBOutlet weak var password: UITextField!
     
     @IBAction func login(sender: AnyObject) {
-        print("I am here")
+        
         PFUser.logInWithUsernameInBackground(username.text!, password: password.text!) { (puser, error) -> Void in
             if error != nil {
                 print("Error logging in")
             } else {
                 self.createMenuView()
-                user = puser
             }
         }
     }
@@ -66,13 +63,13 @@ class LoginViewController: UIViewController, UIApplicationDelegate {
     
     override func viewDidAppear(animated: Bool) {
         
-        /*
+        print("LoginViewController - viewDidAppear")
         
-        if PFUser.currentUser() != nil {
-            self.performSegueWithIdentifier("login1", sender: self)
+        if let user = PFUser.currentUser() {
+            if user.objectId != nil {
+                self.createMenuView()
+            }
         }
-        
-        */
         
     }
 

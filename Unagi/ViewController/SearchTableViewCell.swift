@@ -14,7 +14,7 @@ class SearchTableViewCell: UITableViewCell {
     var delegate: UITableViewController?
     var problem: Problem?
     @IBOutlet var problemLogo: UIImageView!
-    @IBOutlet var problemName: UILabel!
+    @IBOutlet var problemNameLabel: UILabel!
     
     @IBOutlet var tagsLabel: UILabel!
     
@@ -36,8 +36,8 @@ class SearchTableViewCell: UITableViewCell {
     
     //adds the problem to user's to do list
     @IBAction func addButton(sender: AnyObject) {
-        if user!.authenticated {
-            user?.fetchInBackgroundWithBlock({ (user, error) in
+        if PFUser.currentUser()!.authenticated {
+            PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
                 if error == nil {
                     var todo = user?.objectForKey("toDo") as? [String]
                     if todo == nil {
@@ -46,7 +46,6 @@ class SearchTableViewCell: UITableViewCell {
                     if !(todo?.contains(self.problem!.objectId))! {
                         todo?.append((self.problem?.objectId)!)
                     }
-                    print(todo)
                     user?.setValue(todo, forKey: "toDo")
                     do {
                         try user?.save()
@@ -61,14 +60,14 @@ class SearchTableViewCell: UITableViewCell {
         }
     }
     
-    func setProblemForCell(_problem: Problem) {
-        problem = _problem
-        problemLogo.image = UIImage(named: problem!.website.name + "_Logo.png")
-        problemName.text = problem!.name
+    func setProblemForCell(problem: Problem) {
+        self.problem = problem
+        problemLogo.image = UIImage(named: problem.website.name + "_Logo.png")
+        problemNameLabel.text = problem.name
         
         tagsLabel.text = ""
         var isFirst = true
-        if let tags = problem!.tags as? [String] {
+        if let tags = problem.tags as? [String] {
             for tag in tags {
                 if !isFirst {
                     tagsLabel.text! += ", "

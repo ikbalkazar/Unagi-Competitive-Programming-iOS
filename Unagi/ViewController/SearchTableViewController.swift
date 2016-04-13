@@ -9,8 +9,6 @@
 import UIKit
 import Parse
 
-//Currently downloads the problem data base. Will be changed with parse cloud code.
-
 class SearchTableViewController: UITableViewController {
 
     var curSearchText : String?
@@ -93,11 +91,10 @@ class SearchTableViewController: UITableViewController {
     // reason: might take too much time to download every time. Core data relation might be needed
     // for users with thousands of solved problems.
     func getSolvedList() {
-        user?.fetchInBackgroundWithBlock({ (user, error) in
-            let solvedIds = user?.objectForKey("solved") as? [String]
-            if solvedIds != nil {
-                for problemId in solvedIds! {
-                    print("Initializing to solved \(problemId)")
+        PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
+            
+            if let solvedIds = user?.objectForKey("solved") as? [String] {
+                for problemId in solvedIds {
                     self.solvedMap[problemId] = true
                 }
             }
@@ -107,9 +104,6 @@ class SearchTableViewController: UITableViewController {
     
     private func querySolved(id: String) -> Bool{
         if let value = solvedMap[id] {
-            if value == true {
-                print("Turns out solved... \(id)")
-            }
             return value
         } else {
             return false
@@ -119,7 +113,7 @@ class SearchTableViewController: UITableViewController {
     func setSolved(id: String) {
         print("Setting solved \(id)")
         solvedMap[id] = true
-        user?.fetchInBackgroundWithBlock({ (user, error) in
+        PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
             var solvedIds = user?.objectForKey("solved") as? [String]
             if solvedIds == nil {
                 solvedIds = [String]()
@@ -136,7 +130,7 @@ class SearchTableViewController: UITableViewController {
     
     func setNotSolved(id: String) {
         solvedMap[id] = false
-        user?.fetchInBackgroundWithBlock({ (user, error) in
+        PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
             var solvedIds = user?.objectForKey("solved") as? [String]
             if solvedIds == nil {
                 solvedIds = [String]()

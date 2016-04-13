@@ -56,16 +56,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UIImagePickerCo
         for problem in problems {
             problemMap[problem.objectId] = problem
         }
-        user?.fetchInBackgroundWithBlock({ (user, error) in
-            let solvedIds = user?.objectForKey("solved") as? [String]
-            if let solvedIds = solvedIds {
+        PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
+            
+            if let solvedIds = user?.objectForKey("solved") as? [String] {
                 for id in solvedIds {
                     self.solvedProblems.append(problemMap[id]!)
                 }
             }
             
-            let todoIds = user?.objectForKey("toDo") as? [String]
-            if let todoIds = todoIds {
+            if let todoIds = user?.objectForKey("toDo") as? [String] {
                 for id in todoIds {
                     self.todoProblems.append(problemMap[id]!)
                 }
