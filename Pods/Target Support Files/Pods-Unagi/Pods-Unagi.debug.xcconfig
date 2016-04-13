@@ -1,8 +1,8 @@
 EMBEDDED_CONTENT_CONTAINS_SWIFT = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "$CONFIGURATION_BUILD_DIR/CoreDataOperation" "$CONFIGURATION_BUILD_DIR/FillableLoaders"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$CONFIGURATION_BUILD_DIR/CoreDataOperation" "$CONFIGURATION_BUILD_DIR/EZLoadingActivity" "$CONFIGURATION_BUILD_DIR/FillableLoaders" "$CONFIGURATION_BUILD_DIR/Hue" "$CONFIGURATION_BUILD_DIR/WobbleView"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "$CONFIGURATION_BUILD_DIR/CoreDataOperation/CoreDataOperation.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/FillableLoaders/FillableLoaders.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "CoreDataOperation" -framework "FillableLoaders"
+OTHER_CFLAGS = $(inherited) -iquote "$CONFIGURATION_BUILD_DIR/CoreDataOperation/CoreDataOperation.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/EZLoadingActivity/EZLoadingActivity.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/FillableLoaders/FillableLoaders.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/Hue/Hue.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/WobbleView/WobbleView.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "CoreDataOperation" -framework "EZLoadingActivity" -framework "FillableLoaders" -framework "Hue" -framework "WobbleView"
 OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
 PODS_ROOT = ${SRCROOT}/Pods
