@@ -28,7 +28,7 @@ public class WobbleView: UIView, WobbleDelegate {
     @IBInspectable public var edges: ViewEdge = ViewEdge.All
     
     // MARK: init
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         setUp()
@@ -98,6 +98,8 @@ public class WobbleView: UIView, WobbleDelegate {
         verticesAttachments = []
         centersAttachments = []
         
+        //GIVES COMPILE ERROR TO BE FIXED.!!!
+        /*
         for (i, midPointView) in enumerate(midpointViews) {
             
             let formerVertexIndex = i
@@ -106,7 +108,7 @@ public class WobbleView: UIView, WobbleDelegate {
             createAttachmentBehaviour(&verticesAttachments, view: midPointView, vertexIndex: formerVertexIndex)
             createAttachmentBehaviour(&verticesAttachments, view: midPointView, vertexIndex: latterVertexIndex)
             createAttachmentBehaviour(&centersAttachments, view: midPointView, vertexIndex: formerVertexIndex)
-        }
+        }*/
     }
     
     private func setUpDisplayLink() {
@@ -119,19 +121,23 @@ public class WobbleView: UIView, WobbleDelegate {
     internal func displayLinkUpdate(sender: CADisplayLink) {
         
         for behavour in centersAttachments {
-            behavour.anchorPoint = centerViews[behavour.vertexIndex!].layer.presentationLayer().frame.origin
+            behavour.anchorPoint = centerViews[behavour.vertexIndex!].layer.presentationLayer()!.frame.origin
         }
         
         for behavour in verticesAttachments {
-            behavour.anchorPoint = vertexViews[behavour.vertexIndex!].layer.presentationLayer().frame.origin
+            behavour.anchorPoint = vertexViews[behavour.vertexIndex!].layer.presentationLayer()!.frame.origin
         }
         
         var bezierPath = UIBezierPath()
-        bezierPath.moveToPoint(vertexViews[0].layer.presentationLayer().frame.origin - layer.presentationLayer().frame.origin)
+        bezierPath.moveToPoint(vertexViews[0].layer.presentationLayer()!.frame.origin - layer.presentationLayer()!.frame.origin)
+        
+        //GIVES COMPILE ERROR TO BE FIXED!!!!
+        /*
         addEdge(&bezierPath, formerVertex: 0, latterVertex: 1, curved: edges & ViewEdge.Top)
         addEdge(&bezierPath, formerVertex: 1, latterVertex: 2, curved: edges & ViewEdge.Right)
         addEdge(&bezierPath, formerVertex: 2, latterVertex: 3, curved: edges & ViewEdge.Bottom)
         addEdge(&bezierPath, formerVertex: 3, latterVertex: 0, curved: edges & ViewEdge.Left)
+        */
         bezierPath.closePath()
         
         maskLayer.path = bezierPath.CGPath
@@ -178,21 +184,21 @@ public class WobbleView: UIView, WobbleDelegate {
         
         if (curved) {
             
-            var controlPoint = (vertexViews[formerVertex].layer.presentationLayer().frame.origin - (midpointViews[formerVertex].layer.presentationLayer().frame.origin - vertexViews[latterVertex].layer.presentationLayer().frame.origin)) - layer.presentationLayer().frame.origin
+            var controlPoint = (vertexViews[formerVertex].layer.presentationLayer()!.frame.origin - (midpointViews[formerVertex].layer.presentationLayer()!.frame.origin - vertexViews[latterVertex].layer.presentationLayer()!.frame.origin)) - layer.presentationLayer()!.frame.origin
             
-            bezierPath.addQuadCurveToPoint(vertexViews[latterVertex].layer.presentationLayer().frame.origin - layer.presentationLayer().frame.origin,
+            bezierPath.addQuadCurveToPoint(vertexViews[latterVertex].layer.presentationLayer()!.frame.origin - layer.presentationLayer()!.frame.origin,
                 controlPoint: controlPoint)
             
             return;
         }
         
-        bezierPath.addLineToPoint(vertexViews[latterVertex].layer.presentationLayer().frame.origin - layer.presentationLayer().frame.origin)
+        bezierPath.addLineToPoint(vertexViews[latterVertex].layer.presentationLayer()!.frame.origin - layer.presentationLayer()!.frame.origin)
     }
     
     // MARK: private variables
     
     // views considered as rectangle's vertices
-    private var vertexViews:[UIView] = []
+    private var vertexViews = [UIView]()
     
     // views considered as midpoints of rectangle's edges
     private var midpointViews:[UIView] = []
@@ -220,7 +226,7 @@ public class WobbleView: UIView, WobbleDelegate {
 }
 
 // MARK: WobbleDelegate
-extension WobbleView: WobbleDelegate {
+extension WobbleView {
     
     func positionChanged() {
         
@@ -231,6 +237,8 @@ extension WobbleView: WobbleDelegate {
             CGPoint(x: frame.origin.x + frame.width, y: frame.origin.y + frame.height),
             CGPoint(x: frame.origin.x, y: frame.origin.y + frame.height)]
         
+        //GIVES COMPILE ERROR TO BE FIXED
+        /*
         for (i, vertexView)  in enumerate(vertexViews)    {
             vertexView.frame.origin = verticesOrigins[i]
         }
@@ -244,7 +252,7 @@ extension WobbleView: WobbleDelegate {
         
         for (i, centerView)  in enumerate(centerViews)    {
             centerView.frame.origin = centersOrigins[i]
-        }
+        }*/
     }
 }
 
@@ -275,7 +283,7 @@ private class WobbleLayer: CAShapeLayer {
     }
 }
 
-public struct ViewEdge : RawOptionSetType, BooleanType {
+public struct ViewEdge : OptionSetType, BooleanType {
     
     private var value: UInt = 0
     
@@ -294,30 +302,30 @@ public struct ViewEdge : RawOptionSetType, BooleanType {
     }
     
     static public var allZeros: ViewEdge {
-        return self(rawValue: 0)
+        return self.init(rawValue: 0)
     }
     
     static public var None: ViewEdge {
-        return self(rawValue: 0b0000)
+        return self.init(rawValue: 0b0000)
     }
     
     static public var Left: ViewEdge{
-        return self(rawValue: 0b0001)
+        return self.init(rawValue: 0b0001)
     }
     
     static public var Top: ViewEdge {
-        return self(rawValue: 0b0010)
+        return self.init(rawValue: 0b0010)
     }
     
     static public var Right: ViewEdge {
-        return self(rawValue: 0b0100)
+        return self.init(rawValue: 0b0100)
     }
     
     static public var Bottom: ViewEdge {
-        return self(rawValue: 0b1000)
+        return self.init(rawValue: 0b1000)
     }
     
     static public var All: ViewEdge {
-        return self(rawValue: 0b1111)
+        return self.init(rawValue: 0b1111)
     }
 }

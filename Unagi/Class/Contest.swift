@@ -107,7 +107,7 @@ func initializeContestsArrayUsingContestEntity() {
     
 }
 
-func updateContestEntityUsingClistBy() {
+func updateContestEntityUsingClistBy(sender: ContestTableViewController) {
     
     let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let context: NSManagedObjectContext = appDel.managedObjectContext!
@@ -201,6 +201,7 @@ func updateContestEntityUsingClistBy() {
         }
         
         initializeContestsArrayUsingContestEntity()
+        sender.refresh();
         
     })
     myQuery.resume()

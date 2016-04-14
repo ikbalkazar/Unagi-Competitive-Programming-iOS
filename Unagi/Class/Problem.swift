@@ -190,6 +190,9 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
                 print( "seconds => \(NSDate().timeIntervalSinceDate(date))")
                 initializeProblemsArrayUsingProblemEntity()
                 NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "ProblemsDB_LastUpdateTime")
+                print("Goes to Main View Controller")
+                print("#Problems = \(problems.count)")
+                appDel.setWindow()
             }
             
         } else {

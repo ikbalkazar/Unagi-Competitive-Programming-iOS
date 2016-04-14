@@ -82,7 +82,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITextFieldDe
     
     @IBOutlet var switches: [UISwitch]!
     
-    //switch are tagged with 10, 11, 12 respectively from left to right
+    //switches are tagged with 10, 11, 12 respectively from left to right
     @IBAction func switchTouched(sender: AnyObject) {
         let senderSwitch = sender as! UISwitch
         let id = senderSwitch.tag % 10

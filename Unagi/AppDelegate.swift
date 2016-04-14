@@ -24,6 +24,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         preLoadProblemEntity()
     }
     
+    func setWindow() {
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let initialViewController = storyboard.instantiateViewControllerWithIdentifier("Login") as! LoginViewController
+        
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId("8xMwvCqficeHwkS7Ag5PQWdlw1q91ujGcXVRgUnG",
         clientKey: "yXQByidQA8eNkR0NaALnq2KZUvzMhQ9AvPNylyeO")
@@ -36,13 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         initializeWebsitesArrayUsingWebsiteEntity()
         updateProblemEntityUsingParse()
-        
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController = storyboard.instantiateViewControllerWithIdentifier("Login") as! LoginViewController
-        
-        self.window?.rootViewController = initialViewController
-        self.window?.makeKeyAndVisible()
         
         return true
     }

@@ -14,6 +14,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UIImagePickerCo
     var solvedProblems = [Problem]()
     var todoProblems = [Problem]()
     
+    var problemMap: [String: Problem] = [:]
+    
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var problemSolvedLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -38,7 +40,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UIImagePickerCo
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let imageChosen = info[UIImagePickerControllerOriginalImage] as? UIImage
         profileImage.image = imageChosen
-        user?.fetchInBackgroundWithBlock({ (user, error) in
+        PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
             let imageData = UIImageJPEGRepresentation(imageChosen!, 0.1)
             let imageFile = PFFile(data: imageData!)
             user?.setObject(imageFile!, forKey: "profileImage")
@@ -52,21 +54,27 @@ class MainViewController: UIViewController, UITableViewDelegate, UIImagePickerCo
     }
     
     private func downloadUserData() {
-        var problemMap: [String: Problem] = [:]
-        for problem in problems {
-            problemMap[problem.objectId] = problem
-        }
         PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
-            
-            if let solvedIds = user?.objectForKey("solved") as? [String] {
-                for id in solvedIds {
-                    self.solvedProblems.append(problemMap[id]!)
+            self.problemMap = [:]
+            for problem in problems {
+                self.problemMap[problem.objectId] = problem
+                if (problem.objectId == "AInspsrLfF") {
+                    print("exists")
                 }
             }
             
+            self.solvedProblems.removeAll()
+            if let solvedIds = user?.objectForKey("solved") as? [String] {
+                for id in solvedIds {
+                    print("problems size = \(problems.count)")
+                    self.solvedProblems.append(self.problemMap[id]!)
+                }
+            }
+            
+            self.todoProblems.removeAll()
             if let todoIds = user?.objectForKey("toDo") as? [String] {
                 for id in todoIds {
-                    self.todoProblems.append(problemMap[id]!)
+                    self.todoProblems.append(self.problemMap[id]!)
                 }
             }
             
@@ -89,13 +97,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UIImagePickerCo
             self.problemSolvedLabel.text = String(self.solvedProblems.count)
             self.usernameLabel.text = user?.objectForKey("username") as? String
             
-            problemMap.removeAll()
+            self.problemMap.removeAll()
         })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        downloadUserData()
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -105,6 +112,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UIImagePickerCo
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
+        downloadUserData()
     }
 
     override func didReceiveMemoryWarning() {

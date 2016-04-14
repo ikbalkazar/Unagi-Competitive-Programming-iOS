@@ -92,7 +92,7 @@ class SearchTableViewController: UITableViewController {
     // for users with thousands of solved problems.
     func getSolvedList() {
         PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
-            
+            self.solvedMap = [:]
             if let solvedIds = user?.objectForKey("solved") as? [String] {
                 for problemId in solvedIds {
                     self.solvedMap[problemId] = true
@@ -102,7 +102,7 @@ class SearchTableViewController: UITableViewController {
         })
     }
     
-    private func querySolved(id: String) -> Bool{
+    private func querySolved(id: String) -> Bool {
         if let value = solvedMap[id] {
             return value
         } else {
@@ -162,7 +162,6 @@ class SearchTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateRequestedProblems(problems)
-        solvedMap = [:]
         getSolvedList()
     }
 
