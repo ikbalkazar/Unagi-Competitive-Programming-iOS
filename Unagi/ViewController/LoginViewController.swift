@@ -26,18 +26,18 @@ class LoginViewController: UIViewController, UIApplicationDelegate {
         defaults.removeObjectForKey("toDoList")
         defaults.removeObjectForKey("profileImage")
         defaults.removeObjectForKey("username")
-        
+    
     }
     
     func downloadUserContent( ) {
-        var problemMap: [String: Problem] = [:]
-        for problem in problems {
-            problemMap[problem.objectId] = problem
-        }
         
         let defaults = NSUserDefaults.standardUserDefaults()
         
         PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
+            var problemMap: [String: Problem] = [:]
+            for problem in problems {
+                problemMap[problem.objectId] = problem
+            }
             
             if error != nil {
                 print("Could not download user content")
@@ -83,12 +83,13 @@ class LoginViewController: UIViewController, UIApplicationDelegate {
             defaults.setObject( username , forKey: "username" )
             
             problemMap.removeAll()
+            
+            //should be called when the download is done in the background
+            self.createMenuView()
         })
     }
     
     @IBAction func login(sender: AnyObject) {
-        
-        
         PFUser.logInWithUsernameInBackground(username.text!, password: password.text!) { (puser, error) -> Void in
             if error != nil {
                 print("Error logging in")
@@ -99,7 +100,6 @@ class LoginViewController: UIViewController, UIApplicationDelegate {
                 }
                 
                 self.downloadUserContent()
-                self.createMenuView()
             }
         }
     }
@@ -130,7 +130,6 @@ class LoginViewController: UIViewController, UIApplicationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 

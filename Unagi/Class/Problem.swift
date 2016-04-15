@@ -39,9 +39,6 @@ func initializeProblemsArrayUsingProblemEntity() {
     request.fetchBatchSize = 20
     do {
         problems = try context.executeFetchRequest(request) as! [Problem]
-        
-        updateContestEntityUsingClistBy()
-        
     } catch {
         print("There is a problem getting Problems from Core Data")
     }
@@ -192,7 +189,7 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
             if s == 10 {
                 print( "seconds => \(NSDate().timeIntervalSinceDate(date))")
                 NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "ProblemsDB_LastUpdateTime")
-
+                initializeProblemsArrayUsingProblemEntity()
                 print("Goes to Main View Controller")
                 print("#Problems = \(problems.count)")
                 appDel.setWindow()

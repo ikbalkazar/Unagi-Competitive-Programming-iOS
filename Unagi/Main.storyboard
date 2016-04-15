@@ -521,6 +521,33 @@
             </objects>
             <point key="canvasLocation" x="-2003.5" y="-187.5"/>
         </scene>
+        <!--WaitingView-->
+        <scene sceneID="lN8-Sk-gfi">
+            <objects>
+                <viewController storyboardIdentifier="Waiting" title="WaitingView" id="HBc-TX-yzl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YOz-ej-t4V"/>
+                        <viewControllerLayoutGuide type="bottom" id="kKK-aG-kTr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SzG-RB-kxP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hN5-70-TqY">
+                                <rect key="frame" x="150" y="223" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eqY-5H-6OU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1498" y="-957"/>
+        </scene>
         <!--Register View Controller-->
         <scene sceneID="eNW-pn-faT">
             <objects>

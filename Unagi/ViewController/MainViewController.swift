@@ -67,7 +67,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UIImagePickerCo
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
-        downloadUserData()
     }
 
     override func didReceiveMemoryWarning() {
