@@ -14,7 +14,7 @@ class SearchTableViewCell: UITableViewCell {
     var delegate: UITableViewController?
     var problem: Problem?
     @IBOutlet var problemLogo: UIImageView!
-    @IBOutlet var problemNameLabel: UILabel!
+    @IBOutlet var problemName: UILabel!
     
     @IBOutlet var tagsLabel: UILabel!
     
@@ -63,7 +63,7 @@ class SearchTableViewCell: UITableViewCell {
     func setProblemForCell(problem: Problem) {
         self.problem = problem
         problemLogo.image = UIImage(named: problem.website.name + "_Logo.png")
-        problemNameLabel.text = problem.name
+        problemName.text = problem.name
         
         tagsLabel.text = ""
         var isFirst = true

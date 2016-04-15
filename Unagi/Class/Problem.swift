@@ -1,4 +1,4 @@
-    //
+//
 //  Problem.swift
 //  Unagi
 //
@@ -192,7 +192,10 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
             if s == 10 {
                 print( "seconds => \(NSDate().timeIntervalSinceDate(date))")
                 NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "ProblemsDB_LastUpdateTime")
-                initializeProblemsArrayUsingProblemEntity()
+
+                print("Goes to Main View Controller")
+                print("#Problems = \(problems.count)")
+                appDel.setWindow()
             }
             
         } else {
