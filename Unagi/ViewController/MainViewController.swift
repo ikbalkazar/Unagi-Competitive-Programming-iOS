@@ -11,10 +11,7 @@ import CoreData
 
 class MainViewController: UIViewController, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    var solvedProblems = [Problem]()
-    var todoProblems = [Problem]()
-    
-    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var problemSolvedLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var worldRankLabel: UILabel!
@@ -36,14 +33,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UIImagePickerCo
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        let imageChosen = info[UIImagePickerControllerOriginalImage] as? UIImage
-        profileImage.image = imageChosen
-        user?.fetchInBackgroundWithBlock({ (user, error) in
-            let imageData = UIImageJPEGRepresentation(imageChosen!, 0.1)
+        let imageChosen = info[UIImagePickerControllerOriginalImage] as! UIImage
+        PFUser.currentUser()!.fetchInBackgroundWithBlock({ (user, error) in
+            let imageData = UIImageJPEGRepresentation(imageChosen, 0.1)
             let imageFile = PFFile(data: imageData!)
             user?.setObject(imageFile!, forKey: "profileImage")
             do {
                 try user?.save()
+                self.profileImageView.image = imageChosen
+                NSUserDefaults.standardUserDefaults().setObject(imageChosen, forKey: "profileImage")
             } catch {
                 print("Error saving the profile image")
             }
@@ -51,51 +49,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UIImagePickerCo
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    private func downloadUserData() {
-        var problemMap: [String: Problem] = [:]
-        for problem in problems {
-            problemMap[problem.objectId] = problem
-        }
-        PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
-            
-            if let solvedIds = user?.objectForKey("solved") as? [String] {
-                for id in solvedIds {
-                    self.solvedProblems.append(problemMap[id]!)
-                }
-            }
-            
-            if let todoIds = user?.objectForKey("toDo") as? [String] {
-                for id in todoIds {
-                    self.todoProblems.append(problemMap[id]!)
-                }
-            }
-            
-            if let userImage = user?.valueForKey("profileImage") as? PFFile {
-                userImage.getDataInBackgroundWithBlock({ (data, error) in
-                    if error == nil {
-                        self.profileImage.image = UIImage(data: data!)
-                    } else {
-                        print("Error getting image data")
-                    }
-                })
-            }
-            
-            self.solvedProblems = self.solvedProblems.reverse()
-            self.todoProblems = self.todoProblems.reverse()
-            
-            self.todoTable.reloadData()
-            self.solvedTable.reloadData()
-         
-            self.problemSolvedLabel.text = String(self.solvedProblems.count)
-            self.usernameLabel.text = user?.objectForKey("username") as? String
-            
-            problemMap.removeAll()
-        })
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        downloadUserData()
+        let defaults = NSUserDefaults.standardUserDefaults()
+        profileImageView.image = defaults.objectForKey("profileImage") as? UIImage
+        usernameLabel.text = defaults.objectForKey("username") as? String
+        solvedProblems = ( defaults.objectForKey("solvedProblems") as! [Problem] ).reverse()
+        toDoListProblems = ( defaults.objectForKey("toDoListProblems") as! [Problem] ).reverse()
+        solvedTable.reloadData()
+        todoTable.reloadData()
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -112,17 +74,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UIImagePickerCo
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView.isEqual(todoTable) {
-            return todoProblems.count
-        } else {
-            return solvedProblems.count
-        }
+        return tableView.isEqual(todoTable) ? toDoListProblems.count : solvedProblems.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath)
         if tableView.isEqual(todoTable) {
-            cell.textLabel?.text = todoProblems[indexPath.row].name
+            cell.textLabel?.text = toDoListProblems[indexPath.row].name
         } else {
             cell.textLabel?.text = solvedProblems[indexPath.row].name
         }

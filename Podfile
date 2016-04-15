@@ -9,6 +9,5 @@ pod 'FillableLoaders', '~>1.2.4'
 pod 'CoreDataOperation', '~>1.3.0'
 pod 'EZLoadingActivity', '~>0.8'
 pod 'Hue', '~>1.1'
-pod 'WobbleView', '~>1.0.2'
 end
 

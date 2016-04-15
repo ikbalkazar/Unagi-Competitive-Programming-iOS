@@ -9,18 +9,96 @@
 import UIKit
 import Parse
 
+var solvedProblems = [Problem]()
+var toDoListProblems = [Problem]()
+
 class LoginViewController: UIViewController, UIApplicationDelegate {
     var window: UIWindow?
 
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     
+    func deletePreviousUserContent() {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        defaults.removeObjectForKey("solvedProblems")
+        defaults.removeObjectForKey("toDoList")
+        defaults.removeObjectForKey("profileImage")
+        defaults.removeObjectForKey("username")
+        
+    }
+    
+    func downloadUserContent( ) {
+        var problemMap: [String: Problem] = [:]
+        for problem in problems {
+            problemMap[problem.objectId] = problem
+        }
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
+            
+            if error != nil {
+                print("Could not download user content")
+                return
+            }
+            
+            self.deletePreviousUserContent()
+            
+            if let solvedIds = user?.objectForKey("solved") as? [String] {
+                for id in solvedIds {
+                    solvedProblems.append(problemMap[id]!)
+                }
+            }
+            
+            if let todoIds = user?.objectForKey("toDo") as? [String] {
+                for id in todoIds {
+                    toDoListProblems.append(problemMap[id]!)
+                }
+            }
+            
+            defaults.setObject(solvedProblems, forKey: "solvedProblems")
+            defaults.setObject(toDoListProblems, forKey: "toDoListProblems")
+            
+            var profileImage = UIImage()
+            
+            if let userImage = user?.valueForKey("profileImage") as? PFFile {
+                userImage.getDataInBackgroundWithBlock({ (data, error) in
+                    if error == nil {
+                        profileImage = UIImage(data: data!)!
+                    } else {
+                        print("Error getting image data")
+                    }
+                })
+            }
+            
+            defaults.setObject(profileImage, forKey: "profileImage")
+            
+            var username = "error"
+            if let tmp = user?.objectForKey("username") as? String {
+                username = tmp
+            }
+            
+            defaults.setObject( username , forKey: "username" )
+            
+            problemMap.removeAll()
+        })
+    }
+    
     @IBAction func login(sender: AnyObject) {
+        
         
         PFUser.logInWithUsernameInBackground(username.text!, password: password.text!) { (puser, error) -> Void in
             if error != nil {
                 print("Error logging in")
             } else {
+                
+                if puser != PFUser.currentUser() {
+                    fatalError("There is an error with user login")
+                }
+                
+                self.downloadUserContent()
                 self.createMenuView()
             }
         }
@@ -64,12 +142,6 @@ class LoginViewController: UIViewController, UIApplicationDelegate {
     override func viewDidAppear(animated: Bool) {
         
         print("LoginViewController - viewDidAppear")
-        
-        if let user = PFUser.currentUser() {
-            if user.objectId != nil {
-                self.createMenuView()
-            }
-        }
         
     }
 

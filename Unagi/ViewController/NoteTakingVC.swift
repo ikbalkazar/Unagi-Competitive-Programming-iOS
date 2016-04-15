@@ -24,9 +24,8 @@ class NoteTakingVC: UIViewController, UITextViewDelegate {
     }
     
     func loadNotes() {
-        let defaults = NSUserDefaults.standardUserDefaults()
         print(problemObjectIdentifier)
-        if let savedStr = defaults.objectForKey(problemObjectIdentifier! + "notes") {
+        if let savedStr = NSUserDefaults.standardUserDefaults().objectForKey(problemObjectIdentifier! + "notes") {
             textView.text = savedStr as! String
         }
     }

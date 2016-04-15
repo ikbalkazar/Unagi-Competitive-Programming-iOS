@@ -130,7 +130,7 @@ func updateContestEntityUsingClistBy() {
                 let jsonRes = try NSJSONSerialization.JSONObjectWithData(content, options: NSJSONReadingOptions.MutableContainers)
                 let objects = jsonRes["objects"]!!
                 
-                print("Json convertion is successful")
+                print("Json convertion is successful and size => \(objects.count)")
                 
                 let request = NSFetchRequest(entityName: "Contest")
                 do {

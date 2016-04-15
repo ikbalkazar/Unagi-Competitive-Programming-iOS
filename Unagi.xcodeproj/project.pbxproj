@@ -80,7 +80,6 @@
 		23D1060E1CA9AE990073A669 /* ImageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105B41CA9AE990073A669 /* ImageHeaderView.swift */; };
 		23D1060F1CA9AE990073A669 /* ImageHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D105B51CA9AE990073A669 /* ImageHeaderView.xib */; };
 		23D106101CA9AE990073A669 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105B71CA9AE990073A669 /* BaseTableViewCell.swift */; };
-		23D106111CA9AE990073A669 /* CFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105B81CA9AE990073A669 /* CFViewController.swift */; };
 		23D106121CA9AE990073A669 /* ContestContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105B91CA9AE990073A669 /* ContestContentViewController.swift */; };
 		23D106131CA9AE990073A669 /* ContestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105BA1CA9AE990073A669 /* ContestTableViewCell.swift */; };
 		23D106141CA9AE990073A669 /* ContestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105BB1CA9AE990073A669 /* ContestTableViewController.swift */; };
@@ -181,7 +180,6 @@
 		23D105B41CA9AE990073A669 /* ImageHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHeaderView.swift; sourceTree = "<group>"; };
 		23D105B51CA9AE990073A669 /* ImageHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageHeaderView.xib; sourceTree = "<group>"; };
 		23D105B71CA9AE990073A669 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
-		23D105B81CA9AE990073A669 /* CFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFViewController.swift; sourceTree = "<group>"; };
 		23D105B91CA9AE990073A669 /* ContestContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestContentViewController.swift; sourceTree = "<group>"; };
 		23D105BA1CA9AE990073A669 /* ContestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestTableViewCell.swift; sourceTree = "<group>"; };
 		23D105BB1CA9AE990073A669 /* ContestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestTableViewController.swift; sourceTree = "<group>"; };
@@ -386,7 +384,6 @@
 			isa = PBXGroup;
 			children = (
 				23D105B71CA9AE990073A669 /* BaseTableViewCell.swift */,
-				23D105B81CA9AE990073A669 /* CFViewController.swift */,
 				23D105B91CA9AE990073A669 /* ContestContentViewController.swift */,
 				23D105BA1CA9AE990073A669 /* ContestTableViewCell.swift */,
 				23D105BB1CA9AE990073A669 /* ContestTableViewController.swift */,
@@ -613,7 +610,6 @@
 				23D106201CA9AE990073A669 /* ProblemStatementVC.swift in Sources */,
 				23D106281CA9AE990073A669 /* SubContentsViewController.swift in Sources */,
 				23D105D21CA9AE990073A669 /* AppDelegate.swift in Sources */,
-				23D106111CA9AE990073A669 /* CFViewController.swift in Sources */,
 				230102301CAF26B4005642F2 /* Website.swift in Sources */,
 				23D105E01CA9AE990073A669 /* UIImage.swift in Sources */,
 				23D106191CA9AE990073A669 /* FriendsTableViewController.swift in Sources */,
@@ -732,7 +728,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Unagi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Unagi.ikbalasdandharun.Unagi-App";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Unagi.ikbalandharun.Unagi-App";
 				PRODUCT_NAME = Unagi;
 				PROVISIONING_PROFILE = "";
 			};
@@ -752,7 +748,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Unagi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Unagi.ikbalasdandharun.Unagi-App";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Unagi.ikbalandharun.Unagi-App";
 				PRODUCT_NAME = Unagi;
 				PROVISIONING_PROFILE = "";
 			};

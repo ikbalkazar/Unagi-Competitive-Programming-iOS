@@ -39,6 +39,9 @@ func initializeProblemsArrayUsingProblemEntity() {
     request.fetchBatchSize = 20
     do {
         problems = try context.executeFetchRequest(request) as! [Problem]
+        
+        updateContestEntityUsingClistBy()
+        
     } catch {
         print("There is a problem getting Problems from Core Data")
     }
@@ -143,7 +146,7 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
                                     do {
                                         try context.save()
                                     } catch {
-                                        print("olmadi be!!!")
+                                        print("Could not delete object - Problem Entity")
                                     }
                                 })
                             }
@@ -170,7 +173,7 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
                                 do {
                                     try context.save()
                                 } catch {
-                                    print("olmadi be!!!")
+                                    print("Could not save context - Problem Entity")
                                 }
                             })
                             
@@ -188,8 +191,8 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
             print("s = \(s)")
             if s == 10 {
                 print( "seconds => \(NSDate().timeIntervalSinceDate(date))")
-                initializeProblemsArrayUsingProblemEntity()
                 NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "ProblemsDB_LastUpdateTime")
+                initializeProblemsArrayUsingProblemEntity()
             }
             
         } else {
