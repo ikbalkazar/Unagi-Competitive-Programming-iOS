@@ -32,10 +32,20 @@ class SearchTableViewCell: UITableViewCell {
         
         delegate?.presentViewController(alert, animated: true, completion: nil)
     }
-
+    
+    //Appends the cell's problem objectId to toDoListProblems array of NSUserDefaults
+    func addToUserDefaults() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var todoList = defaults.objectForKey("toDoListProblems") as! [String]
+        if !todoList.contains(problem!.objectId) {
+            todoList.append(problem!.objectId)
+        }
+        defaults.setObject(todoList, forKey: "toDoListProblems")
+    }
     
     //adds the problem to user's to do list
     @IBAction func addButton(sender: AnyObject) {
+        addToUserDefaults()
         if PFUser.currentUser()!.authenticated {
             PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
                 if error == nil {

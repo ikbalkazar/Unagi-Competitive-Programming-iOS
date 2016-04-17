@@ -11,7 +11,6 @@ var problems = [Problem]()
 var websites = [Website]()
 var filteredContests = [Contest]()
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -42,10 +41,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
     }
     
+    private func createMenuView() {
+        // create viewController code...
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
+        let leftViewController = storyboard.instantiateViewControllerWithIdentifier("LeftViewController") as! LeftViewController
+        let rightViewController = storyboard.instantiateViewControllerWithIdentifier("RightViewController") as! RightViewController
+        
+        let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
+        
+        UINavigationBar.appearance().tintColor = UIColor(hex: "078ac9") // used to be 689F38
+        
+        leftViewController.mainViewController = nvc
+        
+        let slideMenuController = ExSlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController, rightMenuViewController: rightViewController)
+        slideMenuController.automaticallyAdjustsScrollViewInsets = true
+        
+        let curwindow = UIApplication.sharedApplication().keyWindow
+        curwindow?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
+        curwindow?.rootViewController = slideMenuController
+        curwindow?.makeKeyAndVisible()
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId("8xMwvCqficeHwkS7Ag5PQWdlw1q91ujGcXVRgUnG",
         clientKey: "yXQByidQA8eNkR0NaALnq2KZUvzMhQ9AvPNylyeO")
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        
+        let types: UIUserNotificationType = [.Alert, .Badge, .Sound]
+        let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
         
         setWaitingWindow()
         
@@ -59,6 +86,63 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    func deletePreviousUserContent() {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        defaults.removeObjectForKey("solvedProblems")
+        defaults.removeObjectForKey("toDoList")
+        defaults.removeObjectForKey("username")
+        
+    }
+    
+    func downloadUserContent(createView: Bool) {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
+            
+            if error != nil {
+                print("Could not download user content")
+                return
+            }
+            
+            self.deletePreviousUserContent()
+            
+            var solvedProblemIds = [String]()
+            var toDoListProblemIds = [String]()
+            
+            if let solvedIds = user?.objectForKey("solved") as? [String] {
+                for id in solvedIds {
+                    solvedProblemIds.append(id)
+                }
+            }
+            
+            if let todoIds = user?.objectForKey("toDo") as? [String] {
+                for id in todoIds {
+                    toDoListProblemIds.append(id)
+                }
+            }
+            
+            defaults.setObject(solvedProblemIds, forKey: "solvedProblems")
+            defaults.setObject(toDoListProblemIds, forKey: "toDoListProblems")
+            
+            var username = "error"
+            if let tmp = user?.objectForKey("username") as? String {
+                username = tmp
+            }
+            
+            defaults.setObject( username , forKey: "username" )
+            defaults.synchronize()
+            
+            //should be called when the download is done in the background
+            if createView {
+                self.createMenuView()
+            }
+        })
+    }
+
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -84,22 +84,20 @@ class SearchTableViewController: UITableViewController {
             let relevanceB = getRelevance(problemB)
             return relevanceA > relevanceB
         }
-        self.tableView.reloadData()
     }
     
     // should be moved to AppDelegate with the Map.
     // reason: might take too much time to download every time. Core data relation might be needed
     // for users with thousands of solved problems.
     func getSolvedList() {
-        PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
-            self.solvedMap = [:]
-            if let solvedIds = user?.objectForKey("solved") as? [String] {
-                for problemId in solvedIds {
-                    self.solvedMap[problemId] = true
-                }
-            }
-            self.tableView.reloadData()
-        })
+        solvedMap.removeAll()
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let solvedProblemIds = defaults.objectForKey("solvedProblems") as! [String]
+        print("Getting solved List!!!")
+        print(solvedProblemIds)
+        for id in solvedProblemIds {
+            solvedMap[id] = true
+        }
     }
     
     private func querySolved(id: String) -> Bool {
@@ -151,18 +149,35 @@ class SearchTableViewController: UITableViewController {
         })
     }
     
+    //Updates the NSUserDefaults solved problems data according to last change on id
+    func fixUserDefaultsUserSolvedData(id: String) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var solvedProblemIds = defaults.objectForKey("solvedProblems") as! [String]
+        if solvedProblemIds.contains(id) {
+            let index = solvedProblemIds.indexOf(id)
+            solvedProblemIds.removeAtIndex(index!)
+        } else {
+            solvedProblemIds.append(id)
+        }
+        print(solvedProblemIds)
+        defaults.setObject(solvedProblemIds, forKey: "solvedProblems")
+        defaults.synchronize() 
+    }
+    
     func changeSolvedStatus(id: String) {
         if querySolved(id) {
             setNotSolved(id)
         } else {
             setSolved(id)
         }
+        fixUserDefaultsUserSolvedData(id)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateRequestedProblems(problems)
         getSolvedList()
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {

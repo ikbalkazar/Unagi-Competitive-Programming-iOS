@@ -10,8 +10,12 @@ import Parse
 import CoreData
 
 class MainViewController: UIViewController, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    //changing IBOutlet variable names without fixing their connection to storyboard causes RTE.
+
+    var solvedProblemIds = [String]()
+    var toDoListProblemIds = [String]()
     
-    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var problemSolvedLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var worldRankLabel: UILabel!
@@ -40,24 +44,35 @@ class MainViewController: UIViewController, UITableViewDelegate, UIImagePickerCo
             user?.setObject(imageFile!, forKey: "profileImage")
             do {
                 try user?.save()
-                self.profileImageView.image = imageChosen
-                NSUserDefaults.standardUserDefaults().setObject(imageChosen, forKey: "profileImage")
+                self.profileImage.image = imageChosen
             } catch {
                 print("Error saving the profile image")
             }
         })
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+
+    var problemMap: [String: Problem] = [:]
+    
+    func refreshTables() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        usernameLabel.text = defaults.objectForKey("username") as? String
+        solvedProblemIds = ( defaults.objectForKey("solvedProblems") as! [String] ).reverse()
+        toDoListProblemIds = ( defaults.objectForKey("toDoListProblems") as! [String] ).reverse()
+        for problem in problems {
+            problemMap[problem.objectId] = problem
+        }
+        solvedTable.reloadData()
+        todoTable.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let defaults = NSUserDefaults.standardUserDefaults()
-        profileImageView.image = defaults.objectForKey("profileImage") as? UIImage
-        usernameLabel.text = defaults.objectForKey("username") as? String
-        solvedProblems = ( defaults.objectForKey("solvedProblems") as! [Problem] ).reverse()
-        toDoListProblems = ( defaults.objectForKey("toDoListProblems") as! [Problem] ).reverse()
-        solvedTable.reloadData()
-        todoTable.reloadData()
+        refreshTables()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        refreshTables()
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -74,15 +89,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UIImagePickerCo
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableView.isEqual(todoTable) ? toDoListProblems.count : solvedProblems.count
+        return tableView.isEqual(todoTable) ? toDoListProblemIds.count : solvedProblemIds.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath)
         if tableView.isEqual(todoTable) {
-            cell.textLabel?.text = toDoListProblems[indexPath.row].name
+            cell.textLabel?.text = problemMap[toDoListProblemIds[indexPath.row]]!.name
         } else {
-            cell.textLabel?.text = solvedProblems[indexPath.row].name
+            cell.textLabel?.text = problemMap[solvedProblemIds[indexPath.row]]!.name
         }
         return cell
     }
