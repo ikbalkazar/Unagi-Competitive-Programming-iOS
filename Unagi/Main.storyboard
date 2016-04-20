@@ -287,34 +287,6 @@
             </objects>
             <point key="canvasLocation" x="-1609" y="2279"/>
         </scene>
-        <!--Friends Table View Controller-->
-        <scene sceneID="X4B-lh-kKt">
-            <objects>
-                <tableViewController storyboardIdentifier="FriendsTableViewController" id="F3t-F5-RAZ" customClass="FriendsTableViewController" customModule="Unagi" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hcn-D0-eMe">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="T58-2J-Mci">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T58-2J-Mci" id="tOh-HS-qtb">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="F3t-F5-RAZ" id="msn-aw-nOT"/>
-                            <outlet property="delegate" destination="F3t-F5-RAZ" id="Sj7-hb-bng"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dgZ-9e-hAI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="452" y="977"/>
-        </scene>
         <!--Swift View Controller-->
         <scene sceneID="qDe-KX-ho1">
             <objects>
@@ -524,7 +496,7 @@
         <!--WaitingView-->
         <scene sceneID="lN8-Sk-gfi">
             <objects>
-                <viewController storyboardIdentifier="Waiting" title="WaitingView" id="HBc-TX-yzl" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoadingView" title="WaitingView" id="HBc-TX-yzl" customClass="LoadingViewController" customModule="Unagi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YOz-ej-t4V"/>
                         <viewControllerLayoutGuide type="bottom" id="kKK-aG-kTr"/>

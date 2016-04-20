@@ -4,8 +4,7 @@
 use_frameworks!
 
 target 'Unagi' do
-
-pod 'FillableLoaders', '~>1.2.4'
+pod 'FillableLoaders', '~>1.2.6'
 pod 'CoreDataOperation', '~>1.3.0'
 pod 'EZLoadingActivity', '~>0.8'
 pod 'Hue', '~>1.1'
