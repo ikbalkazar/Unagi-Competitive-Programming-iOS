@@ -25,6 +25,7 @@
 		23913E011C6FE25F0038BA34 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23913E001C6FE25F0038BA34 /* SystemConfiguration.framework */; };
 		23913E031C6FE2660038BA34 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 23913E021C6FE2660038BA34 /* libz.tbd */; };
 		23913E051C6FE26B0038BA34 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 23913E041C6FE26B0038BA34 /* libsqlite3.tbd */; };
+		23AC136A1CC8420700A473B3 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AC13691CC8420700A473B3 /* LoadingViewController.swift */; };
 		23D105D21CA9AE990073A669 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1056F1CA9AE990073A669 /* AppDelegate.swift */; };
 		23D105DB1CA9AE990073A669 /* MainDatabases.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23D1057C1CA9AE990073A669 /* MainDatabases.xcdatamodeld */; };
 		23D105DC1CA9AE990073A669 /* DataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D1057E1CA9AE990073A669 /* DataTableViewCell.xib */; };
@@ -125,6 +126,7 @@
 		23913E001C6FE25F0038BA34 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		23913E021C6FE2660038BA34 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		23913E041C6FE26B0038BA34 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		23AC13691CC8420700A473B3 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		23D1056F1CA9AE990073A669 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23D1057D1CA9AE990073A669 /* MainDatabases.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MainDatabases.xcdatamodel; sourceTree = "<group>"; };
 		23D1057E1CA9AE990073A669 /* DataTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataTableViewCell.xib; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 				23D105C11CA9AE990073A669 /* GoViewController.swift */,
 				23D105C21CA9AE990073A669 /* LeftViewController.swift */,
 				23D105C31CA9AE990073A669 /* LoginViewController.swift */,
+				23AC13691CC8420700A473B3 /* LoadingViewController.swift */,
 				23D105C41CA9AE990073A669 /* MainViewController.swift */,
 				23D105C51CA9AE990073A669 /* NonMenuController.swift */,
 				23D105C61CA9AE990073A669 /* NoteTakingVC.swift */,
@@ -621,6 +624,7 @@
 				23D106251CA9AE990073A669 /* SearchTableViewController.swift in Sources */,
 				23D1061E1CA9AE990073A669 /* NonMenuController.swift in Sources */,
 				23D105E31CA9AE990073A669 /* UIView.swift in Sources */,
+				23AC136A1CC8420700A473B3 /* LoadingViewController.swift in Sources */,
 				03F8A5FF1CAD8A4C009C6106 /* SearchTableViewCell.swift in Sources */,
 				23D1061A1CA9AE990073A669 /* GoViewController.swift in Sources */,
 				23D106181CA9AE990073A669 /* FilterTableViewController.swift in Sources */,

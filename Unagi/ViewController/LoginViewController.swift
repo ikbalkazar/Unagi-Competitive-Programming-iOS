@@ -12,11 +12,11 @@ import Parse
 class LoginViewController: UIViewController, UIApplicationDelegate {
     var window: UIWindow?
 
-    @IBOutlet weak var username: UITextField!
-    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var usernameLabel: UITextField!
+    @IBOutlet weak var passwordLabel: UITextField!
     
     @IBAction func login(sender: AnyObject) {
-        PFUser.logInWithUsernameInBackground(username.text!, password: password.text!) { (puser, error) -> Void in
+        PFUser.logInWithUsernameInBackground(usernameLabel.text!, password: passwordLabel.text!) { (puser, error) -> Void in
             if error != nil {
                 print("Error logging in")
             } else {

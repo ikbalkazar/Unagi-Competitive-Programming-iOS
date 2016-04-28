@@ -35,9 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setWaitingWindow() {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let waitingViewController = storyboard.instantiateViewControllerWithIdentifier("Waiting") 
+        let loadingViewController = storyboard.instantiateViewControllerWithIdentifier("LoadingView") as! LoadingViewController
         
-        self.window?.rootViewController = waitingViewController
+        self.window?.rootViewController = loadingViewController
         self.window?.makeKeyAndVisible()
     }
     
