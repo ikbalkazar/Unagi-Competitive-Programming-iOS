@@ -118,7 +118,8 @@ func updateContestEntityUsingClistBy(sender: ContestTableViewController) {
     dateFormatter.dateFormat = "yyyy-MM-dd"
     let dateFrom : String = dateFormatter.stringFromDate(now)
     
-    let url:NSURL = NSURL(string: "https://clist.by/api/v1/json/contest/?start__gte=" + dateFrom + "&username=ikbalkazar&api_key=b66864909a08b2ddf96b258a146bd15c2db6a469&order_by=start")!
+    print(dateFrom)
+    let url:NSURL = NSURL(string: "https://clist.by/api/v1/json /contest/?start__gte=" + dateFrom + "&username=ikbalkazar&api_key=b66864909a08b2ddf96b258a146bd15c2db6a469&order_by=start")!
     
     let urlSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     

@@ -192,7 +192,9 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
                 initializeProblemsArrayUsingProblemEntity()
                 print("Goes to Main View Controller")
                 print("#Problems = \(problems.count)")
-                appDel.setWindow()
+                dispatch_async(dispatch_get_main_queue(), { 
+                    appDel.setWindow()
+                })
             }
             
         } else {

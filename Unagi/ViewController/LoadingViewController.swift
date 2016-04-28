@@ -7,15 +7,13 @@
 //
 
 import UIKit
-import FillableLoaders
+//import FillableLoaders
 
 class LoadingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        return;
-        
+        /*
         let height = UIScreen.mainScreen().bounds.height
         let width =  UIScreen.mainScreen().bounds.width
         
@@ -30,7 +28,8 @@ class LoadingViewController: UIViewController {
         
         loader.loaderColor = UIColor.redColor()
         
-        loader.showLoader()
+        loader.showLoader()*/
+        
     }
 
     override func didReceiveMemoryWarning() {

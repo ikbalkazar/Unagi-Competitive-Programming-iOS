@@ -40,8 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = loadingViewController
         self.window?.makeKeyAndVisible()
     }
-    
-    private func createMenuView() {
+
+    func createMenuView() {
         // create viewController code...
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -69,10 +69,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         clientKey: "yXQByidQA8eNkR0NaALnq2KZUvzMhQ9AvPNylyeO")
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
+        /*
         let types: UIUserNotificationType = [.Alert, .Badge, .Sound]
         let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
+        */
         
         setWaitingWindow()
         
@@ -87,6 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    /*
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         let installation = PFInstallation.currentInstallation()
         installation.setDeviceTokenFromData(deviceToken)
@@ -104,7 +107,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         PFPush.handlePush(userInfo)
     }
-    
+    */
+ 
     func deletePreviousUserContent() {
         
         let defaults = NSUserDefaults.standardUserDefaults()

@@ -1156,8 +1156,6 @@
                     <connections>
                         <segue destination="Bkb-gD-tFJ" kind="relationship" relationship="viewControllers" id="TBi-vz-j8j"/>
                         <segue destination="che-QR-peI" kind="relationship" relationship="viewControllers" id="e4M-EG-rmr"/>
-                        <segue destination="Til-4u-kHl" kind="relationship" relationship="viewControllers" id="5Ii-5B-Yfl"/>
-                        <segue destination="BFd-rx-dph" kind="relationship" relationship="viewControllers" id="Apt-WP-LQf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iP9-ju-o5n" userLabel="First Responder" sceneMemberID="firstResponder"/>
