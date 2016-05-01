@@ -16,10 +16,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UIImagePickerCo
     var toDoListProblemIds = [String]()
     
     @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var problemSolvedLabel: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var worldRankLabel: UILabel!
-    @IBOutlet weak var nationalRankLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     
     @IBOutlet weak var todoTable: UITableView!

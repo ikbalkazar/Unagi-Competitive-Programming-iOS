@@ -461,7 +461,7 @@
 				TargetAttributes = {
 					23913DD31C6FE1320038BA34 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = A429DE3P4L;
+						DevelopmentTeam = 59FM68U839;
 					};
 				};
 			};
@@ -732,7 +732,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Unagi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Unagi.ikbalandharun.Unagi-App";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Unagi.ikbalandharun6576890.Unagi-App";
 				PRODUCT_NAME = Unagi;
 				PROVISIONING_PROFILE = "";
 			};
@@ -752,7 +752,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Unagi/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Unagi.ikbalandharun.Unagi-App";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Unagi.ikbalandharun6576890.Unagi-App";
 				PRODUCT_NAME = Unagi;
 				PROVISIONING_PROFILE = "";
 			};
