@@ -26,6 +26,7 @@
 		23913E031C6FE2660038BA34 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 23913E021C6FE2660038BA34 /* libz.tbd */; };
 		23913E051C6FE26B0038BA34 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 23913E041C6FE26B0038BA34 /* libsqlite3.tbd */; };
 		23AC136A1CC8420700A473B3 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AC13691CC8420700A473B3 /* LoadingViewController.swift */; };
+		23CF2BC01CD6F4740054FF63 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CF2BBF1CD6F4740054FF63 /* UITextFieldExtension.swift */; };
 		23D105D21CA9AE990073A669 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D1056F1CA9AE990073A669 /* AppDelegate.swift */; };
 		23D105DB1CA9AE990073A669 /* MainDatabases.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23D1057C1CA9AE990073A669 /* MainDatabases.xcdatamodeld */; };
 		23D105DC1CA9AE990073A669 /* DataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D1057E1CA9AE990073A669 /* DataTableViewCell.xib */; };
@@ -127,6 +128,7 @@
 		23913E021C6FE2660038BA34 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		23913E041C6FE26B0038BA34 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		23AC13691CC8420700A473B3 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		23CF2BBF1CD6F4740054FF63 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITextFieldExtension.swift; path = Unagi/Extension/UITextFieldExtension.swift; sourceTree = SOURCE_ROOT; };
 		23D1056F1CA9AE990073A669 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23D1057D1CA9AE990073A669 /* MainDatabases.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MainDatabases.xcdatamodel; sourceTree = "<group>"; };
 		23D1057E1CA9AE990073A669 /* DataTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataTableViewCell.xib; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 		23D1057F1CA9AE990073A669 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				23CF2BBF1CD6F4740054FF63 /* UITextFieldExtension.swift */,
 				23D105801CA9AE990073A669 /* String.swift */,
 				23D105811CA9AE990073A669 /* UIApplication.swift */,
 				23D105821CA9AE990073A669 /* UIColor.swift */,
@@ -616,6 +619,7 @@
 				230102301CAF26B4005642F2 /* Website.swift in Sources */,
 				23D105E01CA9AE990073A669 /* UIImage.swift in Sources */,
 				23D106191CA9AE990073A669 /* FriendsTableViewController.swift in Sources */,
+				23CF2BC01CD6F4740054FF63 /* UITextFieldExtension.swift in Sources */,
 				23D105E21CA9AE990073A669 /* UITableViewExtension.swift in Sources */,
 				23D105E11CA9AE990073A669 /* UIImageView.swift in Sources */,
 				23D106131CA9AE990073A669 /* ContestTableViewCell.swift in Sources */,

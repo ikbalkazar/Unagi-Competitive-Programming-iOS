@@ -4,7 +4,6 @@
 import UIKit
 import CoreData
 import Parse
-import Async
 
 var contests = [Contest]()
 var problems = [Problem]()
@@ -33,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setWaitingWindow() {
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let loadingViewController = storyboard.instantiateViewControllerWithIdentifier("LoadingView") as! LoadingViewController

@@ -7,28 +7,23 @@
 //
 
 import UIKit
-//import FillableLoaders
 
 class LoadingViewController: UIViewController {
 
+    @IBOutlet weak var loadingView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*
-        let height = UIScreen.mainScreen().bounds.height
-        let width =  UIScreen.mainScreen().bounds.width
         
-        let path = CGPathCreateMutable()
-        CGPathMoveToPoint(path, nil, 0, height/2)
-        CGPathAddLineToPoint(path, nil, width + 100, height/2)
-        CGPathAddLineToPoint(path, nil, width + 100, height*2)
-        CGPathAddLineToPoint(path, nil, 0, height*2)
-        CGPathCloseSubpath(path)
+        let height: CGFloat = 40
+        let width: CGFloat = 200
         
-        let loader = WavesLoader.createLoaderWithPath(path: path)
+        let loadingTextView = UITextView(frame:  CGRectMake(self.view.bounds.width / 2 - width / 2, self.view.bounds.height - height / 2, width, height) )
         
-        loader.loaderColor = UIColor.redColor()
+        loadingTextView.text = "Loading ..."
         
-        loader.showLoader()*/
+        loadingTextView.textAlignment = NSTextAlignment.Center
+        
+        self.view.addSubview(loadingTextView)
         
     }
 
