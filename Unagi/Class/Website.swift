@@ -36,6 +36,17 @@ func initializeWebsitesArrayUsingWebsiteEntity() {
             websites.append( website )
         }
         
+        //Moves codeforces codechef and topcoder to the top of the list
+        var ptr = 0
+        for toBeMoved in ["Codeforces", "Codechef", "Topcoder"] {
+            for i in 0 ..< websites.count {
+                if websites[i].name == toBeMoved {
+                    swap(&websites[i], &websites[ptr])
+                }
+            }
+            ptr += 1
+        }
+        
     } catch {
         print("There is a problem getting websites from Core Data")
     }

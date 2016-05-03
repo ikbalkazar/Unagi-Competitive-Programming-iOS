@@ -96,6 +96,10 @@ func initializeContestsArrayUsingContestEntity() {
                 contests.append(contest)
             }
             
+            contests.sortInPlace({ (contestL, contestR) -> Bool in
+                return contestL.start < contestR.start
+            })
+            
             updateFilteredContestsArray()
             
         }
@@ -119,7 +123,7 @@ func updateContestEntityUsingClistBy(sender: ContestTableViewController) {
     let dateFrom : String = dateFormatter.stringFromDate(now)
     
     print(dateFrom)
-    let url:NSURL = NSURL(string: "https://clist.by/api/v1/json /contest/?start__gte=" + dateFrom + "&username=ikbalkazar&api_key=b66864909a08b2ddf96b258a146bd15c2db6a469&order_by=start")!
+    let url:NSURL = NSURL(string: "https://clist.by/api/v1/json/contest/?start__gte=" + dateFrom + "&username=ikbalkazar&api_key=b66864909a08b2ddf96b258a146bd15c2db6a469&order_by=start")!
     
     let urlSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     
