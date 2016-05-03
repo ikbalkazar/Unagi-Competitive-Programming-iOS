@@ -108,12 +108,20 @@ class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldD
         registerButton.backgroundColor = UIColor.redColor()
         registerButton.addTarget(self, action: #selector(self.registerButtonDidTapped), forControlEvents: UIControlEvents.TouchUpInside)
         
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        
+        view.addGestureRecognizer(tapGestureRecognizer)
+        
         view.addSubview(usernameTextField)
         view.addSubview(passwordTextField)
         view.addSubview(loginButton)
         view.addSubview(orText)
         view.addSubview(registerButton)
         
+    }
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     func displayAlert(title: String, message: String) {
