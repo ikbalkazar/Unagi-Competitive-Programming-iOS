@@ -41,7 +41,9 @@ func initializeWebsitesArrayUsingWebsiteEntity() {
         for toBeMoved in ["Codeforces", "Codechef", "Topcoder"] {
             for i in 0 ..< websites.count {
                 if websites[i].name == toBeMoved {
-                    swap(&websites[i], &websites[ptr])
+                    if ptr != i {
+                        swap(&websites[i], &websites[ptr])
+                    }
                 }
             }
             ptr += 1

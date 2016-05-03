@@ -71,6 +71,7 @@ class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldD
         usernameTextField.placeholder = "username"
         usernameTextField.backgroundColor = UIColor.clearColor()
         usernameTextField.autocorrectionType = UITextAutocorrectionType.No
+        usernameTextField.autocapitalizationType = UITextAutocapitalizationType.None
         usernameTextField.setBottomBorder(UIColor.darkGrayColor())
         self.usernameTextFieldHash = usernameTextField.hash
         

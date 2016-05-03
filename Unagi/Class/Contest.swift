@@ -206,8 +206,9 @@ func updateContestEntityUsingClistBy(sender: ContestTableViewController) {
         }
         
         initializeContestsArrayUsingContestEntity()
-        sender.refresh();
-        
+        //dispatch_async(dispatch_get_main_queue(), {
+            sender.refresh();
+        //})
     })
     myQuery.resume()
     
