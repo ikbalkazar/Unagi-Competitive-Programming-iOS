@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //is there a need for calling 'defaults.syncronize()' here????
         NSUserDefaults.standardUserDefaults().setValue(true, forKey: "firstTimeCheck")
         preLoadWebsiteEntity()
-        preLoadProblemEntity()
     }
     
     func setWindow() {
