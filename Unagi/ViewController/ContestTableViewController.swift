@@ -13,8 +13,6 @@ var selectedContest: Contest!
 
 class ContestTableViewController: UITableViewController {
     
-    weak var delegate: LeftMenuProtocol?
-    
     func displayAlert(title: String, message: String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
@@ -91,13 +89,12 @@ class ContestTableViewController: UITableViewController {
 
     @IBAction func goToHome(sender: AnyObject) {
         print("Going Home")
-        self.delegate!.changeViewController(LeftMenu.Main)
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     
     @IBAction func goToFilterTable(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+        print("Going to filter Table")
         performSegueWithIdentifier("ShowFilterTable", sender: self)
     }
     
