@@ -16,6 +16,9 @@
 		0327AF901CE6543C003FA964 /* layers.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF8E1CE6543C003FA964 /* layers.png */; };
 		0327AF911CE6543C003FA964 /* filter.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF8F1CE6543C003FA964 /* filter.png */; };
 		0327AF931CE65498003FA964 /* information.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF921CE65498003FA964 /* information.png */; };
+		0327AF951CE65737003FA964 /* agenda-29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF941CE65737003FA964 /* agenda-29@3x.png */; };
+		0327AF971CE65740003FA964 /* paper-29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF961CE65740003FA964 /* paper-29@3x.png */; };
+		0327AF991CE65767003FA964 /* edit-29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF981CE65767003FA964 /* edit-29@3x.png */; };
 		03DFEC4E1CE6434100FCB798 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DFEC4D1CE6434100FCB798 /* MainCollectionViewCell.swift */; };
 		03DFEC501CE643DB00FCB798 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 03DFEC4F1CE643DB00FCB798 /* search.png */; };
 		03F8A5FF1CAD8A4C009C6106 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8A5FE1CAD8A4C009C6106 /* SearchTableViewCell.swift */; };
@@ -129,6 +132,9 @@
 		0327AF8E1CE6543C003FA964 /* layers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = layers.png; sourceTree = "<group>"; };
 		0327AF8F1CE6543C003FA964 /* filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter.png; sourceTree = "<group>"; };
 		0327AF921CE65498003FA964 /* information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information.png; sourceTree = "<group>"; };
+		0327AF941CE65737003FA964 /* agenda-29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "agenda-29@3x.png"; sourceTree = "<group>"; };
+		0327AF961CE65740003FA964 /* paper-29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paper-29@3x.png"; sourceTree = "<group>"; };
+		0327AF981CE65767003FA964 /* edit-29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-29@3x.png"; sourceTree = "<group>"; };
 		03DFEC4D1CE6434100FCB798 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		03DFEC4F1CE643DB00FCB798 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		03F8A5FE1CAD8A4C009C6106 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -350,6 +356,9 @@
 		23D1058C1CA9AE990073A669 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0327AF981CE65767003FA964 /* edit-29@3x.png */,
+				0327AF961CE65740003FA964 /* paper-29@3x.png */,
+				0327AF941CE65737003FA964 /* agenda-29@3x.png */,
 				0327AF921CE65498003FA964 /* information.png */,
 				0327AF8E1CE6543C003FA964 /* layers.png */,
 				0327AF8F1CE6543C003FA964 /* filter.png */,
@@ -524,6 +533,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0327AF971CE65740003FA964 /* paper-29@3x.png in Resources */,
 				0327AF8C1CE65379003FA964 /* edit.png in Resources */,
 				23D105E71CA9AE990073A669 /* LaunchScreen.xib in Resources */,
 				23D105ED1CA9AE990073A669 /* none.png in Resources */,
@@ -546,8 +556,10 @@
 				0327AF891CE65379003FA964 /* paper.png in Resources */,
 				23D105EF1CA9AE990073A669 /* read-29@3x.png in Resources */,
 				23D105EA1CA9AE990073A669 /* Images.xcassets in Resources */,
+				0327AF951CE65737003FA964 /* agenda-29@3x.png in Resources */,
 				23D106061CA9AE990073A669 /* SPOJ_Logo.png in Resources */,
 				0327AF911CE6543C003FA964 /* filter.png in Resources */,
+				0327AF991CE65767003FA964 /* edit-29@3x.png in Resources */,
 				23D106001CA9AE990073A669 /* HackerRank_Logo.png in Resources */,
 				23D106021CA9AE990073A669 /* IOI_Logo.png in Resources */,
 				23D105EB1CA9AE990073A669 /* learderboard-29@3x.png in Resources */,

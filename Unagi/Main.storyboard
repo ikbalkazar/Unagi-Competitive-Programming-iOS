@@ -612,7 +612,7 @@
                                                 <constraint firstAttribute="height" constant="30" id="WGr-C5-l6y"/>
                                                 <constraint firstAttribute="width" constant="111" id="dBJ-zV-PjY"/>
                                             </constraints>
-                                            <state key="normal" title="Add to Calendar" image="calendarIcon.png"/>
+                                            <state key="normal" title="Add to Calendar" image="agenda-29.png"/>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="Kb8-a9-fIB"/>
@@ -960,7 +960,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Note" image="note-29@3x.png" id="pl6-Oq-3bY"/>
+                    <tabBarItem key="tabBarItem" title="Note" image="edit-29@3x.png" id="pl6-Oq-3bY"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="textView" destination="hgD-Jj-7so" id="fIG-Uj-Eqw"/>
@@ -1076,7 +1076,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Read" image="read-29@3x.png" id="TqT-np-zb6"/>
+                    <tabBarItem key="tabBarItem" title="Read" image="paper-29@3x.png" id="TqT-np-zb6"/>
                     <navigationItem key="navigationItem" title="Title" id="wnl-C8-nS3"/>
                     <connections>
                         <outlet property="webView" destination="UX1-oj-O3B" id="1tC-rF-3V8"/>
@@ -1266,10 +1266,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="calendarIcon.png" width="512" height="512"/>
+        <image name="agenda-29.png" width="29" height="29"/>
+        <image name="edit-29@3x.png" width="512" height="512"/>
         <image name="learderboard-29@3x.png" width="512" height="512"/>
-        <image name="note-29@3x.png" width="512" height="512"/>
-        <image name="read-29@3x.png" width="512" height="512"/>
+        <image name="paper-29@3x.png" width="512" height="512"/>
         <image name="similar-29@3x.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>

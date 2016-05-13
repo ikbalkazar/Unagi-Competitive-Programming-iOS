@@ -11,6 +11,7 @@ import EventKit
 
 class ContestTableViewCell: UITableViewCell {
     
+    var delegate: UITableViewController?
     var contest: Contest!
     var savedEvents = [EKEvent]()
     
@@ -54,13 +55,9 @@ class ContestTableViewCell: UITableViewCell {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         
-        alert.addAction((UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-            
-            UIApplication.sharedApplication().keyWindow?.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
-            
-        })))
+        alert.addAction((UIAlertAction(title: "OK", style: .Default, handler: nil)))
         
-        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+        delegate?.presentViewController(alert, animated: true, completion: nil)
         
     }
     
