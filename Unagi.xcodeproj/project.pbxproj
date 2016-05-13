@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0327AF881CE65379003FA964 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF821CE65379003FA964 /* settings.png */; };
+		0327AF891CE65379003FA964 /* paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF831CE65379003FA964 /* paper.png */; };
+		0327AF8A1CE65379003FA964 /* tick.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF841CE65379003FA964 /* tick.png */; };
+		0327AF8B1CE65379003FA964 /* notification.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF851CE65379003FA964 /* notification.png */; };
+		0327AF8C1CE65379003FA964 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF861CE65379003FA964 /* edit.png */; };
+		0327AF8D1CE65379003FA964 /* agenda.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF871CE65379003FA964 /* agenda.png */; };
+		0327AF901CE6543C003FA964 /* layers.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF8E1CE6543C003FA964 /* layers.png */; };
+		0327AF911CE6543C003FA964 /* filter.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF8F1CE6543C003FA964 /* filter.png */; };
+		0327AF931CE65498003FA964 /* information.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF921CE65498003FA964 /* information.png */; };
+		03DFEC4E1CE6434100FCB798 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DFEC4D1CE6434100FCB798 /* MainCollectionViewCell.swift */; };
+		03DFEC501CE643DB00FCB798 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 03DFEC4F1CE643DB00FCB798 /* search.png */; };
 		03F8A5FF1CAD8A4C009C6106 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8A5FE1CAD8A4C009C6106 /* SearchTableViewCell.swift */; };
 		13CFD65A8121574D8406E409 /* Pods_Unagi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581311DE5C953566B9A34025 /* Pods_Unagi.framework */; };
 		230102301CAF26B4005642F2 /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301022A1CAF26B4005642F2 /* Website.swift */; };
@@ -109,6 +120,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0327AF821CE65379003FA964 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		0327AF831CE65379003FA964 /* paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paper.png; sourceTree = "<group>"; };
+		0327AF841CE65379003FA964 /* tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tick.png; sourceTree = "<group>"; };
+		0327AF851CE65379003FA964 /* notification.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notification.png; sourceTree = "<group>"; };
+		0327AF861CE65379003FA964 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
+		0327AF871CE65379003FA964 /* agenda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = agenda.png; sourceTree = "<group>"; };
+		0327AF8E1CE6543C003FA964 /* layers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = layers.png; sourceTree = "<group>"; };
+		0327AF8F1CE6543C003FA964 /* filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter.png; sourceTree = "<group>"; };
+		0327AF921CE65498003FA964 /* information.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = information.png; sourceTree = "<group>"; };
+		03DFEC4D1CE6434100FCB798 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		03DFEC4F1CE643DB00FCB798 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		03F8A5FE1CAD8A4C009C6106 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		2301022A1CAF26B4005642F2 /* Website.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Website.swift; sourceTree = "<group>"; };
 		2301022C1CAF26B4005642F2 /* Problem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Problem.swift; sourceTree = "<group>"; };
@@ -328,6 +350,16 @@
 		23D1058C1CA9AE990073A669 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0327AF921CE65498003FA964 /* information.png */,
+				0327AF8E1CE6543C003FA964 /* layers.png */,
+				0327AF8F1CE6543C003FA964 /* filter.png */,
+				0327AF821CE65379003FA964 /* settings.png */,
+				0327AF831CE65379003FA964 /* paper.png */,
+				0327AF841CE65379003FA964 /* tick.png */,
+				0327AF851CE65379003FA964 /* notification.png */,
+				0327AF861CE65379003FA964 /* edit.png */,
+				0327AF871CE65379003FA964 /* agenda.png */,
+				03DFEC4F1CE643DB00FCB798 /* search.png */,
 				23D1058D1CA9AE990073A669 /* calendarIcon.png */,
 				23D1058E1CA9AE990073A669 /* Images.xcassets */,
 				23D1058F1CA9AE990073A669 /* learderboard-29@3x.png */,
@@ -402,6 +434,7 @@
 				23D105C31CA9AE990073A669 /* LoginViewController.swift */,
 				23AC13691CC8420700A473B3 /* LoadingViewController.swift */,
 				23D105C41CA9AE990073A669 /* MainViewController.swift */,
+				03DFEC4D1CE6434100FCB798 /* MainCollectionViewCell.swift */,
 				23D105C51CA9AE990073A669 /* NonMenuController.swift */,
 				23D105C61CA9AE990073A669 /* NoteTakingVC.swift */,
 				23D105C71CA9AE990073A669 /* ProblemStatementVC.swift */,
@@ -491,13 +524,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0327AF8C1CE65379003FA964 /* edit.png in Resources */,
 				23D105E71CA9AE990073A669 /* LaunchScreen.xib in Resources */,
 				23D105ED1CA9AE990073A669 /* none.png in Resources */,
 				23D106031CA9AE990073A669 /* Light OJ_Logo.png in Resources */,
 				23D1060F1CA9AE990073A669 /* ImageHeaderView.xib in Resources */,
 				23D106071CA9AE990073A669 /* Timus OJ_Logo.png in Resources */,
 				23D105F81CA9AE990073A669 /* CTF Time_Logo.png in Resources */,
+				0327AF881CE65379003FA964 /* settings.png in Resources */,
 				23D105F51CA9AE990073A669 /* Codechef_Logo.png in Resources */,
+				03DFEC501CE643DB00FCB798 /* search.png in Resources */,
 				23D105FD1CA9AE990073A669 /* Google Codejam_Logo.png in Resources */,
 				23D105EE1CA9AE990073A669 /* note-29@3x.png in Resources */,
 				23D105EC1CA9AE990073A669 /* none.jpg in Resources */,
@@ -507,16 +543,21 @@
 				23D106011CA9AE990073A669 /* Infoarena_Logo.png in Resources */,
 				23D105F41CA9AE990073A669 /* COCI_Logo.png in Resources */,
 				23D105FE1CA9AE990073A669 /* Google Hashcode_Logo.png in Resources */,
+				0327AF891CE65379003FA964 /* paper.png in Resources */,
 				23D105EF1CA9AE990073A669 /* read-29@3x.png in Resources */,
 				23D105EA1CA9AE990073A669 /* Images.xcassets in Resources */,
 				23D106061CA9AE990073A669 /* SPOJ_Logo.png in Resources */,
+				0327AF911CE6543C003FA964 /* filter.png in Resources */,
 				23D106001CA9AE990073A669 /* HackerRank_Logo.png in Resources */,
 				23D106021CA9AE990073A669 /* IOI_Logo.png in Resources */,
 				23D105EB1CA9AE990073A669 /* learderboard-29@3x.png in Resources */,
 				23D1060D1CA9AE990073A669 /* SubContentsViewController.storyboard in Resources */,
+				0327AF8B1CE65379003FA964 /* notification.png in Resources */,
 				23D106051CA9AE990073A669 /* Project Euler_Logo.png in Resources */,
 				23D105F31CA9AE990073A669 /* Al Zimmermann's_Logo.png in Resources */,
 				23D105FF1CA9AE990073A669 /* HackerEarth_Logo.png in Resources */,
+				0327AF931CE65498003FA964 /* information.png in Resources */,
+				0327AF8D1CE65379003FA964 /* agenda.png in Resources */,
 				23D105E61CA9AE990073A669 /* LaunchScreen.storyboard in Resources */,
 				23D106041CA9AE990073A669 /* POI_Logo.png in Resources */,
 				23D106091CA9AE990073A669 /* USACO_logo.png in Resources */,
@@ -526,6 +567,8 @@
 				23D1060C1CA9AE990073A669 /* X_Logo.jpg in Resources */,
 				23D105FA1CA9AE990073A669 /* DMOJ_Logo.png in Resources */,
 				23D105DC1CA9AE990073A669 /* DataTableViewCell.xib in Resources */,
+				0327AF8A1CE65379003FA964 /* tick.png in Resources */,
+				0327AF901CE6543C003FA964 /* layers.png in Resources */,
 				23D105F91CA9AE990073A669 /* Deadline 24_Logo.gif in Resources */,
 				23D105E91CA9AE990073A669 /* calendarIcon.png in Resources */,
 				23D106081CA9AE990073A669 /* Topcoder_Logo.png in Resources */,
@@ -599,6 +642,7 @@
 				23D106221CA9AE990073A669 /* ProblemViewController.swift in Sources */,
 				23D106271CA9AE990073A669 /* SlideMenuController.swift in Sources */,
 				23D106101CA9AE990073A669 /* BaseTableViewCell.swift in Sources */,
+				03DFEC4E1CE6434100FCB798 /* MainCollectionViewCell.swift in Sources */,
 				23D106291CA9AE990073A669 /* SwiftViewController.swift in Sources */,
 				23D106171CA9AE990073A669 /* FilterTableViewCell.swift in Sources */,
 				230102341CAF26B4005642F2 /* Contest.swift in Sources */,

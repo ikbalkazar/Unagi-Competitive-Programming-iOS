@@ -40,6 +40,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     
     // MARK: - Collection View Data Source
     
+    let imageNames = ["search.png", "layers.png", "tick.png", "agenda.png", "settings.png", "information.png"]
+    
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -49,7 +51,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionViewCell", forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionViewCell", forIndexPath: indexPath) as! MainCollectionViewCell
         cell.backgroundColor = UIColor.greenColor()
         
         cell.layer.cornerRadius = 13
@@ -67,6 +69,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
         }
         
         cell.addGestureRecognizer(tap)
+        
+        cell.imageView.image = UIImage(named: imageNames[indexPath.row])
+        cell.imageView.layer.cornerRadius = 13
         
         // Configure the cell
         return cell
