@@ -257,6 +257,8 @@
                         <outlet property="collectionView" destination="D66-4V-CpR" id="q7d-AG-SPl"/>
                         <segue destination="QtV-Ub-dEN" kind="show" identifier="Main_SearchView" id="vM7-N3-iUj"/>
                         <segue destination="Dr4-w9-bfQ" kind="show" identifier="MainView_to_CFView" id="JiJ-kb-lUa"/>
+                        <segue destination="AND-B2-5Qb" kind="show" identifier="Main_ProblemTableVC" id="SRo-sL-Jpd"/>
+                        <segue destination="1al-0m-WJb" kind="show" identifier="Main_Calendar" id="N4q-cM-vXM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -673,7 +675,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wC2-Uu-JIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3370.5" y="565.5"/>
+            <point key="canvasLocation" x="-4062.5" y="517.5"/>
         </scene>
         <!--SearchViewController-->
         <scene sceneID="x4x-uq-JdW">
@@ -806,12 +808,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ITg-Ol-yAi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2763.5" y="2182.5"/>
+            <point key="canvasLocation" x="-2729.5" y="1664.5"/>
         </scene>
-        <!--SearchProblemTableViewController-->
+        <!--ProblemTableViewController-->
         <scene sceneID="f20-Lb-hIG">
             <objects>
-                <tableViewController title="SearchProblemTableViewController" id="AND-B2-5Qb" customClass="ProblemTableViewController" customModule="Unagi" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="ProblemTableViewController" id="AND-B2-5Qb" customClass="ProblemTableViewController" customModule="Unagi" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" id="MxB-Tv-1Pr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -903,7 +905,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IX1-cF-FWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2763.5" y="3046.5"/>
+            <point key="canvasLocation" x="-2703.5" y="2686.5"/>
         </scene>
         <!--Note-->
         <scene sceneID="QOQ-Sd-dyR">
@@ -1093,7 +1095,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iP9-ju-o5n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2763.5" y="3982.5"/>
+            <point key="canvasLocation" x="-2703.5" y="3882.5"/>
         </scene>
         <!--Filter Table View Controller-->
         <scene sceneID="Zw1-MT-JIX">
@@ -1164,7 +1166,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w2H-VB-xrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3370.5" y="1402.5"/>
+            <point key="canvasLocation" x="-4546.5" y="1370.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Kk4-fO-ikX">
@@ -1181,7 +1183,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zt1-Cb-h5r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4022.5" y="565.5"/>
+            <point key="canvasLocation" x="-3110.5" y="533.5"/>
         </scene>
         <!--Contest Content View Controller-->
         <scene sceneID="zkF-zB-rtE">
@@ -1252,7 +1254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCa-pm-a7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2683.5" y="565.5"/>
+            <point key="canvasLocation" x="-3595.5" y="1389.5"/>
         </scene>
     </scenes>
     <resources>
@@ -1262,4 +1264,7 @@
         <image name="read-29@3x.png" width="512" height="512"/>
         <image name="similar-29@3x.png" width="512" height="512"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="SRo-sL-Jpd"/>
+    </inferredMetricsTieBreakers>
 </document>
