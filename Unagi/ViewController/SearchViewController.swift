@@ -20,14 +20,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITextFieldDe
         performSegueWithIdentifier("toSearchResults", sender: self)
     }
     
+    //prepares the ProblemTableViewController according to search parameters
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toSearchResults" {
-            let destVC = segue.destinationViewController as! SearchTableViewController
-            destVC.curSearchText = searchField.text
-            destVC.curTags = tags
-            for i in 0 ..< websitesToShow.count {
-                destVC.isAllowedWebsite[websitesToShow[i]] = websiteStatus[i]
-            }
+            let destVC = segue.destinationViewController as! ProblemTableViewController
+            destVC.requestedProblems = getRequestedProblems()
         }
     }
     
@@ -56,6 +53,111 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITextFieldDe
         }
     }
     
+
+    @IBOutlet var chosenTagsTable: UITableView!
+    
+    @IBOutlet var switches: [UISwitch]!
+    
+    //switches are tagged with 10, 11, 12 respectively from left to right
+    @IBAction func switchTouched(sender: AnyObject) {
+        let senderSwitch = sender as! UISwitch
+        let id = senderSwitch.tag % 10
+        websiteStatus[id] = !websiteStatus[id]
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        searchField.delegate = self
+        tagField.delegate = self
+        for imageView in logos {
+            print(websitesToShow[imageView.tag])
+            imageView.image = UIImage(named: websitesToShow[imageView.tag] + "_Logo.png")
+        }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: Problem filtering part.
+    
+    func match(text: String, pattern: String) -> Bool {
+        return text.lowercaseString.rangeOfString(pattern.lowercaseString) != nil
+    }
+    
+    func nameMatch(problem: Problem) -> Bool {
+        if searchField == nil || searchField.text == "" {
+            return true
+        }
+        return match(problem.name, pattern: searchField.text!)
+    }
+    
+    func tagMatch(problem: Problem) -> Bool {
+        if tags.count == 0 {
+            return true
+        }
+        if let tags = problem.tags as? [String] {
+            for tag in tags {
+                if match(tag, pattern: searchField.text!) {
+                    return true
+                }
+                for desiredTag in tags {
+                    if match(tag, pattern: desiredTag) {
+                        return true
+                    }
+                }
+            }
+        }
+        return false
+    }
+    
+    //getRelevance function should be improved.
+    //calculates the relevance of the problem according to search parameters
+    func getRelevance(problem: Problem) -> Int {
+        var result = 0
+        if nameMatch(problem) {
+            result += 8
+        }
+        if tags.count > 0 {
+            let tags = problem.tags as! [String]
+            for tag in tags {
+                if match(tag, pattern: searchField.text!) {
+                    result += 4
+                }
+                for desiredTag in tags {
+                    if match(tag, pattern: desiredTag) {
+                        result += 2
+                    }
+                }
+            }
+        }
+        return result
+    }
+    
+    private func getRequestedProblems() -> [Problem] {
+        var isAllowedWebsite : [String: Bool] = [:]
+        for i in 0 ..< websitesToShow.count {
+            isAllowedWebsite[websitesToShow[i]] = websiteStatus[i]
+        }
+        var requestedProblems = [Problem]()
+        for problem in problems {
+            let websiteName = problem.website.name
+            if tagMatch(problem) && nameMatch(problem) && isAllowedWebsite[websiteName] == true {
+                requestedProblems.append(problem)
+            }
+        }
+        requestedProblems.sortInPlace { (problemA, problemB) -> Bool in
+            let relevanceA = getRelevance(problemA)
+            let relevanceB = getRelevance(problemB)
+            return relevanceA > relevanceB
+        }
+        return requestedProblems
+    }
+    
+    //MARK: - Tags table view data source
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tags.count
     }
@@ -78,29 +180,4 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITextFieldDe
         }
     }
 
-    @IBOutlet var chosenTagsTable: UITableView!
-    
-    @IBOutlet var switches: [UISwitch]!
-    
-    //switches are tagged with 10, 11, 12 respectively from left to right
-    @IBAction func switchTouched(sender: AnyObject) {
-        let senderSwitch = sender as! UISwitch
-        let id = senderSwitch.tag % 10
-        websiteStatus[id] = !websiteStatus[id]
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        searchField.delegate = self
-        tagField.delegate = self
-        for imageView in logos {
-            print(websitesToShow[imageView.tag])
-            imageView.image = UIImage(named: websitesToShow[imageView.tag] + "_Logo.png")
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }

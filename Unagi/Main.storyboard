@@ -808,10 +808,10 @@
             </objects>
             <point key="canvasLocation" x="-2763.5" y="2182.5"/>
         </scene>
-        <!--SearchTableViewController-->
+        <!--SearchProblemTableViewController-->
         <scene sceneID="f20-Lb-hIG">
             <objects>
-                <tableViewController title="SearchTableViewController" id="AND-B2-5Qb" customClass="SearchTableViewController" customModule="Unagi" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="SearchProblemTableViewController" id="AND-B2-5Qb" customClass="ProblemTableViewController" customModule="Unagi" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" id="MxB-Tv-1Pr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

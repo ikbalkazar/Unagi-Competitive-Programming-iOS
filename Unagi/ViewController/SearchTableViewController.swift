@@ -9,86 +9,25 @@
 import UIKit
 import Parse
 
-class SearchTableViewController: UITableViewController {
-
-    var curSearchText : String?
-    var curTags = [String]()
-    var isAllowedWebsite: [String: Bool] = [:]
+class ProblemTableViewController: UITableViewController {
     
     var requestedProblems = [Problem]()
-    var solvedMap: [String: Bool] = [:]
-    
-    //Returns true if pattern occurs at least once in the text (Case insensitive)
-    func match(text: String, pattern: String) -> Bool {
-        return text.lowercaseString.rangeOfString(pattern.lowercaseString) != nil
-    }
-    
-    func nameMatch(problem: Problem) -> Bool {
-        if curSearchText! == "" {
-            return true
-        }
-        return match(problem.name, pattern: curSearchText!)
-    }
-    
-    func tagMatch(problem: Problem) -> Bool {
-        if curTags.count == 0 {
-            return true
-        }
-        if let tags = problem.tags as? [String] {
-            for tag in tags {
-                if match(tag, pattern: curSearchText!) {
-                    return true
-                }
-                for desiredTag in curTags {
-                    if match(tag, pattern: desiredTag) {
-                        return true
-                    }
-                }
-            }
-        }
-        return false
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        getSolvedList()
+        self.tableView.reloadData()
     }
 
-    //getRelevance function should be improved.
-    //calculates the relevance of the problem according to search parameters
-    func getRelevance(problem: Problem) -> Int {
-        var result = 0
-        if nameMatch(problem) {
-            result += 8
-        }
-        if curTags.count > 0 {
-            let tags = problem.tags as! [String]
-            for tag in tags {
-                if match(tag, pattern: curSearchText!) {
-                    result += 4
-                }
-                for desiredTag in curTags {
-                    if match(tag, pattern: desiredTag) {
-                        result += 2
-                    }
-                }
-            }
-        }
-        return result
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
-    func updateRequestedProblems(problems: [Problem]) {
-        for problem in problems {
-            let websiteName = problem.website.name
-            if tagMatch(problem) && nameMatch(problem) && isAllowedWebsite[websiteName] == true {
-                requestedProblems.append(problem)
-            }
-        }
-        requestedProblems.sortInPlace { (problemA, problemB) -> Bool in
-            let relevanceA = getRelevance(problemA)
-            let relevanceB = getRelevance(problemB)
-            return relevanceA > relevanceB
-        }
-    }
+    //MARK: - Solved problems data of the user part
     
-    // should be moved to AppDelegate with the Map.
-    // reason: might take too much time to download every time. Core data relation might be needed
-    // for users with thousands of solved problems.
+    var solvedMap: [String: Bool] = [:]
+    
     func getSolvedList() {
         solvedMap.removeAll()
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -161,7 +100,7 @@ class SearchTableViewController: UITableViewController {
         }
         print(solvedProblemIds)
         defaults.setObject(solvedProblemIds, forKey: "solvedProblems")
-        defaults.synchronize() 
+        defaults.synchronize()
     }
     
     func changeSolvedStatus(id: String) {
@@ -171,18 +110,6 @@ class SearchTableViewController: UITableViewController {
             setSolved(id)
         }
         fixUserDefaultsUserSolvedData(id)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        updateRequestedProblems(problems)
-        getSolvedList()
-        self.tableView.reloadData()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source

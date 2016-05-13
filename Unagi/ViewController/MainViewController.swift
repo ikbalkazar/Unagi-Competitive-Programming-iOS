@@ -15,10 +15,13 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        removeNavigationBarItem()
-        
+    
         self.navigationController?.navigationBarHidden = true
-        
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        //puts the navigation bar back to its place
+        self.navigationController?.navigationBarHidden = false
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -54,9 +57,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     }
     
     func search() {
-        
-        print("tapped")
-        
+        performSegueWithIdentifier("Main_SearchView", sender: self)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
