@@ -46,18 +46,7 @@ func initializeProblemsArrayUsingProblemEntity() {
     
 }
 
-/*
- Note: Does not work!!!
- Note: Make a decision on the csv file format
- 
- Preloads websites and stores it in Core Data - Problem Entity
- */
-
-/*
- For now this function supports no more than 1000 updates on Problem Entity
-*/
-var s: Int = 0
-var totalTime = 0.0
+var parseProblemsCount: Int = 0
     
 func getNewProblemsUsingParse(limit: Int, skip: Int) {
     let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -73,60 +62,66 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
         query.whereKey("updatedAt", greaterThan: lastUpdate)
     }
     
+    var map: [String : Website] = [:]
+    
+    for website in websites {
+        map[website.name] = website
+    }
+    
     query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
         
         if error == nil {
             
             if let objects = objects {
                 
-                print("size = \(objects.count)")
-                
                 for problem in objects {
                     
                     let newProblem = Problem(entity: entity, insertIntoManagedObjectContext: context)
                     
                     newProblem.objectId = problem.objectId!
+                    
                     newProblem.name = problem["name"] as! String
                     newProblem.url = problem["url"] as! String
                     if let tags = problem["tags"] {
                         newProblem.tags = tags as! [String]
                     }
                     newProblem.solutionUrl = problem["solutionUrl"] as? String
-                    let websiteName = problem["websiteId"] as! String
-                    newProblem.website = websites.last!
-                    for website in websites {
-                        if website.name == websiteName {
-                            newProblem.website = website
-                            break
-                        }
+                    
+                    if let website = map[ problem["websiteId"] as! String ] {
+                        newProblem.website = website
+                    } else {
+                        newProblem.website = websites.last
                     }
-                    
-                    dispatch_async(dispatch_get_main_queue(), {
-                        do {
-                            try context.save()
-                        } catch {
-                            print("Could not save context - Problem Entity")
-                        }
-                    })
-                    
                 }
                 
+            } else {
+                print("Problems Data Base could not updated!!! Check the internet connection - 1")
             }
-            s += 1
-            print("s = \(s)")
-            if s == 10 {
+            parseProblemsCount += 1
+            if parseProblemsCount == 10 {
                 print( "seconds => \(NSDate().timeIntervalSinceDate(date))")
                 NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "ProblemsDB_LastUpdateTime")
                 initializeProblemsArrayUsingProblemEntity()
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    
+                    do {
+                        try context.save()
+                    } catch {
+                        print("Could not save to Core Data - Problem Entity")
+                    }
+                    
+                })
+                
                 print("Goes to Main View Controller")
                 print("#Problems = \(problems.count)")
-                dispatch_async(dispatch_get_main_queue(), { 
+                dispatch_async(dispatch_get_main_queue(), {
                     appDel.setWindow()
                 })
             }
             
         } else {
-            print("Problems Data Base could not updated!!! Check the internet connection")
+            print("Problems Data Base could not updated!!! Check the internet connection - 2")
         }
     }
 }
@@ -136,12 +131,11 @@ var date: NSDate!
 func updateProblemEntityUsingParse() {
     
     date = NSDate()
-    
     print("Update Problems Entity with new entries in Problem DataBase on Parse")
+    
     for i in 0 ..< 10 {
-        dispatch_async(dispatch_get_main_queue(), { 
+        dispatch_async(dispatch_get_main_queue(), {
             getNewProblemsUsingParse(1000, skip: i * 1000)
         })
     }
-    print("Total time = \(totalTime)")
 }

@@ -29,10 +29,12 @@ class ContestTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("ContestTableViewController - viewDidLoad() ")
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        print("ContestTableViewController - viewDidAppear() ")
     }
     
     func refresh() {
@@ -46,7 +48,7 @@ class ContestTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         if contests.count == 0 {
-            updateContestEntityUsingClistBy(self)
+            updateContestEntityUsingClistByAPI(self)
         } else {
             updateFilteredContestsArray()
             self.tableView.reloadData()

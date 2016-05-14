@@ -17,7 +17,9 @@ class LoadingViewController: UIViewController {
         let height: CGFloat = 40
         let width: CGFloat = 200
         
-        let loadingTextView = UITextView(frame:  CGRectMake(self.view.bounds.width / 2 - width / 2, self.view.bounds.height - height / 2, width, height) )
+        let loadingTextView = UITextView(frame:  CGRectMake(self.view.center.x - width / 2, self.view.center.y - height / 2, width, height) )
+        
+        self.view.backgroundColor = UIColor.purpleColor()
         
         loadingTextView.text = "Loading ..."
         
