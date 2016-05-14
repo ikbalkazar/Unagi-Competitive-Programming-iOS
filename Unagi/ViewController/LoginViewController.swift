@@ -19,6 +19,23 @@ class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldD
     var usernameTextFieldHash: Int!
     var passwordTextFieldHash: Int!
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.placeholder = nil
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        textField.placeholder = textField.hash == usernameTextFieldHash ? "username" : "password"
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     func login( sender: AnyObject ) {
         
         PFUser.logInWithUsernameInBackground(usernameTextField.text!, password: passwordTextField.text!) { (puser, error) -> Void in
@@ -96,6 +113,8 @@ class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldD
         let orText = UITextView(frame: CGRectMake(topx, topy+175, width, height))
         
         orText.text = "OR"
+        orText.editable = false
+        orText.selectable = false
         orText.textAlignment = NSTextAlignment.Center
         orText.alpha = 0.7
         orText.backgroundColor = UIColor.clearColor()
@@ -145,8 +164,6 @@ class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldD
     }
     
     override func viewDidAppear(animated: Bool) {
-        
-        print("LoginViewController - viewDidAppear")
         
     }
 

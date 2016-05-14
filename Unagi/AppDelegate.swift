@@ -15,38 +15,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    
     func handleFirstTimeProcedures() {
         //is there a need for calling 'defaults.syncronize()' here????
-        NSUserDefaults.standardUserDefaults().setValue(true, forKey: "firstTimeCheck")
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setValue(true, forKey: "firstTimeCheck")
+        defaults.setValue(0, forKey: "contestObjectIdCounter")
+        
         preLoadWebsiteEntity()
     }
     
     func setWindow() {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController = storyboard.instantiateViewControllerWithIdentifier("Login") as! LoginViewController
+        let loginViewController = self.storyboard.instantiateViewControllerWithIdentifier("Login") as! LoginViewController
         
-        self.window?.rootViewController = initialViewController
+        self.window?.rootViewController = loginViewController
         self.window?.makeKeyAndVisible()
     }
     
     func setWaitingWindow() {
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let loadingViewController = storyboard.instantiateViewControllerWithIdentifier("LoadingView") as! LoadingViewController
+        let loadingViewController = self.storyboard.instantiateViewControllerWithIdentifier("LoadingView") as! LoadingViewController
         
         self.window?.rootViewController = loadingViewController
         self.window?.makeKeyAndVisible()
     }
 
     func createMenuView() {
-        // create viewController code...
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
-        let leftViewController = storyboard.instantiateViewControllerWithIdentifier("LeftViewController") as! LeftViewController
-        let rightViewController = storyboard.instantiateViewControllerWithIdentifier("RightViewController") as! RightViewController
+        let mainViewController = self.storyboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
+        let leftViewController = self.storyboard.instantiateViewControllerWithIdentifier("LeftViewController") as! LeftViewController
+        let rightViewController = self.storyboard.instantiateViewControllerWithIdentifier("RightViewController") as! RightViewController
         
         let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
         
@@ -84,6 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         initializeWebsitesArrayUsingWebsiteEntity()
         updateProblemEntityUsingParse()
+      //  updateContestEntityUsingClistByAPI( ContestTableViewController() )
         
         return true
     }

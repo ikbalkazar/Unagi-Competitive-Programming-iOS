@@ -92,9 +92,7 @@ func initializeContestsArrayUsingContestEntity() {
     do {
         if let objects = try context.executeFetchRequest(request) as? [Contest] {
             
-            for contest in objects {
-                contests.append(contest)
-            }
+            contests = objects
             
             contests.sortInPlace({ (contestL, contestR) -> Bool in
                 return contestL.start < contestR.start
@@ -111,18 +109,19 @@ func initializeContestsArrayUsingContestEntity() {
     
 }
 
-func updateContestEntityUsingClistBy(sender: ContestTableViewController) {
+func updateContestEntityUsingClistByAPI(sender: ContestTableViewController) {
     
     let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let context: NSManagedObjectContext = appDel.managedObjectContext!
     let entity = NSEntityDescription.entityForName("Contest", inManagedObjectContext: context)!
+    
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     let now = NSDate()
     let dateFormatter = NSDateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd"
     let dateFrom : String = dateFormatter.stringFromDate(now)
     
-    print(dateFrom)
     let url:NSURL = NSURL(string: "https://clist.by/api/v1/json/contest/?start__gte=" + dateFrom + "&username=ikbalkazar&api_key=b66864909a08b2ddf96b258a146bd15c2db6a469&order_by=start")!
     
     let urlSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
@@ -149,6 +148,7 @@ func updateContestEntityUsingClistBy(sender: ContestTableViewController) {
                         dispatch_async(dispatch_get_main_queue(), {
                             do {
                                 try context.save()
+                                print("Deleted all elements from Core Data - Contest Entity")
                             } catch {
                                 print("exit 1")
                             }
@@ -161,7 +161,6 @@ func updateContestEntityUsingClistBy(sender: ContestTableViewController) {
                 } catch {
                     print("exit 3")
                 }
-
                 
                 for i in 0 ..< objects.count {
                     
@@ -173,7 +172,10 @@ func updateContestEntityUsingClistBy(sender: ContestTableViewController) {
                     newContest.duration = objects[i]["duration"] as? Double
                     newContest.url = objects[i]["href"] as? String
                     
-                    newContest.objectId = "\(i)"
+                    var count = defaults.objectForKey("contestObjectIdCounter") as! Int
+                    count += 1
+                    newContest.objectId = "\(count)"
+                    defaults.setObject(count, forKey: "contestObjectIdCounter")
                     
                     newContest.website = websites.last!
                     
@@ -188,15 +190,19 @@ func updateContestEntityUsingClistBy(sender: ContestTableViewController) {
                         }
                     }
                     
-                    dispatch_async(dispatch_get_main_queue(), {
-                        do {
-                            try context.save()
-                        } catch {
-                            print("Could not save into Core Data - Contest Entity")
-                        }
-                    })
-                    
                 }
+                
+                dispatch_async(dispatch_get_main_queue(), {
+
+                    do {
+                        try context.save()
+                    } catch {
+                        print("Could not save to Core Data - Contest Entity")
+                    }
+                    
+                })
+                
+                
                 
             } catch {
                 print("Can not convert to JSON")
@@ -206,9 +212,8 @@ func updateContestEntityUsingClistBy(sender: ContestTableViewController) {
         }
         
         initializeContestsArrayUsingContestEntity()
-        //dispatch_async(dispatch_get_main_queue(), {
-            sender.refresh();
-        //})
+        sender.refresh()
+        
     })
     myQuery.resume()
     
