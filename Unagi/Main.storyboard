@@ -449,9 +449,6 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <segue destination="IAV-6J-X18" kind="show" identifier="Contest_Content" id="BBD-00-Ufj">
-                            <nil key="action"/>
-                        </segue>
                         <segue destination="HmV-zB-ZnH" kind="show" identifier="ShowFilterTable" id="lP4-R8-duX"/>
                     </connections>
                 </tableViewController>
@@ -966,77 +963,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zt1-Cb-h5r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3110.5" y="533.5"/>
-        </scene>
-        <!--Contest Content View Controller-->
-        <scene sceneID="zkF-zB-rtE">
-            <objects>
-                <viewController id="IAV-6J-X18" customClass="ContestContentViewController" customModule="Unagi" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dob-tc-1WX"/>
-                        <viewControllerLayoutGuide type="bottom" id="ZM5-1y-PWi"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Imr-EZ-7h6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rE8-pZ-XmQ">
-                                <rect key="frame" x="80" y="135" width="215" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5O-cw-o9Y">
-                                <rect key="frame" x="118" y="203" width="139" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BH0-G2-YCf">
-                                <rect key="frame" x="118" y="287" width="139" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dy7-nX-CME">
-                                <rect key="frame" x="105" y="341" width="165" height="38"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="link"/>
-                                <connections>
-                                    <action selector="goContestWebsite:" destination="IAV-6J-X18" eventType="touchUpInside" id="hff-9Y-r2O"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SX6-Br-9UK">
-                                <rect key="frame" x="118" y="245" width="139" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="SX6-Br-9UK" firstAttribute="centerX" secondItem="Imr-EZ-7h6" secondAttribute="centerX" id="4Gf-8p-DZP"/>
-                            <constraint firstItem="BH0-G2-YCf" firstAttribute="top" secondItem="SX6-Br-9UK" secondAttribute="bottom" constant="8" id="LUH-vt-h9y"/>
-                            <constraint firstItem="p5O-cw-o9Y" firstAttribute="top" secondItem="rE8-pZ-XmQ" secondAttribute="bottom" constant="25" id="N19-Ce-KkJ"/>
-                            <constraint firstItem="rE8-pZ-XmQ" firstAttribute="centerX" secondItem="Imr-EZ-7h6" secondAttribute="centerX" id="Pef-0H-wCp"/>
-                            <constraint firstItem="p5O-cw-o9Y" firstAttribute="centerX" secondItem="Imr-EZ-7h6" secondAttribute="centerX" id="aoT-kz-6pU"/>
-                            <constraint firstItem="rE8-pZ-XmQ" firstAttribute="top" secondItem="dob-tc-1WX" secondAttribute="bottom" constant="71" id="cRa-4t-koO"/>
-                            <constraint firstItem="BH0-G2-YCf" firstAttribute="centerX" secondItem="Imr-EZ-7h6" secondAttribute="centerX" id="fZE-4X-NpY"/>
-                            <constraint firstItem="Dy7-nX-CME" firstAttribute="centerX" secondItem="Imr-EZ-7h6" secondAttribute="centerX" id="lyL-J4-bQ1"/>
-                            <constraint firstItem="SX6-Br-9UK" firstAttribute="top" secondItem="p5O-cw-o9Y" secondAttribute="bottom" constant="8" id="m6o-b5-TI8"/>
-                            <constraint firstItem="Dy7-nX-CME" firstAttribute="top" secondItem="BH0-G2-YCf" secondAttribute="bottom" constant="20" id="y4a-l6-8jj"/>
-                        </constraints>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="contestNameLabel" destination="rE8-pZ-XmQ" id="KeK-Mk-R2J"/>
-                        <outlet property="durationLabel" destination="BH0-G2-YCf" id="kXW-qI-FZw"/>
-                        <outlet property="endTimeLabel" destination="SX6-Br-9UK" id="zEn-Pz-szs"/>
-                        <outlet property="startTimeLabel" destination="p5O-cw-o9Y" id="nEb-wd-3No"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VCa-pm-a7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3595.5" y="1389.5"/>
         </scene>
     </scenes>
     <resources>

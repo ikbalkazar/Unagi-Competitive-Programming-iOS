@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Automatic">
-    <entity name="Contest" representedClassName=".Contest" syncable="YES">
-        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="end" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="objectId" attributeType="String" syncable="YES"/>
-        <attribute name="start" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="website" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Website" syncable="YES"/>
-    </entity>
     <entity name="Event">
         <attribute name="timeStamp" optional="YES" attributeType="Date">
             <userInfo/>
@@ -30,7 +21,6 @@
         <attribute name="url" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Contest" positionX="369" positionY="378" width="128" height="30"/>
         <element name="Event" positionX="333" positionY="333" width="128" height="60"/>
         <element name="Problem" positionX="351" positionY="360" width="128" height="135"/>
         <element name="Website" positionX="387" positionY="396" width="128" height="105"/>

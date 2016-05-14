@@ -95,7 +95,6 @@
 		23D1060E1CA9AE990073A669 /* ImageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105B41CA9AE990073A669 /* ImageHeaderView.swift */; };
 		23D1060F1CA9AE990073A669 /* ImageHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D105B51CA9AE990073A669 /* ImageHeaderView.xib */; };
 		23D106101CA9AE990073A669 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105B71CA9AE990073A669 /* BaseTableViewCell.swift */; };
-		23D106121CA9AE990073A669 /* ContestContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105B91CA9AE990073A669 /* ContestContentViewController.swift */; };
 		23D106131CA9AE990073A669 /* ContestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105BA1CA9AE990073A669 /* ContestTableViewCell.swift */; };
 		23D106141CA9AE990073A669 /* ContestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105BB1CA9AE990073A669 /* ContestTableViewController.swift */; };
 		23D106151CA9AE990073A669 /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105BC1CA9AE990073A669 /* DataTableViewCell.swift */; };
@@ -205,7 +204,6 @@
 		23D105B41CA9AE990073A669 /* ImageHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHeaderView.swift; sourceTree = "<group>"; };
 		23D105B51CA9AE990073A669 /* ImageHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageHeaderView.xib; sourceTree = "<group>"; };
 		23D105B71CA9AE990073A669 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewCell.swift; path = Unagi/ViewController/BaseTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		23D105B91CA9AE990073A669 /* ContestContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestContentViewController.swift; sourceTree = "<group>"; };
 		23D105BA1CA9AE990073A669 /* ContestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContestTableViewCell.swift; path = Unagi/ViewController/ContestTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		23D105BB1CA9AE990073A669 /* ContestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestTableViewController.swift; sourceTree = "<group>"; };
 		23D105BC1CA9AE990073A669 /* DataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataTableViewCell.swift; path = Unagi/ViewController/DataTableViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -422,7 +420,6 @@
 		23D105B61CA9AE990073A669 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				23D105B91CA9AE990073A669 /* ContestContentViewController.swift */,
 				23D105BB1CA9AE990073A669 /* ContestTableViewController.swift */,
 				23D105BD1CA9AE990073A669 /* ExSlideMenuController.swift */,
 				23D105BF1CA9AE990073A669 /* FilterTableViewController.swift */,
@@ -640,7 +637,6 @@
 				230102341CAF26B4005642F2 /* Contest.swift in Sources */,
 				230102361CAF270D005642F2 /* Utilities.swift in Sources */,
 				23D1061F1CA9AE990073A669 /* NoteTakingVC.swift in Sources */,
-				23D106121CA9AE990073A669 /* ContestContentViewController.swift in Sources */,
 				23D1061D1CA9AE990073A669 /* MainViewController.swift in Sources */,
 				230102321CAF26B4005642F2 /* Problem.swift in Sources */,
 				23D105E41CA9AE990073A669 /* UIViewController.swift in Sources */,
