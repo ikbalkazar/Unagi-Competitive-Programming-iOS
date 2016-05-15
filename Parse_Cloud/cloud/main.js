@@ -76,12 +76,13 @@ Parse.Cloud.define("CodeforcesUrlFix", function(request, response) {
   })
 });
 
-//@param : codeforces id, parse user id, after (integer denotes seconds)
-//@description: searches new solved problems in time span (after, now]
-Parse.Cloud.define('codeforcesGetSolved', function(request, response) {
+//@param : codeforces id, parse user id
+//@description: seraches solved problems of a user by codeforces api
+//  adds new solved problems to the user's data base entity
+Parse.Cloud.define('codeforcesRefreshSolved', function(request, response) {
   var codeforcesId = request.params.codeforcesId;
   var userId = request.params.userId;
-  var after = request.params.after;
+  var problemIds = [];
   Parse.Cloud.httpRequest({
     url: 'http://codeforces.com/api/user.status?handle=' + codeforcesId
   }).then(function(httpResponse) {
@@ -89,7 +90,7 @@ Parse.Cloud.define('codeforcesGetSolved', function(request, response) {
     var submissions = res["result"];
     var names = [];
     for (var i = 0; i < submissions.length; i++) {
-      if (submissions[i]["verdict"] == "OK" && submissions[i]["creationTimeSeconds"] > after) {
+      if (submissions[i]["verdict"] == "OK") {
         var name = submissions[i]["problem"]["name"];
         names.push(name);
       }
@@ -100,8 +101,44 @@ Parse.Cloud.define('codeforcesGetSolved', function(request, response) {
       return self.indexOf(val) == index
     });
 
-    response.success(names);
-  }, function(httpResponse) {
-    response.error('error');
+    var promises = [];
+    for (var i = 0; i < names.length; i++) {
+      var query = new Parse.Query('Problems');
+      query.equalTo('websiteId', 'Codeforces');
+      query.equalTo('name', names[i]);
+      var promise = query.find().then(function(results) {
+        problemIds.push(results[0].id);
+      });
+      promises.push(promise);
+    }
+
+    return Parse.Promise.when(promises);
+  }).then(function() {
+    Parse.Cloud.useMasterKey();
+    var query = new Parse.Query('User');
+    query.equalTo('objectId', userId);
+    query.find(function(users) {
+      var user = users[0];
+      var solved = user.get('solved');
+      if (!solved) {
+        solved = [];
+      }
+      for (var i = 0; i < problemIds.length; i++) {
+        solved.push(problemIds[i]);
+      }
+
+      solved = solved.filter(function(val, index, self) {
+        return self.indexOf(val) == index;
+      });
+
+      return user.save({solved: solved});
+    }).then(function() {
+      response.success('Saved # ' + problemIds.length);
+    }, function(err) {
+      response(err);
+    });
+  }, function(err) {
+    response.error(err);
   });
 });
+

@@ -4,9 +4,9 @@ connection = httplib.HTTPSConnection('api.parse.com', 443)
 
 connection.connect()
 
-connection.request('POST', '/1/functions/codeforcesGetSolved', json.dumps({
-    "userId": "someUserId",
-    "codeforcesId": "somecfId",
+connection.request('POST', '/1/functions/codeforcesRefreshSolved', json.dumps({
+    "userId": "apIjVVVlTQ",
+    "codeforcesId": "hexor",
     "after": 0
   }), {
      "X-Parse-Application-Id": "8xMwvCqficeHwkS7Ag5PQWdlw1q91ujGcXVRgUnG",
