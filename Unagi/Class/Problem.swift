@@ -28,13 +28,16 @@ class Problem: NSManagedObject {
 
 var problemForId: [String: Problem]!
 var problemForName: [String: Problem]!
+var problemForUrl: [String: Problem]!
 
 func createProblemMaps() {
     problemForId = [:]
     problemForName = [:]
+    problemForUrl = [:]
     for problem in problems {
         problemForId[problem.objectId] = problem
         problemForName[problem.name] = problem
+        problemForUrl[problem.url] = problem
     }
 }
 

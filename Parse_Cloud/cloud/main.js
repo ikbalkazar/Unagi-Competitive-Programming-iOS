@@ -65,7 +65,7 @@ Parse.Cloud.define("CodeforcesUrlFix", function(request, response) {
   query.skip(parseInt(request.params.skip, 10));
   query.find().then(function(results) {
     var promises = results.map(function(result) {
-      var url = result.get("url");
+      var url = result.get("url");  
       return result.save({url: "https://www." + url.substring(8)});
     });
     return Parse.Promise.when(promises);
@@ -104,3 +104,31 @@ Parse.Cloud.define('codeforcesGetSolved', function(request, response) {
   });
 });
 
+Parse.Cloud.define('codechefGetSolved', function(request, response) {
+  var codechefId = request.params.codechefId;
+  Parse.Cloud.httpRequest({
+    url: 'https://www.codechef.com/users/' + codechefId
+  }).then(function(httpResponse) {
+    var page = httpResponse.text;
+    var parts = page.split('Problems Successfully Solved');
+    var solvedAndPartial = parts[1].split('Problems Partially Solved');
+    var solved = solvedAndPartial[0];
+    var problems = solved.split('<a href');
+    var names = [];
+    for (var i = 1; i < problems.length; i++) {
+      var problem = problems[i];
+      var parts = problem.split('/');
+      var at = 0;
+      if (parts[1] == 'status') {
+        at = 2;
+      } else {
+        at = 3;
+      }
+      var name = parts[at].split(',')[0];
+      names.push(name);
+    }
+    response.success(names);
+  }, function(err) {
+    response.error(err);
+  });
+});

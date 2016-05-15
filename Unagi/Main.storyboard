@@ -296,6 +296,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3x-mf-7aT">
                                 <rect key="frame" x="295" y="75" width="60" height="30"/>
                                 <state key="normal" title="set"/>
+                                <connections>
+                                    <action selector="codechefHandleButtonTouched:" destination="f6M-9H-8yf" eventType="touchUpInside" id="Nwe-A5-TRV"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Codechef Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhM-Ho-rzF">
                                 <rect key="frame" x="20" y="79" width="134" height="21"/>
@@ -308,6 +311,13 @@
                                 <state key="normal" title="Refresh Codeforces"/>
                                 <connections>
                                     <action selector="RefreshCodeforces:" destination="f6M-9H-8yf" eventType="touchUpInside" id="Ngo-aE-aCz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y48-u1-SKi">
+                                <rect key="frame" x="125" y="300" width="124" height="30"/>
+                                <state key="normal" title="Refresh Codechef"/>
+                                <connections>
+                                    <action selector="RefreshCodechef:" destination="f6M-9H-8yf" eventType="touchUpInside" id="wrF-Cl-hlc"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify system testing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3c-97-WVx">
@@ -353,6 +363,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="ccHandleSetButton" destination="E3x-mf-7aT" id="O9H-NO-3OO"/>
                         <outlet property="cfHandleSetButton" destination="cKs-Wc-VEU" id="ZpN-kj-m5a"/>
                     </connections>
                 </viewController>
