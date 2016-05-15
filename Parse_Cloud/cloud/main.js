@@ -75,3 +75,33 @@ Parse.Cloud.define("CodeforcesUrlFix", function(request, response) {
     response.error(err);
   })
 });
+
+//@param : codeforces id, parse user id, after (integer denotes seconds)
+//@description: searches new solved problems in time span (after, now]
+Parse.Cloud.define('codeforcesGetSolved', function(request, response) {
+  var codeforcesId = request.params.codeforcesId;
+  var userId = request.params.userId;
+  var after = request.params.after;
+  Parse.Cloud.httpRequest({
+    url: 'http://codeforces.com/api/user.status?handle=' + codeforcesId
+  }).then(function(httpResponse) {
+    var res = JSON.parse(httpResponse.text);
+    var submissions = res["result"];
+    var names = [];
+    for (var i = 0; i < submissions.length; i++) {
+      if (submissions[i]["verdict"] == "OK" && submissions[i]["creationTimeSeconds"] > after) {
+        var name = submissions[i]["problem"]["name"];
+        names.push(name);
+      }
+    }
+
+    //prevent duplication in names
+    names = names.filter(function(val, index, self) {
+      return self.indexOf(val) == index
+    });
+
+    response.success(names);
+  }, function(httpResponse) {
+    response.error('error');
+  });
+});
