@@ -4,10 +4,11 @@ connection = httplib.HTTPSConnection('api.parse.com', 443)
 
 connection.connect()
 
-connection.request('POST', '/1/functions/codeforcesRefreshSolved', json.dumps({
+connection.request('POST', '/1/functions/codeforcesGetSolved', json.dumps({
     "userId": "apIjVVVlTQ",
     "codeforcesId": "hexor",
-    "after": 0
+    "after": 0, 
+    "problemMap": {"The Two Routes": "AJK1U27nVI"} 
   }), {
      "X-Parse-Application-Id": "8xMwvCqficeHwkS7Ag5PQWdlw1q91ujGcXVRgUnG",
      "X-Parse-REST-API-Key": "utzFK6Be6yOJBeNF6KoeJIsSONxfnLoZIeyQuopK",

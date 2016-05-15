@@ -76,13 +76,10 @@ Parse.Cloud.define("CodeforcesUrlFix", function(request, response) {
   })
 });
 
-//@param : codeforces id, parse user id
-//@description: seraches solved problems of a user by codeforces api
-//  adds new solved problems to the user's data base entity
-Parse.Cloud.define('codeforcesRefreshSolved', function(request, response) {
+//@param : codeforces id
+//@return: problems solved by the user  
+Parse.Cloud.define('codeforcesGetSolved', function(request, response) {
   var codeforcesId = request.params.codeforcesId;
-  var userId = request.params.userId;
-  var problemIds = [];
   Parse.Cloud.httpRequest({
     url: 'http://codeforces.com/api/user.status?handle=' + codeforcesId
   }).then(function(httpResponse) {
@@ -98,45 +95,10 @@ Parse.Cloud.define('codeforcesRefreshSolved', function(request, response) {
 
     //prevent duplication in names
     names = names.filter(function(val, index, self) {
-      return self.indexOf(val) == index
+      return self.indexOf(val) == index;
     });
 
-    var promises = [];
-    for (var i = 0; i < names.length; i++) {
-      var query = new Parse.Query('Problems');
-      query.equalTo('websiteId', 'Codeforces');
-      query.equalTo('name', names[i]);
-      var promise = query.find().then(function(results) {
-        problemIds.push(results[0].id);
-      });
-      promises.push(promise);
-    }
-
-    return Parse.Promise.when(promises);
-  }).then(function() {
-    Parse.Cloud.useMasterKey();
-    var query = new Parse.Query('User');
-    query.equalTo('objectId', userId);
-    query.find(function(users) {
-      var user = users[0];
-      var solved = user.get('solved');
-      if (!solved) {
-        solved = [];
-      }
-      for (var i = 0; i < problemIds.length; i++) {
-        solved.push(problemIds[i]);
-      }
-
-      solved = solved.filter(function(val, index, self) {
-        return self.indexOf(val) == index;
-      });
-
-      return user.save({solved: solved});
-    }).then(function() {
-      response.success('Saved # ' + problemIds.length);
-    }, function(err) {
-      response(err);
-    });
+    response.success(names);
   }, function(err) {
     response.error(err);
   });

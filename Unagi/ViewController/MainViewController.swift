@@ -13,14 +13,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     //changing IBOutlet variable names without fixing their connection to storyboard causes RTE.
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var problemMap : [String: Problem]!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.navigationBarHidden = true
-    
-        createProblemMap()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -29,13 +25,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     }
     
     override func viewDidAppear(animated: Bool) {
-    }
-    
-    func createProblemMap() {
-        problemMap = [:]
-        for problem in problems {
-            problemMap[problem.objectId] = problem
-        }
     }
     
     // MARK: - Collection View Data Source
@@ -84,7 +73,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
         let problemIds = (defaults.objectForKey(objectId) as! [String]).reverse()
         var res = [Problem]()
         for id in problemIds {
-            res.append(problemMap[id]!)
+            res.append(problemForId[id]!)
         }
         return res
     }
@@ -108,7 +97,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     }
     
     func settings() {
-        
+        performSegueWithIdentifier("Main_Settings", sender: self)
     }
     
     func about() {

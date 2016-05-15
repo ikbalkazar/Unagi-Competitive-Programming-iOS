@@ -19,15 +19,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xEn-rU-xzp">
+                                <rect key="frame" x="205" y="79" width="51" height="31"/>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTB-iu-W0W">
+                                <rect key="frame" x="194" y="35" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Sf1-wL-lVq"/>
+                                </constraints>
+                                <state key="normal" title="set"/>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify system testing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8X-9W-xNL">
                                 <rect key="frame" x="34" y="84" width="163" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xEn-rU-xzp">
-                                <rect key="frame" x="205" y="79" width="51" height="31"/>
-                            </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ick-IT-Ymw">
                                 <rect key="frame" x="205" y="124" width="51" height="31"/>
                             </switch>
@@ -37,16 +44,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QTB-iu-W0W">
-                                <rect key="frame" x="194" y="35" width="60" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="Sf1-wL-lVq"/>
-                                </constraints>
-                                <state key="normal" title="set"/>
-                                <connections>
-                                    <action selector="codeforcesHandleButtonTouched:" destination="In8-Mc-X7I" eventType="touchUpInside" id="qxh-ev-GHU"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Handle:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Bh-Dp-4Gx">
                                 <rect key="frame" x="34" y="39" width="59" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -70,9 +67,6 @@
                             <constraint firstItem="Y8X-9W-xNL" firstAttribute="centerY" secondItem="xEn-rU-xzp" secondAttribute="centerY" id="wiN-it-4Me"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="cfHandleSetButton" destination="QTB-iu-W0W" id="Ra1-Tf-KHE"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PvU-KF-Szg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -267,11 +261,104 @@
                         <segue destination="Dr4-w9-bfQ" kind="show" identifier="MainView_to_CFView" id="JiJ-kb-lUa"/>
                         <segue destination="AND-B2-5Qb" kind="show" identifier="Main_ProblemTableVC" id="SRo-sL-Jpd"/>
                         <segue destination="1al-0m-WJb" kind="show" identifier="Main_Calendar" id="N4q-cM-vXM"/>
+                        <segue destination="f6M-9H-8yf" kind="show" identifier="Main_Settings" id="Yd4-C4-v7i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1483.5" y="528.5"/>
+            <point key="canvasLocation" x="-1454.5" y="517.5"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="dz3-uf-Pnd">
+            <objects>
+                <viewController title="Settings" id="f6M-9H-8yf" customClass="SettingsViewController" customModule="Unagi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nao-Kf-60E"/>
+                        <viewControllerLayoutGuide type="bottom" id="tyW-jE-EeE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tOX-zZ-WrK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKs-Wc-VEU">
+                                <rect key="frame" x="295" y="32" width="60" height="30"/>
+                                <state key="normal" title="set"/>
+                                <connections>
+                                    <action selector="codeforcesHandleButtonTouched:" destination="f6M-9H-8yf" eventType="touchUpInside" id="tbZ-FL-oHb"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Codeforces Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXQ-rr-YRg">
+                                <rect key="frame" x="20" y="36" width="148" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3x-mf-7aT">
+                                <rect key="frame" x="295" y="75" width="60" height="30"/>
+                                <state key="normal" title="set"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Codechef Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhM-Ho-rzF">
+                                <rect key="frame" x="20" y="79" width="134" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbr-lh-QRw">
+                                <rect key="frame" x="119" y="240" width="137" height="30"/>
+                                <state key="normal" title="Refresh Codeforces"/>
+                                <connections>
+                                    <action selector="RefreshCodeforces:" destination="f6M-9H-8yf" eventType="touchUpInside" id="Ngo-aE-aCz"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify system testing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3c-97-WVx">
+                                <rect key="frame" x="20" y="123" width="163" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BJ4-eH-pfS">
+                                <rect key="frame" x="301" y="118" width="51" height="31"/>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Ef-lA-P13">
+                                <rect key="frame" x="301" y="163" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify rating updates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOW-lX-LCN">
+                                <rect key="frame" x="20" y="168" width="162" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WhM-Ho-rzF" firstAttribute="baseline" secondItem="E3x-mf-7aT" secondAttribute="baseline" id="9GZ-gq-ecV"/>
+                            <constraint firstItem="E3x-mf-7aT" firstAttribute="centerX" secondItem="BJ4-eH-pfS" secondAttribute="centerX" id="9kP-uW-QAU"/>
+                            <constraint firstItem="6Ef-lA-P13" firstAttribute="top" secondItem="BJ4-eH-pfS" secondAttribute="bottom" constant="14" id="DJ4-53-rBq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cKs-Wc-VEU" secondAttribute="trailing" constant="4" id="IoV-wm-o0w"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BJ4-eH-pfS" secondAttribute="trailing" constant="9" id="Q1k-xb-2iG"/>
+                            <constraint firstItem="g3c-97-WVx" firstAttribute="leading" secondItem="mOW-lX-LCN" secondAttribute="leading" id="RSO-DH-Olf"/>
+                            <constraint firstItem="cXQ-rr-YRg" firstAttribute="leading" secondItem="WhM-Ho-rzF" secondAttribute="leading" id="Zo6-zb-NFk"/>
+                            <constraint firstItem="cKs-Wc-VEU" firstAttribute="trailing" secondItem="E3x-mf-7aT" secondAttribute="trailing" id="Zxy-Xh-Jf1"/>
+                            <constraint firstItem="cKs-Wc-VEU" firstAttribute="leading" secondItem="E3x-mf-7aT" secondAttribute="leading" id="agA-h7-7wL"/>
+                            <constraint firstItem="g3c-97-WVx" firstAttribute="centerY" secondItem="BJ4-eH-pfS" secondAttribute="centerY" id="cku-zC-3zo"/>
+                            <constraint firstItem="BJ4-eH-pfS" firstAttribute="leading" secondItem="6Ef-lA-P13" secondAttribute="leading" id="hke-i1-XiT"/>
+                            <constraint firstItem="WhM-Ho-rzF" firstAttribute="leading" secondItem="g3c-97-WVx" secondAttribute="leading" id="ihp-vB-PO7"/>
+                            <constraint firstItem="E3x-mf-7aT" firstAttribute="top" secondItem="cKs-Wc-VEU" secondAttribute="bottom" constant="13" id="kkJ-Ur-Cwn"/>
+                            <constraint firstItem="mOW-lX-LCN" firstAttribute="centerY" secondItem="6Ef-lA-P13" secondAttribute="centerY" id="lnU-nr-7sG"/>
+                            <constraint firstItem="BJ4-eH-pfS" firstAttribute="top" secondItem="E3x-mf-7aT" secondAttribute="bottom" constant="13" id="mar-nt-IQR"/>
+                            <constraint firstItem="cXQ-rr-YRg" firstAttribute="baseline" secondItem="cKs-Wc-VEU" secondAttribute="baseline" id="nZA-57-wku"/>
+                            <constraint firstItem="cKs-Wc-VEU" firstAttribute="top" secondItem="Nao-Kf-60E" secondAttribute="bottom" constant="12" id="w53-tZ-9cw"/>
+                            <constraint firstItem="cXQ-rr-YRg" firstAttribute="leading" secondItem="tOX-zZ-WrK" secondAttribute="leadingMargin" constant="4" id="wtZ-JR-TPp"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="cfHandleSetButton" destination="cKs-Wc-VEU" id="ZpN-kj-m5a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wLH-xb-I9n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-594.5" y="528.5"/>
         </scene>
         <!--CFViewController-->
         <scene sceneID="kUq-aw-dTp">

@@ -26,6 +26,18 @@ class Problem: NSManagedObject {
     
 }
 
+var problemForId: [String: Problem]!
+var problemForName: [String: Problem]!
+
+func createProblemMaps() {
+    problemForId = [:]
+    problemForName = [:]
+    for problem in problems {
+        problemForId[problem.objectId] = problem
+        problemForName[problem.name] = problem
+    }
+}
+
 func initializeProblemsArrayUsingProblemEntity() {
     
     print("Get Problems from Core Data - Problem Entity")
@@ -38,6 +50,7 @@ func initializeProblemsArrayUsingProblemEntity() {
     request.fetchBatchSize = 20
     do {
         problems = try context.executeFetchRequest(request) as! [Problem]
+        createProblemMaps()
     } catch {
         print("There is a problem getting Problems from Core Data")
     }
