@@ -7,23 +7,18 @@
 //
 
 import Foundation
-import CoreData
 import UIKit
 
 
-class Contest: NSManagedObject {
+class Contest {
     
-    @NSManaged var objectId: String!
-    @NSManaged var name: String!
-    @NSManaged var start: String!
-    @NSManaged var end: String!
-    @NSManaged var duration: NSNumber!
-    @NSManaged var url: String!
-    @NSManaged var website: Website!
-    
-    override init( entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext? ) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
-    }
+    var objectId: String!
+    var name: String!
+    var start: String!
+    var end: String!
+    var duration: NSNumber!
+    var url: String!
+    var website: Website!
     
     func localStart() -> String {
         return self.getLocalDate(start!)
@@ -82,38 +77,7 @@ func updateFilteredContestsArray() {
     
 }
 
-func initializeContestsArrayUsingContestEntity() {
-    
-    let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    let context: NSManagedObjectContext = appDel.managedObjectContext!
-    
-    let request = NSFetchRequest(entityName: "Contest")
-    
-    do {
-        if let objects = try context.executeFetchRequest(request) as? [Contest] {
-            
-            contests = objects
-            
-            contests.sortInPlace({ (contestL, contestR) -> Bool in
-                return contestL.start < contestR.start
-            })
-            
-            updateFilteredContestsArray()
-            
-        }
-    } catch {
-        print("Could not execute Fetch Request - Contest Entity")
-    }
-    
-    print("Contests Array size => \(contests.count)")
-    
-}
-
-func updateContestEntityUsingClistByAPI(sender: ContestTableViewController) {
-    
-    let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    let context: NSManagedObjectContext = appDel.managedObjectContext!
-    let entity = NSEntityDescription.entityForName("Contest", inManagedObjectContext: context)!
+func downloadContestsUsingClistByAPI(sender: ContestTableViewController) {
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
@@ -136,35 +100,9 @@ func updateContestEntityUsingClistByAPI(sender: ContestTableViewController) {
                 
                 print("Json convertion is successful and size => \(objects.count)")
                 
-                let request = NSFetchRequest(entityName: "Contest")
-                do {
-                    
-                    if let objects = try context.executeFetchRequest(request) as? [Contest] {
-                        
-                        for object in objects {
-                            context.deleteObject(object)
-                        }
-
-                        dispatch_async(dispatch_get_main_queue(), {
-                            do {
-                                try context.save()
-                                print("Deleted all elements from Core Data - Contest Entity")
-                            } catch {
-                                print("exit 1")
-                            }
-                        })
-                        
-                    } else {
-                        print("exit 2")
-                    }
-                    
-                } catch {
-                    print("exit 3")
-                }
-                
                 for i in 0 ..< objects.count {
                     
-                    let newContest = Contest(entity: entity, insertIntoManagedObjectContext: context)
+                    let newContest = Contest()
                     
                     newContest.name = objects[i]["event"] as? String
                     newContest.start = objects[i]["start"] as? String
@@ -172,10 +110,7 @@ func updateContestEntityUsingClistByAPI(sender: ContestTableViewController) {
                     newContest.duration = objects[i]["duration"] as? Double
                     newContest.url = objects[i]["href"] as? String
                     
-                    var count = defaults.objectForKey("contestObjectIdCounter") as! Int
-                    count += 1
-                    newContest.objectId = "\(count)"
-                    defaults.setObject(count, forKey: "contestObjectIdCounter")
+                    newContest.objectId = "\(i)"
                     
                     newContest.website = websites.last!
                     
@@ -190,18 +125,11 @@ func updateContestEntityUsingClistByAPI(sender: ContestTableViewController) {
                         }
                     }
                     
-                }
-                
-                dispatch_async(dispatch_get_main_queue(), {
-
-                    do {
-                        try context.save()
-                    } catch {
-                        print("Could not save to Core Data - Contest Entity")
-                    }
+                    contests.append(newContest)
                     
-                })
-                
+                    defaults.setObject(true, forKey: newContest.website.name + "filtered")
+                    
+                }
                 
                 
             } catch {
@@ -210,8 +138,7 @@ func updateContestEntityUsingClistByAPI(sender: ContestTableViewController) {
         } else {
             print("No new data found. Check your internet connection")
         }
-        
-        initializeContestsArrayUsingContestEntity()
+        updateFilteredContestsArray()
         sender.refresh()
         
     })
