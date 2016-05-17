@@ -105,6 +105,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDel.downloadUserContent(false)
         if segue.identifier! == "Main_ProblemTableVC" {
             let destVC = segue.destinationViewController as! ProblemTableViewController
             destVC.requestedProblems = curProblems

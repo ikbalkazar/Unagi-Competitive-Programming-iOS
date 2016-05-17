@@ -120,7 +120,8 @@ class SettingsViewController: UIViewController {
                         }
                         
                         PFUser.currentUser()?.setObject(allSolved, forKey: "solved")
-                        
+                        PFUser.currentUser()?.saveInBackground()
+
                         self.refreshUserData()
                     }
                 })
@@ -151,7 +152,8 @@ class SettingsViewController: UIViewController {
                         }
                         
                         PFUser.currentUser()?.setObject(allSolved, forKey: "solved")
-                        
+                        PFUser.currentUser()?.saveInBackground()
+
                         self.refreshUserData()
                     }
                 })

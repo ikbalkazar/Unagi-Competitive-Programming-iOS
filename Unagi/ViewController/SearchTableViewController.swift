@@ -57,11 +57,18 @@ class ProblemTableViewController: UITableViewController {
             }
             solvedIds!.append(id)
             user?.setObject(solvedIds!, forKey: "solved")
-            do {
-                try user?.save()
-            } catch {
-                print("Error saving")
+            
+            var todoIds = user?.objectForKey("toDo") as? [String]
+            if todoIds == nil {
+                todoIds = [String]()
             }
+            if todoIds!.contains(id) {
+                todoIds!.removeAtIndex((todoIds?.indexOf(id))!)
+            }
+            
+            user?.setObject(todoIds!, forKey: "toDo")
+            
+            user?.saveInBackground()
         })
     }
     
