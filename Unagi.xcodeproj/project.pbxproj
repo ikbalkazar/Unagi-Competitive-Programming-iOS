@@ -93,26 +93,20 @@
 		23D1060A1CA9AE990073A669 /* UVa OJ_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D105AF1CA9AE990073A669 /* UVa OJ_Logo.png */; };
 		23D1060B1CA9AE990073A669 /* Yandex_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D105B01CA9AE990073A669 /* Yandex_Logo.png */; };
 		23D1060C1CA9AE990073A669 /* X_Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23D105B11CA9AE990073A669 /* X_Logo.jpg */; };
-		23D1060E1CA9AE990073A669 /* ImageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105B41CA9AE990073A669 /* ImageHeaderView.swift */; };
 		23D1060F1CA9AE990073A669 /* ImageHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D105B51CA9AE990073A669 /* ImageHeaderView.xib */; };
-		23D106101CA9AE990073A669 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105B71CA9AE990073A669 /* BaseTableViewCell.swift */; };
 		23D106131CA9AE990073A669 /* ContestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105BA1CA9AE990073A669 /* ContestTableViewCell.swift */; };
 		23D106141CA9AE990073A669 /* ContestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105BB1CA9AE990073A669 /* ContestTableViewController.swift */; };
 		23D106151CA9AE990073A669 /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105BC1CA9AE990073A669 /* DataTableViewCell.swift */; };
-		23D106161CA9AE990073A669 /* ExSlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105BD1CA9AE990073A669 /* ExSlideMenuController.swift */; };
 		23D106171CA9AE990073A669 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105BE1CA9AE990073A669 /* FilterTableViewCell.swift */; };
 		23D106181CA9AE990073A669 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105BF1CA9AE990073A669 /* FilterTableViewController.swift */; };
-		23D1061B1CA9AE990073A669 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105C21CA9AE990073A669 /* LeftViewController.swift */; };
 		23D1061C1CA9AE990073A669 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105C31CA9AE990073A669 /* LoginViewController.swift */; };
 		23D1061D1CA9AE990073A669 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105C41CA9AE990073A669 /* MainViewController.swift */; };
 		23D1061F1CA9AE990073A669 /* NoteTakingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105C61CA9AE990073A669 /* NoteTakingVC.swift */; };
 		23D106201CA9AE990073A669 /* ProblemStatementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105C71CA9AE990073A669 /* ProblemStatementVC.swift */; };
 		23D106211CA9AE990073A669 /* ProblemTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105C81CA9AE990073A669 /* ProblemTabBarController.swift */; };
 		23D106221CA9AE990073A669 /* ProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105C91CA9AE990073A669 /* ProblemViewController.swift */; };
-		23D106241CA9AE990073A669 /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105CB1CA9AE990073A669 /* RightViewController.swift */; };
 		23D106251CA9AE990073A669 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105CC1CA9AE990073A669 /* SearchTableViewController.swift */; };
 		23D106261CA9AE990073A669 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105CD1CA9AE990073A669 /* SearchViewController.swift */; };
-		23D106271CA9AE990073A669 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105CE1CA9AE990073A669 /* SlideMenuController.swift */; };
 		23D106281CA9AE990073A669 /* SubContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105D01CA9AE990073A669 /* SubContentsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -203,26 +197,20 @@
 		23D105AF1CA9AE990073A669 /* UVa OJ_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UVa OJ_Logo.png"; sourceTree = "<group>"; };
 		23D105B01CA9AE990073A669 /* Yandex_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yandex_Logo.png; sourceTree = "<group>"; };
 		23D105B11CA9AE990073A669 /* X_Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = X_Logo.jpg; sourceTree = "<group>"; };
-		23D105B41CA9AE990073A669 /* ImageHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHeaderView.swift; sourceTree = "<group>"; };
 		23D105B51CA9AE990073A669 /* ImageHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageHeaderView.xib; sourceTree = "<group>"; };
-		23D105B71CA9AE990073A669 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewCell.swift; path = Unagi/ViewController/BaseTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		23D105BA1CA9AE990073A669 /* ContestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContestTableViewCell.swift; path = Unagi/ViewController/ContestTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		23D105BB1CA9AE990073A669 /* ContestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestTableViewController.swift; sourceTree = "<group>"; };
 		23D105BC1CA9AE990073A669 /* DataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataTableViewCell.swift; path = Unagi/ViewController/DataTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		23D105BD1CA9AE990073A669 /* ExSlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExSlideMenuController.swift; sourceTree = "<group>"; };
 		23D105BE1CA9AE990073A669 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterTableViewCell.swift; path = Unagi/ViewController/FilterTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		23D105BF1CA9AE990073A669 /* FilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
-		23D105C21CA9AE990073A669 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		23D105C31CA9AE990073A669 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		23D105C41CA9AE990073A669 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		23D105C61CA9AE990073A669 /* NoteTakingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteTakingVC.swift; sourceTree = "<group>"; };
 		23D105C71CA9AE990073A669 /* ProblemStatementVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemStatementVC.swift; sourceTree = "<group>"; };
 		23D105C81CA9AE990073A669 /* ProblemTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemTabBarController.swift; sourceTree = "<group>"; };
 		23D105C91CA9AE990073A669 /* ProblemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemViewController.swift; sourceTree = "<group>"; };
-		23D105CB1CA9AE990073A669 /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
 		23D105CC1CA9AE990073A669 /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		23D105CD1CA9AE990073A669 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		23D105CE1CA9AE990073A669 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		23D105CF1CA9AE990073A669 /* SlideMenuControllerSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideMenuControllerSwift.h; sourceTree = "<group>"; };
 		23D105D01CA9AE990073A669 /* SubContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubContentsViewController.swift; sourceTree = "<group>"; };
 		2CFE21CAEFE3A4D8A4F2C88A /* Pods-Unagi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unagi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unagi/Pods-Unagi.release.xcconfig"; sourceTree = "<group>"; };
@@ -407,12 +395,10 @@
 		23D105B31CA9AE990073A669 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				23D105B71CA9AE990073A669 /* BaseTableViewCell.swift */,
 				23D105BA1CA9AE990073A669 /* ContestTableViewCell.swift */,
 				23D105BC1CA9AE990073A669 /* DataTableViewCell.swift */,
 				03F8A5FE1CAD8A4C009C6106 /* SearchTableViewCell.swift */,
 				23D105BE1CA9AE990073A669 /* FilterTableViewCell.swift */,
-				23D105B41CA9AE990073A669 /* ImageHeaderView.swift */,
 				03DFEC4D1CE6434100FCB798 /* MainCollectionViewCell.swift */,
 				23D105B51CA9AE990073A669 /* ImageHeaderView.xib */,
 			);
@@ -423,9 +409,7 @@
 			isa = PBXGroup;
 			children = (
 				23D105BB1CA9AE990073A669 /* ContestTableViewController.swift */,
-				23D105BD1CA9AE990073A669 /* ExSlideMenuController.swift */,
 				23D105BF1CA9AE990073A669 /* FilterTableViewController.swift */,
-				23D105C21CA9AE990073A669 /* LeftViewController.swift */,
 				23D105C31CA9AE990073A669 /* LoginViewController.swift */,
 				23AC13691CC8420700A473B3 /* LoadingViewController.swift */,
 				23D105C41CA9AE990073A669 /* MainViewController.swift */,
@@ -434,10 +418,8 @@
 				23D105C71CA9AE990073A669 /* ProblemStatementVC.swift */,
 				23D105C81CA9AE990073A669 /* ProblemTabBarController.swift */,
 				23D105C91CA9AE990073A669 /* ProblemViewController.swift */,
-				23D105CB1CA9AE990073A669 /* RightViewController.swift */,
 				23D105CC1CA9AE990073A669 /* SearchTableViewController.swift */,
 				23D105CD1CA9AE990073A669 /* SearchViewController.swift */,
-				23D105CE1CA9AE990073A669 /* SlideMenuController.swift */,
 				23D105CF1CA9AE990073A669 /* SlideMenuControllerSwift.h */,
 				23D105D01CA9AE990073A669 /* SubContentsViewController.swift */,
 			);
@@ -633,13 +615,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23D106241CA9AE990073A669 /* RightViewController.swift in Sources */,
 				23D105DE1CA9AE990073A669 /* UIApplication.swift in Sources */,
 				23D105DF1CA9AE990073A669 /* UIColor.swift in Sources */,
-				23D1060E1CA9AE990073A669 /* ImageHeaderView.swift in Sources */,
 				23D106221CA9AE990073A669 /* ProblemViewController.swift in Sources */,
-				23D106271CA9AE990073A669 /* SlideMenuController.swift in Sources */,
-				23D106101CA9AE990073A669 /* BaseTableViewCell.swift in Sources */,
 				03DFEC4E1CE6434100FCB798 /* MainCollectionViewCell.swift in Sources */,
 				23D106171CA9AE990073A669 /* FilterTableViewCell.swift in Sources */,
 				230102341CAF26B4005642F2 /* Contest.swift in Sources */,
@@ -648,7 +626,6 @@
 				23D1061D1CA9AE990073A669 /* MainViewController.swift in Sources */,
 				230102321CAF26B4005642F2 /* Problem.swift in Sources */,
 				23D105E41CA9AE990073A669 /* UIViewController.swift in Sources */,
-				23D106161CA9AE990073A669 /* ExSlideMenuController.swift in Sources */,
 				23D106261CA9AE990073A669 /* SearchViewController.swift in Sources */,
 				23D106211CA9AE990073A669 /* ProblemTabBarController.swift in Sources */,
 				23D106201CA9AE990073A669 /* ProblemStatementVC.swift in Sources */,
@@ -669,7 +646,6 @@
 				23AC136A1CC8420700A473B3 /* LoadingViewController.swift in Sources */,
 				03F8A5FF1CAD8A4C009C6106 /* SearchTableViewCell.swift in Sources */,
 				23D106181CA9AE990073A669 /* FilterTableViewController.swift in Sources */,
-				23D1061B1CA9AE990073A669 /* LeftViewController.swift in Sources */,
 				23D106141CA9AE990073A669 /* ContestTableViewController.swift in Sources */,
 				23D106151CA9AE990073A669 /* DataTableViewCell.swift in Sources */,
 			);

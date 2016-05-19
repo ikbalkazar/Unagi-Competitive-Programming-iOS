@@ -9,10 +9,8 @@
 import Foundation
 import UIKit
 
-extension UITextField
-{
-    func setBottomBorder(color: UIColor )
-    {
+extension UITextField{
+    func setBottomBorder(color: UIColor ){
         self.borderStyle = UITextBorderStyle.None;
         let border = CALayer()
         let width = CGFloat(1.0)
@@ -23,5 +21,4 @@ extension UITextField
         self.layer.addSublayer(border)
         self.layer.masksToBounds = true
     }
-    
 }

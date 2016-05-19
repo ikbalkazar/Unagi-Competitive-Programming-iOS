@@ -18,24 +18,5 @@ struct DataTableViewCellData {
     var text: String
 }
 
-class DataTableViewCell : BaseTableViewCell {
-    
-    @IBOutlet weak var dataImage: UIImageView!
-    @IBOutlet weak var dataText: UILabel!
-    
-    override func awakeFromNib() {
-        self.dataText?.font = UIFont.italicSystemFontOfSize(16)
-        self.dataText?.textColor = UIColor(hex: "9E9E9E")
-    }
- 
-    override class func height() -> CGFloat {
-        return 80
-    }
-    
-    override func setData(data: Any?) {
-        if let data = data as? DataTableViewCellData {
-            self.dataImage.image = UIImage(named: data.text + "_Logo.png")
-            self.dataText.text = data.text
-        }
-    }
+class DataTableViewCell {
 }

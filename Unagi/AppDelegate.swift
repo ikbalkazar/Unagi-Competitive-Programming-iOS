@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    var navCont: UINavigationController?
     
     func handleFirstTimeProcedures() {
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -46,24 +47,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func createMenuView() {
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-        let mainViewController = self.storyboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
-        let leftViewController = self.storyboard.instantiateViewControllerWithIdentifier("LeftViewController") as! LeftViewController
-        let rightViewController = self.storyboard.instantiateViewControllerWithIdentifier("RightViewController") as! RightViewController
-        
-        let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
-        
-        UINavigationBar.appearance().tintColor = UIColor(hex: "078ac9") // used to be 689F38
-        
-        leftViewController.mainViewController = nvc
-        
-        let slideMenuController = ExSlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController, rightMenuViewController: rightViewController)
-        slideMenuController.automaticallyAdjustsScrollViewInsets = true
-        
-        let curwindow = UIApplication.sharedApplication().keyWindow
-        curwindow?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
-        curwindow?.rootViewController = slideMenuController
-        curwindow?.makeKeyAndVisible()
+        let navigationController = self.storyboard.instantiateViewControllerWithIdentifier("MainNavigationController") as! UINavigationController
+        self.navCont = navigationController
+        self.window?.rootViewController = navigationController
+        self.window?.makeKeyAndVisible()
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

@@ -35,9 +35,8 @@ class ProblemTabBarController: UITabBarController {
     
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         if item.title == "Note" {
-            /*let rightButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_menu_black_24dp"), style: UIBarButtonItemStyle.Plain, target: self, action: "someFunc")
-            slideMenuController()?.navigationItem.rightBarButtonItem = rightButton*/
-            addRightBarButtonWithTitle("Save", action: #selector(ProblemTabBarController.callDoneButton))
+            let navBarItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: #selector(self.callDoneButton))
+            navigationItem.rightBarButtonItem = navBarItem
         } else {
             removeNavigationBarItem()
         }

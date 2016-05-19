@@ -15,12 +15,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationController?.navigationBarHidden = true
     }
     
-    override func viewDidDisappear(animated: Bool) {
-        //puts the navigation bar back to its place
+    override func viewWillDisappear(animated: Bool) {
         self.navigationController?.navigationBarHidden = false
     }
     
@@ -123,7 +121,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarItem()
+        self.navigationController?.navigationBarHidden = true
     }
 
     override func didReceiveMemoryWarning() {

@@ -135,7 +135,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCell" id="6Di-CU-UQR" customClass="MainCollectionViewCell" customModule="Unagi" customModuleProvider="target">
-                                        <rect key="frame" x="12" y="20" width="170" height="170"/>
+                                        <rect key="frame" x="12" y="84" width="170" height="170"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
@@ -254,6 +254,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="6ZF-gs-I1Z"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="collectionView" destination="D66-4V-CpR" id="q7d-AG-SPl"/>
@@ -267,6 +268,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1454.5" y="517.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eaE-qB-5I6">
+            <objects>
+                <navigationController storyboardIdentifier="MainNavigationController" id="gwB-DM-qTx" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ACf-Q6-sQO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="m29-9j-lgd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1J6-me-sVr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1130.5" y="-371.5"/>
         </scene>
         <!--Settings-->
         <scene sceneID="dz3-uf-Pnd">
@@ -439,7 +457,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqY-5H-6OU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1499.5" y="-1104.5"/>
+            <point key="canvasLocation" x="-1695.5" y="-1188.5"/>
         </scene>
         <!--Contests-->
         <scene sceneID="EAA-U2-7Sa">
@@ -707,7 +725,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultsCell" rowHeight="65" id="drQ-WH-rBg" customClass="SearchTableViewCell" customModule="Unagi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="65"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="drQ-WH-rBg" id="QZL-WT-ayi">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
@@ -743,7 +761,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultsCellSolved" rowHeight="65" id="tL2-ow-hGT" customClass="SearchTableViewCell" customModule="Unagi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="93" width="375" height="65"/>
+                                <rect key="frame" x="0.0" y="157" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tL2-ow-hGT" id="Wo2-dT-neV">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
@@ -1083,6 +1101,7 @@
         <image name="similar-29@3x.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="m29-9j-lgd"/>
         <segue reference="SRo-sL-Jpd"/>
     </inferredMetricsTieBreakers>
 </document>
