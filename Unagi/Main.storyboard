@@ -338,10 +338,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BJ4-eH-pfS">
-                                <rect key="frame" x="304" y="184" width="51" height="31"/>
+                                <rect key="frame" x="304" y="183" width="51" height="31"/>
+                                <connections>
+                                    <action selector="notifySystemTestSwitch:" destination="f6M-9H-8yf" eventType="valueChanged" id="9I8-UE-XBk"/>
+                                </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Ef-lA-P13">
                                 <rect key="frame" x="304" y="237" width="51" height="31"/>
+                                <connections>
+                                    <action selector="notifyRating:" destination="f6M-9H-8yf" eventType="valueChanged" id="gf5-nf-WT7"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notify rating updates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOW-lX-LCN">
                                 <rect key="frame" x="83" y="238" width="162" height="21"/>
@@ -393,6 +399,8 @@
                     <connections>
                         <outlet property="ccHandleSetButton" destination="E3x-mf-7aT" id="O9H-NO-3OO"/>
                         <outlet property="cfHandleSetButton" destination="cKs-Wc-VEU" id="ZpN-kj-m5a"/>
+                        <outlet property="ratingButton" destination="6Ef-lA-P13" id="iYH-PB-5IO"/>
+                        <outlet property="systemTestButton" destination="BJ4-eH-pfS" id="5Ln-wU-kEv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wLH-xb-I9n" userLabel="First Responder" sceneMemberID="firstResponder"/>

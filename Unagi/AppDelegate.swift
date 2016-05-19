@@ -60,12 +60,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         clientKey: "yXQByidQA8eNkR0NaALnq2KZUvzMhQ9AvPNylyeO")
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
-      
         let types: UIUserNotificationType = [.Alert, .Badge, .Sound]
         let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
-        
         
         setWaitingWindow()
         
@@ -76,7 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         initializeWebsitesArrayUsingWebsiteEntity()
         updateProblemEntityUsingParse()
-      //  updateContestEntityUsingClistByAPI( ContestTableViewController() )
         
         return true
     }

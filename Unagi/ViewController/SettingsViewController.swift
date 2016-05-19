@@ -162,18 +162,62 @@ class SettingsViewController: UIViewController {
     }
     
     func refreshUserData() {
+        let installation = PFInstallation.currentInstallation()
+        installation.channels = []
+        
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         appDel.downloadUserContent(false)
     }
     
+    //MARK Notification Settings
+    
+    @IBAction func notifySystemTestSwitch(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func notifyRating(sender: AnyObject) {
+        let switchButton = sender as! UISwitch
+        var cfHandle = PFUser.currentUser()?.objectForKey("codeforcesHandle") as? String
+        if cfHandle == nil {
+            cfHandle = ""
+        }
+        let ratingChannel = cfHandle! + "Rating"
+        if switchButton.on {
+            addChannel(ratingChannel)
+        } else {
+            removeChannel(ratingChannel)
+        }
+    }
+    
+    @IBOutlet weak var systemTestButton: UISwitch!
+    @IBOutlet weak var ratingButton: UISwitch!
+    
+    private func addChannel(channel: String) {
+        let installation = PFInstallation.currentInstallation()
+        installation.addUniqueObject(channel, forKey: "channels")
+        installation.saveInBackground()
+    }
+    
+    private func removeChannel(channel: String) {
+        let installation = PFInstallation.currentInstallation()
+        installation.removeObject(channel, forKey: "channels")
+        installation.saveInBackground()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let cfHandle = PFUser.currentUser()?.objectForKey("codeforcesHandle")
-        cfHandleSetButton.setTitle(cfHandle as? String, forState: UIControlState.Normal)
         
-        let ccHandle = PFUser.currentUser()?.objectForKey("codechefHandle")
-        ccHandleSetButton.setTitle(ccHandle as? String, forState: UIControlState.Normal)
+        let cfHandle = PFUser.currentUser()?.objectForKey("codeforcesHandle") as? String
+        cfHandleSetButton.setTitle(cfHandle, forState: UIControlState.Normal)
+        
+        let ccHandle = PFUser.currentUser()?.objectForKey("codechefHandle") as? String
+        ccHandleSetButton.setTitle(ccHandle, forState: UIControlState.Normal)
+    
+        let installation = PFInstallation.currentInstallation()
+        let channels = installation.objectForKey("channels") as! [String]
+        
+        systemTestButton.setOn(channels.contains(cfHandle! + "SystemTest"), animated: true)
+        ratingButton.setOn(channels.contains(cfHandle! + "Rating"), animated: true)
     }
 
     override func didReceiveMemoryWarning() {

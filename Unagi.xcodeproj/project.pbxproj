@@ -211,7 +211,6 @@
 		23D105C91CA9AE990073A669 /* ProblemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemViewController.swift; sourceTree = "<group>"; };
 		23D105CC1CA9AE990073A669 /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		23D105CD1CA9AE990073A669 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		23D105CF1CA9AE990073A669 /* SlideMenuControllerSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideMenuControllerSwift.h; sourceTree = "<group>"; };
 		23D105D01CA9AE990073A669 /* SubContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubContentsViewController.swift; sourceTree = "<group>"; };
 		2CFE21CAEFE3A4D8A4F2C88A /* Pods-Unagi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unagi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unagi/Pods-Unagi.release.xcconfig"; sourceTree = "<group>"; };
 		4B8B66C63AE6190325CE1C70 /* Pods-Unagi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unagi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unagi/Pods-Unagi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -420,7 +419,6 @@
 				23D105C91CA9AE990073A669 /* ProblemViewController.swift */,
 				23D105CC1CA9AE990073A669 /* SearchTableViewController.swift */,
 				23D105CD1CA9AE990073A669 /* SearchViewController.swift */,
-				23D105CF1CA9AE990073A669 /* SlideMenuControllerSwift.h */,
 				23D105D01CA9AE990073A669 /* SubContentsViewController.swift */,
 			);
 			path = ViewController;
