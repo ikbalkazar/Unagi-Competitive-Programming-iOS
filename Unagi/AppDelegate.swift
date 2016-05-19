@@ -26,15 +26,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setWindow() {
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let loginViewController = self.storyboard.instantiateViewControllerWithIdentifier("Login") as! LoginViewController
-        
-        self.window?.rootViewController = loginViewController
-        self.window?.makeKeyAndVisible()
+        if PFUser.currentUser() != nil {
+            downloadUserContent(true);
+        } else {
+            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            let loginViewController = self.storyboard.instantiateViewControllerWithIdentifier("Login") as! LoginViewController
+            
+            self.window?.rootViewController = loginViewController
+            self.window?.makeKeyAndVisible()
+        }
     }
     
     func setWaitingWindow() {
-        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let loadingViewController = self.storyboard.instantiateViewControllerWithIdentifier("LoadingView") as! LoadingViewController
         

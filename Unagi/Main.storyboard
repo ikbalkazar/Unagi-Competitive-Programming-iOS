@@ -280,86 +280,96 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKs-Wc-VEU">
-                                <rect key="frame" x="295" y="32" width="60" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKs-Wc-VEU">
+                                <rect key="frame" x="248" y="79" width="110" height="30"/>
                                 <state key="normal" title="set"/>
                                 <connections>
                                     <action selector="codeforcesHandleButtonTouched:" destination="f6M-9H-8yf" eventType="touchUpInside" id="tbZ-FL-oHb"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Codeforces Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXQ-rr-YRg">
-                                <rect key="frame" x="20" y="36" width="148" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Codeforces Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXQ-rr-YRg">
+                                <rect key="frame" x="83" y="83" width="148" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3x-mf-7aT">
-                                <rect key="frame" x="295" y="75" width="60" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Codechef Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhM-Ho-rzF">
+                                <rect key="frame" x="83" y="136" width="134" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbr-lh-QRw">
+                                <rect key="frame" x="302" y="291" width="53" height="30"/>
+                                <state key="normal" title="Refresh"/>
+                                <connections>
+                                    <action selector="RefreshCodeforces:" destination="f6M-9H-8yf" eventType="touchUpInside" id="Ngo-aE-aCz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y48-u1-SKi">
+                                <rect key="frame" x="302" y="344" width="53" height="30"/>
+                                <state key="normal" title="Refresh"/>
+                                <connections>
+                                    <action selector="RefreshCodechef:" destination="f6M-9H-8yf" eventType="touchUpInside" id="wrF-Cl-hlc"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notify system testing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3c-97-WVx">
+                                <rect key="frame" x="83" y="189" width="163" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BJ4-eH-pfS">
+                                <rect key="frame" x="304" y="184" width="51" height="31"/>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Ef-lA-P13">
+                                <rect key="frame" x="304" y="237" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notify rating updates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOW-lX-LCN">
+                                <rect key="frame" x="83" y="238" width="162" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Codeforces_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="GeO-gz-V4L">
+                                <rect key="frame" x="17" y="226" width="45" height="45"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" fixedFrame="YES" image="Codeforces_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="HhA-L1-vox">
+                                <rect key="frame" x="17" y="177" width="45" height="45"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Codechef_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="7DW-Z8-LXh">
+                                <rect key="frame" x="17" y="124" width="45" height="45"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Codeforces_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="SrR-KQ-cfa">
+                                <rect key="frame" x="17" y="71" width="45" height="45"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" fixedFrame="YES" image="Codeforces_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="HGl-7k-70G">
+                                <rect key="frame" x="17" y="283" width="45" height="45"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Codechef_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="yDJ-Sm-MJq">
+                                <rect key="frame" x="17" y="336" width="45" height="45"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Codeforces Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NAJ-hx-xCo">
+                                <rect key="frame" x="83" y="295" width="129" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Codechef Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IB-4d-Sp2">
+                                <rect key="frame" x="83" y="348" width="115" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3x-mf-7aT">
+                                <rect key="frame" x="248" y="132" width="110" height="30"/>
                                 <state key="normal" title="set"/>
                                 <connections>
                                     <action selector="codechefHandleButtonTouched:" destination="f6M-9H-8yf" eventType="touchUpInside" id="Nwe-A5-TRV"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Codechef Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhM-Ho-rzF">
-                                <rect key="frame" x="20" y="79" width="134" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbr-lh-QRw">
-                                <rect key="frame" x="119" y="240" width="137" height="30"/>
-                                <state key="normal" title="Refresh Codeforces"/>
-                                <connections>
-                                    <action selector="RefreshCodeforces:" destination="f6M-9H-8yf" eventType="touchUpInside" id="Ngo-aE-aCz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y48-u1-SKi">
-                                <rect key="frame" x="125" y="300" width="124" height="30"/>
-                                <state key="normal" title="Refresh Codechef"/>
-                                <connections>
-                                    <action selector="RefreshCodechef:" destination="f6M-9H-8yf" eventType="touchUpInside" id="wrF-Cl-hlc"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify system testing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3c-97-WVx">
-                                <rect key="frame" x="20" y="123" width="163" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BJ4-eH-pfS">
-                                <rect key="frame" x="301" y="118" width="51" height="31"/>
-                            </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Ef-lA-P13">
-                                <rect key="frame" x="301" y="163" width="51" height="31"/>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify rating updates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOW-lX-LCN">
-                                <rect key="frame" x="20" y="168" width="162" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="WhM-Ho-rzF" firstAttribute="baseline" secondItem="E3x-mf-7aT" secondAttribute="baseline" id="9GZ-gq-ecV"/>
-                            <constraint firstItem="E3x-mf-7aT" firstAttribute="centerX" secondItem="BJ4-eH-pfS" secondAttribute="centerX" id="9kP-uW-QAU"/>
-                            <constraint firstItem="6Ef-lA-P13" firstAttribute="top" secondItem="BJ4-eH-pfS" secondAttribute="bottom" constant="14" id="DJ4-53-rBq"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cKs-Wc-VEU" secondAttribute="trailing" constant="4" id="IoV-wm-o0w"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="BJ4-eH-pfS" secondAttribute="trailing" constant="9" id="Q1k-xb-2iG"/>
-                            <constraint firstItem="g3c-97-WVx" firstAttribute="leading" secondItem="mOW-lX-LCN" secondAttribute="leading" id="RSO-DH-Olf"/>
-                            <constraint firstItem="cXQ-rr-YRg" firstAttribute="leading" secondItem="WhM-Ho-rzF" secondAttribute="leading" id="Zo6-zb-NFk"/>
-                            <constraint firstItem="cKs-Wc-VEU" firstAttribute="trailing" secondItem="E3x-mf-7aT" secondAttribute="trailing" id="Zxy-Xh-Jf1"/>
-                            <constraint firstItem="cKs-Wc-VEU" firstAttribute="leading" secondItem="E3x-mf-7aT" secondAttribute="leading" id="agA-h7-7wL"/>
-                            <constraint firstItem="g3c-97-WVx" firstAttribute="centerY" secondItem="BJ4-eH-pfS" secondAttribute="centerY" id="cku-zC-3zo"/>
-                            <constraint firstItem="BJ4-eH-pfS" firstAttribute="leading" secondItem="6Ef-lA-P13" secondAttribute="leading" id="hke-i1-XiT"/>
-                            <constraint firstItem="WhM-Ho-rzF" firstAttribute="leading" secondItem="g3c-97-WVx" secondAttribute="leading" id="ihp-vB-PO7"/>
-                            <constraint firstItem="E3x-mf-7aT" firstAttribute="top" secondItem="cKs-Wc-VEU" secondAttribute="bottom" constant="13" id="kkJ-Ur-Cwn"/>
-                            <constraint firstItem="mOW-lX-LCN" firstAttribute="centerY" secondItem="6Ef-lA-P13" secondAttribute="centerY" id="lnU-nr-7sG"/>
-                            <constraint firstItem="BJ4-eH-pfS" firstAttribute="top" secondItem="E3x-mf-7aT" secondAttribute="bottom" constant="13" id="mar-nt-IQR"/>
-                            <constraint firstItem="cXQ-rr-YRg" firstAttribute="baseline" secondItem="cKs-Wc-VEU" secondAttribute="baseline" id="nZA-57-wku"/>
-                            <constraint firstItem="cKs-Wc-VEU" firstAttribute="top" secondItem="Nao-Kf-60E" secondAttribute="bottom" constant="12" id="w53-tZ-9cw"/>
-                            <constraint firstItem="cXQ-rr-YRg" firstAttribute="leading" secondItem="tOX-zZ-WrK" secondAttribute="leadingMargin" constant="4" id="wtZ-JR-TPp"/>
-                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -1064,6 +1074,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Codechef_Logo.png" width="100" height="100"/>
+        <image name="Codeforces_Logo.png" width="100" height="100"/>
         <image name="agenda-29.png" width="29" height="29"/>
         <image name="edit-29@3x.png" width="512" height="512"/>
         <image name="learderboard-29@3x.png" width="512" height="512"/>

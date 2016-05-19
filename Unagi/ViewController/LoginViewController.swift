@@ -37,7 +37,6 @@ class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldD
     }
     
     func login( sender: AnyObject ) {
-        
         PFUser.logInWithUsernameInBackground(usernameTextField.text!, password: passwordTextField.text!) { (puser, error) -> Void in
             if error != nil {
                 var errorMessage = "Please try again"
