@@ -114,7 +114,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        
         return CGSize(width: 170, height: 170)
     }
     

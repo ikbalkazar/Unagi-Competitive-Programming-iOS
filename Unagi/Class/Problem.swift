@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 import Parse
 
-
 class Problem: NSManagedObject {
     
     @NSManaged var name: String!

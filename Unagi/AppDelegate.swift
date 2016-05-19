@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
     
     func handleFirstTimeProcedures() {
-        //is there a need for calling 'defaults.syncronize()' here????
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setValue(true, forKey: "firstTimeCheck")
         defaults.setValue(0, forKey: "contestObjectIdCounter")
@@ -69,12 +68,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         clientKey: "yXQByidQA8eNkR0NaALnq2KZUvzMhQ9AvPNylyeO")
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
-        /*
+      
         let types: UIUserNotificationType = [.Alert, .Badge, .Sound]
         let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
-        */
+        
         
         setWaitingWindow()
         
@@ -90,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    /*
+  
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         let installation = PFInstallation.currentInstallation()
         installation.setDeviceTokenFromData(deviceToken)
@@ -108,7 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         PFPush.handlePush(userInfo)
     }
-    */
+  
  
     func deletePreviousUserContent() {
         
