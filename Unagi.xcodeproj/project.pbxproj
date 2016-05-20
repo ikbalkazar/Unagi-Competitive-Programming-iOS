@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		030E9D371CEF4C79002A2BB0 /* decrease.png in Resources */ = {isa = PBXBuildFile; fileRef = 030E9D351CEF4C79002A2BB0 /* decrease.png */; };
+		030E9D381CEF4C79002A2BB0 /* increase.png in Resources */ = {isa = PBXBuildFile; fileRef = 030E9D361CEF4C79002A2BB0 /* increase.png */; };
 		0327AF881CE65379003FA964 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF821CE65379003FA964 /* settings.png */; };
 		0327AF891CE65379003FA964 /* paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF831CE65379003FA964 /* paper.png */; };
 		0327AF8A1CE65379003FA964 /* tick.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF841CE65379003FA964 /* tick.png */; };
@@ -111,6 +113,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		030E9D351CEF4C79002A2BB0 /* decrease.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = decrease.png; sourceTree = "<group>"; };
+		030E9D361CEF4C79002A2BB0 /* increase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = increase.png; sourceTree = "<group>"; };
 		0327AF821CE65379003FA964 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		0327AF831CE65379003FA964 /* paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paper.png; sourceTree = "<group>"; };
 		0327AF841CE65379003FA964 /* tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tick.png; sourceTree = "<group>"; };
@@ -330,6 +334,8 @@
 		23D1058C1CA9AE990073A669 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				030E9D351CEF4C79002A2BB0 /* decrease.png */,
+				030E9D361CEF4C79002A2BB0 /* increase.png */,
 				0327AF981CE65767003FA964 /* edit-29@3x.png */,
 				0327AF961CE65740003FA964 /* paper-29@3x.png */,
 				0327AF941CE65737003FA964 /* agenda-29@3x.png */,
@@ -503,6 +509,7 @@
 				0327AF971CE65740003FA964 /* paper-29@3x.png in Resources */,
 				0327AF8C1CE65379003FA964 /* edit.png in Resources */,
 				23D105E71CA9AE990073A669 /* LaunchScreen.xib in Resources */,
+				030E9D371CEF4C79002A2BB0 /* decrease.png in Resources */,
 				23D105ED1CA9AE990073A669 /* none.png in Resources */,
 				23D106031CA9AE990073A669 /* Light OJ_Logo.png in Resources */,
 				23D1060F1CA9AE990073A669 /* ImageHeaderView.xib in Resources */,
@@ -513,6 +520,7 @@
 				03DFEC501CE643DB00FCB798 /* search.png in Resources */,
 				23D105FD1CA9AE990073A669 /* Google Codejam_Logo.png in Resources */,
 				23D105EE1CA9AE990073A669 /* note-29@3x.png in Resources */,
+				030E9D381CEF4C79002A2BB0 /* increase.png in Resources */,
 				23D105EC1CA9AE990073A669 /* none.jpg in Resources */,
 				23D105F71CA9AE990073A669 /* CodeinGame_Logo.png in Resources */,
 				23D105F21CA9AE990073A669 /* ACM ICPC_Logo.png in Resources */,

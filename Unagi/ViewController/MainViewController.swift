@@ -8,21 +8,42 @@
 import UIKit
 import Parse
 import CoreData
+import SafariServices
 
 class MainViewController: UIViewController, UICollectionViewDelegate, UINavigationControllerDelegate {
     //changing IBOutlet variable names without fixing their connection to storyboard causes RTE.
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var ratingDeltaLabel: UILabel!
+    @IBOutlet weak var deltaImageView: UIImageView!
+    @IBOutlet weak var cfHandleButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBarHidden = true
     }
-    
-    override func viewWillDisappear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = false
-    }
-    
+
     override func viewDidAppear(animated: Bool) {
+        if let cfHandle = PFUser.currentUser()?.objectForKey("codeforcesHandle") as? String {
+            ratingLabel.hidden = false
+            ratingDeltaLabel.hidden = false
+            deltaImageView.hidden = false
+            
+            setRatingAndDelta(cfHandle)
+        } else {
+            cfHandleButton.hidden = true
+            ratingLabel.hidden = true
+            ratingDeltaLabel.hidden = true
+            deltaImageView.hidden = true
+        }
+    }
+    
+    @IBAction func cfHandleButtonTouched(sender: AnyObject) {
+        let handle = cfHandleButton.titleLabel?.text
+        if let url = NSURL(string: "http://codeforces.com/profile/" + handle!) {
+            let safari = SFSafariViewController(URL: url)
+            self.presentViewController(safari, animated: true, completion: nil)
+        }
     }
     
     // MARK: - Collection View Data Source
@@ -121,10 +142,72 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBarHidden = true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+}
+
+//Handles codeforces info
+extension MainViewController {
+    
+    func getCodeforcesColor(rating: Int) -> UIColor {
+        let colorCuts = [1200, 1400, 1600, 1900, 2200, 2400]
+        let colors = ["#808080", "#008000", "#32AAA4", "#0000FF", "#AA00AA", "#FF8C00", "#FF0000"]
+        var ptr = 0
+        while ptr + 1 < colors.count && colorCuts[ptr] <= rating {
+            ptr += 1
+        }
+        return UIColor(hex: colors[ptr])
+    }
+    
+    func setRatingAndDelta(handle: String) {
+        let url = NSURL(string: "http://codeforces.com/api/user.rating?handle=" + handle)!
+        let urlSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        let query = urlSession.dataTaskWithURL(url) { (data, response, error) in
+            if let content = data {
+                do {
+                    let jsonRes = try NSJSONSerialization.JSONObjectWithData(content, options: NSJSONReadingOptions.MutableContainers)
+                    if let result = jsonRes["result"]! as? [AnyObject] {
+                        let id = result.count - 1
+                        if let lastContest = result[id] as? [String: AnyObject] {
+                            let rating = lastContest["newRating"] as! Int
+                            let delta = rating - (lastContest["oldRating"] as! Int)
+                            
+                            dispatch_async(dispatch_get_main_queue(), {
+                                self.setLabels(handle, rating: rating, delta: delta)
+                            })
+                        }
+                    }
+                } catch {
+                    print("Can not convert to json")
+                }
+            } else {
+                print("Data error")
+            }
+        }
+        
+        query.resume()
+    }
+    
+    func setLabels(handle: String, rating: Int, delta: Int) {
+        let color = getCodeforcesColor(rating)
+        
+        cfHandleButton.setTitle(handle, forState: UIControlState.Normal)
+        cfHandleButton.setTitleColor(color, forState: UIControlState.Normal)
+        
+        ratingLabel.text = String(rating)
+        ratingLabel.textColor = color
+        
+        if delta < 0 {
+            ratingDeltaLabel.text = String(-delta)
+            deltaImageView.image = UIImage(named: "decrease.png")
+        } else {
+            ratingDeltaLabel.text = String(delta)
+            deltaImageView.image = UIImage(named: "increase.png")
+        }
+        
+        ratingDeltaLabel.textColor = color
     }
 }

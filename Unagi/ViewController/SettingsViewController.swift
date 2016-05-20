@@ -164,6 +164,7 @@ class SettingsViewController: UIViewController {
     func refreshUserData() {
         let installation = PFInstallation.currentInstallation()
         installation.channels = []
+        installation.saveInBackground()
         
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         appDel.downloadUserContent(false)
@@ -172,7 +173,17 @@ class SettingsViewController: UIViewController {
     //MARK Notification Settings
     
     @IBAction func notifySystemTestSwitch(sender: AnyObject) {
-        
+        let switchButton = sender as! UISwitch
+        var cfHandle = PFUser.currentUser()?.objectForKey("codeforcesHandle") as? String
+        if cfHandle == nil {
+            cfHandle = ""
+        }
+        let systemTestChannel = cfHandle! + "SystemTest"
+        if switchButton.on {
+            addChannel(systemTestChannel)
+        } else {
+            removeChannel(systemTestChannel)
+        }
     }
     
     @IBAction func notifyRating(sender: AnyObject) {
