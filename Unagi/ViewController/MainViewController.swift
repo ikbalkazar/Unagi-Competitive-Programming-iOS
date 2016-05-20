@@ -207,7 +207,5 @@ extension MainViewController {
             ratingDeltaLabel.text = String(delta)
             deltaImageView.image = UIImage(named: "increase.png")
         }
-        
-        ratingDeltaLabel.textColor = color
     }
 }

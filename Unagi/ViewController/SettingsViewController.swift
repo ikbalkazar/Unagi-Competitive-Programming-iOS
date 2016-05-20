@@ -205,14 +205,32 @@ class SettingsViewController: UIViewController {
     
     private func addChannel(channel: String) {
         let installation = PFInstallation.currentInstallation()
-        installation.addUniqueObject(channel, forKey: "channels")
+        installation.addUniqueObject(fixed(channel), forKey: "channels")
         installation.saveInBackground()
     }
     
     private func removeChannel(channel: String) {
         let installation = PFInstallation.currentInstallation()
-        installation.removeObject(channel, forKey: "channels")
+        installation.removeObject(fixed(channel), forKey: "channels")
         installation.saveInBackground()
+    }
+    
+    func fixed(str: String) -> String {
+        var res = ""
+        for char in str.characters {
+            if !(char >= "a" && char <= "z") && !(char >= "A" && char <= "Z") {
+                res += "NONALPHASTART"
+            }
+            break
+        }
+        for char in str.characters {
+            if char == "." {
+                res += "DOT"
+            } else {
+                res += String(char)
+            }
+        }
+        return res
     }
     
     override func viewDidLoad() {
