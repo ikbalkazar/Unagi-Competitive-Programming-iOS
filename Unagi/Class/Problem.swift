@@ -114,7 +114,7 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
             }
             parseProblemsCount += 1
             if parseProblemsCount == 10 {
-                print( "seconds => \(NSDate().timeIntervalSinceDate(date))")
+                print("seconds => \(NSDate().timeIntervalSinceDate(date))")
                 NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "ProblemsDB_LastUpdateTime")
                 initializeProblemsArrayUsingProblemEntity()
                 

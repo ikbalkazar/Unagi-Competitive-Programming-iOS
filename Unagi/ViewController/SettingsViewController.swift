@@ -243,10 +243,15 @@ class SettingsViewController: UIViewController {
         ccHandleSetButton.setTitle(ccHandle, forState: UIControlState.Normal)
     
         let installation = PFInstallation.currentInstallation()
-        let channels = installation.objectForKey("channels") as! [String]
+        var channels = installation.objectForKey("channels") as? [String]
+        if channels == nil {
+            channels = []
+        }
         
-        systemTestButton.setOn(channels.contains(cfHandle! + "SystemTest"), animated: true)
-        ratingButton.setOn(channels.contains(cfHandle! + "Rating"), animated: true)
+        print(fixed(cfHandle!))
+        
+        systemTestButton.setOn(channels!.contains(fixed(cfHandle!) + "SystemTest"), animated: true)
+        ratingButton.setOn(channels!.contains(fixed(cfHandle!) + "Rating"), animated: true)
     }
 
     override func didReceiveMemoryWarning() {

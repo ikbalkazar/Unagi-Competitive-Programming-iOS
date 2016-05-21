@@ -86,6 +86,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     }
     
     var curProblems = [Problem]()
+    var curTitle: String!
     
     func getProblemList(objectId: String) -> [Problem] {
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -103,11 +104,13 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     
     func todoList() {
         curProblems = getProblemList("toDoListProblems")
+        curTitle = "To Do List"
         performSegueWithIdentifier("Main_ProblemTableVC", sender: self)
     }
     
     func history() {
         curProblems = getProblemList("solvedProblems")
+        curTitle = "Solved Problems"
         performSegueWithIdentifier("Main_ProblemTableVC", sender: self)
     }
     
@@ -129,6 +132,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
         if segue.identifier! == "Main_ProblemTableVC" {
             let destVC = segue.destinationViewController as! ProblemTableViewController
             destVC.requestedProblems = curProblems
+            destVC.title = curTitle
         }
     }
     

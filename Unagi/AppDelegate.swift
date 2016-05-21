@@ -52,7 +52,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = self.storyboard.instantiateViewControllerWithIdentifier("MainNavigationController") as! UINavigationController
         self.navCont = navigationController
         self.window?.rootViewController = navigationController
-        self.window?.makeKeyAndVisible()
+        
+        UIView.animateWithDuration(0.3) {
+            self.window?.makeKeyAndVisible()
+        }
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

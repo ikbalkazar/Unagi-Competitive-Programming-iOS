@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import EZLoadingActivity
 
 class LoadingViewController: UIViewController {
 
     @IBOutlet weak var loadingView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /*
         
         let height: CGFloat = 40
         let width: CGFloat = 200
@@ -25,10 +28,13 @@ class LoadingViewController: UIViewController {
         
         loadingTextView.textAlignment = NSTextAlignment.Center
         
-        self.view.addSubview(loadingTextView)
-        
+        self.view.addSubview(loadingTextView)*/
     }
-
+    
+    override func viewDidAppear(animated: Bool) {
+        EZLoadingActivity.show("Loading", disableUI: false)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
