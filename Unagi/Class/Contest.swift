@@ -19,6 +19,16 @@ class Contest {
     var url: String!
     var website: Website!
     
+    init() {
+        objectId = ""
+        name = ""
+        start = ""
+        end = ""
+        duration = -1
+        url = ""
+        website = nil
+    }
+    
     func localStart() -> String {
         return self.getLocalDate(start!)
     }
@@ -48,6 +58,7 @@ class Contest {
         if let image = UIImage(named: website!.name! + "_Logo.png") {
             return image
         }
+        
         return UIImage(named: "none.png")!
         
     }
@@ -111,8 +122,6 @@ func downloadContestsUsingClistByAPI(sender: ContestTableViewController) {
                     
                     newContest.objectId = "\(i)"
                     
-                    newContest.website = websites.last!
-                    
                     if let tmp = objects[i]["resource"] {
                         if let tmp2 = tmp?["name"] as? String {
                             for site in websites {
@@ -124,9 +133,10 @@ func downloadContestsUsingClistByAPI(sender: ContestTableViewController) {
                         }
                     }
                     
-                    contests.append(newContest)
+                    if newContest.website != nil {
+                        contests.append(newContest)
+                    }
                     
-                    defaults.setObject(true, forKey: newContest.website.name + "filtered")
                     
                 }
                 
