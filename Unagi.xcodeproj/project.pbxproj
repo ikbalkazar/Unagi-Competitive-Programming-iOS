@@ -75,7 +75,6 @@
 		23D105F61CA9AE990073A669 /* Codeforces_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D1059B1CA9AE990073A669 /* Codeforces_Logo.png */; };
 		23D105F71CA9AE990073A669 /* CodeinGame_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D1059C1CA9AE990073A669 /* CodeinGame_Logo.png */; };
 		23D105F81CA9AE990073A669 /* CTF Time_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D1059D1CA9AE990073A669 /* CTF Time_Logo.png */; };
-		23D105F91CA9AE990073A669 /* Deadline 24_Logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 23D1059E1CA9AE990073A669 /* Deadline 24_Logo.gif */; };
 		23D105FA1CA9AE990073A669 /* DMOJ_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D1059F1CA9AE990073A669 /* DMOJ_Logo.png */; };
 		23D105FB1CA9AE990073A669 /* Facebook Hackercup_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D105A01CA9AE990073A669 /* Facebook Hackercup_Logo.png */; };
 		23D105FC1CA9AE990073A669 /* Facebook_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D105A11CA9AE990073A669 /* Facebook_Logo.png */; };
@@ -94,7 +93,6 @@
 		23D106091CA9AE990073A669 /* USACO_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D105AE1CA9AE990073A669 /* USACO_logo.png */; };
 		23D1060A1CA9AE990073A669 /* UVa OJ_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D105AF1CA9AE990073A669 /* UVa OJ_Logo.png */; };
 		23D1060B1CA9AE990073A669 /* Yandex_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D105B01CA9AE990073A669 /* Yandex_Logo.png */; };
-		23D1060C1CA9AE990073A669 /* X_Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23D105B11CA9AE990073A669 /* X_Logo.jpg */; };
 		23D1060F1CA9AE990073A669 /* ImageHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23D105B51CA9AE990073A669 /* ImageHeaderView.xib */; };
 		23D106131CA9AE990073A669 /* ContestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105BA1CA9AE990073A669 /* ContestTableViewCell.swift */; };
 		23D106141CA9AE990073A669 /* ContestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105BB1CA9AE990073A669 /* ContestTableViewController.swift */; };
@@ -181,7 +179,6 @@
 		23D1059B1CA9AE990073A669 /* Codeforces_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Codeforces_Logo.png; sourceTree = "<group>"; };
 		23D1059C1CA9AE990073A669 /* CodeinGame_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CodeinGame_Logo.png; sourceTree = "<group>"; };
 		23D1059D1CA9AE990073A669 /* CTF Time_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CTF Time_Logo.png"; sourceTree = "<group>"; };
-		23D1059E1CA9AE990073A669 /* Deadline 24_Logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Deadline 24_Logo.gif"; sourceTree = "<group>"; };
 		23D1059F1CA9AE990073A669 /* DMOJ_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DMOJ_Logo.png; sourceTree = "<group>"; };
 		23D105A01CA9AE990073A669 /* Facebook Hackercup_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Facebook Hackercup_Logo.png"; sourceTree = "<group>"; };
 		23D105A11CA9AE990073A669 /* Facebook_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Facebook_Logo.png; sourceTree = "<group>"; };
@@ -200,7 +197,6 @@
 		23D105AE1CA9AE990073A669 /* USACO_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = USACO_logo.png; sourceTree = "<group>"; };
 		23D105AF1CA9AE990073A669 /* UVa OJ_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UVa OJ_Logo.png"; sourceTree = "<group>"; };
 		23D105B01CA9AE990073A669 /* Yandex_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yandex_Logo.png; sourceTree = "<group>"; };
-		23D105B11CA9AE990073A669 /* X_Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = X_Logo.jpg; sourceTree = "<group>"; };
 		23D105B51CA9AE990073A669 /* ImageHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageHeaderView.xib; sourceTree = "<group>"; };
 		23D105BA1CA9AE990073A669 /* ContestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContestTableViewCell.swift; path = Unagi/ViewController/ContestTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		23D105BB1CA9AE990073A669 /* ContestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContestTableViewController.swift; sourceTree = "<group>"; };
@@ -359,7 +355,6 @@
 				23D105941CA9AE990073A669 /* similar-29@3x.png */,
 				23D105951CA9AE990073A669 /* Website.csv */,
 				23D105961CA9AE990073A669 /* Website_Logos */,
-				23D105B11CA9AE990073A669 /* X_Logo.jpg */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -374,7 +369,6 @@
 				23D1059B1CA9AE990073A669 /* Codeforces_Logo.png */,
 				23D1059C1CA9AE990073A669 /* CodeinGame_Logo.png */,
 				23D1059D1CA9AE990073A669 /* CTF Time_Logo.png */,
-				23D1059E1CA9AE990073A669 /* Deadline 24_Logo.gif */,
 				23D1059F1CA9AE990073A669 /* DMOJ_Logo.png */,
 				23D105A01CA9AE990073A669 /* Facebook Hackercup_Logo.png */,
 				23D105A11CA9AE990073A669 /* Facebook_Logo.png */,
@@ -550,12 +544,10 @@
 				23D105E81CA9AE990073A669 /* Main.storyboard in Resources */,
 				23D105FB1CA9AE990073A669 /* Facebook Hackercup_Logo.png in Resources */,
 				23D105F61CA9AE990073A669 /* Codeforces_Logo.png in Resources */,
-				23D1060C1CA9AE990073A669 /* X_Logo.jpg in Resources */,
 				23D105FA1CA9AE990073A669 /* DMOJ_Logo.png in Resources */,
 				23D105DC1CA9AE990073A669 /* DataTableViewCell.xib in Resources */,
 				0327AF8A1CE65379003FA964 /* tick.png in Resources */,
 				0327AF901CE6543C003FA964 /* layers.png in Resources */,
-				23D105F91CA9AE990073A669 /* Deadline 24_Logo.gif in Resources */,
 				23D105E91CA9AE990073A669 /* calendarIcon.png in Resources */,
 				23D106081CA9AE990073A669 /* Topcoder_Logo.png in Resources */,
 				23D1060B1CA9AE990073A669 /* Yandex_Logo.png in Resources */,

@@ -23,14 +23,10 @@ class FilterTableViewController: UITableViewController {
         let defaults = NSUserDefaults.standardUserDefaults()
         includeExcludeOrder_ = !includeExcludeOrder_
         for website in websites {
-            defaults.setObject(includeExcludeOrder_, forKey: website.name! + "filtered")
+                defaults.setObject(includeExcludeOrder_, forKey: website.name! + "filtered")
         }
         tableView.reloadData()
         //include and exclude alternately
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        
     }
 
     override func didReceiveMemoryWarning() {
