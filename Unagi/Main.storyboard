@@ -41,7 +41,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" red="0.94944850717919249" green="1" blue="0.43946624361700903" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="0.65643921641370717" blue="0.068777883653588723" alpha="1" colorSpace="calibratedRGB"/>
                                         <size key="customSize" width="170" height="170"/>
                                         <connections>
                                             <outlet property="imageView" destination="rxa-bw-K80" id="VgJ-VG-rZG"/>

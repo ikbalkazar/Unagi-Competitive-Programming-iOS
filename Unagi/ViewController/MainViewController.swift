@@ -60,7 +60,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionViewCell", forIndexPath: indexPath) as! MainCollectionViewCell
-        cell.backgroundColor = UIColor.greenColor()
+        cell.backgroundColor = UIColor(hex: "#ffb380")
         
         cell.layer.cornerRadius = 13
         
