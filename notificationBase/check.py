@@ -17,6 +17,7 @@ while True:
 ratingSender = SendRating(contestId)
 
 while True:
+  print "Trying..."
   if ratingSender.check():
     print "Rating Notifications Sent"
     break

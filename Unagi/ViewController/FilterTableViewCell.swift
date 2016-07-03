@@ -24,7 +24,6 @@ class FilterTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         if label.text != "label" {
-        
             let defaults = NSUserDefaults.standardUserDefaults()
             if defaults.objectForKey(label.text! + "filtered") == nil {
                 // First time encounter

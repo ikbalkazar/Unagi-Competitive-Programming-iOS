@@ -88,28 +88,18 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     var curProblems = [Problem]()
     var curTitle: String!
     
-    func getProblemList(objectId: String) -> [Problem] {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let problemIds = (defaults.objectForKey(objectId) as! [String]).reverse()
-        var res = [Problem]()
-        for id in problemIds {
-            res.append(problemForId[id]!)
-        }
-        return res
-    }
-    
     func search() {
         performSegueWithIdentifier("Main_SearchView", sender: self)
     }
     
     func todoList() {
-        curProblems = getProblemList("toDoListProblems")
+        curProblems = userData.getProblems(kTodoProblemsKey)
         curTitle = "To Do List"
         performSegueWithIdentifier("Main_ProblemTableVC", sender: self)
     }
     
     func history() {
-        curProblems = getProblemList("solvedProblems")
+        curProblems = userData.getProblems(kSolvedProblemsKey)
         curTitle = "Solved Problems"
         performSegueWithIdentifier("Main_ProblemTableVC", sender: self)
     }
@@ -123,12 +113,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     }
     
     func about() {
-        
+        // To be implemented!
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDel.downloadUserContent(false)
         if segue.identifier! == "Main_ProblemTableVC" {
             let destVC = segue.destinationViewController as! ProblemTableViewController
             destVC.requestedProblems = curProblems

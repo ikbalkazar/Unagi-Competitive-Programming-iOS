@@ -1,5 +1,7 @@
 import httplib, json, urllib2  
 
+kLeastChars = 10
+
 def getPage(url):
   req = urllib2.Request(url)
   try:
@@ -28,12 +30,12 @@ class Contest(object):
     res = getPage(url)
     if res == "ERROR":
       return False
-    if res["status"] == 'OK':
+    if res["status"] == 'OK' and len(res["result"]) > kLeastChars:
       return True
     return False    
 
   def participants(self):
-    res = getPage('http://codeforces.com/api/contest.standings?contestId=' + str(self.contestId) + "&showUnofficial=true")
+    res = getPage('http://codeforces.com/api/contest.standings?contestId=' + str(self.contestId))
     if res["status"] != "OK":
       return []
     ans = []

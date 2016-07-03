@@ -30,12 +30,9 @@ class ProblemTableViewController: UITableViewController {
     
     func getSolvedList() {
         solvedMap.removeAll()
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let solvedProblemIds = defaults.objectForKey("solvedProblems") as! [String]
-        print("Getting solved List!!!")
-        print(solvedProblemIds)
-        for id in solvedProblemIds {
-            solvedMap[id] = true
+        let solvedProblems = userData.getProblems(kSolvedProblemsKey)
+        for problem in solvedProblems {
+            solvedMap[problem.objectId] = true
         }
     }
     
@@ -50,64 +47,17 @@ class ProblemTableViewController: UITableViewController {
     func setSolved(id: String) {
         print("Setting solved \(id)")
         solvedMap[id] = true
-        PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
-            var solvedIds = user?.objectForKey("solved") as? [String]
-            if solvedIds == nil {
-                solvedIds = [String]()
-            }
-            solvedIds!.append(id)
-            user?.setObject(solvedIds!, forKey: "solved")
-            
-            var todoIds = user?.objectForKey("toDo") as? [String]
-            if todoIds == nil {
-                todoIds = [String]()
-            }
-            if todoIds!.contains(id) {
-                todoIds!.removeAtIndex((todoIds?.indexOf(id))!)
-            }
-            
-            user?.setObject(todoIds!, forKey: "toDo")
-            
-            user?.saveInBackground()
-        })
+        if let problem = problemForId[id] {
+            userData.add(problem, key: kSolvedProblemsKey)
+            userData.remove(problem, key: kTodoProblemsKey)
+        }
     }
     
     func setNotSolved(id: String) {
         solvedMap[id] = false
-        PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
-            var solvedIds = user?.objectForKey("solved") as? [String]
-            if solvedIds == nil {
-                solvedIds = [String]()
-            }
-            //finds an element equal to id and removes it
-            for i in 0 ..< solvedIds!.count {
-                if solvedIds![i] == id {
-                    solvedIds?.removeAtIndex((solvedIds?.startIndex.advancedBy(i))!)
-                    break
-                }
-            }
-            user?.setObject(solvedIds!, forKey: "solved")
-            do {
-                try user?.save()
-            } catch {
-                print("Error saving")
-            }
-        })
-    }
-    
-    //Updates the NSUserDefaults solved problems data according to last change on id
-    func fixUserDefaultsUserSolvedData(id: String) {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        var solvedProblemIds = defaults.objectForKey("solvedProblems") as! [String]
-        if solvedProblemIds.contains(id) {
-            let index = solvedProblemIds.indexOf(id)
-            solvedProblemIds.removeAtIndex(index!)
-        } else {
-            solvedProblemIds.append(id)
+        if let problem = problemForId[id] {
+            userData.remove(problem, key: kSolvedProblemsKey)
         }
-        print(solvedProblemIds)
-        defaults.setObject(solvedProblemIds, forKey: "solvedProblems")
-        defaults.synchronize()
     }
     
     func changeSolvedStatus(id: String) {
@@ -116,7 +66,6 @@ class ProblemTableViewController: UITableViewController {
         } else {
             setSolved(id)
         }
-        fixUserDefaultsUserSolvedData(id)
     }
 
     // MARK: - Table view data source

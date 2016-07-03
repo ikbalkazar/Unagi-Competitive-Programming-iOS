@@ -11,8 +11,7 @@ import Parse
 import ZFRippleButton
 
 class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldDelegate {
-    var window: UIWindow?
-
+    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -56,26 +55,23 @@ class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldD
                 }
                 
                 let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-                appDel.downloadUserContent(true)// true means it will create a menu view afterwards.
+                dispatch_async(dispatch_get_main_queue(), {
+                    appDel.setWindow()
+                })
             }
         }
-        
     }
     
     func loginButtonDidTapped() {
-        
         if usernameTextField.text == "" || passwordTextField.text == "" {
             self.displayAlert("Error" , message: "Please fill out both fields")
         } else {
             self.login(self)
         }
-        
     }
     
     func registerButtonDidTapped() {
-        
-        
-        
+        //To be implemented
     }
     
     override func viewDidLoad() {
@@ -99,7 +95,6 @@ class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldD
         
         usernameTextField.delegate = self
         passwordTextField.delegate = self
-        
         
         loginButton.layer.cornerRadius = 18
         loginButton.setTitle("LOGIN", forState: .Normal)
@@ -129,7 +124,6 @@ class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldD
         view.addSubview(loginButton)
         view.addSubview(orText)
         view.addSubview(registerButton)
-        
     }
     
     func dismissKeyboard() {
@@ -137,7 +131,6 @@ class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldD
     }
     
     func displayAlert(title: String, message: String) {
-        
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         
         alert.addAction((UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
@@ -147,17 +140,10 @@ class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldD
         })))
         
         self.presentViewController(alert, animated: true, completion: nil)
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        
     }
 
     /*

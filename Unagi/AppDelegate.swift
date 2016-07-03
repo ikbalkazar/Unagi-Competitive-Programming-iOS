@@ -1,6 +1,5 @@
 //AppDelegate.swift
 
-
 import UIKit
 import CoreData
 import Parse
@@ -9,6 +8,8 @@ var contests = [Contest]()
 var problems = [Problem]()
 var websites = [Website]()
 var filteredContests = [Contest]()
+
+var userData: UserData!
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,7 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setWindow() {
         if PFUser.currentUser() != nil {
-            downloadUserContent(true);
+            userData.load({
+                self.createMenuView()
+            })
         } else {
             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
             let loginViewController = self.storyboard.instantiateViewControllerWithIdentifier("Login") as! LoginViewController
@@ -65,8 +68,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let types: UIUserNotificationType = [.Alert, .Badge, .Sound]
         let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
+        
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
+        
+        userData = UserData()
         
         setWaitingWindow()
         
@@ -76,12 +82,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         initializeWebsitesArrayUsingWebsiteEntity()
-        updateProblemEntityUsingParse()
+        
+        updateProblemEntityUsingParse({
+            self.setWindow()
+        })
         
         return true
     }
     
-  
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         let installation = PFInstallation.currentInstallation()
         installation.setDeviceTokenFromData(deviceToken)
@@ -99,64 +107,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         PFPush.handlePush(userInfo)
     }
-  
- 
-    func deletePreviousUserContent() {
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        
-        defaults.removeObjectForKey("solvedProblems")
-        defaults.removeObjectForKey("toDoList")
-        defaults.removeObjectForKey("username")
-        
-    }
-    
-    func downloadUserContent(createView: Bool) {
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        
-        PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
-            
-            if error != nil {
-                print("Could not download user content")
-                return
-            }
-            
-            self.deletePreviousUserContent()
-            
-            var solvedProblemIds = [String]()
-            var toDoListProblemIds = [String]()
-            
-            if let solvedIds = user?.objectForKey("solved") as? [String] {
-                for id in solvedIds {
-                    solvedProblemIds.append(id)
-                }
-            }
-            
-            if let todoIds = user?.objectForKey("toDo") as? [String] {
-                for id in todoIds {
-                    toDoListProblemIds.append(id)
-                }
-            }
-            
-            defaults.setObject(solvedProblemIds, forKey: "solvedProblems")
-            defaults.setObject(toDoListProblemIds, forKey: "toDoListProblems")
-            
-            var username = "error"
-            if let tmp = user?.objectForKey("username") as? String {
-                username = tmp
-            }
-            
-            defaults.setObject( username , forKey: "username" )
-            defaults.synchronize()
-            
-            //should be called when the download is done in the background
-            if createView {
-                self.createMenuView()
-            }
-        })
-    }
-
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -164,8 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        userData.save()
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
@@ -177,8 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        // Saves changes in the application's managed object context before the application terminates.
+        userData.save()
         self.saveContext()
     }
     

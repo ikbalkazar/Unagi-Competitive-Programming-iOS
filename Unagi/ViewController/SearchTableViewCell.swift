@@ -13,6 +13,7 @@ class SearchTableViewCell: UITableViewCell {
     
     var delegate: UITableViewController?
     var problem: Problem?
+    
     @IBOutlet var problemLogo: UIImageView!
     @IBOutlet var problemName: UILabel!
     
@@ -23,7 +24,6 @@ class SearchTableViewCell: UITableViewCell {
     }
     
     func displayAlert(title: String, message: String) {
-        
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         
         alert.addAction(UIAlertAction(title: title, style: .Default, handler: { (action) -> Void in
@@ -32,42 +32,10 @@ class SearchTableViewCell: UITableViewCell {
         
         delegate?.presentViewController(alert, animated: true, completion: nil)
     }
-    
-    //Appends the cell's problem objectId to toDoListProblems array of NSUserDefaults
-    func addToUserDefaults() {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        var todoList = defaults.objectForKey("toDoListProblems") as! [String]
-        if !todoList.contains(problem!.objectId) {
-            todoList.append(problem!.objectId)
-        }
-        defaults.setObject(todoList, forKey: "toDoListProblems")
-    }
-    
-    //adds the problem to user's to do list
+   
+    // Adds the problem to user's to do list.
     @IBAction func addButton(sender: AnyObject) {
-        addToUserDefaults()
-        if PFUser.currentUser()!.authenticated {
-            PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
-                if error == nil {
-                    var todo = user?.objectForKey("toDo") as? [String]
-                    if todo == nil {
-                        todo = [String]()
-                    }
-                    if !(todo?.contains(self.problem!.objectId))! {
-                        todo?.append((self.problem?.objectId)!)
-                    }
-                    user?.setValue(todo, forKey: "toDo")
-                    do {
-                        try user?.save()
-                        self.displayAlert("Successful", message: "Problem added to to-do list")
-                    } catch {
-                        print("Error when saving")
-                    }
-                }
-            })
-        } else {
-            print("Error User is not authenticated, cant add to todo list")
-        }
+        userData.add(problem!, key: kTodoProblemsKey)
     }
     
     func setProblemForCell(problem: Problem) {

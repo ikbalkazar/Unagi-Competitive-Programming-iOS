@@ -20,7 +20,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITextFieldDe
         performSegueWithIdentifier("toSearchResults", sender: self)
     }
     
-    //prepares the ProblemTableViewController according to search parameters
+    // Prepares the ProblemTableViewController according to search parameters.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toSearchResults" {
             let destVC = segue.destinationViewController as! ProblemTableViewController
@@ -78,7 +78,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITextFieldDe
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //MARK: Problem filtering part.

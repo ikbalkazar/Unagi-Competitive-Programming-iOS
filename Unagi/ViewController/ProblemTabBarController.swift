@@ -15,7 +15,6 @@ class ProblemTabBarController: UITabBarController {
     var parentVC: UIViewController?
     
     override func viewDidLoad() {
-        
         //Initializes all of the view controllers
         //Read
         let webViewController = viewControllers![0] as! ProblemStatementVC
@@ -35,15 +34,32 @@ class ProblemTabBarController: UITabBarController {
     
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         if item.title == "Note" {
-            let navBarItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: #selector(self.callDoneButton))
-            navigationItem.rightBarButtonItem = navBarItem
-        } else {
+            } else {
             removeNavigationBarItem()
+        }
+        switch item.title! {
+        case "Note":
+            let navBarItem = UIBarButtonItem(title: "Done",
+                                             style: UIBarButtonItemStyle.Done,
+                                             target: self,
+                                             action: #selector(self.callDoneButton))
+            navigationItem.rightBarButtonItem = navBarItem
+        case "Read":
+            let navBarItem = UIBarButtonItem(title: "Add",
+                                             style: .Done,
+                                            target: self,
+                                            action: #selector(self.addTodoButton))
+            navigationItem.rightBarButtonItem = navBarItem
+        default: break
         }
     }
     
     func callDoneButton() {
         let noteVC = viewControllers![1] as! NoteTakingVC
         noteVC.doneButton()
+    }
+    
+    func addTodoButton() {
+        userData.add(viaSegue_problem!, key: kTodoProblemsKey)
     }
 }

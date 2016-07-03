@@ -63,7 +63,7 @@ func initializeProblemsArrayUsingProblemEntity() {
 
 var parseProblemsCount: Int = 0
     
-func getNewProblemsUsingParse(limit: Int, skip: Int) {
+func getNewProblemsUsingParse(limit: Int, skip: Int, completion: () -> ()) {
     let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let context: NSManagedObjectContext = appDel.managedObjectContext!
     let entity = NSEntityDescription.entityForName("Problem", inManagedObjectContext: context)!
@@ -130,9 +130,7 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
                 
                 print("Goes to Main View Controller")
                 print("#Problems = \(problems.count)")
-                dispatch_async(dispatch_get_main_queue(), {
-                    appDel.setWindow()
-                })
+                dispatch_async(dispatch_get_main_queue(), completion)
             }
             
         } else {
@@ -143,14 +141,14 @@ func getNewProblemsUsingParse(limit: Int, skip: Int) {
 
 var date: NSDate!
 
-func updateProblemEntityUsingParse() {
+func updateProblemEntityUsingParse(completion: () -> ()) {
     
     date = NSDate()
     print("Update Problems Entity with new entries in Problem DataBase on Parse")
     
     for i in 0 ..< 10 {
         dispatch_async(dispatch_get_main_queue(), {
-            getNewProblemsUsingParse(1000, skip: i * 1000)
+            getNewProblemsUsingParse(1000, skip: i * 1000, completion: completion)
         })
     }
 }
