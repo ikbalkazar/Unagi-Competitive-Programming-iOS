@@ -27,6 +27,7 @@ class FilterTableViewCell: UITableViewCell {
             let defaults = NSUserDefaults.standardUserDefaults()
             if defaults.objectForKey(label.text! + "filtered") == nil {
                 // First time encounter
+                // Initialize here since it makes more sense
                 defaults.setObject(true, forKey: label.text! + "filtered" )
             } else {
                 switchButton.setOn(defaults.objectForKey(label.text! + "filtered") as! Bool , animated: true)

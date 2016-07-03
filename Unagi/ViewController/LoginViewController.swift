@@ -10,13 +10,12 @@ import UIKit
 import Parse
 import ZFRippleButton
 
-class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldDelegate {
-    
+class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldDelegate {    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    @IBOutlet weak var loginButton: ZFRippleButton!
-    @IBOutlet weak var registerButton: ZFRippleButton!
+    let usernameTextField: UITextField = UITextField()
+    let passwordTextField: UITextField = UITextField()
     
     var usernameTextFieldHash: Int!
     var passwordTextFieldHash: Int!
@@ -82,13 +81,17 @@ class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldD
         let height: CGFloat = 35
         let width: CGFloat = 230
         
+        usernameTextField.frame = CGRectMake(topx,topy,width,height)
         usernameTextField.placeholder = "username"
+        usernameTextField.backgroundColor = UIColor.clearColor()
         usernameTextField.autocorrectionType = UITextAutocorrectionType.No
         usernameTextField.autocapitalizationType = UITextAutocapitalizationType.None
         usernameTextField.setBottomBorder(UIColor.darkGrayColor())
         self.usernameTextFieldHash = usernameTextField.hash
         
+        passwordTextField.frame = CGRectMake(topx,topy+40,width,height)
         passwordTextField.placeholder = "password"
+        passwordTextField.backgroundColor = UIColor.clearColor()
         passwordTextField.secureTextEntry = true
         passwordTextField.setBottomBorder(UIColor.darkGrayColor())
         self.passwordTextFieldHash = passwordTextField.hash
@@ -96,10 +99,13 @@ class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldD
         usernameTextField.delegate = self
         passwordTextField.delegate = self
         
+        let loginButton = ZFRippleButton(type: .Custom)
+        
+        loginButton.frame = CGRectMake(topx, topy+130, width, height+5)
+
         loginButton.layer.cornerRadius = 18
         loginButton.setTitle("LOGIN", forState: .Normal)
         loginButton.backgroundColor = UIColor.redColor()
-        loginButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         loginButton.addTarget(self, action: #selector(self.loginButtonDidTapped), forControlEvents: UIControlEvents.TouchUpInside)
         
         let orText = UITextView(frame: CGRectMake(topx, topy+175, width, height))
@@ -111,16 +117,20 @@ class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldD
         orText.alpha = 0.7
         orText.backgroundColor = UIColor.clearColor()
         
+        let registerButton  = ZFRippleButton(type: .Custom)
+        
+        registerButton.frame = CGRectMake(topx, topy+210, width, height+5)
         registerButton.layer.cornerRadius = 18
         registerButton.setTitle("REGISTER" , forState:  .Normal)
         registerButton.backgroundColor = UIColor.redColor()
-        registerButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         registerButton.addTarget(self, action: #selector(self.registerButtonDidTapped), forControlEvents: UIControlEvents.TouchUpInside)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         
         view.addGestureRecognizer(tapGestureRecognizer)
         
+        view.addSubview(usernameTextField)
+        view.addSubview(passwordTextField)
         view.addSubview(loginButton)
         view.addSubview(orText)
         view.addSubview(registerButton)

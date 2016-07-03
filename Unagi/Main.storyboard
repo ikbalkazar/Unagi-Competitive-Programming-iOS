@@ -189,152 +189,114 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKs-Wc-VEU">
+                                <rect key="frame" x="248" y="79" width="110" height="30"/>
+                                <state key="normal" title="set"/>
+                                <connections>
+                                    <action selector="codeforcesHandleButtonTouched:" destination="f6M-9H-8yf" eventType="touchUpInside" id="tbZ-FL-oHb"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Codeforces Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXQ-rr-YRg">
+                                <rect key="frame" x="83" y="83" width="148" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Codechef Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhM-Ho-rzF">
+                                <rect key="frame" x="83" y="136" width="134" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbr-lh-QRw">
-                                <rect key="frame" x="302" y="421" width="53" height="30"/>
+                                <rect key="frame" x="302" y="291" width="53" height="30"/>
                                 <state key="normal" title="Refresh"/>
                                 <connections>
                                     <action selector="RefreshCodeforces:" destination="f6M-9H-8yf" eventType="touchUpInside" id="Ngo-aE-aCz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y48-u1-SKi">
-                                <rect key="frame" x="302" y="474" width="53" height="30"/>
+                                <rect key="frame" x="302" y="344" width="53" height="30"/>
                                 <state key="normal" title="Refresh"/>
                                 <connections>
                                     <action selector="RefreshCodechef:" destination="f6M-9H-8yf" eventType="touchUpInside" id="wrF-Cl-hlc"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notify system testing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3c-97-WVx">
-                                <rect key="frame" x="83" y="319" width="163" height="21"/>
+                                <rect key="frame" x="83" y="189" width="163" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BJ4-eH-pfS">
-                                <rect key="frame" x="304" y="313" width="51" height="31"/>
+                                <rect key="frame" x="304" y="183" width="51" height="31"/>
                                 <connections>
                                     <action selector="notifySystemTestSwitch:" destination="f6M-9H-8yf" eventType="valueChanged" id="9I8-UE-XBk"/>
                                 </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Ef-lA-P13">
-                                <rect key="frame" x="304" y="367" width="51" height="31"/>
+                                <rect key="frame" x="304" y="237" width="51" height="31"/>
                                 <connections>
                                     <action selector="notifyRating:" destination="f6M-9H-8yf" eventType="valueChanged" id="gf5-nf-WT7"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notify rating updates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOW-lX-LCN">
-                                <rect key="frame" x="83" y="368" width="162" height="21"/>
+                                <rect key="frame" x="83" y="238" width="162" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Codeforces_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="GeO-gz-V4L">
-                                <rect key="frame" x="17" y="356" width="45" height="45"/>
+                                <rect key="frame" x="17" y="226" width="45" height="45"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" fixedFrame="YES" image="Codeforces_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="HhA-L1-vox">
-                                <rect key="frame" x="17" y="307" width="45" height="45"/>
+                                <rect key="frame" x="17" y="177" width="45" height="45"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Codechef_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="7DW-Z8-LXh">
+                                <rect key="frame" x="17" y="124" width="45" height="45"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Codeforces_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="SrR-KQ-cfa">
+                                <rect key="frame" x="17" y="71" width="45" height="45"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" fixedFrame="YES" image="Codeforces_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="HGl-7k-70G">
-                                <rect key="frame" x="17" y="413" width="45" height="45"/>
+                                <rect key="frame" x="17" y="283" width="45" height="45"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Codechef_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="yDJ-Sm-MJq">
+                                <rect key="frame" x="17" y="336" width="45" height="45"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Codeforces Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NAJ-hx-xCo">
-                                <rect key="frame" x="83" y="425" width="129" height="21"/>
+                                <rect key="frame" x="83" y="295" width="129" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Codechef Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IB-4d-Sp2">
-                                <rect key="frame" x="83" y="504" width="115" height="21"/>
+                                <rect key="frame" x="83" y="348" width="115" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mad-D5-jzE">
-                                <rect key="frame" x="20" y="31" width="335" height="85"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Codeforces_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="SrR-KQ-cfa">
-                                        <rect key="frame" x="5" y="20" width="45" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="JkL-1e-pCs"/>
-                                            <constraint firstAttribute="width" constant="45" id="K2Q-YR-mif"/>
-                                        </constraints>
-                                    </imageView>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oyb-Rs-YXa">
-                                        <rect key="frame" x="58" y="0.0" width="277" height="85"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Set your Codeforces Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXQ-rr-YRg">
-                                                <rect key="frame" x="30" y="32" width="216" height="21"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="21" id="VlO-P1-q6i"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="cXQ-rr-YRg" firstAttribute="centerX" secondItem="Oyb-Rs-YXa" secondAttribute="centerX" id="7Mq-Xc-B09"/>
-                                            <constraint firstItem="cXQ-rr-YRg" firstAttribute="top" secondItem="Oyb-Rs-YXa" secondAttribute="top" constant="32" id="rnO-be-Yvs"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="Oyb-Rs-YXa" firstAttribute="top" secondItem="mad-D5-jzE" secondAttribute="top" id="1lU-XV-ei0"/>
-                                    <constraint firstAttribute="height" constant="85" id="IJO-dC-c3v"/>
-                                    <constraint firstAttribute="bottom" secondItem="SrR-KQ-cfa" secondAttribute="bottom" constant="20" id="PA6-FK-uHK"/>
-                                    <constraint firstItem="SrR-KQ-cfa" firstAttribute="top" secondItem="mad-D5-jzE" secondAttribute="top" constant="20" id="Tp5-Ur-cAe"/>
-                                    <constraint firstItem="SrR-KQ-cfa" firstAttribute="leading" secondItem="mad-D5-jzE" secondAttribute="leading" constant="5" id="W47-9G-GMg"/>
-                                    <constraint firstAttribute="trailing" secondItem="Oyb-Rs-YXa" secondAttribute="trailing" id="jWd-gE-4u0"/>
-                                    <constraint firstItem="Oyb-Rs-YXa" firstAttribute="leading" secondItem="SrR-KQ-cfa" secondAttribute="trailing" constant="8" id="orc-fi-l8K"/>
-                                    <constraint firstAttribute="bottom" secondItem="Oyb-Rs-YXa" secondAttribute="bottom" id="sLe-9u-JJ1"/>
-                                </constraints>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Codechef_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="yDJ-Sm-MJq">
-                                <rect key="frame" x="17" y="480" width="45" height="45"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3x-mf-7aT">
-                                <rect key="frame" x="245" y="519" width="110" height="30"/>
+                                <rect key="frame" x="248" y="132" width="110" height="30"/>
                                 <state key="normal" title="set"/>
                                 <connections>
                                     <action selector="codechefHandleButtonTouched:" destination="f6M-9H-8yf" eventType="touchUpInside" id="Nwe-A5-TRV"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="djA-c4-Bw7">
-                                <rect key="frame" x="20" y="171" width="335" height="85"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Codechef Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhM-Ho-rzF">
-                                        <rect key="frame" x="106" y="32" width="134" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Codechef_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="7DW-Z8-LXh">
-                                        <rect key="frame" x="8" y="20" width="45" height="45"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="mad-D5-jzE" firstAttribute="centerX" secondItem="tOX-zZ-WrK" secondAttribute="centerX" id="EcW-Po-WJY"/>
-                            <constraint firstItem="mad-D5-jzE" firstAttribute="top" secondItem="Nao-Kf-60E" secondAttribute="bottom" constant="11" id="Eem-3a-6Jg"/>
-                            <constraint firstItem="mad-D5-jzE" firstAttribute="leading" secondItem="tOX-zZ-WrK" secondAttribute="leadingMargin" id="Ilx-vN-Irq"/>
-                            <constraint firstItem="mad-D5-jzE" firstAttribute="trailing" secondItem="tOX-zZ-WrK" secondAttribute="trailingMargin" id="uLy-UC-bl3"/>
-                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="ccHandleSetButton" destination="E3x-mf-7aT" id="O9H-NO-3OO"/>
-                        <outlet property="codeforcesHandleTextField" destination="cXQ-rr-YRg" id="ufh-8x-FMn"/>
+                        <outlet property="cfHandleSetButton" destination="cKs-Wc-VEU" id="ZpN-kj-m5a"/>
                         <outlet property="ratingButton" destination="6Ef-lA-P13" id="iYH-PB-5IO"/>
                         <outlet property="systemTestButton" destination="BJ4-eH-pfS" id="5Ln-wU-kEv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wLH-xb-I9n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-905.5" y="523.5"/>
+            <point key="canvasLocation" x="-594.5" y="528.5"/>
         </scene>
         <!--CFViewController-->
         <scene sceneID="kUq-aw-dTp">
@@ -366,34 +328,10 @@
                     <view key="view" contentMode="scaleToFill" id="Ruw-Fp-jLc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxg-5r-0oW" customClass="ZFRippleButton" customModule="ZFRippleButton">
-                                <rect key="frame" x="114" y="449" width="147" height="30"/>
-                                <state key="normal" title="Login"/>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tVz-3P-PdM">
-                                <rect key="frame" x="72" y="339" width="230" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ARi-ET-qfI">
-                                <rect key="frame" x="72" y="388" width="230" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHL-g7-wf3" customClass="ZFRippleButton" customModule="ZFRippleButton">
-                                <rect key="frame" x="114" y="512" width="147" height="30"/>
-                                <state key="normal" title="Register"/>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="loginButton" destination="lxg-5r-0oW" id="5t6-SF-F2D"/>
-                        <outlet property="passwordTextField" destination="ARi-ET-qfI" id="4p8-Az-JIE"/>
-                        <outlet property="registerButton" destination="FHL-g7-wf3" id="OGO-te-GAe"/>
-                        <outlet property="usernameTextField" destination="tVz-3P-PdM" id="r5J-bz-ZEv"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="Login_MainView" id="Knd-gU-PzE"/>
                     </connections>
                 </viewController>
@@ -985,35 +923,13 @@
                     <view key="view" contentMode="scaleToFill" id="xug-F4-Z9X">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RJS-P1-QAM">
-                                <rect key="frame" x="72" y="156" width="230" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i5x-Tq-PfT">
-                                <rect key="frame" x="72" y="194" width="230" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3e9-8P-vtW">
-                                <rect key="frame" x="72" y="232" width="230" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jOW-ge-5eM">
-                                <rect key="frame" x="72" y="270" width="230" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0aQ-aW-bDK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2491.5" y="-371.5"/>
+            <point key="canvasLocation" x="-2860" y="-683"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Kk4-fO-ikX">

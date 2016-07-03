@@ -10,13 +10,15 @@ import UIKit
 import Parse
 
 class SettingsViewController: UIViewController {
+
+    @IBOutlet weak var cfHandleSetButton: UIButton!
     
     private func showErrorAlert(message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
         presentViewController(alertController, animated: true, completion: nil)
     }
     
-    func codeforcesHandleTextFieldTapped(sender: AnyObject) {
+    @IBAction func codeforcesHandleButtonTouched(sender: AnyObject) {
         let alertController = UIAlertController(title: "Codeforces Handle", message: "Please Enter", preferredStyle: UIAlertControllerStyle.Alert)
         
         alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
@@ -228,19 +230,11 @@ class SettingsViewController: UIViewController {
         return res
     }
     
-    @IBOutlet weak var codeforcesHandleTextField: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let cfHandle = PFUser.currentUser()?.objectForKey("codeforcesHandle") as? String
-        
-        codeforcesHandleTextField.text = (cfHandle != nil) ? cfHandle : "NONE"
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.codeforcesHandleTextFieldTapped(_:)) )
-        codeforcesHandleTextField.addGestureRecognizer(tap)
-        codeforcesHandleTextField.userInteractionEnabled = true
-        
-        codeforcesHandleTextField.textAlignment = NSTextAlignment.Center
+        cfHandleSetButton.setTitle(cfHandle, forState: UIControlState.Normal)
         
         let ccHandle = PFUser.currentUser()?.objectForKey("codechefHandle") as? String
         ccHandleSetButton.setTitle(ccHandle, forState: UIControlState.Normal)
@@ -250,6 +244,8 @@ class SettingsViewController: UIViewController {
         if channels == nil {
             channels = []
         }
+        
+        print(fixed(cfHandle!))
         
         systemTestButton.setOn(channels!.contains(fixed(cfHandle!) + "SystemTest"), animated: true)
         ratingButton.setOn(channels!.contains(fixed(cfHandle!) + "Rating"), animated: true)
