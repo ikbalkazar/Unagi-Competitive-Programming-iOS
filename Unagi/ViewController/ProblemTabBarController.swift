@@ -19,13 +19,13 @@ class ProblemTabBarController: UITabBarController {
         //Read
         let webViewController = viewControllers![0] as! ProblemStatementVC
         webViewController.setProblem(viaSegue_problem!)
+        
+        addRightBarItem()
    
         //Note
         let noteViewController = viewControllers![1] as! NoteTakingVC
         noteViewController.setProblem(viaSegue_problem!)
         
-        //LeaderBoard
-        //Similar
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -45,13 +45,17 @@ class ProblemTabBarController: UITabBarController {
                                              action: #selector(self.callDoneButton))
             navigationItem.rightBarButtonItem = navBarItem
         case "Read":
-            let navBarItem = UIBarButtonItem(title: "Add",
-                                             style: .Done,
-                                            target: self,
-                                            action: #selector(self.addTodoButton))
-            navigationItem.rightBarButtonItem = navBarItem
+            addRightBarItem()
         default: break
         }
+    }
+    
+    func addRightBarItem() {
+        let navBarItem = UIBarButtonItem(title: "Add to Todo List",
+                                         style: .Done,
+                                         target: self,
+                                         action: #selector(self.addTodoButton))
+        navigationItem.rightBarButtonItem = navBarItem
     }
     
     func callDoneButton() {
@@ -61,5 +65,9 @@ class ProblemTabBarController: UITabBarController {
     
     func addTodoButton() {
         userData.add(viaSegue_problem!, key: kTodoProblemsKey)
+        
+        let alert = UIAlertController(title: "Successful", message: "", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }

@@ -3,7 +3,7 @@ import json,httplib,urllib
 def getProblems():
   connection = httplib.HTTPSConnection('api.parse.com', 443)
 
-  params = urllib.urlencode({"limit":1000,"where":json.dumps({"websiteId": {"$exists": False}})})
+  params = urllib.urlencode({"limit":1000,"where":json.dumps({"url": {"$regex": "^https://codeforces"}})})
 
   connection.connect()
   
@@ -17,17 +17,19 @@ def getProblems():
 def fixProblem(problem):
   problemUrl = problem['url']
 
-  if problemUrl.startswith('codeforces'):
+  print problemUrl
+  if problemUrl.startswith('https://codeforces'):
 
     connection = httplib.HTTPSConnection('api.parse.com', 443)
 
     connection.connect()
 
-    trueUrl = "https://" + problemUrl
+    trueUrl = "https://www." + problemUrl[8:]
     jsonParams = json.dumps(
       {
         "url": trueUrl
       })
+    print trueUrl
 
     connection.request('PUT', '/1/classes/Problems/%s' % problem['objectId'], jsonParams, {
          "X-Parse-Application-Id": "8xMwvCqficeHwkS7Ag5PQWdlw1q91ujGcXVRgUnG",
@@ -66,14 +68,14 @@ def addWebsiteId(problem):
     print 'added website id for %s' % problemUrl
     print result
 
-for i in xrange(1000):
+for i in xrange(1):
 
   problems = getProblems()
 
   if problems.get('error') == '':
     break
 
-  #print json.dumps(problems, sort_keys = True, indent = 4, separators = (',', ':'))
+  print json.dumps(problems, sort_keys = True, indent = 4, separators = (',', ':'))
 
   for problem in problems['results']:
-    addWebsiteId(problem)
+    fixProblem(problem)

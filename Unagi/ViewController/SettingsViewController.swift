@@ -30,10 +30,11 @@ class SettingsViewController: UIViewController {
                 button.setTitle(handle, forState: UIControlState.Normal)
                 PFUser.currentUser()?.setObject(handle, forKey: "codeforcesHandle")
                 
-                let solved = PFUser.currentUser()?.objectForKey("solved") as! [String]
+                let solved = userData.getProblems(kSolvedProblemsKey)
                 var newSolved: [String] = []
-                for id in solved {
-                    if problemForId[id]!.website.name != "Codeforces" {
+                for problem in solved {
+                    let id = problem.objectId
+                    if problem.website.name != "Codeforces" {
                         newSolved.append(id)
                     }
                 }
@@ -71,10 +72,11 @@ class SettingsViewController: UIViewController {
                 button.setTitle(handle, forState: UIControlState.Normal)
                 PFUser.currentUser()?.setObject(handle, forKey: "codechefHandle")
                 
-                let solved = PFUser.currentUser()?.objectForKey("solved") as! [String]
+                let solved = userData.getProblems(kSolvedProblemsKey)
                 var newSolved: [String] = []
-                for id in solved {
-                    if problemForId[id]!.website.name != "Codechef" {
+                for problem in solved {
+                    let id = problem.objectId
+                    if problem.website.name != "Codechef" {
                         newSolved.append(id)
                     }
                 }
@@ -233,10 +235,16 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let cfHandle = PFUser.currentUser()?.objectForKey("codeforcesHandle") as? String
+        var cfHandle = PFUser.currentUser()?.objectForKey("codeforcesHandle") as? String
+        if cfHandle == nil {
+            cfHandle = "tap to set"
+        }
         cfHandleSetButton.setTitle(cfHandle, forState: UIControlState.Normal)
         
-        let ccHandle = PFUser.currentUser()?.objectForKey("codechefHandle") as? String
+        var ccHandle = PFUser.currentUser()?.objectForKey("codechefHandle") as? String
+        if ccHandle == nil {
+            ccHandle = "tap to set"
+        }
         ccHandleSetButton.setTitle(ccHandle, forState: UIControlState.Normal)
     
         let installation = PFInstallation.currentInstallation()
@@ -244,8 +252,6 @@ class SettingsViewController: UIViewController {
         if channels == nil {
             channels = []
         }
-        
-        print(fixed(cfHandle!))
         
         systemTestButton.setOn(channels!.contains(fixed(cfHandle!) + "SystemTest"), animated: true)
         ratingButton.setOn(channels!.contains(fixed(cfHandle!) + "Rating"), animated: true)

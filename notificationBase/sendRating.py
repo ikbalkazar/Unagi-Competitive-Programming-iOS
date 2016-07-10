@@ -1,8 +1,6 @@
 from contest import Contest
 from notificationSender import NotificationSender 
 
-toFilter = ["Thomas66", "super_wormy"]
-
 def fix(s):
   res = ""
   for c in s:
@@ -17,8 +15,9 @@ def fix(s):
   return res
 
 class SendRating(object):
-  def __init__(self, contestId):
+  def __init__(self, contestId, users):
     self.contestId = contestId
+    self.toFilter = users
 
   def check(self):
     contest = Contest(self.contestId)
@@ -26,7 +25,8 @@ class SendRating(object):
       users = contest.participants()
       channels = []
       for user in users:
-        if toFilter.count(user) > 0:
+        if self.toFilter.count(user) > 0:
+          print "Will send to ... " + user
           channels.append(fix(user) + 'Rating')
       print "Ratings are out!"
       sender = NotificationSender('CF Contest %d, Ratings are updated!' % self.contestId, channels)

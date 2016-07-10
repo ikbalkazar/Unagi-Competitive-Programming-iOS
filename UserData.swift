@@ -47,9 +47,13 @@ class UserData: NSObject {
             if error != nil {
                 // Error!
             } else {
-                user?.setObject(self.data[kSolvedProblemsKey]!, forKey: "solved")
-                user?.setObject(self.data[kSolvedProblemsKey]!, forKey: "todo")
-                user?.saveInBackground()
+                user?.setObject(self.convertToIds(self.data[kSolvedProblemsKey]! as! [Problem]), forKey: "solved")
+                user?.setObject(self.convertToIds(self.data[kTodoProblemsKey]! as! [Problem]), forKey: "toDo")
+                do {
+                    try user?.save()
+                } catch {
+                    print("Could not save user data !!!")
+                }
             }
         })
     }
@@ -66,8 +70,9 @@ class UserData: NSObject {
         var problems = data[key] as? [Problem]
         if !problems!.contains(problem) {
             problems!.append(problem)
+            data[key] = problems
+            save()
         }
-        data[key] = problems
     }
     
     func remove(problem: Problem, key: String) {
@@ -75,10 +80,12 @@ class UserData: NSObject {
         if problems!.contains(problem) {
             problems!.removeAtIndex(problems!.indexOf(problem)!)
             data[key] = problems
+            save()
         }
     }
 }
 
+// Converters.
 extension UserData {
     func convertToProblems(ids: [String]) -> [Problem] {
         var problems: [Problem] = []
@@ -88,6 +95,14 @@ extension UserData {
             }
         }
         return problems;
+    }
+    
+    func convertToIds(problems: [Problem]) -> [String] {
+        var ids: [String] = []
+        for problem in problems {
+            ids.append(problem.objectId)
+        }
+        return ids
     }
 }
 

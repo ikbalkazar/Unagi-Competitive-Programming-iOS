@@ -25,6 +25,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
 
     override func viewDidAppear(animated: Bool) {
         if let cfHandle = PFUser.currentUser()?.objectForKey("codeforcesHandle") as? String {
+            cfHandleButton.hidden = false
             ratingLabel.hidden = false
             ratingDeltaLabel.hidden = false
             deltaImageView.hidden = false

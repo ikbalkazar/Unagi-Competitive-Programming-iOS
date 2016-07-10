@@ -33,11 +33,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.createMenuView()
             })
         } else {
-            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-            let loginViewController = self.storyboard.instantiateViewControllerWithIdentifier("Login") as! LoginViewController
-            
-            self.window?.rootViewController = loginViewController
-            self.window?.makeKeyAndVisible()
+            let user = PFUser()
+            let installationId = Int(arc4random_uniform(UInt32(1e9)))
+            user.username = String(installationId)
+            user.password = String(installationId)
+            user.signUpInBackgroundWithBlock({ (succeeded, error) in
+                if error != nil {
+                    print("ERROR... !!!")
+                } else {
+                    assert(PFUser.currentUser() != nil)
+                    self.setWindow()
+                }
+            })
         }
     }
     

@@ -80,7 +80,7 @@ class ProblemTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        let problem = requestedProblems[indexPath.row]
+        let problem = requestedProblems[requestedProblems.count - indexPath.row - 1]
         var identifier = "searchResultsCell"
         if querySolved(problem.objectId) {
             identifier += "Solved"

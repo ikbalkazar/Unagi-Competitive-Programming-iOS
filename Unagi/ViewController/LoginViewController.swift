@@ -14,9 +14,6 @@ class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldD
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    let usernameTextField: UITextField = UITextField()
-    let passwordTextField: UITextField = UITextField()
-    
     var usernameTextFieldHash: Int!
     var passwordTextFieldHash: Int!
     
@@ -37,7 +34,7 @@ class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldD
         self.view.endEditing(true)
     }
     
-    func login( sender: AnyObject ) {
+    func login(sender: AnyObject) {
         PFUser.logInWithUsernameInBackground(usernameTextField.text!, password: passwordTextField.text!) { (puser, error) -> Void in
             if error != nil {
                 var errorMessage = "Please try again"
@@ -155,15 +152,5 @@ class LoginViewController: UIViewController, UIApplicationDelegate, UITextFieldD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
