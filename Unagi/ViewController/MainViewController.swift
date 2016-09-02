@@ -1,8 +1,7 @@
 //
-//  ViewController.swift
-//  SlideMenuControllerSwift
+//  MainViewController.swift
 //
-//  Created by Yuji Hato on 12/3/14.
+//  Created by ikbal kazar on 10/7/16.
 //
 
 import UIKit
@@ -145,6 +144,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
 //Handles codeforces info
 extension MainViewController {
     
+    // @param rating: codeforces rating.
+    // @return color equivalent of the given codeforces rating.
     func getCodeforcesColor(rating: Int) -> UIColor {
         let colorCuts = [1200, 1400, 1600, 1900, 2200, 2400]
         let colors = ["#808080", "#008000", "#32AAA4", "#0000FF", "#AA00AA", "#FF8C00", "#FF0000"]
@@ -155,6 +156,8 @@ extension MainViewController {
         return UIColor(hex: colors[ptr])
     }
     
+    // Fetches codeforces rating and rating delta from codeforces api.
+    // @param handle: codeforces handle
     func setRatingAndDelta(handle: String) {
         let url = NSURL(string: "http://codeforces.com/api/user.rating?handle=" + handle)!
         let urlSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
@@ -184,6 +187,8 @@ extension MainViewController {
         query.resume()
     }
     
+    // Sets UI elements.
+    // @param handle: codeforces handle, rating: codeforces rating, delta: codeforces delta.
     func setLabels(handle: String, rating: Int, delta: Int) {
         let color = getCodeforcesColor(rating)
         

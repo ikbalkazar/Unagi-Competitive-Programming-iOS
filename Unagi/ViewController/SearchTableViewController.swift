@@ -12,10 +12,12 @@ import Parse
 class ProblemTableViewController: UITableViewController {
     
     var requestedProblems = [Problem]()
+    var selectedProblem : Problem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         getSolvedList()
+        requestedProblems = requestedProblems.reverse()
         self.tableView.reloadData()
     }
 
@@ -80,7 +82,7 @@ class ProblemTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        let problem = requestedProblems[requestedProblems.count - indexPath.row - 1]
+        let problem = requestedProblems[indexPath.row]
         var identifier = "searchResultsCell"
         if querySolved(problem.objectId) {
             identifier += "Solved"
@@ -93,18 +95,15 @@ class ProblemTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-            performSegueWithIdentifier("SearchTable_TabBar", sender: cell)
-        }
-        return indexPath
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedProblem = requestedProblems[indexPath.row]
+        self.performSegueWithIdentifier("SearchTable_TabBar", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let selectedIndex = self.tableView.indexPathForCell(sender as! UITableViewCell)
         if segue.identifier == "SearchTable_TabBar" {
             if let dest = segue.destinationViewController as? ProblemTabBarController {
-                dest.viaSegue_problem = requestedProblems[selectedIndex!.row]
+                dest.viaSegue_problem = selectedProblem
             }
         }
     }

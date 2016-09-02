@@ -18,6 +18,7 @@ class SettingsViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
     }
     
+    // UIButton that changes the codeforces handle of the user.
     @IBAction func codeforcesHandleButtonTouched(sender: AnyObject) {
         let alertController = UIAlertController(title: "Codeforces Handle", message: "Please Enter", preferredStyle: UIAlertControllerStyle.Alert)
         
@@ -60,6 +61,7 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var ccHandleSetButton: UIButton!
     
+    // UIButton that changes codechef handle of the user.
     @IBAction func codechefHandleButtonTouched(sender: AnyObject) {
         let alertController = UIAlertController(title: "Codechef Handle", message: "Please Enter", preferredStyle: UIAlertControllerStyle.Alert)
         
@@ -100,6 +102,8 @@ class SettingsViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
     }
     
+    // Gets solved problems of the user from codeforces api.
+    
     @IBAction func RefreshCodeforces(sender: AnyObject) {
         PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
             if error == nil {
@@ -130,6 +134,8 @@ class SettingsViewController: UIViewController {
             }
         })
     }
+    
+    // Gets solved problems of the user from codeforces api.
     
     @IBAction func RefreshCodechef(sender: AnyObject) {
         PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
@@ -162,6 +168,8 @@ class SettingsViewController: UIViewController {
             }
         })
     }
+    
+    // Remove saved channels and load user data. 
     
     func refreshUserData() {
         let installation = PFInstallation.currentInstallation()
@@ -213,6 +221,8 @@ class SettingsViewController: UIViewController {
         installation.removeObject(fixed(channel), forKey: "channels")
         installation.saveInBackground()
     }
+    
+    // Parse does not let channels to contain.
     
     func fixed(str: String) -> String {
         var res = ""
