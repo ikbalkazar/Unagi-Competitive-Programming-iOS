@@ -90,8 +90,8 @@ extension UserData {
     func convertToProblems(ids: [String]) -> [Problem] {
         var problems: [Problem] = []
         for id in ids {
-            if problemForId[id] != nil {
-                problems.append(problemForId[id]!)
+            if Problem.problemForId[id] != nil {
+                problems.append(Problem.problemForId[id]!)
             }
         }
         return problems;

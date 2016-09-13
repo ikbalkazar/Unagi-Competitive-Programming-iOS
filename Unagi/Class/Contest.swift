@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class Contest {
-    
     var objectId: String!
     var name: String!
     var start: String!
@@ -44,7 +43,6 @@ class Contest {
     }
     
     func getImage() -> UIImage {
-        
         if let image = UIImage(named: website!.name! + "_Logo.png") {
             return image
         }
@@ -53,7 +51,6 @@ class Contest {
     }
     
     func getImage(website website: String) -> UIImage {
-        
         if let image = UIImage(named: website + "_Logo.png") {
             return image
         }
@@ -63,21 +60,15 @@ class Contest {
 }
 
 func updateFilteredContestsArray() {
-    
     filteredContests.removeAll()
-    
     for contest in contests {
-         
          if NSUserDefaults.standardUserDefaults().objectForKey(contest.website.name + "filtered") as! Bool {
             filteredContests.append(contest)
          }
-        
     }
-    
 }
 
 func downloadContestsUsingClistByAPI(sender: ContestTableViewController) {
-    
     let defaults = NSUserDefaults.standardUserDefaults()
     
     let now = NSDate()
@@ -91,7 +82,6 @@ func downloadContestsUsingClistByAPI(sender: ContestTableViewController) {
     
     let myQuery = urlSession.dataTaskWithURL(url, completionHandler: {
         data, response, error -> Void in
-        
         if let content = data {
             do {
                 let jsonRes = try NSJSONSerialization.JSONObjectWithData(content, options: NSJSONReadingOptions.MutableContainers)
@@ -127,10 +117,7 @@ func downloadContestsUsingClistByAPI(sender: ContestTableViewController) {
                     contests.append(newContest)
                     
                     defaults.setObject(true, forKey: newContest.website.name + "filtered")
-                    
                 }
-                
-                
             } catch {
                 print("Can not convert to JSON")
             }

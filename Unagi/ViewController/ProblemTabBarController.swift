@@ -45,7 +45,9 @@ class ProblemTabBarController: UITabBarController {
                                              action: #selector(self.callDoneButton))
             navigationItem.rightBarButtonItem = navBarItem
         case "Read":
-            addRightBarItem()
+            if !((viaSegue_problem?.isTodo)!) {
+                addRightBarItem()
+            }
         default: break
         }
     }
@@ -64,8 +66,10 @@ class ProblemTabBarController: UITabBarController {
     }
     
     func addTodoButton() {
-        userData.add(viaSegue_problem!, key: kTodoProblemsKey)
-        
+        Database.sharedInstance.sharedConnection?.readWriteWithBlock({ (transaction) in
+            self.viaSegue_problem?.isTodo = true
+            self.viaSegue_problem?.saveWithTransaction(transaction)
+        })
         let alert = UIAlertController(title: "Successful", message: "", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)

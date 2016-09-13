@@ -9,9 +9,10 @@
 import UIKit
 import Parse
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UITableViewController {
 
     @IBOutlet weak var cfHandleSetButton: UIButton!
+    var spinnerView: UIActivityIndicatorView?
     
     private func showErrorAlert(message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
@@ -25,31 +26,16 @@ class SettingsViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
         
         alertController.addAction(UIAlertAction(title: "Set", style: UIAlertActionStyle.Default, handler: { (action) in
-            let handleTextField = alertController.textFields![0]
-            if let handle = handleTextField.text {
-                let button = sender as! UIButton
-                button.setTitle(handle, forState: UIControlState.Normal)
-                PFUser.currentUser()?.setObject(handle, forKey: "codeforcesHandle")
-                
-                let solved = userData.getProblems(kSolvedProblemsKey)
-                var newSolved: [String] = []
-                for problem in solved {
-                    let id = problem.objectId
-                    if problem.website.name != "Codeforces" {
-                        newSolved.append(id)
-                    }
-                }
-                
-                PFUser.currentUser()?.setObject(newSolved, forKey: "solved")
-                
-                PFUser.currentUser()?.saveInBackground()
-                
-                self.refreshUserData()
-            } else {
-                dispatch_async(dispatch_get_main_queue(), {
+            dispatch_async(dispatch_get_main_queue(), {
+                let handleTextField = alertController.textFields![0]
+                if let handle = handleTextField.text {
+                    let button = sender as! UIButton
+                    button.setTitle(handle, forState: UIControlState.Normal)
+                    NSUserDefaults.standardUserDefaults().setObject(handle, forKey: kCodeforcesUsernameKey)
+                } else {
                     self.showErrorAlert("Empty handle is not allowed");
-                })
-            }
+                }
+            })
         }))
         
         alertController.addTextFieldWithConfigurationHandler({ (textField) in
@@ -68,31 +54,15 @@ class SettingsViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
         
         alertController.addAction(UIAlertAction(title: "Set", style: UIAlertActionStyle.Default, handler: { (action) in
-            let handleTextField = alertController.textFields![0]
-            if let handle = handleTextField.text {
-                let button = sender as! UIButton
-                button.setTitle(handle, forState: UIControlState.Normal)
-                PFUser.currentUser()?.setObject(handle, forKey: "codechefHandle")
-                
-                let solved = userData.getProblems(kSolvedProblemsKey)
-                var newSolved: [String] = []
-                for problem in solved {
-                    let id = problem.objectId
-                    if problem.website.name != "Codechef" {
-                        newSolved.append(id)
-                    }
-                }
-                
-                PFUser.currentUser()?.setObject(newSolved, forKey: "solved")
-                
-                PFUser.currentUser()?.saveInBackground()
-                
-                self.refreshUserData()
-            } else {
-                dispatch_async(dispatch_get_main_queue(), {
+            dispatch_async(dispatch_get_main_queue(), { 
+                let handleTextField = alertController.textFields![0]
+                if let handle = handleTextField.text {
+                    let button = sender as! UIButton
+                    button.setTitle(handle, forState: UIControlState.Normal)
+                } else {
                     self.showErrorAlert("Empty handle is not allowed");
-                })
-            }
+                }
+            })
         }))
         
         alertController.addTextFieldWithConfigurationHandler({ (textField) in
@@ -105,68 +75,16 @@ class SettingsViewController: UIViewController {
     // Gets solved problems of the user from codeforces api.
     
     @IBAction func RefreshCodeforces(sender: AnyObject) {
-        PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
-            if error == nil {
-                let codeforcesId = user?.objectForKey("codeforcesHandle") as! String
-                PFCloud.callFunctionInBackground("codeforcesGetSolved", withParameters: ["codeforcesId": codeforcesId], block: { (data, error) in
-                    var allSolved = PFUser.currentUser()?.objectForKey("solved") as! [String]
-                    var solvedMap: [String: Bool] = [:]
-                    for x in allSolved {
-                        solvedMap[x] = true
-                    }
-                    
-                    if let cfSolved = data as? [String] {
-                        for i in 0 ..< cfSolved.count {
-                            if problemForName[cfSolved[i]] != nil {
-                                let id = problemForName[cfSolved[i]]!.objectId
-                                if solvedMap[id] == nil {
-                                    allSolved.append(id);
-                                }
-                            }
-                        }
-                        
-                        PFUser.currentUser()?.setObject(allSolved, forKey: "solved")
-                        PFUser.currentUser()?.saveInBackground()
-
-                        self.refreshUserData()
-                    }
-                })
-            }
-        })
+        spinnerView?.startAnimating()
+        SolvedGetter.getCodeforces { (problemIds) in
+            WebsiteImporter.importSolved("Codeforces", andSolvedIds: problemIds)
+            self.spinnerView?.stopAnimating()
+        }
     }
     
     // Gets solved problems of the user from codeforces api.
     
     @IBAction func RefreshCodechef(sender: AnyObject) {
-        PFUser.currentUser()?.fetchInBackgroundWithBlock({ (user, error) in
-            if error == nil {
-                let codechefId = user?.objectForKey("codechefHandle") as! String
-                PFCloud.callFunctionInBackground("codechefGetSolved", withParameters: ["codechefId": codechefId], block: { (data, error) in
-                    var allSolved = PFUser.currentUser()?.objectForKey("solved") as! [String]
-                    var solvedMap: [String: Bool] = [:]
-                    for x in allSolved {
-                        solvedMap[x] = true
-                    }
-                    
-                    if let ccSolved = data as? [String] {
-                        for i in 0 ..< ccSolved.count {
-                            let url = "https://www.codechef.com/problems/" + ccSolved[i]
-                            if problemForUrl[url] != nil {
-                                let id = problemForUrl[url]!.objectId
-                                if solvedMap[id] == nil {
-                                    allSolved.append(id);
-                                }
-                            }
-                        }
-                        
-                        PFUser.currentUser()?.setObject(allSolved, forKey: "solved")
-                        PFUser.currentUser()?.saveInBackground()
-
-                        self.refreshUserData()
-                    }
-                })
-            }
-        })
     }
     
     // Remove saved channels and load user data. 
@@ -175,8 +93,6 @@ class SettingsViewController: UIViewController {
         let installation = PFInstallation.currentInstallation()
         installation.channels = []
         installation.saveInBackground()
-        
-        userData.load({})
     }
     
     @IBAction func notifySystemTestSwitch(sender: AnyObject) {
@@ -244,19 +160,12 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var cfHandle = PFUser.currentUser()?.objectForKey("codeforcesHandle") as? String
+        var cfHandle = NSUserDefaults.standardUserDefaults().objectForKey(kCodeforcesUsernameKey) as? String
         if cfHandle == nil {
             cfHandle = "tap to set"
         }
         cfHandleSetButton.setTitle(cfHandle, forState: UIControlState.Normal)
         
-        var ccHandle = PFUser.currentUser()?.objectForKey("codechefHandle") as? String
-        if ccHandle == nil {
-            ccHandle = "tap to set"
-        }
-        ccHandleSetButton.setTitle(ccHandle, forState: UIControlState.Normal)
-    
         let installation = PFInstallation.currentInstallation()
         var channels = installation.objectForKey("channels") as? [String]
         if channels == nil {
@@ -265,6 +174,15 @@ class SettingsViewController: UIViewController {
         
         systemTestButton.setOn(channels!.contains(fixed(cfHandle!) + "SystemTest"), animated: true)
         ratingButton.setOn(channels!.contains(fixed(cfHandle!) + "Rating"), animated: true)
+        
+        let screenSize = UIScreen.mainScreen().bounds.size
+        spinnerView = UIActivityIndicatorView(frame: CGRectMake(screenSize.width / 2 - 10,
+                                                                screenSize.height / 2 - 10,
+                                                                20,
+                                                                20))
+        spinnerView?.color = UIColor.blackColor()
+        spinnerView?.hidesWhenStopped = true
+        view.addSubview(spinnerView!)
     }
 
     override func didReceiveMemoryWarning() {

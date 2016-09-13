@@ -14,6 +14,8 @@ class SearchTableViewCell: UITableViewCell {
     var delegate: UITableViewController?
     var problem: Problem?
     
+    @IBOutlet weak var addButtonOutlet: UIButton!
+    
     @IBOutlet var problemLogo: UIImageView!
     @IBOutlet var problemName: UILabel!
     
@@ -35,7 +37,10 @@ class SearchTableViewCell: UITableViewCell {
    
     // Adds the problem to user's to do list.
     @IBAction func addButton(sender: AnyObject) {
-        userData.add(problem!, key: kTodoProblemsKey)
+        Database.sharedInstance.sharedConnection?.readWriteWithBlock({ (transaction) in
+            self.problem?.isTodo = true
+            self.problem?.saveWithTransaction(transaction)
+        })
     }
     
     func setProblemForCell(problem: Problem) {

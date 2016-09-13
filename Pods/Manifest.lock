@@ -1,21 +1,45 @@
 PODS:
+  - CocoaLumberjack (2.3.0):
+    - CocoaLumberjack/Default (= 2.3.0)
+    - CocoaLumberjack/Extensions (= 2.3.0)
+  - CocoaLumberjack/Core (2.3.0)
+  - CocoaLumberjack/Default (2.3.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.3.0):
+    - CocoaLumberjack/Default
   - EZLoadingActivity (0.8)
-  - Hue (1.1)
+  - Hue (1.3.0)
   - LTMorphingLabel (0.1.1)
+  - SCLAlertView (0.6.0)
+  - SwiftHTTP (1.0.5)
+  - SwiftyJSON (2.3.2)
+  - YapDatabase (2.7.2):
+    - YapDatabase/standard (= 2.7.2)
+  - YapDatabase/standard (2.7.2):
+    - CocoaLumberjack (~> 2)
   - ZFRippleButton (0.5.1)
 
 DEPENDENCIES:
   - EZLoadingActivity (~> 0.8)
   - Hue (~> 1.1)
   - LTMorphingLabel (~> 0.1.1)
+  - SCLAlertView
+  - SwiftHTTP (~> 1.0.4)
+  - SwiftyJSON
+  - YapDatabase (= 2.7.2)
   - ZFRippleButton (~> 0.5)
 
 SPEC CHECKSUMS:
+  CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
   EZLoadingActivity: 6fd75a05765a4085f4b6fef6f62edf9f144b3139
-  Hue: ed6781be844b58b2a38150cfd4bf24c33449faf8
+  Hue: b4d7f4923dd16237f9cbc1783c3c81438b4391f4
   LTMorphingLabel: dfc40f43a0dcf81867b1f29431f34e861a5f1b35
+  SCLAlertView: 0f6b3c23a48b4993564ff1dd3c065782e4b2b687
+  SwiftHTTP: edb45e72f27d1d95d328d2b2c16a61aa94f1e9f7
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  YapDatabase: bcf13bd764ab4961fb48bef937becf964e50063d
   ZFRippleButton: 263bdf4e31dabd5826133b121d9ff908c87a6a11
 
-PODFILE CHECKSUM: 82416f69882151528368790602e9922a0ef4d9ef
+PODFILE CHECKSUM: 22511032afb72b7d9b6260b72f3edaed20d20b16
 
-COCOAPODS: 1.0.0.rc.1
+COCOAPODS: 1.0.0

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0307ABED1D7E072100E2FF8B /* ProblemFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0307ABEC1D7E072100E2FF8B /* ProblemFilter.swift */; };
+		0307ABEF1D7E0F1700E2FF8B /* ProblemFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0307ABEE1D7E0F1700E2FF8B /* ProblemFilterViewController.swift */; };
 		030E9D371CEF4C79002A2BB0 /* decrease.png in Resources */ = {isa = PBXBuildFile; fileRef = 030E9D351CEF4C79002A2BB0 /* decrease.png */; };
 		030E9D381CEF4C79002A2BB0 /* increase.png in Resources */ = {isa = PBXBuildFile; fileRef = 030E9D361CEF4C79002A2BB0 /* increase.png */; };
 		0327AF881CE65379003FA964 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF821CE65379003FA964 /* settings.png */; };
@@ -21,9 +23,12 @@
 		0327AF951CE65737003FA964 /* agenda-29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF941CE65737003FA964 /* agenda-29@3x.png */; };
 		0327AF971CE65740003FA964 /* paper-29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF961CE65740003FA964 /* paper-29@3x.png */; };
 		0327AF991CE65767003FA964 /* edit-29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0327AF981CE65767003FA964 /* edit-29@3x.png */; };
-		03A2F62F1D21F2ED00C8F899 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A2F62E1D21F2ED00C8F899 /* UserData.swift */; };
+		033EFD9A1D8696FD001FCCA6 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033EFD991D8696FD001FCCA6 /* Request.swift */; };
+		033EFD9E1D8730CC001FCCA6 /* WebsiteImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033EFD9D1D8730CC001FCCA6 /* WebsiteImporter.swift */; };
+		033EFDA01D87348C001FCCA6 /* SolvedGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033EFD9F1D87348C001FCCA6 /* SolvedGetter.swift */; };
 		03DFEC4E1CE6434100FCB798 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DFEC4D1CE6434100FCB798 /* MainCollectionViewCell.swift */; };
 		03DFEC501CE643DB00FCB798 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 03DFEC4F1CE643DB00FCB798 /* search.png */; };
+		03E32A701D7A36B200EA9830 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E32A6F1D7A36B200EA9830 /* Database.swift */; };
 		03ED9F511CE89AE200F88E6E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ED9F501CE89AE200F88E6E /* SettingsViewController.swift */; };
 		03F8A5FF1CAD8A4C009C6106 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8A5FE1CAD8A4C009C6106 /* SearchTableViewCell.swift */; };
 		13CFD65A8121574D8406E409 /* Pods_Unagi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581311DE5C953566B9A34025 /* Pods_Unagi.framework */; };
@@ -108,11 +113,12 @@
 		23D106201CA9AE990073A669 /* ProblemStatementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105C71CA9AE990073A669 /* ProblemStatementVC.swift */; };
 		23D106211CA9AE990073A669 /* ProblemTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105C81CA9AE990073A669 /* ProblemTabBarController.swift */; };
 		23D106221CA9AE990073A669 /* ProblemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105C91CA9AE990073A669 /* ProblemViewController.swift */; };
-		23D106251CA9AE990073A669 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105CC1CA9AE990073A669 /* SearchTableViewController.swift */; };
-		23D106261CA9AE990073A669 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105CD1CA9AE990073A669 /* SearchViewController.swift */; };
+		23D106251CA9AE990073A669 /* ProblemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D105CC1CA9AE990073A669 /* ProblemTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0307ABEC1D7E072100E2FF8B /* ProblemFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemFilter.swift; sourceTree = "<group>"; };
+		0307ABEE1D7E0F1700E2FF8B /* ProblemFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProblemFilterViewController.swift; path = ../ProblemFilterViewController.swift; sourceTree = "<group>"; };
 		030E9D351CEF4C79002A2BB0 /* decrease.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = decrease.png; sourceTree = "<group>"; };
 		030E9D361CEF4C79002A2BB0 /* increase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = increase.png; sourceTree = "<group>"; };
 		0327AF821CE65379003FA964 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
@@ -127,9 +133,13 @@
 		0327AF941CE65737003FA964 /* agenda-29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "agenda-29@3x.png"; sourceTree = "<group>"; };
 		0327AF961CE65740003FA964 /* paper-29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paper-29@3x.png"; sourceTree = "<group>"; };
 		0327AF981CE65767003FA964 /* edit-29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-29@3x.png"; sourceTree = "<group>"; };
-		03A2F62E1D21F2ED00C8F899 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserData.swift; path = ../../UserData.swift; sourceTree = "<group>"; };
+		033EFD991D8696FD001FCCA6 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		033EFD9D1D8730CC001FCCA6 /* WebsiteImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsiteImporter.swift; sourceTree = "<group>"; };
+		033EFD9F1D87348C001FCCA6 /* SolvedGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolvedGetter.swift; sourceTree = "<group>"; };
+		03AB84571D7A35CD002E6ACC /* Unagi-Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Unagi-Bridge-Header.h"; sourceTree = "<group>"; };
 		03DFEC4D1CE6434100FCB798 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainCollectionViewCell.swift; path = Unagi/ViewController/MainCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		03DFEC4F1CE643DB00FCB798 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		03E32A6F1D7A36B200EA9830 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		03ED9F501CE89AE200F88E6E /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		03F8A5FE1CAD8A4C009C6106 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchTableViewCell.swift; path = Unagi/ViewController/SearchTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		2301022A1CAF26B4005642F2 /* Website.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Website.swift; sourceTree = "<group>"; };
@@ -214,8 +224,7 @@
 		23D105C71CA9AE990073A669 /* ProblemStatementVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemStatementVC.swift; sourceTree = "<group>"; };
 		23D105C81CA9AE990073A669 /* ProblemTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemTabBarController.swift; sourceTree = "<group>"; };
 		23D105C91CA9AE990073A669 /* ProblemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemViewController.swift; sourceTree = "<group>"; };
-		23D105CC1CA9AE990073A669 /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
-		23D105CD1CA9AE990073A669 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		23D105CC1CA9AE990073A669 /* ProblemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemTableViewController.swift; sourceTree = "<group>"; };
 		2CFE21CAEFE3A4D8A4F2C88A /* Pods-Unagi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unagi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unagi/Pods-Unagi.release.xcconfig"; sourceTree = "<group>"; };
 		4B8B66C63AE6190325CE1C70 /* Pods-Unagi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unagi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unagi/Pods-Unagi.debug.xcconfig"; sourceTree = "<group>"; };
 		581311DE5C953566B9A34025 /* Pods_Unagi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unagi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -289,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				23D1056F1CA9AE990073A669 /* AppDelegate.swift */,
+				03AB84571D7A35CD002E6ACC /* Unagi-Bridge-Header.h */,
 				23D105701CA9AE990073A669 /* Class */,
 				23D1057E1CA9AE990073A669 /* DataTableViewCell.xib */,
 				23D1057F1CA9AE990073A669 /* Extension */,
@@ -307,11 +317,15 @@
 		23D105701CA9AE990073A669 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				03A2F62E1D21F2ED00C8F899 /* UserData.swift */,
 				2301022A1CAF26B4005642F2 /* Website.swift */,
 				2301022C1CAF26B4005642F2 /* Problem.swift */,
+				033EFD991D8696FD001FCCA6 /* Request.swift */,
+				033EFD9D1D8730CC001FCCA6 /* WebsiteImporter.swift */,
+				033EFD9F1D87348C001FCCA6 /* SolvedGetter.swift */,
+				0307ABEC1D7E072100E2FF8B /* ProblemFilter.swift */,
 				230102351CAF270D005642F2 /* Utilities.swift */,
 				2301022E1CAF26B4005642F2 /* Contest.swift */,
+				03E32A6F1D7A36B200EA9830 /* Database.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -424,8 +438,8 @@
 				23D105C71CA9AE990073A669 /* ProblemStatementVC.swift */,
 				23D105C81CA9AE990073A669 /* ProblemTabBarController.swift */,
 				23D105C91CA9AE990073A669 /* ProblemViewController.swift */,
-				23D105CC1CA9AE990073A669 /* SearchTableViewController.swift */,
-				23D105CD1CA9AE990073A669 /* SearchViewController.swift */,
+				23D105CC1CA9AE990073A669 /* ProblemTableViewController.swift */,
+				0307ABEE1D7E0F1700E2FF8B /* ProblemFilterViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -626,13 +640,14 @@
 				23D106221CA9AE990073A669 /* ProblemViewController.swift in Sources */,
 				03DFEC4E1CE6434100FCB798 /* MainCollectionViewCell.swift in Sources */,
 				23D106171CA9AE990073A669 /* FilterTableViewCell.swift in Sources */,
+				033EFD9E1D8730CC001FCCA6 /* WebsiteImporter.swift in Sources */,
 				230102341CAF26B4005642F2 /* Contest.swift in Sources */,
+				0307ABED1D7E072100E2FF8B /* ProblemFilter.swift in Sources */,
 				230102361CAF270D005642F2 /* Utilities.swift in Sources */,
 				23D1061F1CA9AE990073A669 /* NoteTakingVC.swift in Sources */,
 				23D1061D1CA9AE990073A669 /* MainViewController.swift in Sources */,
 				230102321CAF26B4005642F2 /* Problem.swift in Sources */,
 				23D105E41CA9AE990073A669 /* UIViewController.swift in Sources */,
-				23D106261CA9AE990073A669 /* SearchViewController.swift in Sources */,
 				23D106211CA9AE990073A669 /* ProblemTabBarController.swift in Sources */,
 				23D106201CA9AE990073A669 /* ProblemStatementVC.swift in Sources */,
 				23D105D21CA9AE990073A669 /* AppDelegate.swift in Sources */,
@@ -645,12 +660,15 @@
 				23D106131CA9AE990073A669 /* ContestTableViewCell.swift in Sources */,
 				2314086D1CE7168300F7A7B1 /* MainDatabases.xcdatamodeld in Sources */,
 				23D105DD1CA9AE990073A669 /* String.swift in Sources */,
+				033EFDA01D87348C001FCCA6 /* SolvedGetter.swift in Sources */,
+				0307ABEF1D7E0F1700E2FF8B /* ProblemFilterViewController.swift in Sources */,
+				033EFD9A1D8696FD001FCCA6 /* Request.swift in Sources */,
 				23D1061C1CA9AE990073A669 /* LoginViewController.swift in Sources */,
-				23D106251CA9AE990073A669 /* SearchTableViewController.swift in Sources */,
+				23D106251CA9AE990073A669 /* ProblemTableViewController.swift in Sources */,
 				23D105E31CA9AE990073A669 /* UIView.swift in Sources */,
 				23AC136A1CC8420700A473B3 /* LoadingViewController.swift in Sources */,
 				03F8A5FF1CAD8A4C009C6106 /* SearchTableViewCell.swift in Sources */,
-				03A2F62F1D21F2ED00C8F899 /* UserData.swift in Sources */,
+				03E32A701D7A36B200EA9830 /* Database.swift in Sources */,
 				23D106181CA9AE990073A669 /* FilterTableViewController.swift in Sources */,
 				23D106141CA9AE990073A669 /* ContestTableViewController.swift in Sources */,
 				23D106151CA9AE990073A669 /* DataTableViewCell.swift in Sources */,
@@ -758,6 +776,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Unagi.test;
 				PRODUCT_NAME = Unagi;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "Unagi-Bridge-Header.h";
 			};
 			name = Debug;
 		};
@@ -778,6 +797,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Unagi.test;
 				PRODUCT_NAME = Unagi;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "Unagi-Bridge-Header.h";
 			};
 			name = Release;
 		};

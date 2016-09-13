@@ -8,147 +8,124 @@
 
 import Foundation
 import CoreData
-import Parse
+import YapDatabase
 
-class Problem: NSManagedObject {
+class Problem: NSObject, NSCoding {
+    var name: String!
+    var objectId: String!
+    var url: String!
+    var tags: NSObject?
+    var website: Website!
+    var isSolved: Bool
+    var isTodo: Bool
     
-    @NSManaged var name: String!
-    @NSManaged var objectId: String!
-    @NSManaged var url: String!
-    @NSManaged var tags: NSObject?
-    @NSManaged var solutionUrl: String?
-    @NSManaged var website: Website!
-    
-    override init( entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext? ) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    init(name: String!, withObjectId objectId: String!, andUrl url: String!,
+         andTags tags: NSObject?, andWebsite website: Website!, andIsSolved isSolved: Bool, andIsTodo isTodo: Bool) {
+        self.name = name
+        self.objectId = objectId
+        self.url = url
+        self.tags = tags
+        self.website = website
+        self.isSolved = isSolved
+        self.isTodo = isTodo
     }
     
+    required init(coder aDecoder: NSCoder) {
+        self.name = aDecoder.decodeObjectForKey("name") as! String
+        self.objectId = aDecoder.decodeObjectForKey("objectId") as! String
+        self.url = aDecoder.decodeObjectForKey("url") as! String
+        self.tags = aDecoder.decodeObjectForKey("tags") as? NSObject
+        self.website = aDecoder.decodeObjectForKey("website") as! Website
+        self.isSolved = aDecoder.decodeObjectForKey("isSolved") as! Bool
+        self.isTodo = aDecoder.decodeObjectForKey("isTodo") as! Bool
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.name, forKey: "name");
+        aCoder.encodeObject(self.objectId, forKey: "objectId")
+        aCoder.encodeObject(self.url, forKey: "url")
+        aCoder.encodeObject(self.tags, forKey: "tags")
+        aCoder.encodeObject(self.website, forKey: "website")
+        aCoder.encodeObject(self.isSolved, forKey: "isSolved")
+        aCoder.encodeObject(self.isTodo, forKey: "isTodo")
+    }
 }
 
-var problemForId: [String: Problem]!
-var problemForName: [String: Problem]!
-var problemForUrl: [String: Problem]!
-
-func createProblemMaps() {
-    problemForId = [:]
-    problemForName = [:]
-    problemForUrl = [:]
-    for problem in problems {
-        problemForId[problem.objectId] = problem
-        problemForName[problem.name] = problem
-        problemForUrl[problem.url] = problem
-    }
-}
-
-func initializeProblemsArrayUsingProblemEntity() {
+extension Problem {
+    @nonobjc static let collection = String(Problem)
     
-    print("Get Problems from Core Data - Problem Entity")
-    
-    let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    let context: NSManagedObjectContext = appDel.managedObjectContext!
-    
-    let request = NSFetchRequest(entityName: "Problem")
-    request.returnsObjectsAsFaults = false
-    request.fetchBatchSize = 20
-    do {
-        problems = try context.executeFetchRequest(request) as! [Problem]
-        createProblemMaps()
-    } catch {
-        print("There is a problem getting Problems from Core Data")
+    func key() -> String {
+        return objectId;
     }
     
-    print("Problems Array Size => \(problems.count)")
-    
-}
-
-var parseProblemsCount: Int = 0
-    
-func getNewProblemsUsingParse(limit: Int, skip: Int, completion: () -> ()) {
-    let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    let context: NSManagedObjectContext = appDel.managedObjectContext!
-    let entity = NSEntityDescription.entityForName("Problem", inManagedObjectContext: context)!
-    
-    let query = PFQuery(className: "Problems")
-    
-    query.limit = limit
-    query.skip = skip
-    
-    if let lastUpdate = NSUserDefaults.standardUserDefaults().objectForKey("ProblemsDB_LastUpdateTime") {
-        query.whereKey("updatedAt", greaterThan: lastUpdate)
+    func saveWithTransaction(transaction: YapDatabaseReadWriteTransaction) {
+        transaction.setObject(self, forKey: key(), inCollection: Problem.collection)
     }
     
-    var map: [String : Website] = [:]
-    
-    for website in websites {
-        map[website.name] = website
+    static func fetch(key: String, withTransaction transaction: YapDatabaseReadTransaction) -> Problem? {
+        return transaction.objectForKey(key, inCollection: collection) as? Problem
     }
     
-    query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
-        
-        if error == nil {
-            
-            if let objects = objects {
-                
-                for problem in objects {
-                    
-                    let newProblem = Problem(entity: entity, insertIntoManagedObjectContext: context)
-                    
-                    newProblem.objectId = problem.objectId!
-                    
-                    newProblem.name = problem["name"] as! String
-                    newProblem.url = problem["url"] as! String
-                    if let tags = problem["tags"] {
-                        newProblem.tags = tags as! [String]
-                    }
-                    newProblem.solutionUrl = problem["solutionUrl"] as? String
-                    
-                    if let website = map[ problem["websiteId"] as! String ] {
-                        newProblem.website = website
-                    } else {
-                        newProblem.website = websites.last
-                    }
-                }
-                
-            } else {
-                print("Problems Data Base could not updated!!! Check the internet connection - 1")
-            }
-            parseProblemsCount += 1
-            if parseProblemsCount == 10 {
-                print("seconds => \(NSDate().timeIntervalSinceDate(date))")
-                NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "ProblemsDB_LastUpdateTime")
-                initializeProblemsArrayUsingProblemEntity()
-                
-                dispatch_async(dispatch_get_main_queue(), {
-                    
-                    do {
-                        try context.save()
-                    } catch {
-                        print("Could not save to Core Data - Problem Entity")
-                    }
-                    
-                })
-                
-                print("Goes to Main View Controller")
-                print("#Problems = \(problems.count)")
-                dispatch_async(dispatch_get_main_queue(), completion)
-            }
-            
-        } else {
-            print("Problems Data Base could not updated!!! Check the internet connection - 2")
+    @nonobjc static var problemForId: [String: Problem]!
+    @nonobjc static var problemForName: [String: Problem]!
+    @nonobjc static var problemForUrl: [String: Problem]!
+    
+    static func createProblemMaps() {
+        problemForId = [:]
+        problemForName = [:]
+        problemForUrl = [:]
+        for problem in problems {
+            problemForId[problem.objectId] = problem
+            problemForName[problem.name] = problem
+            problemForUrl[problem.url] = problem
         }
     }
-}
-
-var date: NSDate!
-
-func updateProblemEntityUsingParse(completion: () -> ()) {
     
-    date = NSDate()
-    print("Update Problems Entity with new entries in Problem DataBase on Parse")
-    
-    for i in 0 ..< 10 {
-        dispatch_async(dispatch_get_main_queue(), {
-            getNewProblemsUsingParse(1000, skip: i * 1000, completion: completion)
+    static func getNewProblems(after: Int, completion: () -> ()) {
+        var map: [String : Website] = [:]
+        for website in websites {
+            map[website.name] = website
+        }
+        Request.get(serverHost, andPath: "/problem/after/\(after)", andCompletion: { (json) in
+            if let jsonArray = json.array {
+                for i in 0 ..< jsonArray.count {
+                    let problemData = jsonArray[i];
+                    let intId = problemData["id"].intValue
+                    let objectId = "\(intId)"
+                    let websiteName = problemData["website"].stringValue;
+                    let website = map[websiteName]!;
+                    let tags: [String] = problemData["tags"].arrayValue.map { $0.string!}
+                    problems.append(Problem(name: problemData["name"].stringValue,
+                        withObjectId: objectId,
+                        andUrl: problemData["url"].stringValue,
+                        andTags: tags,
+                        andWebsite: website,
+                        andIsSolved: false,
+                        andIsTodo: false))
+                }
+            }
+            completion()
         })
+    }
+    
+    static func updateProblemEntity(completion: () -> ()) {
+        Database.sharedInstance.newConnection().readWithBlock({ (transaction) in
+            let keys = transaction.allKeysInCollection(collection) as! [String]
+            for key in keys {
+                let problem = transaction.objectForKey(key, inCollection: collection) as! Problem
+                problems.append(problem)
+            }
+        })
+        getNewProblems(problems.count) { 
+            let connection = Database.sharedInstance.newConnection();
+            connection.readWriteWithBlock({ (transaction) in
+                for problem in problems {
+                    problem.saveWithTransaction(transaction)
+                }
+            })
+            print("#problems = \(problems.count)")
+            createProblemMaps()
+            completion()
+        }
     }
 }

@@ -9,99 +9,78 @@
 import Foundation
 import CoreData
 import UIKit
+import YapDatabase
 
-class Website: NSManagedObject {
-   
-    @NSManaged var objectId: String!
-    @NSManaged var url: String!
-    @NSManaged var name: String!
-    @NSManaged var contestStatus: String!
+class Website: NSObject, NSCoding {
+    var name: String!
+    var url: String!
+    var objectId: String!
+    var contestStatus: String!
     
-    override init( entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext? ) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    init(name: String!, withUrl url: String!, andObjectId objectId: String!,
+         andContestStatus contestStatus: String!) {
+        self.name = name
+        self.url = url
+        self.objectId = objectId
+        self.contestStatus = contestStatus
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        self.name = aDecoder.decodeObjectForKey("name") as! String
+        self.url = aDecoder.decodeObjectForKey("url") as! String
+        self.objectId = aDecoder.decodeObjectForKey("objectId") as! String
+        self.contestStatus = aDecoder.decodeObjectForKey("contestStatus") as! String
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.name, forKey: "name")
+        aCoder.encodeObject(self.url, forKey: "url")
+        aCoder.encodeObject(self.objectId, forKey: "objectId")
+        aCoder.encodeObject(self.contestStatus, forKey: "contestStatus")
     }
 }
 
-
-func initializeWebsitesArrayUsingWebsiteEntity() {
+extension Website {
+    @nonobjc static let collection = String(Website)
     
-    let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    let context: NSManagedObjectContext = appDel.managedObjectContext!
+    func key() -> String {
+        return objectId
+    }
     
-    let request = NSFetchRequest(entityName: "Website")
-    request.returnsObjectsAsFaults = false
-    do {
-        let results = try context.executeFetchRequest(request) as! [Website]
-        for website in results {
-            websites.append( website )
-        }
-        
-        //Moves codeforces codechef and topcoder to the top of the list
-        var ptr = 0
-        for toBeMoved in ["Codeforces", "Codechef", "Topcoder"] {
-            for i in 0 ..< websites.count {
-                if websites[i].name == toBeMoved {
-                    if ptr != i {
-                        swap(&websites[i], &websites[ptr])
-                    }
+    func saveWithTransaction(transaction: YapDatabaseReadWriteTransaction) {
+        transaction.setObject(self, forKey: key(), inCollection: Website.collection)
+    }
+    
+    static func initWebsitesArray() {
+        Database.sharedInstance.sharedConnection?.readWithBlock({ (transaction) in
+            let keys = transaction.allKeysInCollection(collection) as! [String]
+            for key in keys {
+                let website = transaction.objectForKey(key, inCollection: collection) as! Website
+                websites.append(website)
+            }
+        })
+    }
+    
+    static func preloadWebsites() {
+        NSUserDefaults.standardUserDefaults().setObject(true, forKey: "nonefiltered")
+        if let contentsOfUrl = NSBundle.mainBundle().URLForResource("Website", withExtension: "csv") {
+            do {
+                let content = try String(contentsOfURL: contentsOfUrl, encoding: NSUTF8StringEncoding)
+                let items = content.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
+                
+                for item in items {
+                    let objects = item.componentsSeparatedByString(",")
+                    let newWebsite = Website(name: objects[1], withUrl: objects[2],
+                                             andObjectId: objects[0], andContestStatus: objects[3])
+                    Database.sharedInstance.sharedConnection?.readWriteWithBlock({ (transaction) in
+                        newWebsite.saveWithTransaction(transaction)
+                    })
                 }
+            } catch {
+                print("Error occured parsing Website.csv")
             }
-            ptr += 1
+        } else {
+            print("Website.csv does not exist")
         }
-        
-    } catch {
-        print("There is a problem getting websites from Core Data")
     }
-    
-    print("Websites Array Size = \(websites.count)")
 }
-
-/*
- Preloads websites from Website.csv and stores it in Core Data - Website Entity
- */
-func preLoadWebsiteEntity() {
-    
-    let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    let context: NSManagedObjectContext = appDel.managedObjectContext!
-    let entity = NSEntityDescription.entityForName("Website", inManagedObjectContext: context)!
-    
-    NSUserDefaults.standardUserDefaults().setObject(true, forKey: "nonefiltered")
-    
-    if let contentsOfUrl = NSBundle.mainBundle().URLForResource("Website", withExtension: "csv") {
-        
-        do {
-            let content = try String(contentsOfURL: contentsOfUrl, encoding: NSUTF8StringEncoding)
-            let items = content.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
-            
-            for item in items {
-                let objects = item.componentsSeparatedByString(",")
-                let newWebsite = Website(entity: entity, insertIntoManagedObjectContext: context)
-                
-                newWebsite.objectId = objects[0]
-                newWebsite.name = objects[1]
-                newWebsite.url = objects[2]
-                newWebsite.contestStatus = objects[3]
-                
-                dispatch_async(dispatch_get_main_queue(), { 
-                    do {
-                        try context.save()
-                        NSUserDefaults.standardUserDefaults().setValue(true, forKey: newWebsite.name + "filtered")
-                    } catch {
-                        print("could not save")
-                    }
-                })
-                
-            }
-            
-            print("Website Entity Preloaded successfully")
-            
-        } catch {
-            print("Error occured parsing Website.csv")
-        }
-        
-    } else {
-        print("Website.csv does not exist")
-    }
-    
-}
-

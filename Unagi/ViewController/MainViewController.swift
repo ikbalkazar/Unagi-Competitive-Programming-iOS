@@ -8,6 +8,7 @@ import UIKit
 import Parse
 import CoreData
 import SafariServices
+import SCLAlertView
 
 class MainViewController: UIViewController, UICollectionViewDelegate, UINavigationControllerDelegate {
     //changing IBOutlet variable names without fixing their connection to storyboard causes RTE.
@@ -23,18 +24,20 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     }
 
     override func viewDidAppear(animated: Bool) {
-        if let cfHandle = PFUser.currentUser()?.objectForKey("codeforcesHandle") as? String {
-            cfHandleButton.hidden = false
-            ratingLabel.hidden = false
-            ratingDeltaLabel.hidden = false
-            deltaImageView.hidden = false
-            
-            setRatingAndDelta(cfHandle)
+        let cfHandle = NSUserDefaults.standardUserDefaults().objectForKey(kCodeforcesUsernameKey) as? String
+        if cfHandle == nil {
+            let alert = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
+            let textField = alert.addTextField("Codeforces Username")
+            alert.addButton("Save", action: { 
+                self.setRatingAndDelta(textField.text!)
+                NSUserDefaults.standardUserDefaults().setObject(textField.text, forKey: kCodeforcesUsernameKey)
+                SolvedGetter.getCodeforces { (problemIds) in
+                    WebsiteImporter.importSolved("Codeforces", andSolvedIds: problemIds)
+                }
+            })
+            alert.showEdit("Codeforces Username", subTitle: "Please enter your codeforces username which will be used to fetch your statistics")
         } else {
-            cfHandleButton.hidden = true
-            ratingLabel.hidden = true
-            ratingDeltaLabel.hidden = true
-            deltaImageView.hidden = true
+            setRatingAndDelta(cfHandle!)
         }
     }
     
@@ -89,17 +92,23 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     var curTitle: String!
     
     func search() {
-        performSegueWithIdentifier("Main_SearchView", sender: self)
+        curProblems = problems
+        curTitle = "Problem Search"
+        performSegueWithIdentifier("Main_ProblemTableVC", sender: self)
     }
     
     func todoList() {
-        curProblems = userData.getProblems(kTodoProblemsKey)
-        curTitle = "To Do List"
+        curProblems = problems.filter({ (problem) -> Bool in
+            return problem.isTodo
+        })
+        curTitle = "Todo List"
         performSegueWithIdentifier("Main_ProblemTableVC", sender: self)
     }
     
     func history() {
-        curProblems = userData.getProblems(kSolvedProblemsKey)
+        curProblems = problems.filter({ (problem) -> Bool in
+            return problem.isSolved
+        })
         curTitle = "Solved Problems"
         performSegueWithIdentifier("Main_ProblemTableVC", sender: self)
     }
