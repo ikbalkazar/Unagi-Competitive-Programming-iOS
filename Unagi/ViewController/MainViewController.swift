@@ -99,7 +99,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UINavigati
     
     func todoList() {
         curProblems = problems.filter({ (problem) -> Bool in
-            return problem.isTodo
+            return problem.isTodo && !problem.isSolved
         })
         curTitle = "Todo List"
         performSegueWithIdentifier("Main_ProblemTableVC", sender: self)

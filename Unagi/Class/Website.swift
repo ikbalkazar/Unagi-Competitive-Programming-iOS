@@ -15,28 +15,23 @@ class Website: NSObject, NSCoding {
     var name: String!
     var url: String!
     var objectId: String!
-    var contestStatus: String!
     
-    init(name: String!, withUrl url: String!, andObjectId objectId: String!,
-         andContestStatus contestStatus: String!) {
+    init(name: String!, withUrl url: String!, andObjectId objectId: String!) {
         self.name = name
         self.url = url
         self.objectId = objectId
-        self.contestStatus = contestStatus
     }
     
     required init(coder aDecoder: NSCoder) {
         self.name = aDecoder.decodeObjectForKey("name") as! String
         self.url = aDecoder.decodeObjectForKey("url") as! String
         self.objectId = aDecoder.decodeObjectForKey("objectId") as! String
-        self.contestStatus = aDecoder.decodeObjectForKey("contestStatus") as! String
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.name, forKey: "name")
         aCoder.encodeObject(self.url, forKey: "url")
         aCoder.encodeObject(self.objectId, forKey: "objectId")
-        aCoder.encodeObject(self.contestStatus, forKey: "contestStatus")
     }
 }
 
@@ -52,6 +47,7 @@ extension Website {
     }
     
     static func initWebsitesArray() {
+        websites.removeAll()
         Database.sharedInstance.sharedConnection?.readWithBlock({ (transaction) in
             let keys = transaction.allKeysInCollection(collection) as! [String]
             for key in keys {
@@ -61,26 +57,22 @@ extension Website {
         })
     }
     
-    static func preloadWebsites() {
-        NSUserDefaults.standardUserDefaults().setObject(true, forKey: "nonefiltered")
-        if let contentsOfUrl = NSBundle.mainBundle().URLForResource("Website", withExtension: "csv") {
-            do {
-                let content = try String(contentsOfURL: contentsOfUrl, encoding: NSUTF8StringEncoding)
-                let items = content.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
-                
-                for item in items {
-                    let objects = item.componentsSeparatedByString(",")
-                    let newWebsite = Website(name: objects[1], withUrl: objects[2],
-                                             andObjectId: objects[0], andContestStatus: objects[3])
-                    Database.sharedInstance.sharedConnection?.readWriteWithBlock({ (transaction) in
-                        newWebsite.saveWithTransaction(transaction)
-                    })
+    static func updateWebsiteEntity(completion: (() -> ())?) {
+        Request.get(serverHost, andPath: "/website/getall") { (json) in
+            websites.removeAll()
+            if let jsonArray = json.array {
+                for i in 0 ..< jsonArray.count {
+                    let object = jsonArray[i]
+                    websites.append(Website(name: object["name"].stringValue, withUrl: object["url"].stringValue,
+                        andObjectId: "\(object["id"].intValue)"))
                 }
-            } catch {
-                print("Error occured parsing Website.csv")
             }
-        } else {
-            print("Website.csv does not exist")
+            Database.sharedInstance.newConnection().readWriteWithBlock({ (transaction) in
+                websites.saveWithTransaction(transaction)
+            })
+            if completion != nil {
+                completion!()
+            }
         }
     }
 }

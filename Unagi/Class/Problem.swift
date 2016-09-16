@@ -119,9 +119,7 @@ extension Problem {
         getNewProblems(problems.count) { 
             let connection = Database.sharedInstance.newConnection();
             connection.readWriteWithBlock({ (transaction) in
-                for problem in problems {
-                    problem.saveWithTransaction(transaction)
-                }
+                problems.saveWithTransaction(transaction)
             })
             print("#problems = \(problems.count)")
             createProblemMaps()

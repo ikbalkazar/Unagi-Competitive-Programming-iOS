@@ -3,6 +3,7 @@
 import UIKit
 import CoreData
 import Parse
+import SCLAlertView
 
 var contests = [Contest]()
 var problems = [Problem]()
@@ -17,14 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
     var navCont: UINavigationController?
     
-    func handleFirstTimeProcedures() {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setValue(true, forKey: "firstTimeCheck")
-        defaults.setValue(0, forKey: "contestObjectIdCounter")
-        
-        Website.preloadWebsites()
-    }
-    
     func setWindow() {
         if PFUser.currentUser() != nil {
             createMenuView()
@@ -35,7 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             user.password = String(installationId)
             user.signUpInBackgroundWithBlock({ (succeeded, error) in
                 if error != nil {
-                    print("ERROR... !!!")
+                    let alert = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
+                    alert.addButton("Retry", action: { 
+                        self.setWindow()
+                    })
+                    alert.showError("No Internet Connection", subTitle: "Please make sure you are connected to internet")
                 } else {
                     assert(PFUser.currentUser() != nil)
                     self.setWindow()
@@ -77,17 +74,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setWaitingWindow()
         
-        if NSUserDefaults.standardUserDefaults().objectForKey("firstTimeCheck") == nil {
-            self.handleFirstTimeProcedures()
-        }
-        
         Website.initWebsitesArray()
-        
-        Problem.updateProblemEntity({
-            dispatch_async(dispatch_get_main_queue(), { 
-                self.setWindow()
-            })
-        })
+        Website.updateWebsiteEntity {
+            Problem.updateProblemEntity {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.setWindow()
+                })
+            }
+        }
         
         return true
     }

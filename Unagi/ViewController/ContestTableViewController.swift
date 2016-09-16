@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SafariServices
 
 var selectedContest: Contest!
 
@@ -70,6 +71,11 @@ class ContestTableViewController: UITableViewController {
         cell.delegate = self
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let safariVC = SFSafariViewController(URL: NSURL(string: filteredContests[indexPath.row].url)!)
+        presentViewController(safariVC, animated: true, completion: nil)
     }
 
     @IBAction func goToHome(sender: AnyObject) {

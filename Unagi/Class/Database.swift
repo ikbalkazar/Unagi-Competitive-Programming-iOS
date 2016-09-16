@@ -32,3 +32,16 @@ class Database {
         return (database?.newConnection())!
     }
 }
+
+// Array database utilty extension
+extension Array {
+    func saveWithTransaction(transaction: YapDatabaseReadWriteTransaction) {
+        for object in self {
+            if object is Problem {
+                (object as! Problem).saveWithTransaction(transaction)
+            } else if object is Website {
+                (object as! Website).saveWithTransaction(transaction)
+            }
+        }
+    }
+}
